@@ -1,0 +1,13 @@
+{
+  "adapterVersion": "2",
+  "strategy": "semantic-contract-v2",
+  "sourceHash": "34fb165deeacbf37a97c2dcf729a1c71ba559a8d51a735497933efd915bccc97",
+  "gameVersion": null,
+  "missing": [],
+  "optionalMissing": [],
+  "warnings": [],
+  "capabilities": {},
+  "state": "ignored",
+  "code": "not-game-module",
+  "reason": "非游戏 App 模块"
+}

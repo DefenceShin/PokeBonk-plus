@@ -1,0 +1,138 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>PokeBonk Pilot</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>True</UseWPF>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <StartupObject>PokeBonk.Client.Program</StartupObject>
+    <Nullable>enable</Nullable>
+    <GenerateTargetPlatformAttribute>false</GenerateTargetPlatformAttribute>
+    <GenerateSupportedOSPlatformAttribute>false</GenerateSupportedOSPlatformAttribute>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="lib/WebView2Loader.dll" Link="WebView2Loader.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <EmbeddedResource Include="../src/battle-recorder.mjs" LogicalName="payload.battle-recorder.mjs" />
+    <EmbeddedResource Include="PokeBonk Pilot.g.resources" LogicalName="PokeBonk Pilot.g.resources" />
+    <None Remove="mainwindow.baml" />
+    <None Remove="app.ico" />
+    <None Remove="app.baml" />
+    <None Remove="PokeBonk.Client.ui.app.js" />
+    <None Remove="PokeBonk.Client.ui.product-source.js" />
+    <None Remove="PokeBonk.Client.ui.index.html" />
+    <None Remove="PokeBonk.Client.ui.styles.css" />
+    <None Remove="payload.unlock-catalog.json" />
+    <None Remove="payload.cost-effects.json" />
+    <None Remove="payload.wecom-push-catalog.json" />
+    <None Remove="payload.encyclopedia.json" />
+    <None Remove="payload.localization.json" />
+    <None Remove="payload.shiny-catalog.json" />
+    <None Remove="payload.catalog.json" />
+    <None Remove="payload.controller-sources.json" />
+    <None Remove="payload.maintenance-prompts.mjs" />
+    <None Remove="payload.encyclopedia.mjs" />
+    <None Remove="payload.player-skins.mjs" />
+    <None Remove="payload.native-parser.mjs" />
+    <None Remove="payload.native-semantic-profiles.mjs" />
+    <None Remove="payload.native-selector-catalog.mjs" />
+    <None Remove="payload.native-adaptation.mjs" />
+    <None Remove="payload.game-library.mjs" />
+    <None Remove="payload.policy.mjs" />
+    <None Remove="payload.pilot.mjs" />
+    <None Remove="payload.objectives.mjs" />
+    <None Remove="payload.shiny.mjs" />
+    <None Remove="payload.compatibility.mjs" />
+    <None Remove="payload.custom-plans.mjs" />
+    <None Remove="payload.action-cadence.mjs" />
+    <None Remove="payload.interaction-navigation.mjs" />
+    <None Remove="payload.battle-tactics.mjs" />
+    <None Remove="payload.choice-strategy.mjs" />
+    <None Remove="payload.unlock-goals.mjs" />
+    <None Remove="payload.team-overlay.mjs" />
+    <None Remove="payload.player-overlay.mjs" />
+    <None Remove="payload.player-convenience.mjs" />
+    <None Remove="payload.wecom-push.mjs" />
+    <None Remove="payload.tower-strategy.mjs" />
+    <None Remove="payload.mutation-strategy.mjs" />
+    <None Remove="payload.character-unlock-legacy160.mjs" />
+    <None Remove="payload.product-source.mjs" />
+    <None Remove="payload.build-import.mjs" />
+    <None Remove="payload.author-dog.png" />
+    <None Remove="payload.author-other-dog.png" />
+    <None Remove="payload.dog-poop.png" />
+    <None Remove="payload.dog-fluff.png" />
+    <None Remove="payload.skin-001.png" />
+    <None Remove="payload.skin-002.png" />
+    <None Remove="payload.skin-003.png" />
+    <None Remove="payload.skin-004.png" />
+    <None Remove="payload.skin-generation-prompt.txt" />
+    <None Remove="payload.changelog.txt" />
+    <EmbeddedResource Include="ui\app.js" LogicalName="PokeBonk.Client.ui.app.js" />
+    <EmbeddedResource Include="ui\product-source.js" LogicalName="PokeBonk.Client.ui.product-source.js" />
+    <EmbeddedResource Include="ui\index.html" LogicalName="PokeBonk.Client.ui.index.html" />
+    <EmbeddedResource Include="ui\styles.css" LogicalName="PokeBonk.Client.ui.styles.css" />
+    <EmbeddedResource Include="..\data\unlock-catalog.json" LogicalName="payload.unlock-catalog.json" />
+    <EmbeddedResource Include="..\data\cost-effects.json" LogicalName="payload.cost-effects.json" />
+    <EmbeddedResource Include="..\data\wecom-push-catalog.json" LogicalName="payload.wecom-push-catalog.json" />
+    <EmbeddedResource Include="..\data\encyclopedia.json" LogicalName="payload.encyclopedia.json" />
+    <EmbeddedResource Include="..\data\localization.json" LogicalName="payload.localization.json" />
+    <EmbeddedResource Include="..\data\shiny-catalog.json" LogicalName="payload.shiny-catalog.json" />
+    <EmbeddedResource Include="..\data\catalog.json" LogicalName="payload.catalog.json" />
+    <EmbeddedResource Include="..\data\controller-sources.json" LogicalName="payload.controller-sources.json" />
+    <EmbeddedResource Include="..\src\maintenance-prompts.mjs" LogicalName="payload.maintenance-prompts.mjs" />
+    <EmbeddedResource Include="..\src\encyclopedia.mjs" LogicalName="payload.encyclopedia.mjs" />
+    <EmbeddedResource Include="..\src\player-skins.mjs" LogicalName="payload.player-skins.mjs" />
+    <EmbeddedResource Include="..\src\native-parser.mjs" LogicalName="payload.native-parser.mjs" />
+    <EmbeddedResource Include="..\src\native-semantic-profiles.mjs" LogicalName="payload.native-semantic-profiles.mjs" />
+    <EmbeddedResource Include="..\src\native-selector-catalog.mjs" LogicalName="payload.native-selector-catalog.mjs" />
+    <EmbeddedResource Include="..\src\native-adaptation.mjs" LogicalName="payload.native-adaptation.mjs" />
+    <EmbeddedResource Include="..\src\game-library.mjs" LogicalName="payload.game-library.mjs" />
+    <EmbeddedResource Include="..\src\policy.mjs" LogicalName="payload.policy.mjs" />
+    <EmbeddedResource Include="..\src\pilot.mjs" LogicalName="payload.pilot.mjs" />
+    <EmbeddedResource Include="..\src\objectives.mjs" LogicalName="payload.objectives.mjs" />
+    <EmbeddedResource Include="..\src\shiny.mjs" LogicalName="payload.shiny.mjs" />
+    <EmbeddedResource Include="..\src\compatibility.mjs" LogicalName="payload.compatibility.mjs" />
+    <EmbeddedResource Include="..\src\custom-plans.mjs" LogicalName="payload.custom-plans.mjs" />
+    <EmbeddedResource Include="..\src\action-cadence.mjs" LogicalName="payload.action-cadence.mjs" />
+    <EmbeddedResource Include="..\src\interaction-navigation.mjs" LogicalName="payload.interaction-navigation.mjs" />
+    <EmbeddedResource Include="..\src\battle-tactics.mjs" LogicalName="payload.battle-tactics.mjs" />
+    <EmbeddedResource Include="..\src\choice-strategy.mjs" LogicalName="payload.choice-strategy.mjs" />
+    <EmbeddedResource Include="..\src\unlock-goals.mjs" LogicalName="payload.unlock-goals.mjs" />
+    <EmbeddedResource Include="..\src\team-overlay.mjs" LogicalName="payload.team-overlay.mjs" />
+    <EmbeddedResource Include="..\src\player-overlay.mjs" LogicalName="payload.player-overlay.mjs" />
+    <EmbeddedResource Include="..\src\player-convenience.mjs" LogicalName="payload.player-convenience.mjs" />
+    <EmbeddedResource Include="..\src\wecom-push.mjs" LogicalName="payload.wecom-push.mjs" />
+    <EmbeddedResource Include="..\src\tower-strategy.mjs" LogicalName="payload.tower-strategy.mjs" />
+    <EmbeddedResource Include="..\src\mutation-strategy.mjs" LogicalName="payload.mutation-strategy.mjs" />
+    <EmbeddedResource Include="..\src\character-unlock-legacy160.mjs" LogicalName="payload.character-unlock-legacy160.mjs" />
+    <EmbeddedResource Include="..\src\product-source.mjs" LogicalName="payload.product-source.mjs" />
+    <EmbeddedResource Include="..\src\build-import.mjs" LogicalName="payload.build-import.mjs" />
+    <EmbeddedResource Include="payload.author-dog.png" LogicalName="payload.author-dog.png" />
+    <EmbeddedResource Include="payload.author-other-dog.png" LogicalName="payload.author-other-dog.png" />
+    <EmbeddedResource Include="payload.dog-poop.png" LogicalName="payload.dog-poop.png" />
+    <EmbeddedResource Include="payload.dog-fluff.png" LogicalName="payload.dog-fluff.png" />
+    <EmbeddedResource Include="payload.skin-001.png" LogicalName="payload.skin-001.png" />
+    <EmbeddedResource Include="payload.skin-002.png" LogicalName="payload.skin-002.png" />
+    <EmbeddedResource Include="payload.skin-003.png" LogicalName="payload.skin-003.png" />
+    <EmbeddedResource Include="payload.skin-004.png" LogicalName="payload.skin-004.png" />
+    <EmbeddedResource Include="payload.skin-generation-prompt.txt" LogicalName="payload.skin-generation-prompt.txt" />
+    <EmbeddedResource Include="payload.changelog.txt" LogicalName="payload.changelog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.WebView2.Core">
+      <HintPath>lib\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf">
+      <HintPath>lib\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

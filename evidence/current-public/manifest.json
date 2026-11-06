@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-11-05T09:15:05.260Z",
+  "records": [
+    {
+      "url": "https://pokebonk.com/",
+      "name": "index.html",
+      "sha256": "f732e130075bfb3b7c177c2905df77d75a8c007b76d5041c46077e005b0a5d7b",
+      "bytes": 13048
+    },
+    {
+      "url": "https://pokebonk.com/version.json",
+      "name": "version.json",
+      "sha256": "9de96e5f7fa3ee282bac3f9e585bf6fa141e610e226a61ec471ba6709ad84b35",
+      "bytes": 38
+    },
+    {
+      "url": "https://pokebonk.com/assets/main-BXFVu2zF-mw2lpvdy.js",
+      "name": "main-BXFVu2zF-mw2lpvdy.js",
+      "sha256": "15a868f4c1bc68f971adfdd8edb612f02f3e1c9090669529af2864a38e38335b",
+      "bytes": 10054
+    },
+    {
+      "url": "https://pokebonk.com/assets/main-C00VyI92-mw2lpvdy.js",
+      "name": "main-C00VyI92-mw2lpvdy.js",
+      "sha256": "88ae13689a7937d0aa8c69aa2b2ea7a8103054909fc3c030504f131cf775b629",
+      "bytes": 1017305
+    },
+    {
+      "url": "https://pokebonk.com/assets/menus-naGsbQe9-mw2lpvdy.js",
+      "name": "menus-naGsbQe9-mw2lpvdy.js",
+      "sha256": "5e9337a3fc72b352a9b7d0226ba66f72eed94f82cb45330fa205fea3028d1b6b",
+      "bytes": 2945751
+    },
+    {
+      "url": "https://pokebonk.com/assets/i18n-BGHWfjZr-mw2lpvdy.js",
+      "name": "i18n-BGHWfjZr-mw2lpvdy.js",
+      "sha256": "b221485fc26812a411646526fbad34abac170171415f51ead4e482979d2f067d",
+      "bytes": 1772
+    },
+    {
+      "url": "https://pokebonk.com/assets/preload-helper-CRzLMJPS-mw2lpvdy.js",
+      "name": "preload-helper-CRzLMJPS-mw2lpvdy.js",
+      "sha256": "bcc465e3e61dc3878a69ffa95ccb53cb82d95b1639ada223420b281ebd150048",
+      "bytes": 1534
+    },
+    {
+      "url": "https://pokebonk.com/assets/defineProperty-CERxPiQA-mw2lpvdy.js",
+      "name": "defineProperty-CERxPiQA-mw2lpvdy.js",
+      "sha256": "7f21e9fbe61afedad560105956917fefd17e440bf33c8ff6f4b8e32cdbf6bc9c",
+      "bytes": 304580
+    },
+    {
+      "url": "https://pokebonk.com/assets/three-C6GX2F5d.js",
+      "name": "three-C6GX2F5d.js",
+      "sha256": "19c3d5b4ca739826ce57a290d7937af1e92612e9eb5cb02d20d9126b95bee49d",
+      "bytes": 704376
+    },
+    {
+      "url": "https://pokebonk.com/assets/modulepreload-polyfill-P2Xu9kJm-mw2lpvdy.js",
+      "name": "modulepreload-polyfill-P2Xu9kJm-mw2lpvdy.js",
+      "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+      "bytes": 670
+    }
+  ]
+}

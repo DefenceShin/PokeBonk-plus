@@ -1,0 +1,188 @@
+[
+  {
+    "owner": "Mm",
+    "methods": [
+      {
+        "name": "constructor",
+        "code": "constructor(e,t){super(e,t,{layout:Om,columns:[...Tm,...Em],pillar:`crater_pillar`,gate:`crater_gate`,ringEnd:30,stone:4865084}),W(this,`geysers`,[]),W(this,`lure`,!1),W(this,`fissures`,[]),W(this,`tide`,0),W(this,`tideTo`,0),W(this,`floodState`,`rest`),W(this,`floodT`,4),W(this,`hold`,!1),W(this,`floorY`,void 0),W(this,`lava`,void 0),W(this,`lavaMat`,void 0),W(this,`lavaHurtT`,0),W(this,`lavaSaid`,!1),W(this,`fissureHurtT`,0),W(this,`rumbleT`,5),W(this,`glowT`,0),this.ringType=`fire`,this.ringHurt=.07;let n=e.terrain,r=0,i=0;for(let e=0;e<360;e+=45)for(let t of[17,24]){let a=X(e,t);r+=n.height(a.x,a.z),i++}this.floorY=r/i;for(let e of Dm){let t=n.height(e.x,e.z);n.reserve(e.x,e.z,3.4);let r={x:e.x,z:e.z,y:t,charge:1,flash:0,g:new Ys,mats:[]};r.g=this.model(`crater_geyser`,e.x,e.z,R.range(0,Math.PI*2),1,e=>{e.traverse(e=>{let t=e;if(!t.isMesh||!/^Charge\\d/.test(e.name))return;let n=t.material.clone();t.material=n,r.mats[+e.name.slice(6)]=n})}),this.geysers.push(r)}for(let[e,t,n,r]of[[20,57,`crater_spire`,2],[70,59,`crater_spire`,2.4],[125,56,`crater_spire`,1.9],[180,58,`crater_spire`,2.3],[235,57,`crater_spire`,2],[295,60,`crater_spire`,2.5],[340,58,`crater_spire`,2.1],[45,54,`crater_rock`,3],[160,54,`crater_rock`,3.2],[270,55,`crater_rock`,3]]){let i=X(e,t);this.model(n,i.x,i.z,R.range(0,Math.PI*2),r)}this.lavaMat=this.makeLava(),this.lava=new Zs(new Lc((Om.radius+1)*2,(Om.radius+1)*2,150,150).rotateX(-Math.PI/2),this.lavaMat),this.lava.renderOrder=2,this.lava.frustumCulled=!1,this.lava.visible=!1,this.group.add(this.lava),e.$dzcutu(`ash`)}"
+      },
+      {
+        "name": "makeLava",
+        "code": "makeLava(){let e=this.run.terrain,t=new Uint16Array(9216),n=Om.radius+1;for(let r=0;r<96;r++)for(let i=0;i<96;i++)t[r*96+i]=tc.toHalfFloat(e.height((i/95-.5)*2*n,(r/95-.5)*2*n));let r=new Gs(t,96,96,fc,Qs);r.magFilter=r.minFilter=oc,r.needsUpdate=!0;let i=this.run.r.shared;return new zc({transparent:!0,depthWrite:!1,uniforms:{uTime:i.uTime,tH:{value:r},uR:{value:n},uLevel:{value:0},uTarget:{value:this.floorY+km},uWarn:{value:0},uDais:{value:Am},uFogColor:i.uFogColor,uFogNear:i.uFogNear,uFogFar:i.uFogFar},vertexShader:`uniform float uR, uLevel, uWarn; uniform sampler2D tH; varying vec3 vW; varying float vD;\n        void main(){ float h = texture2D(tH, position.xz / (2. * uR) + 0.5).r; float y = (uWarn > 0.01 && uLevel < h + 0.02) ? h + 0.07 : uLevel + 0.02;\n          vec4 w = vec4(position.x, y, position.z, 1.); vW = w.xyz; vec4 mv = viewMatrix * w; vD = -mv.z; gl_Position = projectionMatrix * mv; }`,fragmentShader:`\n        uniform float uTime, uR, uLevel, uTarget, uWarn, uDais, uFogNear, uFogFar; uniform sampler2D tH; uniform vec3 uFogColor;\n        varying vec3 vW; varying float vD;\n        float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }\n        float vnoise(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f); return mix(mix(hash(i),hash(i+vec2(1,0)),f.x), mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x), f.y); }\n        void main(){\n          float h = texture2D(tH, vW.xz / (2. * uR) + 0.5).r;\n          float rr = length(vW.xz);\n          if (rr < uDais || rr > uR - 1.) discard;\n          float depth = uLevel - h;\n          vec2 px = floor(vW.xz * 8.) / 8.;\n          if (depth > 0.01) {\n            float n1 = vnoise(px * 0.32 + vec2(uTime * 0.22, uTime * 0.09)), n2 = vnoise(px * 0.85 - vec2(uTime * 0.15, -uTime * 0.27));\n            float v = n1 * 0.6 + n2 * 0.4;\n            vec3 hot = vec3(1., 0.82, 0.28);\n            vec3 c = v < 0.36 ? vec3(0.5, 0.07, 0.03) : v < 0.52 ? vec3(0.9, 0.26, 0.05) : v < 0.66 ? vec3(1., 0.5, 0.1) : hot;\n            float crustN = vnoise(px * 0.55 + vec2(3.7, uTime * 0.05)) * 0.65 + n2 * 0.35;\n            float crust = step(0.64, crustN);\n            c = mix(c, vec3(0.1, 0.04, 0.05), crust * 0.92);\n            c = mix(c, vec3(1., 0.55, 0.12), step(0.6, crustN) * step(crustN, 0.64) * 0.9);\n            float lap = step(depth, 0.1 + 0.05 * sin(uTime * 3. + n1 * 6.));\n            c = mix(c, hot, lap * 0.9);\n            gl_FragColor = vec4(mix(c, uFogColor, smoothstep(uFogNear, uFogFar, vD) * 0.6), 1.);\n          } else if (uWarn > 0.01 && h < uTarget) {\n            float stripe = step(0.5, fract((px.x + px.y) * 0.45 + uTime * 1.3));\n            float pulse = 0.5 + 0.5 * sin(uTime * 9.);\n            vec3 c = mix(vec3(0.7, 0.14, 0.03), vec3(1., 0.62, 0.15), stripe * (0.4 + 0.6 * pulse));\n            gl_FragColor = vec4(c, uWarn * (0.2 + 0.34 * stripe + 0.2 * pulse));\n          } else discard;\n          #include <colorspace_fragment>\n        }`})}"
+      },
+      {
+        "name": "phaseSub",
+        "code": "phaseSub(e){return U(e===2?`¡El volcán despierta! Bombas de lava y grietas en el suelo`:`¡La lava sube! Solo las mesetas y el estrado quedan a salvo`)}"
+      },
+      {
+        "name": "phaseChange",
+        "code": "phaseChange(e){let t=this.run;if(e===2){t.shake(.6),t.audio.boom(1),t.ui.toast(U(`Se abren grietas en el suelo y caen bombas de lava: no te quedes quieto`),null);for(let e=0;e<14;e++)t.later(e*.08,()=>this.rimBlast())}e===3&&(this.floodT=3,this.floodState=`rest`,t.ui.toast(U(`Cuando el suelo brille a rayas naranjas, sube a una meseta, al estrado o salta: la lava va a subir`),null))}"
+      },
+      {
+        "name": "victory",
+        "code": "victory(){let e=this.run;this.tideTo=0,this.floodState=`rest`,this.hold=!1,this.lure=!1,e.$dzcutu(`clear`);for(let e of this.fissures)e.life=Math.min(e.life,1.5);let t=e.player.pos;for(let n=0;n<60;n++)e.vfx.add.spawn({x:t.x+R.range(-16,16),y:t.y+R.range(0,8),z:t.z+R.range(-16,16),vy:R.range(.5,2),life:R.range(1.5,3),size:.4,endSize:0,color:n%3?jm:16769162,shape:z.Twinkle,glow:1.2})}"
+      },
+      {
+        "name": "onColumnBreak",
+        "code": "onColumnBreak(e,t){this.run.vfx.burst(e.x,t+1.5,e.z,16742954,12,6,z.PixRock,.6,.8,12),this.run.vfx.burst(e.x,t+2,e.z,3813424,12,7,z.PixRock,.7,.8,14)}"
+      },
+      {
+        "name": "ringHit",
+        "code": "ringHit(e,t,n){this.run.vfx.burst(e,t+1,n,16738858,8,5,z.PixFlame,.7,.4)}"
+      },
+      {
+        "name": "minionFx",
+        "code": "minionFx(e,t,n){this.run.vfx.burst(e,t+.5,n,16747066,8,4,z.PixFlame,.7,.5)}"
+      },
+      {
+        "name": "geyserNear",
+        "code": "geyserNear(e,t,n=4.6){let r=null,i=n;for(let n of this.geysers){if(n.charge<1)continue;let a=Math.hypot(n.x-e,n.z-t);a<i&&(i=a,r=n)}return r}"
+      },
+      {
+        "name": "erupt",
+        "code": "erupt(e){let t=this.run,n=e.y;e.charge=0,e.flash=1,t.vfx.flash(e.x,n+2,e.z,16777215,6,.25),t.vfx.ring(e.x,n,e.z,5,15267071,.5),t.vfx.ring(e.x,n,e.z,9,16777215,.7),t.vfx.beams.spawn(e.x,n,e.z,e.x,n+22,e.z,2.6,15267071,.8,.8),t.vfx.beams.spawn(e.x,n,e.z,e.x,n+26,e.z,.9,16777215,.7);for(let r=0;r<46;r++){let i=R.range(0,Math.PI*2),a=R.range(.5,3.5);t.vfx.norm.spawn({x:e.x+Math.cos(i)*.6,y:n+R.range(0,2),z:e.z+Math.sin(i)*.6,vx:Math.cos(i)*a,vy:R.range(7,17),vz:Math.sin(i)*a,drag:1,life:R.range(.9,1.7),size:R.range(1.2,2.2),endSize:3.6,color:r%3?15660280:13162208,shape:z.Soft})}t.vfx.burst(e.x,n+1,e.z,16771496,20,10,z.PixDrop,.6,.7,10),t.shake(.5,e.x,e.z),t.audio.boom(.9),t.audio.cone(`water`,1);let r=t.player.pos;Math.hypot(r.x-e.x,r.z-e.z)<2.1&&r.y-n<2.2&&t.player.hurt(t.player.maxHp*.07,`fire`,-1,NaN,NaN,!0,.2),this.blast(e.x,e.z,4,20)}"
+      },
+      {
+        "name": "inLava",
+        "code": "inLava(e,t,n){if(this.tide<.14||Math.hypot(e,t)<Am)return!1;let r=this.run.terrain.height(e,t);return r<this.floorY+this.tide-.03&&n-r<.9}"
+      },
+      {
+        "name": "flooding",
+        "code": "get flooding(){return this.floodState!==`rest`}"
+      },
+      {
+        "name": "fissure",
+        "code": "fissure(e,t,n,r,i,a){let o=[],s=this.run.terrain,c=R.range(0,6);for(let i=0;i<=r;i+=1.1){let a=Math.sin(i*.5+c)*.9+Math.sin(i*1.4+c*2)*.35,l=e+Math.cos(n)*(i-r/2)-Math.sin(n)*a,u=t+Math.sin(n)*(i-r/2)+Math.cos(n)*a;Math.hypot(l,u)>this.layout.radius-2.5||Math.hypot(l,u)<7||s.height(l,u)>this.floorY+1.2||o.push({x:l,z:u})}o.length<3||(this.fissures.length>=8&&this.fissures.shift(),this.fissures.push({pts:o,t:0,delay:i,life:a,burnT:0,opened:!1}))}"
+      },
+      {
+        "name": "distToFissure",
+        "code": "distToFissure(e,t,n){let r=1/0;for(let i=0;i<e.pts.length-1;i++){let a=e.pts[i],o=e.pts[i+1],s=o.x-a.x,c=o.z-a.z,l=s*s+c*c||1,u=k(((t-a.x)*s+(n-a.z)*c)/l,0,1);r=Math.min(r,Math.hypot(a.x+s*u-t,a.z+c*u-n))}return r}"
+      },
+      {
+        "name": "rimBlast",
+        "code": "rimBlast(){let e=this.run,t=R.range(0,Math.PI*2),n=R.range(50,62),r=Math.cos(t)*n,i=Math.sin(t)*n,a=e.terrain.height(r,i);for(let t=0;t<10;t++)e.vfx.norm.spawn({x:r+R.range(-2,2),y:a,z:i+R.range(-2,2),vx:R.range(-3,3),vy:R.range(16,30),vz:R.range(-3,3),gravity:22,life:2.4,size:R.range(.8,1.6),endSize:.6,color:16777215,endColor:16747066,shape:z.PixFlame});e.vfx.add.spawn({x:r,y:a+1,z:i,life:.5,size:8,endSize:14,color:16738858,shape:z.Soft,glow:.3})}"
+      },
+      {
+        "name": "tickArena",
+        "code": "tickArena(e){let t=this.run,n=t.player,r=n.pos,i=t.terrain,a=t.boss.alive&&this.phase>=1&&this.phase<4;for(let n of this.geysers){n.flash=Math.max(0,n.flash-e*2);let r=n.charge;n.charge=Math.min(1,n.charge+e/13);let i=n.charge>=1;i&&r<1&&(t.vfx.burst(n.x,n.y+1,n.z,16777215,12,5,z.PixDrop,.5,.5,8),t.vfx.ring(n.x,n.y,n.z,3.2,15267071,.5),t.ui.popup(n.x,n.y+3,n.z,U(`¡Géiser cargado!`),`#e8f4ff`,.9));let a=i?1.5+Math.sin(t.time*6)*.35:.1+n.charge*.7+n.flash*1.2;for(let e of n.mats)e&&e.emissiveIntensity!==void 0&&(e.emissiveIntensity=a);let o=(3+n.charge*n.charge*26)*e;for(let e=0,r=Math.floor(o+Math.random());e<r;e++){let e=i?1:n.charge;t.vfx.norm.spawn({x:n.x+R.range(-.5,.5),y:n.y+.5,z:n.z+R.range(-.5,.5),vx:R.range(-.4,.4),vy:1.4+e*4.6+R.range(0,1.2),vz:R.range(-.4,.4),life:.9+e*.7,size:.7+e*.7,endSize:1.6+e*1.6,color:i?15660280:10134700,shape:z.Soft})}i?(t.vfx.beams.spawn(n.x,n.y+.6,n.z,n.x,n.y+5.5+Math.sin(t.time*4)*.6,n.z,.5,15267071,.06,.32),t.vfx.staticRing(n.x,n.y+.05,n.z,2.3,16773296,.55+.25*Math.sin(t.time*5))):(t.vfx.staticRing(n.x,n.y+.05,n.z,2.3,4872810,.3),t.vfx.staticRing(n.x,n.y+.06,n.z,.5+n.charge*1.8,10148095,.5)),this.lure&&i&&t.vfx.staticRing(n.x,n.y+.1,n.z,4.6,16765498,.55+.35*Math.sin(t.time*12))}this.fissureHurtT-=e;for(let o=this.fissures.length-1;o>=0;o--){let s=this.fissures[o];if(s.t+=e,s.t<s.delay){let e=s.t/s.delay;for(let n of s.pts)Math.random()<.35&&t.vfx.ground.spawn({x:n.x,y:i.height(n.x,n.z)+.12,z:n.z,life:.1,size:1.1+e*.5,endSize:1.1+e*.5,color:Math.sin(t.time*(10+e*24))>0?16738858:16769162,shape:z.Soft,glow:0,rot:0});continue}if(!s.opened){s.opened=!0,t.shake(.35,s.pts[0].x,s.pts[0].z),t.audio.boom(.6);for(let e of s.pts){let n=i.height(e.x,e.z);t.vfx.burst(e.x,n+.5,e.z,jm,4,6,z.PixFlame,.9,.5,6),t.vfx.dust(e.x,n,e.z,3813424,2,3)}for(let e of s.pts)Math.random()<.4&&this.blast(e.x,e.z,2,8);a&&this.distToFissure(s,r.x,r.z)<1.6&&r.y-i.height(r.x,r.z)<1.4&&n.hurt(n.maxHp*.08,`fire`,-1,NaN,NaN,!0,.2)}let c=s.life-(s.t-s.delay),l=k(c/1.2,0,1);if(c<=0)this.fissures.splice(o,1);else{for(let n of s.pts){let r=i.height(n.x,n.z);t.vfx.groundN.spawn({x:n.x,y:r+.1,z:n.z,life:.06,size:1.9,endSize:1.9,color:16777215,shape:z.PixCrack,rot:R.range(0,6.3)}),t.vfx.ground.spawn({x:n.x,y:r+.12,z:n.z,life:.06,size:1.5*l+.3,endSize:1.5*l+.3,color:16734738,shape:z.Soft,glow:.2,rot:0}),Math.random()<e*5*l&&t.vfx.norm.spawn({x:n.x+R.range(-.3,.3),y:r+.2,z:n.z+R.range(-.3,.3),vy:R.range(1.5,3.5),life:.45,size:.9,endSize:.2,color:16777215,shape:z.PixFlame})}a&&this.fissureHurtT<=0&&this.distToFissure(s,r.x,r.z)<1.15&&r.y-i.height(r.x,r.z)<1.2&&(this.fissureHurtT=.5,n.hurt(n.maxHp*.04,`fire`,-1,NaN,NaN,!0))}}if(this.phase===3&&t.boss.alive){if(this.floodT-=this.floodState===`rest`&&this.hold?0:e,this.floodT<=0)switch(this.floodState){case`rest`:this.floodState=`warn`,this.floodT=2.6,t.ui.banner(U(`¡La lava sube!`),U(`Sube a una meseta, al estrado o salta antes de que llegue`),`#ff6a2a`,{species:6}),t.audio.alarm(),t.shake(.3);break;case`warn`:this.floodState=`rise`,this.floodT=2,this.tideTo=km,t.audio.cone(`fire`,2),t.shake(.4);break;case`rise`:this.floodState=`hold`,this.floodT=6.5;break;case`hold`:this.floodState=`drain`,this.floodT=2.6,this.tideTo=0,t.ui.toast(U(`La lava baja: aprovecha para moverte`),null);break;default:this.floodState=`rest`,this.floodT=6.5}}else this.phase!==3&&this.floodState!==`rest`&&this.phase!==4&&(this.floodState=`rest`,this.tideTo=0);this.tide+=k(this.tideTo-this.tide,-e*(km/2.2),km/1.9*e),this.lava.visible=this.tide>.02||this.floodState===`warn`;let o=this.lavaMat.uniforms;if(o.uLevel.value=this.tide>.02?this.floorY+this.tide:-50,o.uWarn.value=this.floodState===`warn`?1:this.floodState===`rise`?k(1-this.tide/.4,0,1):0,this.inLava(r.x,r.z,r.y)&&this.phase<4){let i=n.types.includes(`fire`);n.arenaSlow=Math.min(n.arenaSlow,i?.85:.65),this.lavaHurtT-=e,this.lavaHurtT<=0&&i?this.lavaHurtT=.45:this.lavaHurtT<=0&&(this.lavaHurtT=.45,n.hurt(n.maxHp*.08,`fire`,-1,NaN,NaN,!0),t.vfx.burst(r.x,r.y+.4,r.z,jm,8,5,z.PixFlame,.7,.4),this.lavaSaid||(this.lavaSaid=!0,t.ui.popup(r.x,r.y+2.4,r.z,U(`¡Lava!`),`#ff6a2a`,1)))}else this.lavaHurtT<.2&&(this.lavaSaid=!1);if(this.tide>.1)for(let n=0,r=Math.floor(e*50*this.tide+Math.random());n<r;n++){let e=R.range(0,Math.PI*2),n=R.range(8,40),r=Math.cos(e)*n,a=Math.sin(e)*n;this.inLava(r,a,i.height(r,a))&&t.vfx.add.spawn({x:r,y:this.floorY+this.tide+.1,z:a,vy:R.range(1,4),life:R.range(.5,1.1),size:R.range(.25,.6),endSize:.1,color:Math.random()<.5?16756794:16734746,shape:Math.random()<.4?z.PixFlame:z.Soft,glow:1})}this.ringT>=0&&this.fireWall(e),this.ambience(e,a)}"
+      },
+      {
+        "name": "fireWall",
+        "code": "fireWall(e){let t=this.run,n=t.terrain,r=t.player.pos,i=Math.atan2(r.z,r.x),a=t.r.camera.position;for(let r=0,o=Math.floor(e*130+Math.random());r<o;r++){let e=Math.random()<.6?i+R.range(-.7,.7):R.range(0,Math.PI*2),r=this.ringR+R.range(.2,3),o=Math.cos(e)*r,s=Math.sin(e)*r,c=n.height(o,s)+R.range(0,1.2);(o-a.x)**2+(c-a.y)**2+(s-a.z)**2<36||t.vfx.norm.spawn({x:o,y:c,z:s,vx:-Math.sin(e)*2,vy:R.range(3,8),vz:Math.cos(e)*2,life:R.range(.5,.9),size:R.range(1.4,2.8),endSize:.6,color:16777215,shape:z.PixFlame})}if(Math.random()<e*18){let e=i+R.range(-1,1),r=Math.cos(e)*(this.ringR+1),a=Math.sin(e)*(this.ringR+1);t.vfx.add.spawn({x:r,y:n.height(r,a)+2,z:a,life:.6,size:6,endSize:9,color:5250056,shape:z.Soft,glow:.3})}}"
+      },
+      {
+        "name": "ambience",
+        "code": "ambience(e,t){let n=this.run,r=n.terrain,i=n.r.camera.position;for(let t=0,r=Math.floor(e*16+Math.random());t<r;t++){let e=i.x+R.range(-22,22),t=i.z+R.range(-22,22);n.vfx.norm.spawn({x:e,y:i.y+R.range(2,10),z:t,vx:R.range(.2,1),vy:-R.range(.7,1.4),vz:R.range(-.4,.4),life:6,size:R.range(.14,.26),endSize:.14,color:Math.random()<.7?6972512:3814452,shape:z.PixPuff})}for(let t=0,a=Math.floor(e*22+Math.random());t<a;t++){let e=i.x+R.range(-22,22),t=i.z+R.range(-22,22);e*e+t*t>2209||n.vfx.add.spawn({x:e,y:r.height(e,t)+R.range(.2,2),z:t,vx:R.range(-.5,.5),vy:R.range(.8,2.4),vz:R.range(-.5,.5),life:R.range(1.5,3.2),size:R.range(.15,.3),endSize:.04,color:Math.random()<.6?16742954:16760928,shape:z.Twinkle,glow:1.2})}if(this.glowT-=e,this.glowT<=0){this.glowT=.12;let e=R.range(0,Math.PI*2),t=R.range(40,47),a=Math.cos(e)*t,o=Math.sin(e)*t;n.vfx.add.spawn({x:a,y:r.height(a,o)+1.5,z:o,life:1.6,size:9,endSize:13,color:this.phase>=2?4855304:3280906,shape:z.Soft,glow:.2});let s=R.range(0,Math.PI*2),c=R.range(5,20),l=i.x+Math.cos(s)*c,u=i.z+Math.sin(s)*c;n.vfx.add.spawn({x:l,y:r.height(l,u)+.3,z:u,vy:2.4,life:1.8,size:2.2,endSize:3.2,color:2757640,shape:z.Wisp,glow:0})}for(let t of this.layout.lanterns)if(Math.random()<e*14){let e=r.height(t.x,t.z)+3;n.vfx.norm.spawn({x:t.x+R.range(-.3,.3),y:e,z:t.z+R.range(-.3,.3),vy:R.range(1.5,3),life:.5,size:1,endSize:.3,color:16777215,shape:z.PixFlame})}t&&this.phase>=2&&(this.rumbleT-=e,this.rumbleT<=0&&(this.rumbleT=R.range(2.5,5),this.rimBlast(),n.shake(.12)))}"
+      },
+      {
+        "name": "dispose",
+        "code": "dispose(){super.dispose(),this.lavaMat.uniforms.tH.value.dispose(),this.lavaMat.dispose()}"
+      }
+    ]
+  },
+  {
+    "owner": "Hm",
+    "methods": [
+      {
+        "name": "constructor",
+        "code": "constructor(e,t){super(e,t,{layout:Lm,columns:Im,pillar:`psy_pillar`,gate:`psy_gate`,ringEnd:30,stone:6974106}),W(this,`floorY`,void 0),W(this,`pylons`,[]),W(this,`shield`,{on:!1,k:0,hit:0}),W(this,`shieldMat`,void 0),W(this,`shieldMesh`,void 0),W(this,`waterMat`,void 0),W(this,`rocks`,[]),W(this,`orbs`,[]),W(this,`orbT`,5),W(this,`reflectT`,0),W(this,`reflectPop`,0),W(this,`teamBroken`,new Set),W(this,`spireG`,[]),W(this,`spireRise`,0),W(this,`spireWant`,!1),W(this,`spireA`,0),W(this,`moteT`,0),W(this,`dripT`,0),this.ringType=`psychic`;let n=e.terrain;this.floorY=n.height(0,22);for(let e=0;e<18;e++){let t=X(e*20,42);n.reserve(t.x,t.z,7.5)}this.waterMat=this.makeWater();let r=new Zs(new Fc(Pm,49.5,96,1).rotateX(-Math.PI/2),this.waterMat);r.position.y=this.floorY+.05,r.renderOrder=1,this.group.add(r),this.shieldMat=this.makeShield(),this.shieldMesh=new Zs(new yc(1,28,20),this.shieldMat),this.shieldMesh.visible=!1,this.shieldMesh.renderOrder=8,this.group.add(this.shieldMesh);for(let[e,t,n,r]of[[10,56,`psy_spire`,1.7],[70,58,`psy_pillar`,2],[135,57,`psy_spire`,1.9],[195,58,`psy_spire`,1.6],[250,56,`psy_pillar`,2.1],[305,59,`psy_spire`,2],[345,57,`psy_pillar`,1.8]]){let i=X(e,t);this.model(n,i.x,i.z,R.range(0,Math.PI*2),r)}}"
+      },
+      {
+        "name": "heightTex",
+        "code": "heightTex(){let e=this.run.terrain,t=new Uint16Array(9216);for(let n=0;n<96;n++)for(let r=0;r<96;r++)t[n*96+r]=tc.toHalfFloat(e.height((r/95-.5)*2*50,(n/95-.5)*2*50));let n=new Gs(t,96,96,fc,Qs);return n.magFilter=n.minFilter=oc,n.needsUpdate=!0,n}"
+      },
+      {
+        "name": "makeWater",
+        "code": "makeWater(){let e=this.run.r.shared;return new zc({uniforms:{uTime:e.uTime,tH:{value:this.heightTex()},uR:{value:50},uFloor:{value:this.floorY},uGlow:{value:1},uFogColor:e.uFogColor,uFogNear:e.uFogNear,uFogFar:e.uFogFar},vertexShader:`varying vec3 vW; varying float vD; void main(){ vec4 w = modelMatrix * vec4(position, 1.); vW = w.xyz; vec4 mv = viewMatrix * w; vD = -mv.z; gl_Position = projectionMatrix * mv; }`,fragmentShader:`\n        uniform float uTime, uR, uFloor, uGlow, uFogNear, uFogFar; uniform sampler2D tH; uniform vec3 uFogColor;\n        varying vec3 vW; varying float vD;\n        float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }\n        float vnoise(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f); return mix(mix(hash(i),hash(i+vec2(1,0)),f.x), mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x), f.y); }\n        void main(){\n          float h = texture2D(tH, vW.xz / (2. * uR) + 0.5).r;\n          if (h > uFloor + 0.25 || length(vW.xz - vec2(0., 39.)) < 11.) discard;\n          vec2 ip = floor(vW.xz * 7.);\n          float w1 = vnoise(ip * 0.2 + vec2(uTime * 0.25, uTime * 0.16)), w2 = vnoise(ip * 0.45 - vec2(uTime * 0.2, 0.));\n          float band = w1 * 0.6 + w2 * 0.4;\n          vec3 c = mix(vec3(0.02, 0.04, 0.14), vec3(0.04, 0.12, 0.28), step(0.48, band));\n          c = mix(c, vec3(0.1, 0.38, 0.6), step(0.74, band) * uGlow);\n          c += vec3(0.5, 0.25, 0.9) * step(0.86, vnoise(ip * 0.17 + uTime * 0.12)) * 0.5 * uGlow;\n          // Foam where the water meets the shore (the terrain just above the surface).\n          float dh = uFloor + 0.25 - h; c = mix(vec3(0.75, 0.9, 1.), c, smoothstep(0., 0.22, dh));\n          float g = hash(ip + 0.7), tw = step(0.82, fract(g * 9.1 + uTime * (0.3 + g * 0.5)));\n          c = mix(c, vec3(1.), step(0.994, g) * tw);\n          gl_FragColor = vec4(mix(c, uFogColor, smoothstep(uFogNear, uFogFar, vD)), 1.);\n          #include <colorspace_fragment>\n        }`})}"
+      },
+      {
+        "name": "makeShield",
+        "code": "makeShield(){return new zc({transparent:!0,depthWrite:!1,blending:2,side:2,uniforms:{uTime:this.run.r.shared.uTime,uK:{value:0},uHit:{value:0}},vertexShader:`varying vec3 vP; varying vec3 vN; varying vec3 vV; void main(){ vP = position; vN = normalize(normalMatrix * normal); vec4 mv = modelViewMatrix * vec4(position, 1.); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }`,fragmentShader:`\n        uniform float uTime, uK, uHit; varying vec3 vP; varying vec3 vN; varying vec3 vV;\n        float hexd(vec2 p){ p = abs(p); return max(dot(p, vec2(0.866025, 0.5)), p.y); }\n        void main(){\n          vec3 n = normalize(vP); vec3 a = abs(n);\n          vec2 uv = a.x > a.y && a.x > a.z ? n.yz / a.x : a.y > a.z ? n.xz / a.y : n.xy / a.z;\n          uv *= 3.2;\n          vec2 s = vec2(1., 1.7320508);\n          vec2 g1 = mod(uv, s) - s * .5, g2 = mod(uv - s * .5, s) - s * .5;\n          vec2 gv = dot(g1, g1) < dot(g2, g2) ? g1 : g2;\n          float edge = 0.5 - hexd(gv);\n          float line = smoothstep(0.07, 0.0, edge);\n          float fres = pow(1. - abs(dot(normalize(vN), normalize(vV))), 2.2);\n          float scan = 0.5 + 0.5 * sin(n.y * 9. - uTime * 2.4);\n          vec2 id = uv - gv; float flick = step(0.93, fract(sin(dot(floor(id * 2.), vec2(12.9898, 78.233)) + floor(uTime * 4.)) * 43758.5453));\n          float alpha = (line * 0.75 + fres * 0.45 + 0.05 + flick * 0.22 + scan * 0.04 + uHit * (0.35 + line * 0.6)) * uK;\n          vec3 c = mix(vec3(0.62, 0.34, 1.0), vec3(1.0, 0.55, 0.9), fres);\n          c = mix(c, vec3(1.), clamp(uHit * 0.8 + line * 0.25, 0., 1.));\n          gl_FragColor = vec4(c * alpha, alpha);\n        }`})}"
+      },
+      {
+        "name": "phaseSub",
+        "code": "phaseSub(e){return U(e===2?`¡Los pilones psíquicos alimentan su escudo!`:`¡La cueva tiembla! El muro psíquico se cierra`)}"
+      },
+      {
+        "name": "phaseChange",
+        "code": "phaseChange(e){let t=this.run;e===2&&(this.raisePylons(),this.liftRocks(),t.ui.toast(U(`Mewtwo se protege con un escudo: sube a las mesetas y rompe los tres pilones psíquicos`),null)),e===3&&(this.liftRocks(),this.liftWater(),t.ui.toast(U(`El lago se eleva: esquiva las esferas de agua y no te quedes fuera del muro`),null))}"
+      },
+      {
+        "name": "victory",
+        "code": "victory(){let e=this.run;this.shield.on=!1;for(let e of this.pylons)this.breakPylon(e,!1);this.spireSet(!1);let t=e.enemies;for(let e=0;e<t.n;e++)t.alive[e]&&t.flags[e]&F.Object&&t.kill(e);for(let t of this.rocks)e.animate(2.4,e=>{t.k=1-e});for(let t of this.orbs)t.fall=null,e.animate(2,e=>{t.m.scale.setScalar((1-e)*1.6)},()=>{t.m.visible=!1});let n=e.player.pos;for(let t=0;t<60;t++)e.vfx.add.spawn({x:n.x+R.range(-16,16),y:n.y+R.range(0,8),z:n.z+R.range(-16,16),vy:R.range(.4,1.4),life:R.range(1.5,3),size:.45,endSize:0,color:t%3?Rm:16777215,shape:z.Twinkle,glow:1.2})}"
+      },
+      {
+        "name": "onColumnBreak",
+        "code": "onColumnBreak(e,t){this.run.vfx.burst(e.x,t+2,e.z,Rm,14,7,z.Shard,.6,.8,14)}"
+      },
+      {
+        "name": "ringHit",
+        "code": "ringHit(e,t,n){this.run.vfx.burst(e,t+1,n,Rm,8,5,z.PixSparkle,.5,.4)}"
+      },
+      {
+        "name": "minionFx",
+        "code": "minionFx(e,t,n){this.run.vfx.burst(e,t+.5,n,Rm,8,4,z.Twinkle,.5,.5)}"
+      },
+      {
+        "name": "pylonsLeft",
+        "code": "get pylonsLeft(){return this.pylons.filter(e=>e.o).length}"
+      },
+      {
+        "name": "shieldUp",
+        "code": "get shieldUp(){return this.shield.on}"
+      },
+      {
+        "name": "raisePylons",
+        "code": "raisePylons(){let e=this.run,t=e.terrain,n=e.enemies,r=e.boss,i=r.bossIndex;if(!(!r.alive||i<0)){for(let r of Fm){let a=t.height(r.x,r.z),o=n.spawn(150,r.x,r.z,1,0,F.Object);if(o<0)continue;n.hp[o]=n.maxHp[o]=Math.max(1,n.maxHp[i]*.045),n.dmg[o]=0,n.speed[o]=0,n.xp[o]=0,n.radius[o]=1.5,n.hgt[o]=4.2,n.sized[o]=1,n.y[o]=a;let s={x:r.x,z:r.z,r:1.15,h:a+4.6};t.addCollider(s),t.reserve(r.x,r.z,2.4);let c={x:r.x,z:r.z,y:a,o:{j:o,g:n.gen[o]},g:new Ys,crystal:null,pulse:R.range(2.5,4.5),ring:-1,hit:!1,col:s};c.g=this.model(`psy_pylon`,r.x,r.z,R.range(0,Math.PI*2),1.15,e=>{c.crystal=e.getObjectByName(`Crystal`)??null}),c.g.position.y=a-5,e.animate(1.1,e=>{c.g.position.y=a-5*(1-e*e)}),e.vfx.burst(r.x,a+1,r.z,Rm,30,10,z.PixSparkle,.7,.7),e.vfx.ring(r.x,a,r.z,8,zm,.7),this.pylons.push(c)}this.shield.on=this.pylons.length>0,e.audio.boom(1),e.shake(.5);for(let e of this.teamBroken)this.teamPylon(e);this.teamBroken.clear()}}"
+      },
+      {
+        "name": "teamPylon",
+        "code": "teamPylon(e){if(!this.pylons.length){Number.isInteger(e)&&this.teamBroken.add(e);return}let t=this.pylons[e];t?.o&&this.breakPylon(t,!0)}"
+      },
+      {
+        "name": "breakPylon",
+        "code": "breakPylon(e,t){let n=this.run,r=n.enemies;if(e.o&&r.gen[e.o.j]===e.o.g&&r.alive[e.o.j]&&r.kill(e.o.j),e.o=null,e.col.off=!0,n.vfx.burst(e.x,e.y+3,e.z,zm,34,11,z.Shard,.8,.8,14),n.vfx.flash(e.x,e.y+3,e.z,16777215,6,.2),n.vfx.ring(e.x,e.y,e.z,7,Rm,.5),n.audio.shot(`psychic`,1.2),n.shake(.35,e.x,e.z),n.animate(.5,t=>{e.g.scale.setScalar(1.15*(1-t))},()=>this.group.remove(e.g)),!t)return;let i=this.pylonsLeft;i>0?n.ui.popup(e.x,e.y+6,e.z,U(`Quedan {n}`,{n:i}),`#ff9ae8`,1):(this.shield.on=!1,n.ui.banner(U(`¡Escudo roto!`),U(`Sin sus pilones, Mewtwo se desploma: ¡ahora recibe mucho más daño!`),`#ff9ae8`,{species:150}),n.boss.kit?.overload?.())}"
+      },
+      {
+        "name": "liftRocks",
+        "code": "liftRocks(){let e=this.run,t=e.terrain,n=this.rocks.length?8:14,r=new Xs({color:5592447,emissive:1839936,flatShading:!0});for(let i=0;i<n;i++){let n=0,a=0;for(let e=0;e<30;e++){let e=R.range(0,Math.PI*2),r=R.range(17,41);if(n=Math.cos(e)*r,a=Math.sin(e)*r,t.height(n,a)<this.floorY+.3)break}let o=R.range(.9,2.3),s=new Zs(new Gc(1,0),r);s.scale.set(o*1.2,o*.8,o),s.visible=!1,this.group.add(s);let c={m:s,a:Math.atan2(a,n),r:Math.hypot(n,a),h:R.range(5,12),s:o,k:0,spin:R.range(-.8,.8),x0:n,z0:a};this.rocks.push(c),e.later(i*.12,()=>{if(this.disposed)return;s.visible=!0;let r=t.height(n,a);e.vfx.dust(n,r,a,6974106,14,6),e.vfx.ring(n,r,a,3.5,Rm,.4),e.vfx.groundN.spawn({x:n,y:r+.1,z:a,life:60,size:o*3,endSize:o*3,color:1315370,shape:z.Soft,rot:0}),e.animate(2.2,e=>{c.k=1-(1-e)*(1-e)})})}}"
+      },
+      {
+        "name": "liftWater",
+        "code": "liftWater(){let e=this.run,t=new jc({color:6738175,transparent:!0,opacity:.6});for(let n=0;n<9;n++){let r=new Zs(new yc(1,12,9),t);r.visible=!1,this.group.add(r);let i={m:r,a:n/9*Math.PI*2+R.range(-.2,.2),r:R.range(38,44),h:R.range(3,7),fall:null,back:0};this.orbs.push(i),e.later(.4+n*.25,()=>{this.disposed||(r.visible=!0,e.vfx.burst(Math.cos(i.a)*i.r,this.floorY+.4,Math.sin(i.a)*i.r,12580095,12,6,z.PixDrop,.5,.6,12),e.animate(1.6,e=>{i.back=e,r.scale.setScalar(1.7*e)}))})}}"
+      },
+      {
+        "name": "spireSet",
+        "code": "spireSet(e){if(e&&!this.spireG.length)for(let e=0;e<6;e++)this.spireG.push(this.model(`psy_spire`,0,0,R.range(0,6),1.5));this.spireWant=e}"
+      },
+      {
+        "name": "spirePos",
+        "code": "spirePos(e,t=24){let n=this.spireA+e/6*Math.PI*2;return{x:Math.cos(n)*t,z:Math.sin(n)*t,a:n}}"
+      },
+      {
+        "name": "tickArena",
+        "code": "tickArena(e){let t=this.run,n=t.player,r=n.pos,i=t.terrain,a=t.enemies,o=t.boss,s=o.bossIndex,c=o.alive&&this.phase>=1&&this.phase<4,l=this.shield;l.k+=((l.on&&o.alive?1:0)-l.k)*Math.min(1,e*4),l.hit=Math.max(0,l.hit-e*3),this.shieldMesh.visible=l.k>.02&&s>=0,this.shieldMesh.visible&&(this.shieldMesh.position.set(a.x[s],a.y[s]+1.7,a.z[s]),this.shieldMesh.scale.setScalar(Vm*(.9+.1*l.k)),this.shieldMat.uniforms.uK.value=l.k,this.shieldMat.uniforms.uHit.value=l.hit),l.on&&o.alive&&this.reflect(e);for(let c of this.pylons){if(c.o&&!(a.gen[c.o.j]===c.o.g&&a.alive[c.o.j]&&a.dying[c.o.j]<=0)){t.coop?.world(`mw-pylon`,{i:this.pylons.indexOf(c)}),this.breakPylon(c,!0);continue}if(!c.o)continue;c.crystal&&(c.crystal.rotation.y+=e*1.6);let u=c.y+4.1;if(o.alive&&s>=0&&l.on&&(t.vfx.beams.spawn(c.x,u,c.z,a.x[s],a.y[s]+1.7,a.z[s],.45,zm,.06,.7),t.vfx.beams.spawn(c.x,u,c.z,a.x[s],a.y[s]+1.7,a.z[s],.15,16777215,.06,.8)),Math.random()<e*8&&t.vfx.add.spawn({x:c.x+R.range(-.8,.8),y:c.y+R.range(.5,4.5),z:c.z+R.range(-.8,.8),vy:.9,life:.7,size:.35,endSize:0,color:Math.random()<.5?zm:Rm,shape:z.Twinkle,glow:1}),c.pulse-=e,c.pulse<=0&&(c.pulse=5,c.ring=1.6,c.hit=!1,t.vfx.telegraph(c.x,c.y,c.z,2.2,zm,.5)),c.ring>0){let a=c.ring;c.ring+=e*9,t.vfx.staticRing(c.x,c.y+.15,c.z,c.ring,16765172,.9);let o=Math.hypot(r.x-c.x,r.z-c.z);!c.hit&&o>=a-.5&&o<c.ring+.5&&Math.abs(r.y-c.y)<2.6&&(c.hit=!0,r.y-i.height(r.x,r.z)<.5?n.hurt(n.maxHp*.06,`psychic`,-1,c.x,c.z,!1,.14):t.ui.popup(r.x,r.y+2.4,r.z,U(`¡Esquivado!`),`#7aff8a`,.9)),c.ring>9&&(c.ring=-1)}}this.pylons.some(e=>e.o)||(this.pylons=this.pylons.filter(e=>e.g.parent));for(let n of this.rocks){if(n.k<=0){n.m.visible=!1;continue}this.phase===3&&(n.a+=e*.07*(n.spin>0?1:-1));let r=this.phase===3?Math.cos(n.a)*n.r:n.x0,a=this.phase===3?Math.sin(n.a)*n.r:n.z0,o=i.height(r,a)-2+(n.h+2+Math.sin(t.time*.8+n.a*3)*.5)*n.k;n.m.position.set(r,o,a),n.m.rotation.x+=e*n.spin*.4,n.m.rotation.y+=e*n.spin,Math.random()<e*1.5&&t.vfx.norm.spawn({x:r+R.range(-n.s,n.s),y:o-n.s*.6,z:a+R.range(-n.s,n.s),vy:-2,life:.9,size:.3,endSize:.1,color:6974106,shape:z.PixRock,gravity:6})}let u=this.orbs.filter(e=>e.back>=1&&!e.fall);c&&this.phase===3&&u.length&&(this.orbT-=e,this.orbT<=0&&(this.orbT=4.6,this.dropOrb(R.pick(u))));for(let a of this.orbs)if(a.fall){let o=a.fall;o.t+=e;let s=Math.min(1,o.t/1.2);if(a.m.position.set(o.x+(Math.cos(a.a)*a.r-o.x)*(1-s),o.y0*(1-s*s)+(this.floorY+.6)*s*s,o.z+(Math.sin(a.a)*a.r-o.z)*(1-s)),s>=1){let e=o.x,s=o.z,c=i.height(e,s);a.fall=null,a.back=0,a.m.scale.setScalar(.01),t.vfx.burst(e,c+.5,s,12580095,26,9,z.PixDrop,.7,.7,14),t.vfx.burst(e,c+.5,s,Rm,10,6,z.PixSparkle,.5,.5),t.vfx.ring(e,c,s,3,9099519,.5),t.vfx.flash(e,c+1,s,16777215,4,.12),t.audio.boom(.5),t.shake(.25,e,s),this.phase<4&&(r.x-e)**2+(r.z-s)**2<8.41&&r.y-c<2.2&&n.hurt(n.maxHp*.07,`psychic`,-1,e,s,!1,.15),t.later(2.5,()=>{this.disposed||t.animate(1.4,e=>{a.back=e,a.m.scale.setScalar(1.7*e)})})}}else a.back>0&&(a.a+=e*.05*(a.back>0),a.m.position.set(Math.cos(a.a)*a.r,this.floorY+a.h*Math.min(1,a.back)+Math.sin(t.time*1.3+a.a*4)*.4,Math.sin(a.a)*a.r),Math.random()<e*6&&t.vfx.add.spawn({x:a.m.position.x+R.range(-1,1),y:a.m.position.y-1,z:a.m.position.z+R.range(-1,1),vy:-2,life:.6,size:.3,endSize:0,color:12580095,shape:z.PixDrop,glow:.4}));if(this.spireRise+=(+!!this.spireWant-this.spireRise)*Math.min(1,e*1.6),this.spireG.length){for(let[e,n]of this.spireG.entries()){let r=this.spirePos(e);n.position.set(r.x,i.height(r.x,r.z)-10*(1-this.spireRise),r.z),n.rotation.y=-r.a+Math.PI/2,this.spireRise>.15&&this.spireRise<.95&&Math.random()<.6&&t.vfx.dust(r.x,i.height(r.x,r.z),r.z,6974106,2,6)}if(!this.spireWant&&this.spireRise<.02){for(let e of this.spireG)this.group.remove(e);this.spireG=[]}}this.ambience(e),this.ringT>=0&&this.ringT<1.5&&this.psyWall(e)}"
+      },
+      {
+        "name": "reflect",
+        "code": "reflect(e){let t=this.run,n=t.projectiles,r=t.enemies,i=t.boss.bossIndex;if(i<0)return;this.reflectT=Math.max(0,this.reflectT-e),this.reflectPop-=e;let a=r.x[i],o=r.y[i]+1.7,s=r.z[i],c=t.player.pos,l=0;for(let e=0;e<n.n&&l<6;e++){if(!n.alive[e]||n.flags[e]&(mi.Hostile|mi.Ghost))continue;let u=n.x[e]-a,d=n.y[e]-o,f=n.z[e]-s,p=Math.hypot(u,d,f);if(p>6.5||p<3.5||u*n.vx[e]+f*n.vz[e]+d*n.vy[e]>=0||(l++,n.life[e]=0,n.flags[e]&=~mi.Explode,this.shield.hit=1,t.vfx.burst(n.x[e],n.y[e],n.z[e],zm,5,5,z.PixSparkle,.4,.3),this.reflectT>0))continue;this.reflectT=.16;let m=c.x-n.x[e],h=c.z-n.z[e],g=Math.hypot(m,h)||1;n.fire({x:n.x[e],y:n.y[e],z:n.z[e],dx:m/g,dz:h/g,dy:(c.y+.8-n.y[e])/g,speed:13,life:2.4,radius:.5,dmg:r.dmg[i]*.32,type:`psychic`,cls:`special`,flags:mi.Hostile|mi.Capped,size:1.1,shape:z.PixSparkle,color:16765172,from:i})}l&&this.reflectPop<=0&&(this.reflectPop=1.3,t.ui.popup(a,o+3.2,s,U(`¡Reflejo!`),`#ff9ae8`,.9),t.audio.shot(`psychic`,.5))}"
+      },
+      {
+        "name": "dropOrb",
+        "code": "dropOrb(e){let t=this.run,n=t.player.pos,r=t.terrain,i=n.x+t.player.vel.x*.5,a=n.z+t.player.vel.z*.5,o=r.height(i,a);t.vfx.telegraph(i,o,a,2.9,6738175,1.2),t.audio.whoosh(),e.fall={x:i,z:a,t:0,y0:e.m.position.y}}"
+      },
+      {
+        "name": "psyWall",
+        "code": "psyWall(e){let t=this.run,n=t.terrain,r=t.player.pos,i=Math.atan2(r.z,r.x),a=t.r.camera.position;for(let r=0,o=Math.floor(e*110+Math.random());r<o;r++){let e=Math.random()<.6?i+R.range(-.7,.7):R.range(0,Math.PI*2),r=this.ringR+R.range(.2,2.5),o=Math.cos(e)*r,s=Math.sin(e)*r,c=n.height(o,s)+R.range(0,7);(o-a.x)**2+(c-a.y)**2+(s-a.z)**2<36||t.vfx.add.spawn({x:o,y:c,z:s,vx:-Math.sin(e)*4,vy:R.range(.5,2),vz:Math.cos(e)*4,life:R.range(.5,.9),size:R.range(.4,.9),endSize:0,color:Math.random()<.5?Rm:zm,shape:Math.random()<.5?z.PixSparkle:z.Soft,glow:.9})}}"
+      },
+      {
+        "name": "ambience",
+        "code": "ambience(e){let t=this.run,n=t.terrain,r=t.r.camera.position;for(let r of this.layout.lanterns)if(Math.random()<e*5){let e=n.height(r.x,r.z)+1.6;t.vfx.add.spawn({x:r.x+R.range(-.3,.3),y:e,z:r.z+R.range(-.3,.3),vy:.7,life:.9,size:.3,endSize:0,color:Rm,shape:z.Twinkle,glow:1})}for(let i=0,a=Math.floor(e*22+Math.random());i<a;i++){let e=r.x+R.range(-22,22),i=r.z+R.range(-22,22);e*e+i*i>2209||t.vfx.add.spawn({x:e,y:n.height(e,i)+R.range(.5,7),z:i,vx:R.range(-.3,.3),vy:R.range(.1,.5),vz:R.range(-.3,.3),life:R.range(2,4),size:.2,endSize:.04,color:R.pick([Rm,Bm,zm]),shape:z.Soft,glow:1.4})}if(this.dripT-=e,this.dripT<=0){this.dripT=R.range(.25,.6);let e=R.range(0,Math.PI*2),i=R.range(36.5,46),a=Math.cos(e)*i,o=Math.sin(e)*i;n.height(a,o)<this.floorY+.25&&(a-r.x)**2+(o-r.z)**2<1600&&(t.vfx.norm.spawn({x:a,y:this.floorY+14,z:o,vy:-16,life:.85,size:.28,endSize:.28,color:12580095,shape:z.PixDrop}),t.later(.85,()=>{this.disposed||t.vfx.ring(a,this.floorY,o,1.1,9099519,.5,.3)}))}}"
+      },
+      {
+        "name": "dispose",
+        "code": "dispose(){super.dispose(),this.shieldMat.dispose(),this.waterMat.dispose();let e=this.run.enemies;for(let t of this.pylons)t.o&&e.gen[t.o.j]===t.o.g&&e.kill(t.o.j);for(let e of this.rocks)e.m.material.dispose();for(let e of this.orbs)e.m.material.dispose()}"
+      }
+    ]
+  }
+]

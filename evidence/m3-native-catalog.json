@@ -1,0 +1,4492 @@
+{
+  "enemyFlags": {
+    "1": "Elite",
+    "2": "Alpha",
+    "4": "Boss",
+    "8": "Ranged",
+    "16": "Flying",
+    "32": "Healer",
+    "64": "Shielder",
+    "128": "Capture",
+    "256": "Charger",
+    "512": "Swarm",
+    "1024": "Stampede",
+    "2048": "Shiny",
+    "4096": "Totem",
+    "8192": "Summoner",
+    "16384": "Treasure",
+    "32768": "Object",
+    "65536": "Remote",
+    "131072": "Classic",
+    "262144": "Burrow",
+    "524288": "Glide",
+    "1048576": "Roll",
+    "2097152": "Spite",
+    "Elite": 1,
+    "Alpha": 2,
+    "Boss": 4,
+    "Ranged": 8,
+    "Flying": 16,
+    "Healer": 32,
+    "Shielder": 64,
+    "Capture": 128,
+    "Charger": 256,
+    "Swarm": 512,
+    "Stampede": 1024,
+    "Shiny": 2048,
+    "Totem": 4096,
+    "Summoner": 8192,
+    "Treasure": 16384,
+    "Object": 32768,
+    "Remote": 65536,
+    "Classic": 131072,
+    "Burrow": 262144,
+    "Glide": 524288,
+    "Roll": 1048576,
+    "Spite": 2097152
+  },
+  "relics": [
+    {
+      "key": "c-fang",
+      "rarity": 0,
+      "name": "Colmillo Mellado",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.05
+        }
+      ],
+      "passive": "Cazador",
+      "desc": "Los Pokémon élite reciben ×1,12 daño.",
+      "v": {
+        "elite": 0.12
+      }
+    },
+    {
+      "key": "c-shell",
+      "rarity": 0,
+      "name": "Concha Nacarada",
+      "mods": [
+        {
+          "stat": "maxHp",
+          "add": 15
+        }
+      ],
+      "passive": "Marea viva",
+      "desc": "Al subir de nivel recuperas el 12% de tus PS.",
+      "v": {
+        "heal": 0.12
+      }
+    },
+    {
+      "key": "c-feather",
+      "rarity": 0,
+      "name": "Pluma de Viento",
+      "mods": [
+        {
+          "stat": "moveSpeed",
+          "mul": 1.05
+        }
+      ],
+      "passive": "Ráfaga",
+      "desc": "Al esquivar un golpe, +25% de velocidad durante 2 s.",
+      "v": {
+        "speed": 0.25,
+        "secs": 2
+      }
+    },
+    {
+      "key": "c-coin",
+      "rarity": 0,
+      "name": "Moneda Grabada",
+      "mods": [
+        {
+          "stat": "gold",
+          "mul": 1.1
+        }
+      ],
+      "passive": "Diezmo",
+      "desc": "Cada 120 bajas cae un puñado de monedas.",
+      "v": {
+        "every": 120,
+        "piles": 8
+      }
+    },
+    {
+      "key": "c-ember",
+      "rarity": 0,
+      "name": "Ascua Eterna",
+      "mods": [
+        {
+          "stat": "statusChance",
+          "mul": 1.06
+        }
+      ],
+      "passive": "Rescoldo",
+      "desc": "Los enemigos con algún estado reciben ×1,08 daño.",
+      "v": {
+        "status": 0.08
+      }
+    },
+    {
+      "key": "c-amber",
+      "rarity": 0,
+      "name": "Gota de Ámbar",
+      "mods": [
+        {
+          "stat": "regen",
+          "add": 0.6
+        }
+      ],
+      "passive": "Plenitud",
+      "desc": "Con más del 80% de PS, ×1,07 daño.",
+      "v": {
+        "above": 0.8,
+        "dmg": 0.07
+      }
+    },
+    {
+      "key": "c-crystal",
+      "rarity": 0,
+      "name": "Cristal Tallado",
+      "mods": [
+        {
+          "stat": "critChance",
+          "add": 0.03
+        }
+      ],
+      "passive": "Filo de gigante",
+      "desc": "Jefes, Alfas, Dominantes e Invocadores reciben ×1,12 daño.",
+      "v": {
+        "big": 0.12
+      }
+    },
+    {
+      "key": "c-lodestone",
+      "rarity": 0,
+      "name": "Piedra Imán",
+      "mods": [
+        {
+          "stat": "pickupRange",
+          "add": 1.5
+        }
+      ],
+      "passive": "Atracción",
+      "desc": "Cada 40 s atraes todos los caramelos del mapa.",
+      "v": {
+        "every": 40
+      }
+    },
+    {
+      "key": "c-seed",
+      "rarity": 0,
+      "name": "Semilla Antigua",
+      "mods": [
+        {
+          "stat": "xpGain",
+          "mul": 1.05
+        }
+      ],
+      "passive": "Savia",
+      "desc": "Las bayas te curan el doble.",
+      "v": {
+        "berry": 2
+      }
+    },
+    {
+      "key": "u-claw",
+      "rarity": 1,
+      "name": "Garra de Obsidiana",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.07
+        }
+      ],
+      "passive": "Ímpetu",
+      "desc": "Cada 20 bajas sin recibir daño, +3% de daño como multiplicador aparte (hasta ×1,15). Un golpe recibido lo reinicia.",
+      "v": {
+        "kills": 20,
+        "step": 0.03,
+        "max": 0.15
+      }
+    },
+    {
+      "key": "u-scale",
+      "rarity": 1,
+      "name": "Escama Pétrea",
+      "mods": [
+        {
+          "stat": "armor",
+          "add": 4
+        }
+      ],
+      "passive": "Coraza",
+      "desc": "El primer golpe que recibes cada 8 s se reduce a la mitad.",
+      "v": {
+        "every": 8,
+        "cut": 0.5
+      }
+    },
+    {
+      "key": "u-storm",
+      "rarity": 1,
+      "name": "Ojo de Tormenta",
+      "mods": [
+        {
+          "stat": "attackSpeed",
+          "mul": 1.07
+        }
+      ],
+      "passive": "Rayo cazador",
+      "desc": "Cada 5 s cae un rayo sobre el enemigo más resistente a menos de 14 m (30% de parálisis).",
+      "v": {
+        "every": 5,
+        "dmg": 22,
+        "range": 14
+      }
+    },
+    {
+      "key": "u-heart",
+      "rarity": 1,
+      "name": "Corazón de Granito",
+      "mods": [
+        {
+          "stat": "maxHp",
+          "add": 30
+        }
+      ],
+      "passive": "Último bastión",
+      "desc": "Al bajar del 35% de PS ganas un escudo del 20% de tus PS (cada 40 s).",
+      "v": {
+        "below": 0.35,
+        "shield": 0.2,
+        "cd": 40
+      }
+    },
+    {
+      "key": "u-hourglass",
+      "rarity": 1,
+      "name": "Reloj de Arena Roto",
+      "mods": [
+        {
+          "stat": "duration",
+          "mul": 1.08
+        }
+      ],
+      "passive": "Arena del tiempo",
+      "desc": "Tu Ultimate se carga un 15% más rápido.",
+      "v": {
+        "ult": 0.15
+      }
+    },
+    {
+      "key": "u-horn",
+      "rarity": 1,
+      "name": "Cuerno Resonante",
+      "mods": [
+        {
+          "stat": "area",
+          "mul": 1.08
+        }
+      ],
+      "passive": "Clamor",
+      "desc": "Al derrotar a un élite, una onda de 6 m daña y empuja a los de alrededor.",
+      "v": {
+        "r": 6,
+        "dmg": 30
+      }
+    },
+    {
+      "key": "u-clover",
+      "rarity": 1,
+      "name": "Trébol Fósil",
+      "mods": [
+        {
+          "stat": "luck",
+          "add": 8
+        }
+      ],
+      "passive": "Buen augurio",
+      "desc": "Las Poké Balls del mapa cuestan un 12% menos.",
+      "v": {
+        "chest": 0.12
+      }
+    },
+    {
+      "key": "u-dew",
+      "rarity": 1,
+      "name": "Vial de Rocío",
+      "mods": [
+        {
+          "stat": "healing",
+          "mul": 1.1
+        }
+      ],
+      "passive": "Rocío del alba",
+      "desc": "Al derrotar a un Alfa, Dominante o Invocador recuperas el 30% de tus PS.",
+      "v": {
+        "heal": 0.3
+      }
+    },
+    {
+      "key": "r-bell",
+      "rarity": 2,
+      "name": "Campana del Eco",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.1
+        }
+      ],
+      "passive": "Eco",
+      "desc": "Cada 7 s, una onda de 8 m daña y empuja a todo lo que alcanza.",
+      "v": {
+        "every": 7,
+        "r": 8,
+        "dmg": 24
+      }
+    },
+    {
+      "key": "r-meteor",
+      "rarity": 2,
+      "name": "Fragmento de Meteoro",
+      "mods": [
+        {
+          "stat": "critDamage",
+          "mul": 1.15
+        }
+      ],
+      "passive": "Estrellato",
+      "desc": "Cada 60 bajas cae un meteorito sobre el grupo más cercano (4,5 m, aturde).",
+      "v": {
+        "every": 60,
+        "r": 4.5,
+        "dmg": 70
+      }
+    },
+    {
+      "key": "r-conch",
+      "rarity": 2,
+      "name": "Caracola de Marea",
+      "mods": [
+        {
+          "stat": "projSpeed",
+          "mul": 1.1
+        },
+        {
+          "stat": "maxHp",
+          "add": 15
+        }
+      ],
+      "passive": "Pleamar",
+      "desc": "Cada 8 s, una ola de 9 m moja y empuja a los enemigos; los mojados reciben ×1,1 daño.",
+      "v": {
+        "every": 8,
+        "r": 9,
+        "dmg": 14,
+        "wet": 0.1
+      }
+    },
+    {
+      "key": "r-crimson",
+      "rarity": 2,
+      "name": "Colmillo Carmesí",
+      "mods": [
+        {
+          "stat": "lifesteal",
+          "add": 0.015
+        }
+      ],
+      "passive": "Sed",
+      "desc": "Tus golpes críticos te curan el 1% de tus PS (4 veces por segundo como mucho).",
+      "v": {
+        "heal": 0.01,
+        "cd": 0.25
+      }
+    },
+    {
+      "key": "r-aegis",
+      "rarity": 2,
+      "name": "Égida Rota",
+      "mods": [
+        {
+          "stat": "shieldMax",
+          "add": 25
+        }
+      ],
+      "passive": "Égida",
+      "desc": "Cada 12 s recuperas un escudo del 12% de tus PS.",
+      "v": {
+        "every": 12,
+        "shield": 0.12
+      }
+    },
+    {
+      "key": "r-lantern",
+      "rarity": 2,
+      "name": "Farol Fantasma",
+      "mods": [
+        {
+          "stat": "evasion",
+          "add": 0.03
+        }
+      ],
+      "passive": "Fuego fatuo",
+      "desc": "Los enemigos que derrotas tienen un 10% de dejar una llama que estalla (4 m).",
+      "v": {
+        "chance": 0.1,
+        "r": 4,
+        "dmg": 24
+      }
+    },
+    {
+      "key": "r-comet",
+      "rarity": 2,
+      "name": "Polvo de Cometa",
+      "mods": [
+        {
+          "stat": "xpGain",
+          "mul": 1.1
+        }
+      ],
+      "passive": "Lluvia de estrellas",
+      "desc": "Al subir de nivel caen 5 estrellas sobre los enemigos cercanos.",
+      "v": {
+        "stars": 5,
+        "r": 3,
+        "dmg": 40
+      }
+    },
+    {
+      "key": "e-crown",
+      "rarity": 3,
+      "name": "Corona del Alfa",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.12
+        },
+        {
+          "stat": "maxHp",
+          "mul": 1.1
+        }
+      ],
+      "passive": "Rey de reyes",
+      "desc": "Jefes, Alfas y minijefes reciben ×1,25 daño. Cada uno que derrotas suma +5% de daño, como multiplicador aparte, hasta el final de la zona (hasta ×1,3).",
+      "v": {
+        "big": 0.25,
+        "step": 0.05,
+        "max": 0.3
+      }
+    },
+    {
+      "key": "e-prism",
+      "rarity": 3,
+      "name": "Prisma Celeste",
+      "mods": [
+        {
+          "stat": "critChance",
+          "add": 0.06
+        }
+      ],
+      "passive": "Refracción",
+      "desc": "Tus críticos lanzan un haz de luz a 2 enemigos cercanos con el 35% del golpe.",
+      "v": {
+        "n": 2,
+        "share": 0.35,
+        "r": 9,
+        "cd": 0.3
+      }
+    },
+    {
+      "key": "e-clock",
+      "rarity": 3,
+      "name": "Reloj Detenido",
+      "mods": [
+        {
+          "stat": "duration",
+          "mul": 1.12
+        },
+        {
+          "stat": "attackSpeed",
+          "mul": 1.08
+        }
+      ],
+      "passive": "Tiempo detenido",
+      "desc": "Cada 15 s el tiempo se para 1,5 s para todos los enemigos a menos de 14 m.",
+      "v": {
+        "every": 15,
+        "r": 14,
+        "secs": 1.5
+      }
+    },
+    {
+      "key": "e-volcano",
+      "rarity": 3,
+      "name": "Sangre de Volcán",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.1
+        },
+        {
+          "stat": "statusChance",
+          "mul": 1.1
+        }
+      ],
+      "passive": "Erupción",
+      "desc": "Los enemigos quemados que derrotas estallan (3,5 m) y queman a los de alrededor.",
+      "v": {
+        "r": 3.5,
+        "dmg": 34
+      }
+    },
+    {
+      "key": "e-swarm",
+      "rarity": 3,
+      "name": "Tótem del Enjambre",
+      "mods": [
+        {
+          "stat": "projectiles",
+          "add": 1
+        }
+      ],
+      "passive": "Marabunta",
+      "desc": "+1% de daño por cada 8 enemigos a menos de 12 m, como multiplicador aparte (hasta ×1,2).",
+      "v": {
+        "per": 8,
+        "r": 12,
+        "max": 0.2
+      }
+    },
+    {
+      "key": "l-heart",
+      "rarity": 4,
+      "name": "Corazón de la Grieta",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.15
+        },
+        {
+          "stat": "maxHp",
+          "mul": 1.15
+        },
+        {
+          "stat": "luck",
+          "add": 10
+        }
+      ],
+      "passive": "Llamada de la grieta",
+      "desc": "Tus Grietas se abren siempre Raras o mejores y te dejan elegir entre 4 Reliquias.",
+      "v": {
+        "cards": 4
+      }
+    },
+    {
+      "key": "l-star",
+      "rarity": 4,
+      "name": "Estrella Fugaz",
+      "mods": [
+        {
+          "stat": "critChance",
+          "add": 0.08
+        },
+        {
+          "stat": "critDamage",
+          "mul": 1.25
+        }
+      ],
+      "passive": "Deseo",
+      "desc": "Cada 10 s cae una estrella fugaz sobre el grupo más denso: 5 m de daño enorme.",
+      "v": {
+        "every": 10,
+        "r": 5,
+        "dmg": 120
+      }
+    },
+    {
+      "key": "l-dragon",
+      "rarity": 4,
+      "name": "Escama del Dragón Antiguo",
+      "mods": [
+        {
+          "stat": "maxHp",
+          "mul": 1.2
+        },
+        {
+          "stat": "armor",
+          "add": 8
+        },
+        {
+          "stat": "damage",
+          "mul": 1.1
+        }
+      ],
+      "passive": "Segunda vida",
+      "desc": "Una vez por zona, un golpe mortal te deja con el 40% de PS, desata una onda de dragón de 9 m y te da 3 s de invulnerabilidad.",
+      "v": {
+        "hp": 0.4,
+        "r": 9,
+        "dmg": 100,
+        "secs": 3
+      }
+    }
+  ],
+  "maps": [
+    {
+      "id": "forest",
+      "name": "Bosque Verde",
+      "desc": "Un bosque frondoso lleno de vida. Y de Pokémon que no quieren compartirlo.",
+      "size": 360,
+      "types": [
+        "grass",
+        "bug",
+        "normal",
+        "flying"
+      ],
+      "late": [
+        "fairy",
+        "poison"
+      ],
+      "residents": [
+        60,
+        54,
+        79,
+        118,
+        25,
+        100,
+        81,
+        74,
+        50,
+        27,
+        96,
+        63,
+        77,
+        58,
+        37,
+        56,
+        92
+      ],
+      "specials": [
+        206,
+        207,
+        231,
+        232
+      ],
+      "sky": [
+        3838207,
+        11066623
+      ],
+      "fog": 10409215,
+      "fogNear": 55,
+      "fogFar": 215,
+      "light": 1,
+      "sun": 16773590,
+      "hemiGround": 6982218,
+      "ground": [
+        7327562,
+        9099350,
+        11067504,
+        5945406
+      ],
+      "path": 14205066,
+      "cliff": [
+        10127994,
+        8220258,
+        11904918
+      ],
+      "water": 0,
+      "waterColor": 3846399,
+      "props": [
+        "tree",
+        "tree",
+        "pine",
+        "bush",
+        "rock",
+        "mushroom"
+      ],
+      "propDensity": 1,
+      "relief": {
+        "levels": 5,
+        "massifs": 2
+      },
+      "weather": [
+        "clear",
+        "clear",
+        "rain"
+      ],
+      "bosses": [
+        123,
+        127,
+        34
+      ],
+      "legendaries": [
+        151
+      ],
+      "morning": {
+        "motes": "pollen"
+      },
+      "zones": [
+        {
+          "name": "Tarde dorada",
+          "sky": [
+            4161496,
+            16766882
+          ],
+          "fog": 15912860,
+          "fogNear": 52,
+          "fogFar": 205,
+          "light": 0.97,
+          "sun": 16764810,
+          "hemiGround": 8026682,
+          "sunDir": [
+            0.66,
+            0.72,
+            0.16
+          ],
+          "sunH": 0.3,
+          "tint": [
+            1.07,
+            0.99,
+            0.85
+          ],
+          "clouds": [
+            1.05,
+            0.93,
+            0.8
+          ],
+          "cover": 0.04,
+          "glow": 16757864,
+          "glowK": 0.5,
+          "stars": 0,
+          "motes": "leaves"
+        },
+        {
+          "name": "Crepúsculo",
+          "sky": [
+            2895736,
+            16751226
+          ],
+          "fog": 11566236,
+          "fogNear": 46,
+          "fogFar": 185,
+          "light": 0.84,
+          "sun": 16752752,
+          "hemiGround": 3816026,
+          "sunDir": [
+            0.74,
+            0.68,
+            -0.12
+          ],
+          "sunH": 0.1,
+          "tint": [
+            0.95,
+            0.9,
+            1.04
+          ],
+          "clouds": [
+            1,
+            0.78,
+            0.88
+          ],
+          "cover": 0.06,
+          "glow": 16742984,
+          "glowK": 0.65,
+          "stars": 0.55,
+          "motes": "fireflies"
+        }
+      ],
+      "guardians": [
+        [
+          123,
+          26,
+          55
+        ],
+        [
+          127,
+          62,
+          53
+        ],
+        [
+          34,
+          76,
+          59
+        ]
+      ],
+      "totems": [
+        [
+          20,
+          47,
+          24,
+          17
+        ],
+        [
+          71,
+          18,
+          49,
+          115
+        ],
+        [
+          22,
+          36,
+          110,
+          114
+        ]
+      ],
+      "summoners": [
+        [
+          12,
+          15
+        ],
+        [
+          30,
+          33
+        ],
+        [
+          103,
+          45
+        ]
+      ],
+      "sanctuary": {
+        "name": "Santuario del Bosque",
+        "arena": "forest",
+        "heart": "Corazón del bosque",
+        "pack": "sanctum",
+        "legendaries": [
+          151
+        ],
+        "shrine": "shrine",
+        "portal": "sanct_portal",
+        "color": 9109354,
+        "sky": [
+          1923666,
+          9426616
+        ],
+        "fog": 6266506,
+        "fogNear": 34,
+        "fogFar": 120,
+        "light": 0.92,
+        "sun": 15400920,
+        "hemiGround": 2775610,
+        "music": {
+          "root": 57,
+          "scale": [
+            0,
+            2,
+            3,
+            7,
+            9
+          ],
+          "bpm": 104,
+          "mood": "mystic"
+        }
+      },
+      "music": {
+        "root": 60,
+        "scale": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "bpm": 112,
+        "mood": "bright"
+      },
+      "tex": {
+        "top": [
+          7128656,
+          8837218,
+          5811782
+        ],
+        "detail": "grass",
+        "side": [
+          10126448,
+          12626834,
+          6179904
+        ],
+        "lip": 6076490,
+        "path": [
+          14204040,
+          9072720
+        ],
+        "leaf": 4102724,
+        "bark": 8016438,
+        "rock": 10131086,
+        "accent": 16743080,
+        "deco": [
+          0,
+          1,
+          2,
+          3,
+          0,
+          1,
+          4,
+          5,
+          6,
+          10,
+          11,
+          12,
+          7
+        ]
+      },
+      "unlock": "Disponible"
+    },
+    {
+      "id": "desert",
+      "name": "Desierto Rocoso",
+      "desc": "Arena ardiente, cañones de roca y tormentas que ciegan.",
+      "size": 340,
+      "types": [
+        "ground",
+        "rock",
+        "fighting"
+      ],
+      "late": [
+        "steel",
+        "fire"
+      ],
+      "residents": [
+        23,
+        21,
+        84,
+        128,
+        115,
+        77,
+        52,
+        19,
+        41,
+        37,
+        58,
+        102,
+        54,
+        29,
+        32
+      ],
+      "specials": [
+        231,
+        232,
+        207,
+        208,
+        206
+      ],
+      "sky": [
+        6990056,
+        16771264
+      ],
+      "fog": 15916208,
+      "fogNear": 52,
+      "fogFar": 210,
+      "light": 1.1,
+      "sun": 16769712,
+      "hemiGround": 11569744,
+      "ground": [
+        15782024,
+        15253616,
+        16178332,
+        14200928
+      ],
+      "path": 13146714,
+      "cliff": [
+        13666896,
+        11563068,
+        14721128
+      ],
+      "water": null,
+      "waterColor": 4243664,
+      "props": [
+        "cactus",
+        "rock",
+        "rock",
+        "deadtree",
+        "pillar"
+      ],
+      "propDensity": 0.7,
+      "weather": [
+        "clear",
+        "sand",
+        "sun"
+      ],
+      "bosses": [
+        28,
+        105,
+        149
+      ],
+      "legendaries": [
+        146
+      ],
+      "zones": [
+        {
+          "name": "Calima",
+          "sky": [
+            7906512,
+            16765596
+          ],
+          "fog": 15778958,
+          "fogNear": 40,
+          "fogFar": 175,
+          "light": 1.1,
+          "sun": 16765066,
+          "hemiGround": 11565632,
+          "sunDir": [
+            0.6,
+            0.74,
+            0.22
+          ],
+          "sunH": 0.36,
+          "tint": [
+            1.05,
+            0.99,
+            0.9
+          ],
+          "clouds": [
+            1.05,
+            0.95,
+            0.85
+          ],
+          "cover": -0.08,
+          "glow": 16760944,
+          "glowK": 0.35,
+          "stars": 0,
+          "motes": "heat"
+        },
+        {
+          "name": "Ocaso",
+          "sky": [
+            3812458,
+            16747090
+          ],
+          "fog": 14192762,
+          "fogNear": 46,
+          "fogFar": 185,
+          "light": 0.88,
+          "sun": 16170146,
+          "hemiGround": 6964312,
+          "sunDir": [
+            0.74,
+            0.68,
+            -0.1
+          ],
+          "sunH": 0.09,
+          "tint": [
+            0.95,
+            0.92,
+            1.03
+          ],
+          "clouds": [
+            1,
+            0.72,
+            0.72
+          ],
+          "cover": 0.02,
+          "glow": 16738864,
+          "glowK": 0.7,
+          "stars": 0.6,
+          "motes": "embers"
+        }
+      ],
+      "guardians": [
+        [
+          28,
+          106,
+          85
+        ],
+        [
+          105,
+          68,
+          112
+        ],
+        [
+          31,
+          142,
+          149
+        ]
+      ],
+      "totems": [
+        [
+          57,
+          95,
+          75
+        ],
+        [
+          107,
+          111,
+          141
+        ],
+        [
+          128,
+          78,
+          139
+        ]
+      ],
+      "summoners": [
+        [
+          51,
+          75
+        ],
+        [
+          34,
+          75
+        ],
+        [
+          51,
+          34,
+          76
+        ]
+      ],
+      "sanctuary": {
+        "name": "Santuario del Desierto",
+        "arena": "desert",
+        "heart": "Corazón del desierto",
+        "pack": "ruins",
+        "legendaries": [
+          146
+        ],
+        "shrine": "ruin_altar",
+        "portal": "ruin_portal",
+        "color": 16747066,
+        "sky": [
+          9062954,
+          16763018
+        ],
+        "fog": 14721136,
+        "fogNear": 34,
+        "fogFar": 125,
+        "light": 1.05,
+        "sun": 16765088,
+        "hemiGround": 9067056,
+        "music": {
+          "root": 50,
+          "scale": [
+            0,
+            1,
+            4,
+            5,
+            7,
+            8,
+            10
+          ],
+          "bpm": 116,
+          "mood": "tense"
+        }
+      },
+      "music": {
+        "root": 57,
+        "scale": [
+          0,
+          1,
+          4,
+          5,
+          7,
+          8,
+          10
+        ],
+        "bpm": 104,
+        "mood": "tense"
+      },
+      "tex": {
+        "top": [
+          15517828,
+          16177824,
+          14200940
+        ],
+        "detail": "sand",
+        "side": [
+          13137994,
+          15243874,
+          9062958
+        ],
+        "lip": 15254138,
+        "path": [
+          14200960,
+          9068608
+        ],
+        "leaf": 14716986,
+        "bark": 10121288,
+        "rock": 12617306,
+        "accent": 16751178,
+        "deco": [
+          7,
+          13,
+          9,
+          7,
+          13,
+          3
+        ]
+      },
+      "unlock": "Completa el Bosque Verde"
+    },
+    {
+      "id": "coast",
+      "name": "Costa Tormenta",
+      "desc": "Playas, arrecifes y tormentas eléctricas sobre el mar. Cuidado con la marea.",
+      "size": 340,
+      "types": [
+        "water",
+        "electric",
+        "flying"
+      ],
+      "late": [
+        "dragon",
+        "steel"
+      ],
+      "residents": [
+        102,
+        52,
+        50,
+        74,
+        27,
+        138,
+        140,
+        113,
+        108,
+        128
+      ],
+      "specials": [
+        211,
+        207
+      ],
+      "sky": [
+        3835616,
+        12576502
+      ],
+      "fog": 12116206,
+      "fogNear": 42,
+      "fogFar": 165,
+      "light": 1.02,
+      "sun": 16773852,
+      "hemiGround": 5933728,
+      "ground": [
+        8703068,
+        10279022,
+        15785120,
+        7124558
+      ],
+      "path": 14731408,
+      "cliff": [
+        9082528,
+        6977152,
+        11187388
+      ],
+      "water": 0,
+      "waterColor": 1740512,
+      "props": [
+        "palm",
+        "palm",
+        "coral",
+        "rock",
+        "bush"
+      ],
+      "propDensity": 0.85,
+      "weather": [
+        "clear",
+        "rain",
+        "clear"
+      ],
+      "zones": [
+        {
+          "name": "Atardecer tropical",
+          "sky": [
+            3828424,
+            16763024
+          ],
+          "fog": 15780000,
+          "fogNear": 40,
+          "fogFar": 158,
+          "light": 0.98,
+          "sun": 16763016,
+          "hemiGround": 6978154,
+          "sunDir": [
+            0.66,
+            0.72,
+            0.16
+          ],
+          "sunH": 0.28,
+          "tint": [
+            1.05,
+            0.99,
+            0.9
+          ],
+          "clouds": [
+            1.05,
+            0.92,
+            0.85
+          ],
+          "cover": 0.06,
+          "glow": 16754784,
+          "glowK": 0.55,
+          "stars": 0,
+          "motes": "spray"
+        },
+        {
+          "name": "Noche de tormenta",
+          "sky": [
+            1713232,
+            6978232
+          ],
+          "fog": 5925528,
+          "fogNear": 34,
+          "fogFar": 135,
+          "light": 0.8,
+          "sun": 12110079,
+          "hemiGround": 2765912,
+          "sunDir": [
+            0.5,
+            0.78,
+            -0.2
+          ],
+          "sunH": 0.55,
+          "tint": [
+            0.9,
+            0.94,
+            1.08
+          ],
+          "clouds": [
+            0.75,
+            0.8,
+            0.95
+          ],
+          "cover": 0.18,
+          "glow": 9083647,
+          "glowK": 0.3,
+          "stars": 0.35,
+          "motes": "fireflies"
+        }
+      ],
+      "bosses": [
+        99,
+        130,
+        121
+      ],
+      "legendaries": [
+        145
+      ],
+      "guardians": [
+        [
+          99,
+          101
+        ],
+        [
+          130,
+          73
+        ],
+        [
+          121,
+          125
+        ]
+      ],
+      "totems": [
+        [
+          55,
+          22,
+          117,
+          26
+        ],
+        [
+          82,
+          119,
+          85,
+          62
+        ],
+        [
+          148,
+          141,
+          139,
+          135
+        ]
+      ],
+      "summoners": [
+        [
+          119,
+          61
+        ],
+        [
+          55,
+          82
+        ],
+        [
+          117,
+          99
+        ]
+      ],
+      "sanctuary": {
+        "name": "Cabo Trueno",
+        "arena": "coast",
+        "heart": "Ojo de la tormenta",
+        "pack": "stormcape",
+        "legendaries": [
+          145
+        ],
+        "shrine": "storm_altar",
+        "portal": "storm_portal",
+        "color": 16769594,
+        "sky": [
+          2767464,
+          9085128
+        ],
+        "fog": 6979240,
+        "fogNear": 34,
+        "fogFar": 125,
+        "light": 0.95,
+        "sun": 15266047,
+        "hemiGround": 3424346,
+        "music": {
+          "root": 59,
+          "scale": [
+            0,
+            2,
+            3,
+            7,
+            9
+          ],
+          "bpm": 124,
+          "mood": "tense"
+        }
+      },
+      "music": {
+        "root": 59,
+        "scale": [
+          0,
+          2,
+          4,
+          5,
+          7,
+          9,
+          11
+        ],
+        "bpm": 118,
+        "mood": "bright"
+      },
+      "tex": {
+        "top": [
+          8703068,
+          10279022,
+          7124558
+        ],
+        "detail": "grass",
+        "side": [
+          9082528,
+          11187388,
+          5924464
+        ],
+        "lip": 8045656,
+        "path": [
+          15786160,
+          11575408
+        ],
+        "leaf": 3844170,
+        "bark": 11042890,
+        "rock": 9082528,
+        "accent": 16765498,
+        "deco": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7,
+          10,
+          12
+        ]
+      },
+      "unlock": "Completa el Desierto Rocoso"
+    },
+    {
+      "id": "glacier",
+      "name": "Glaciar Celeste",
+      "desc": "Hielo eterno bajo auroras. Los lagos helados resbalan y el frío congela hasta los ataques.",
+      "size": 340,
+      "types": [
+        "ice",
+        "water",
+        "psychic"
+      ],
+      "late": [
+        "fairy",
+        "dragon"
+      ],
+      "residents": [
+        41,
+        74,
+        95,
+        35,
+        39,
+        133,
+        143,
+        147
+      ],
+      "specials": [
+        211,
+        206
+      ],
+      "sky": [
+        5934832,
+        13822207
+      ],
+      "fog": 13163764,
+      "fogNear": 40,
+      "fogFar": 150,
+      "light": 0.93,
+      "sun": 15922943,
+      "hemiGround": 8032448,
+      "ground": [
+        16055295,
+        14873343,
+        16777215,
+        13427956
+      ],
+      "path": 11061472,
+      "cliff": [
+        9089240,
+        6983872,
+        11061484
+      ],
+      "water": 0,
+      "waterColor": 5951743,
+      "props": [
+        "snowpine",
+        "snowpine",
+        "crystal",
+        "rock"
+      ],
+      "propDensity": 0.85,
+      "weather": [
+        "clear",
+        "hail",
+        "clear"
+      ],
+      "zones": [
+        {
+          "name": "Tarde helada",
+          "sky": [
+            6977744,
+            16763096
+          ],
+          "fog": 15782112,
+          "fogNear": 38,
+          "fogFar": 145,
+          "light": 1,
+          "sun": 16767176,
+          "hemiGround": 10129592,
+          "sunDir": [
+            0.66,
+            0.72,
+            0.16
+          ],
+          "sunH": 0.3,
+          "tint": [
+            1.03,
+            0.98,
+            1
+          ],
+          "clouds": [
+            1.05,
+            0.94,
+            0.98
+          ],
+          "cover": 0.05,
+          "glow": 16754872,
+          "glowK": 0.45,
+          "stars": 0,
+          "motes": "snow"
+        },
+        {
+          "name": "Aurora",
+          "sky": [
+            1055304,
+            3836570
+          ],
+          "fog": 4876938,
+          "fogNear": 34,
+          "fogFar": 135,
+          "light": 0.84,
+          "sun": 12118271,
+          "hemiGround": 2767450,
+          "sunDir": [
+            0.5,
+            0.78,
+            -0.2
+          ],
+          "sunH": 0.5,
+          "tint": [
+            0.92,
+            1,
+            1.08
+          ],
+          "clouds": [
+            0.8,
+            0.95,
+            1
+          ],
+          "cover": 0.02,
+          "glow": 5963720,
+          "glowK": 0.5,
+          "stars": 0.75,
+          "motes": "snow"
+        }
+      ],
+      "bosses": [
+        87,
+        91,
+        131
+      ],
+      "legendaries": [
+        144
+      ],
+      "guardians": [
+        [
+          87,
+          97
+        ],
+        [
+          91,
+          124
+        ],
+        [
+          131,
+          65
+        ]
+      ],
+      "totems": [
+        [
+          80,
+          64,
+          40,
+          42
+        ],
+        [
+          36,
+          122,
+          134,
+          76
+        ],
+        [
+          143,
+          148,
+          9,
+          62
+        ]
+      ],
+      "summoners": [
+        [
+          42,
+          64
+        ],
+        [
+          87,
+          80
+        ],
+        [
+          9,
+          149
+        ]
+      ],
+      "sanctuary": {
+        "name": "Lago Celeste",
+        "arena": "glacier",
+        "heart": "Corazón del hielo",
+        "pack": "frostlake",
+        "legendaries": [
+          144
+        ],
+        "shrine": "frost_altar",
+        "portal": "frost_portal",
+        "color": 9103615,
+        "sky": [
+          1321562,
+          5943496
+        ],
+        "fog": 6983864,
+        "fogNear": 34,
+        "fogFar": 125,
+        "light": 0.95,
+        "sun": 14218495,
+        "hemiGround": 3821680,
+        "music": {
+          "root": 62,
+          "scale": [
+            0,
+            2,
+            4,
+            7,
+            9,
+            11
+          ],
+          "bpm": 100,
+          "mood": "mystic"
+        }
+      },
+      "music": {
+        "root": 62,
+        "scale": [
+          0,
+          2,
+          4,
+          6,
+          9,
+          11
+        ],
+        "bpm": 96,
+        "mood": "calm"
+      },
+      "tex": {
+        "top": [
+          15267071,
+          16777215,
+          12113132
+        ],
+        "detail": "snow",
+        "side": [
+          8036560,
+          11061488,
+          4876960
+        ],
+        "lip": 16055295,
+        "path": [
+          11060444,
+          6981800
+        ],
+        "leaf": 3045994,
+        "bark": 5917248,
+        "rock": 9087176,
+        "accent": 9103615,
+        "deco": [
+          15,
+          8,
+          7,
+          15,
+          3
+        ]
+      },
+      "unlock": "Completa la Costa Tormenta"
+    },
+    {
+      "id": "canela",
+      "name": "Isla Canela",
+      "desc": "Un volcán humeante en mitad del mar, ríos de lava y aguas termales. En esta isla nació algo terrible.",
+      "size": 500,
+      "shape": "island",
+      "types": [
+        "fire",
+        "poison",
+        "rock"
+      ],
+      "late": [
+        "psychic",
+        "water"
+      ],
+      "residents": [
+        19,
+        72,
+        120,
+        116,
+        90,
+        98,
+        79,
+        138,
+        140,
+        126,
+        4
+      ],
+      "specials": [
+        211,
+        231,
+        232,
+        208
+      ],
+      "sky": [
+        3839722,
+        12905727
+      ],
+      "fog": 13428462,
+      "fogNear": 80,
+      "fogFar": 270,
+      "light": 1,
+      "sun": 16773334,
+      "hemiGround": 5923400,
+      "ground": [
+        6982218,
+        8034898,
+        5929538,
+        4868680
+      ],
+      "path": 3814456,
+      "cliff": [
+        3814464,
+        2762288,
+        4867152
+      ],
+      "water": 0,
+      "waterColor": 2799832,
+      "props": [
+        "palm",
+        "rock",
+        "lavarock",
+        "deadtree"
+      ],
+      "propDensity": 0.8,
+      "weather": [
+        "clear",
+        "ash",
+        "sun"
+      ],
+      "morning": {
+        "motes": "spray"
+      },
+      "zones": [
+        {
+          "name": "Ceniza",
+          "sky": [
+            8024200,
+            15905932
+          ],
+          "fog": 13148306,
+          "fogNear": 64,
+          "fogFar": 225,
+          "light": 0.93,
+          "sun": 16763040,
+          "hemiGround": 6965824,
+          "sunDir": [
+            0.62,
+            0.74,
+            0.25
+          ],
+          "sunH": 0.32,
+          "tint": [
+            1.04,
+            0.97,
+            0.93
+          ],
+          "clouds": [
+            0.86,
+            0.78,
+            0.78
+          ],
+          "cover": 0.25,
+          "glow": 16751210,
+          "glowK": 0.4,
+          "stars": 0,
+          "motes": "ash"
+        },
+        {
+          "name": "Noche de lava",
+          "sky": [
+            1445420,
+            9054778
+          ],
+          "fog": 4859444,
+          "fogNear": 56,
+          "fogFar": 205,
+          "light": 0.82,
+          "sun": 16754824,
+          "hemiGround": 3807778,
+          "sunDir": [
+            0.42,
+            0.8,
+            -0.3
+          ],
+          "sunH": 0.42,
+          "tint": [
+            1.06,
+            0.92,
+            0.95
+          ],
+          "clouds": [
+            0.6,
+            0.42,
+            0.46
+          ],
+          "cover": 0.12,
+          "glow": 16730666,
+          "glowK": 0.7,
+          "stars": 0.55,
+          "motes": "embers"
+        }
+      ],
+      "bosses": [
+        78,
+        126,
+        136
+      ],
+      "legendaries": [
+        6
+      ],
+      "guardians": [
+        [
+          78,
+          38
+        ],
+        [
+          126,
+          137
+        ],
+        [
+          136,
+          89
+        ]
+      ],
+      "totems": [
+        [
+          20,
+          117,
+          5
+        ],
+        [
+          110,
+          59,
+          42
+        ],
+        [
+          139,
+          141,
+          142
+        ]
+      ],
+      "summoners": [
+        [
+          73,
+          121
+        ],
+        [
+          110,
+          42
+        ],
+        [
+          5,
+          89
+        ]
+      ],
+      "sanctuary": {
+        "name": "Cráter de Canela",
+        "arena": "volcano",
+        "heart": "Corazón del volcán",
+        "pack": "crater",
+        "legendaries": [
+          6
+        ],
+        "shrine": "crater_altar",
+        "portal": "crater_portal",
+        "color": 16738858,
+        "sky": [
+          2756120,
+          13126186
+        ],
+        "fog": 6957600,
+        "fogNear": 30,
+        "fogFar": 120,
+        "light": 0.92,
+        "sun": 16756864,
+        "hemiGround": 4856340,
+        "music": {
+          "root": 52,
+          "scale": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            8,
+            10
+          ],
+          "bpm": 132,
+          "mood": "tense"
+        }
+      },
+      "music": {
+        "root": 57,
+        "scale": [
+          0,
+          2,
+          4,
+          5,
+          7,
+          9,
+          10
+        ],
+        "bpm": 118,
+        "mood": "bright"
+      },
+      "tex": {
+        "top": [
+          6982218,
+          8034898,
+          5929538
+        ],
+        "detail": "grass",
+        "side": [
+          3814464,
+          4867152,
+          2235944
+        ],
+        "lip": 6982218,
+        "path": [
+          3814456,
+          2235938
+        ],
+        "leaf": 4885050,
+        "bark": 5914672,
+        "rock": 3814464,
+        "accent": 16738858,
+        "deco": [
+          0,
+          1,
+          7,
+          13,
+          14,
+          3
+        ]
+      },
+      "unlock": "Completa el Glaciar Celeste"
+    },
+    {
+      "id": "cave",
+      "name": "Cueva Celeste",
+      "desc": "Una caverna de cristal bajo Ciudad Celeste. Aquí viven los Pokémon más fuertes de Kanto... y algo mucho peor.",
+      "size": 340,
+      "shape": "cave",
+      "evolved": true,
+      "types": [
+        "psychic",
+        "rock",
+        "ground"
+      ],
+      "late": [
+        "poison",
+        "electric"
+      ],
+      "residents": [
+        41,
+        46,
+        63,
+        39,
+        100,
+        81,
+        84,
+        48,
+        66,
+        25,
+        27,
+        132,
+        113,
+        108,
+        54,
+        56,
+        79,
+        23,
+        111
+      ],
+      "specials": [
+        206,
+        208,
+        207,
+        232
+      ],
+      "sky": [
+        658460,
+        1845834
+      ],
+      "fog": 1186864,
+      "fogNear": 34,
+      "fogFar": 135,
+      "light": 0.8,
+      "sun": 12899583,
+      "hemiGround": 1712696,
+      "ground": [
+        4868698,
+        5921386,
+        3816010,
+        2763322
+      ],
+      "path": 3815496,
+      "cliff": [
+        3816528,
+        2763838,
+        4869218
+      ],
+      "water": 0,
+      "waterColor": 3844351,
+      "props": [
+        "rock",
+        "crystal",
+        "pillar",
+        "mushroom"
+      ],
+      "propDensity": 0.9,
+      "weather": [
+        "clear"
+      ],
+      "morning": {
+        "motes": "drips",
+        "sunDir": [
+          0.3,
+          0.9,
+          0.2
+        ],
+        "sunH": 0,
+        "tint": [
+          0.96,
+          0.98,
+          1.04
+        ]
+      },
+      "zones": [
+        {
+          "name": "Galerías de cristal",
+          "sky": [
+            789026,
+            2366026
+          ],
+          "fog": 1578042,
+          "fogNear": 32,
+          "fogFar": 128,
+          "light": 0.78,
+          "sun": 13942015,
+          "hemiGround": 2234938,
+          "sunDir": [
+            0.35,
+            0.88,
+            0.25
+          ],
+          "sunH": 0,
+          "tint": [
+            0.98,
+            0.95,
+            1.07
+          ],
+          "clouds": [
+            1,
+            1,
+            1
+          ],
+          "cover": 0,
+          "glow": 12090111,
+          "glowK": 0,
+          "stars": 0,
+          "motes": "crystal"
+        },
+        {
+          "name": "Abismo",
+          "sky": [
+            525842,
+            1707562
+          ],
+          "fog": 788504,
+          "fogNear": 28,
+          "fogFar": 118,
+          "light": 0.72,
+          "sun": 13148415,
+          "hemiGround": 1708072,
+          "sunDir": [
+            0.4,
+            0.86,
+            -0.2
+          ],
+          "sunH": 0,
+          "tint": [
+            1,
+            0.9,
+            1.09
+          ],
+          "clouds": [
+            1,
+            1,
+            1
+          ],
+          "cover": 0,
+          "glow": 16734890,
+          "glowK": 0,
+          "stars": 0,
+          "motes": "crystal"
+        }
+      ],
+      "bosses": [
+        108,
+        113,
+        3
+      ],
+      "legendaries": [
+        150
+      ],
+      "guardians": [
+        [
+          108,
+          39
+        ],
+        [
+          113,
+          132
+        ],
+        [
+          3,
+          9
+        ]
+      ],
+      "totems": [
+        [
+          42,
+          47,
+          67,
+          82
+        ],
+        [
+          64,
+          49,
+          112,
+          85
+        ],
+        [
+          68,
+          76,
+          26,
+          105
+        ]
+      ],
+      "summoners": [
+        [
+          42,
+          75
+        ],
+        [
+          64,
+          82
+        ],
+        [
+          68,
+          76
+        ]
+      ],
+      "sanctuary": {
+        "name": "Fondo de la Cueva",
+        "arena": "cave",
+        "heart": "Corazón de la cueva",
+        "pack": "mewden",
+        "legendaries": [
+          150
+        ],
+        "shrine": "psy_altar",
+        "portal": "psy_portal",
+        "color": 12618495,
+        "sky": [
+          394254,
+          2757712
+        ],
+        "fog": 1707568,
+        "fogNear": 30,
+        "fogFar": 115,
+        "light": 0.88,
+        "sun": 14205183,
+        "hemiGround": 2233914,
+        "music": {
+          "root": 50,
+          "scale": [
+            0,
+            1,
+            3,
+            6,
+            7,
+            8,
+            11
+          ],
+          "bpm": 124,
+          "mood": "tense"
+        }
+      },
+      "music": {
+        "root": 53,
+        "scale": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          8,
+          10
+        ],
+        "bpm": 98,
+        "mood": "mystic"
+      },
+      "tex": {
+        "top": [
+          4868698,
+          5921386,
+          3816010
+        ],
+        "detail": "moss",
+        "side": [
+          3816528,
+          4869218,
+          2237498
+        ],
+        "lip": null,
+        "path": [
+          3815496,
+          2236462
+        ],
+        "leaf": 3828362,
+        "bark": 3814464,
+        "rock": 4869218,
+        "accent": 12618495,
+        "deco": [
+          7,
+          8,
+          9,
+          3
+        ]
+      },
+      "unlock": "Completa Isla Canela"
+    },
+    {
+      "id": "encina",
+      "name": "Bosque Encina",
+      "desc": "Árboles milenarios, niebla y un santuario de madera. Dicen que aquí el tiempo no siempre avanza en la misma dirección.",
+      "size": 380,
+      "shape": "ancient",
+      "johto": true,
+      "types": [
+        "bug",
+        "fairy",
+        "psychic"
+      ],
+      "late": [
+        "grass",
+        "dark"
+      ],
+      "residents": [
+        43,
+        46,
+        10,
+        13,
+        41,
+        163,
+        83,
+        54,
+        79,
+        102,
+        204,
+        187,
+        167,
+        165,
+        177
+      ],
+      "specials": [
+        206,
+        211,
+        207
+      ],
+      "sky": [
+        3832426,
+        12116136
+      ],
+      "fog": 9091226,
+      "fogNear": 40,
+      "fogFar": 175,
+      "light": 0.92,
+      "sun": 16773832,
+      "hemiGround": 3824186,
+      "ground": [
+        5933626,
+        6986308,
+        4880948,
+        3824170
+      ],
+      "path": 8022602,
+      "cliff": [
+        6971984,
+        5524542,
+        8682086
+      ],
+      "water": 0,
+      "waterColor": 3844240,
+      "props": [
+        "tree",
+        "tree",
+        "mushroom",
+        "bush"
+      ],
+      "propDensity": 1,
+      "weather": [
+        "clear",
+        "fog",
+        "rain"
+      ],
+      "morning": {
+        "motes": "pollen"
+      },
+      "zones": [
+        {
+          "name": "Atardecer entre raíces",
+          "sky": [
+            5925450,
+            16763002
+          ],
+          "fog": 13150320,
+          "fogNear": 38,
+          "fogFar": 165,
+          "light": 0.9,
+          "sun": 16763008,
+          "hemiGround": 5917226,
+          "sunDir": [
+            0.66,
+            0.72,
+            0.16
+          ],
+          "sunH": 0.26,
+          "tint": [
+            1.07,
+            1,
+            0.86
+          ],
+          "clouds": [
+            1.05,
+            0.92,
+            0.8
+          ],
+          "cover": 0,
+          "glow": 16754776,
+          "glowK": 0.5,
+          "stars": 0,
+          "motes": "leaves"
+        },
+        {
+          "name": "Noche de luciérnagas",
+          "sky": [
+            793114,
+            1718832
+          ],
+          "fog": 1320990,
+          "fogNear": 30,
+          "fogFar": 140,
+          "light": 0.76,
+          "sun": 12124120,
+          "hemiGround": 1319960,
+          "sunDir": [
+            0.45,
+            0.8,
+            -0.25
+          ],
+          "sunH": 0.45,
+          "tint": [
+            0.92,
+            1.02,
+            1
+          ],
+          "clouds": [
+            0.6,
+            0.7,
+            0.66
+          ],
+          "cover": 0,
+          "glow": 9109424,
+          "glowK": 0.2,
+          "stars": 0.4,
+          "motes": "fireflies"
+        }
+      ],
+      "bosses": [
+        168,
+        214,
+        205
+      ],
+      "legendaries": [
+        251
+      ],
+      "guardians": [
+        [
+          168,
+          189
+        ],
+        [
+          214,
+          176
+        ],
+        [
+          205,
+          202
+        ]
+      ],
+      "totems": [
+        [
+          166,
+          162,
+          186,
+          199
+        ],
+        [
+          182,
+          210,
+          164,
+          203
+        ],
+        [
+          178,
+          212,
+          181,
+          237
+        ]
+      ],
+      "summoners": [
+        [
+          184,
+          195
+        ],
+        [
+          189,
+          168
+        ],
+        [
+          210,
+          164
+        ]
+      ],
+      "sanctuary": {
+        "name": "Santuario del Tiempo",
+        "arena": "ilex",
+        "heart": "Raíz del tiempo",
+        "pack": "ilextime",
+        "legendaries": [
+          251
+        ],
+        "shrine": "ilex_altar",
+        "portal": "ilex_portal",
+        "color": 10157946,
+        "sky": [
+          2779730,
+          13168816
+        ],
+        "fog": 6986362,
+        "fogNear": 34,
+        "fogFar": 125,
+        "light": 0.95,
+        "sun": 16056280,
+        "hemiGround": 2771506,
+        "music": {
+          "root": 57,
+          "scale": [
+            0,
+            2,
+            4,
+            7,
+            9
+          ],
+          "bpm": 112,
+          "mood": "mystic"
+        }
+      },
+      "music": {
+        "root": 55,
+        "scale": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          9,
+          10
+        ],
+        "bpm": 92,
+        "mood": "mystic"
+      },
+      "tex": {
+        "top": [
+          5933626,
+          6986308,
+          4880948
+        ],
+        "detail": "moss",
+        "side": [
+          6971984,
+          8682086,
+          3814440
+        ],
+        "lip": 5933626,
+        "path": [
+          8022602,
+          4864554
+        ],
+        "leaf": 3832378,
+        "bark": 5914672,
+        "rock": 6971984,
+        "accent": 10157946,
+        "deco": [
+          0,
+          1,
+          2,
+          3,
+          6
+        ]
+      },
+      "unlock": "Completa la Cueva Celeste"
+    },
+    {
+      "id": "iris",
+      "name": "Ciudad Iris",
+      "desc": "Arces rojos, la Torre Quemada en ruinas y, en el horizonte, la Torre Hojalata. Por aquí corren las bestias legendarias.",
+      "size": 400,
+      "shape": "valley",
+      "johto": true,
+      "types": [
+        "ghost",
+        "fire",
+        "normal"
+      ],
+      "late": [
+        "dark",
+        "psychic"
+      ],
+      "residents": [
+        163,
+        167,
+        161,
+        177,
+        209,
+        216,
+        234,
+        203,
+        133,
+        77,
+        58,
+        37,
+        126,
+        92,
+        96,
+        235
+      ],
+      "specials": [
+        206,
+        231,
+        232,
+        207
+      ],
+      "sky": [
+        4885224,
+        16769720
+      ],
+      "fog": 15914672,
+      "fogNear": 60,
+      "fogFar": 230,
+      "light": 1,
+      "sun": 16773328,
+      "hemiGround": 9071162,
+      "ground": [
+        13148224,
+        14200912,
+        11045434,
+        9072688
+      ],
+      "path": 12095578,
+      "cliff": [
+        9075306,
+        6969934,
+        11049096
+      ],
+      "water": 0,
+      "waterColor": 3842264,
+      "props": [
+        "tree",
+        "tree",
+        "bush",
+        "rock"
+      ],
+      "propDensity": 1,
+      "weather": [
+        "clear",
+        "clear",
+        "fog"
+      ],
+      "morning": {
+        "motes": "leaves"
+      },
+      "zones": [
+        {
+          "name": "Tarde de arces",
+          "sky": [
+            4877000,
+            16758906
+          ],
+          "fog": 15775880,
+          "fogNear": 54,
+          "fogFar": 210,
+          "light": 0.97,
+          "sun": 16760960,
+          "hemiGround": 9067066,
+          "sunDir": [
+            0.66,
+            0.72,
+            0.16
+          ],
+          "sunH": 0.26,
+          "tint": [
+            1.08,
+            0.98,
+            0.86
+          ],
+          "clouds": [
+            1.06,
+            0.9,
+            0.78
+          ],
+          "cover": 0.04,
+          "glow": 16751186,
+          "glowK": 0.6,
+          "stars": 0,
+          "motes": "leaves"
+        },
+        {
+          "name": "Noche de faroles",
+          "sky": [
+            1317960,
+            5913210
+          ],
+          "fog": 3812954,
+          "fogNear": 46,
+          "fogFar": 190,
+          "light": 0.82,
+          "sun": 16763040,
+          "hemiGround": 2761792,
+          "sunDir": [
+            0.45,
+            0.8,
+            -0.25
+          ],
+          "sunH": 0.45,
+          "tint": [
+            0.96,
+            0.92,
+            1.05
+          ],
+          "clouds": [
+            0.7,
+            0.66,
+            0.86
+          ],
+          "cover": 0.02,
+          "glow": 16751186,
+          "glowK": 0.25,
+          "stars": 0.8,
+          "motes": "fireflies"
+        }
+      ],
+      "bosses": [
+        217,
+        229,
+        178
+      ],
+      "legendaries": [
+        250
+      ],
+      "guardians": [
+        [
+          217,
+          234
+        ],
+        [
+          229,
+          200
+        ],
+        [
+          178,
+          197
+        ]
+      ],
+      "totems": [
+        [
+          168,
+          210,
+          203,
+          185
+        ],
+        [
+          219,
+          198,
+          166,
+          237
+        ],
+        [
+          181,
+          176,
+          196,
+          217
+        ]
+      ],
+      "summoners": [
+        [
+          162,
+          164
+        ],
+        [
+          217,
+          189
+        ],
+        [
+          219,
+          210
+        ]
+      ],
+      "sanctuary": {
+        "name": "Cima de la Torre Hojalata",
+        "arena": "bell",
+        "heart": "Corazón de la torre",
+        "pack": "tintower",
+        "legendaries": [
+          250
+        ],
+        "shrine": "bell_altar",
+        "portal": "bell_portal",
+        "color": 16761402,
+        "sky": [
+          3827912,
+          16765600
+        ],
+        "fog": 16309440,
+        "fogNear": 40,
+        "fogFar": 160,
+        "light": 1.05,
+        "sun": 16769712,
+        "hemiGround": 10123866,
+        "music": {
+          "root": 55,
+          "scale": [
+            0,
+            2,
+            4,
+            7,
+            9
+          ],
+          "bpm": 120,
+          "mood": "bright"
+        }
+      },
+      "music": {
+        "root": 57,
+        "scale": [
+          0,
+          2,
+          3,
+          7,
+          9
+        ],
+        "bpm": 100,
+        "mood": "calm"
+      },
+      "tex": {
+        "top": [
+          13148224,
+          14200912,
+          11045434
+        ],
+        "detail": "grass",
+        "side": [
+          9075306,
+          11049096,
+          5917248
+        ],
+        "lip": 13148224,
+        "path": [
+          12095578,
+          8018488
+        ],
+        "leaf": 14174762,
+        "bark": 5913130,
+        "rock": 9075306,
+        "accent": 16738874,
+        "deco": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "unlock": "Completa el Bosque Encina"
+    },
+    {
+      "id": "graveyard",
+      "name": "Torre Lavanda",
+      "desc": "Niebla, lápidas y susurros. Aquí los fantasmas no descansan.",
+      "types": [
+        "ghost",
+        "poison",
+        "dark"
+      ],
+      "late": [
+        "psychic"
+      ],
+      "sky": [
+        3811930,
+        10123976
+      ],
+      "fog": 8022682,
+      "fogNear": 25,
+      "fogFar": 120,
+      "light": 0.75,
+      "sun": 13152511,
+      "hemiGround": 3813456,
+      "ground": [
+        6982250,
+        5929570,
+        8034936,
+        4876888
+      ],
+      "path": 9076848,
+      "cliff": [
+        6972536,
+        5591146,
+        8419984
+      ],
+      "water": 0,
+      "waterColor": 6963392,
+      "props": [
+        "grave",
+        "grave",
+        "deadtree",
+        "pillar",
+        "mushroom"
+      ],
+      "propDensity": 0.9,
+      "weather": [
+        "fog",
+        "clear",
+        "rain"
+      ],
+      "bosses": [
+        94,
+        110,
+        97
+      ],
+      "legendaries": [
+        150
+      ],
+      "music": {
+        "root": 55,
+        "scale": [
+          0,
+          2,
+          3,
+          7,
+          8
+        ],
+        "bpm": 92,
+        "mood": "mystic"
+      },
+      "tex": {
+        "top": [
+          6192736,
+          7245418,
+          5139542
+        ],
+        "detail": "moss",
+        "side": [
+          6972536,
+          9077914,
+          4209232
+        ],
+        "lip": 5929562,
+        "path": [
+          9077908,
+          4077640
+        ],
+        "leaf": 4872776,
+        "bark": 4865594,
+        "rock": 8025224,
+        "accent": 11565823,
+        "deco": [
+          0,
+          1,
+          9,
+          13,
+          6,
+          8,
+          2
+        ]
+      },
+      "unlock": "Completa el Glaciar Celeste"
+    },
+    {
+      "id": "wilds",
+      "name": "Valle Salvaje",
+      "desc": "Montañas, ríos y bosques sin fin. Entra, saquea y sal a tiempo.",
+      "size": 840,
+      "types": [
+        "normal",
+        "grass",
+        "bug",
+        "flying",
+        "water",
+        "ground",
+        "rock",
+        "fighting",
+        "poison",
+        "electric",
+        "fire",
+        "psychic",
+        "ice"
+      ],
+      "late": [
+        "dragon",
+        "ghost"
+      ],
+      "residents": [
+        25,
+        54,
+        60,
+        74,
+        77,
+        79,
+        92,
+        96,
+        104,
+        111,
+        115,
+        123,
+        127,
+        128,
+        129,
+        131,
+        133,
+        143
+      ],
+      "specials": [
+        206,
+        207,
+        208,
+        211,
+        231,
+        232
+      ],
+      "sky": [
+        3837168,
+        12117247
+      ],
+      "fog": 11065599,
+      "fogNear": 60,
+      "fogFar": 230,
+      "light": 1,
+      "sun": 16773848,
+      "hemiGround": 6982218,
+      "ground": [
+        7327562,
+        9099350,
+        11067504,
+        5945406
+      ],
+      "path": 14205066,
+      "cliff": [
+        10127994,
+        8220258,
+        11904918
+      ],
+      "water": 0,
+      "waterColor": 2792688,
+      "props": [
+        "tree",
+        "pine",
+        "snowpine",
+        "bush",
+        "rock"
+      ],
+      "propDensity": 1,
+      "weather": [
+        "clear",
+        "clear",
+        "rain",
+        "fog"
+      ],
+      "bosses": [
+        123,
+        127,
+        34
+      ],
+      "legendaries": [],
+      "totems": [
+        [
+          20,
+          47,
+          24,
+          17,
+          22
+        ],
+        [
+          71,
+          18,
+          49,
+          115,
+          57,
+          95
+        ],
+        [
+          128,
+          78,
+          139,
+          141,
+          130,
+          112
+        ]
+      ],
+      "summoners": [
+        [
+          12,
+          15,
+          30
+        ],
+        [
+          33,
+          103,
+          34
+        ],
+        [
+          76,
+          45,
+          31
+        ]
+      ],
+      "music": {
+        "root": 62,
+        "scale": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "bpm": 108,
+        "mood": "bright"
+      },
+      "tex": {
+        "top": [
+          7128656,
+          8837218,
+          5811782
+        ],
+        "detail": "grass",
+        "side": [
+          10126448,
+          12626834,
+          6179904
+        ],
+        "lip": 6076490,
+        "path": [
+          14204040,
+          9072720
+        ],
+        "leaf": 4102724,
+        "bark": 8016438,
+        "rock": 10131086,
+        "accent": 16743080,
+        "deco": [
+          0,
+          1,
+          2,
+          3,
+          0,
+          1,
+          4,
+          5,
+          6,
+          10,
+          11,
+          12,
+          7
+        ]
+      },
+      "unlock": "Expedición"
+    }
+  ],
+  "johtoBranches": [
+    {
+      "form": 169,
+      "member": 41,
+      "from": 42,
+      "at": "grow"
+    },
+    {
+      "form": 182,
+      "member": 43,
+      "from": 44,
+      "at": "evo"
+    },
+    {
+      "form": 186,
+      "member": 60,
+      "from": 61,
+      "at": "evo"
+    },
+    {
+      "form": 196,
+      "member": 133,
+      "from": 133,
+      "at": "eevee"
+    },
+    {
+      "form": 197,
+      "member": 133,
+      "from": 133,
+      "at": "eevee"
+    },
+    {
+      "form": 199,
+      "member": 79,
+      "from": 79,
+      "at": "evo"
+    },
+    {
+      "form": 208,
+      "member": 95,
+      "from": 95,
+      "at": "grow"
+    },
+    {
+      "form": 212,
+      "member": 123,
+      "from": 123,
+      "at": "grow"
+    },
+    {
+      "form": 230,
+      "member": 116,
+      "from": 117,
+      "at": "grow"
+    },
+    {
+      "form": 233,
+      "member": 137,
+      "from": 137,
+      "at": "grow"
+    },
+    {
+      "form": 242,
+      "member": 113,
+      "from": 113,
+      "at": "grow"
+    }
+  ],
+  "roster": [
+    {
+      "id": 152,
+      "role": "Guardiana floral",
+      "passive": "calming-aroma",
+      "kit": [
+        "trailblaze",
+        "sweet-scent",
+        "grass-pledge",
+        "frenzy-plant"
+      ],
+      "evoLevels": [
+        24,
+        41
+      ],
+      "rank": "common",
+      "challenge": {
+        "counter": "johto",
+        "goal": 3000,
+        "desc": "Derrota a 3.000 Pokémon de Johto."
+      }
+    },
+    {
+      "id": 155,
+      "role": "Volcán",
+      "passive": "heat-haze",
+      "kit": [
+        "burning-jealousy",
+        "temper-flare",
+        "fire-pledge",
+        "blast-burn"
+      ],
+      "evoLevels": [
+        22,
+        44
+      ],
+      "rank": "common",
+      "challenge": {
+        "counter": "johto",
+        "goal": 3000,
+        "desc": "Derrota a 3.000 Pokémon de Johto."
+      }
+    },
+    {
+      "id": 158,
+      "role": "Mandíbulas",
+      "passive": "brute-jaws",
+      "kit": [
+        "ice-fang",
+        "flip-turn",
+        "water-pledge",
+        "jaw-lock"
+      ],
+      "evoLevels": [
+        26,
+        40
+      ],
+      "rank": "common",
+      "challenge": {
+        "counter": "johto",
+        "goal": 3000,
+        "desc": "Derrota a 3.000 Pokémon de Johto."
+      }
+    },
+    {
+      "id": 161,
+      "role": "Vigía",
+      "passive": "lookout",
+      "kit": [
+        "feint",
+        "follow-me",
+        "tail-slap",
+        "sucker-punch"
+      ],
+      "evoLevels": [
+        36
+      ],
+      "rank": "common",
+      "challenge": {
+        "desc": "Derrota a 1.500 Pokémon de Johto.",
+        "counter": "johto",
+        "goal": 1500
+      }
+    },
+    {
+      "id": 163,
+      "role": "Búho nocturno",
+      "passive": "tinted-lens",
+      "kit": [
+        "feint-attack",
+        "mean-look",
+        "ominous-wind",
+        "sky-attack"
+      ],
+      "evoLevels": [
+        36
+      ],
+      "rank": "common",
+      "challenge": {
+        "desc": "Confunde a 1.000 Pokémon con Pokémon de Johto.",
+        "counter": "confused_j",
+        "goal": 1000
+      }
+    },
+    {
+      "id": 165,
+      "role": "Puños estelares",
+      "passive": "star-swarm",
+      "kit": [
+        "mach-punch",
+        "struggle-bug",
+        "power-up-punch",
+        "attack-order"
+      ],
+      "evoLevels": [
+        36
+      ],
+      "rank": "common",
+      "challenge": {
+        "desc": "Consigue 2.500 bajas con Pokémon de Johto.",
+        "counter": "kills_j",
+        "goal": 2500
+      }
+    },
+    {
+      "id": 167,
+      "role": "Tejedora",
+      "passive": "spider-silk",
+      "kit": [
+        "fell-stinger",
+        "spider-web",
+        "toxic-thread",
+        "cross-poison"
+      ],
+      "evoLevels": [
+        36
+      ],
+      "rank": "common",
+      "challenge": {
+        "desc": "Envenena a 3.000 Pokémon con Pokémon de Johto.",
+        "counter": "poisoned_j",
+        "goal": 3000
+      }
+    },
+    {
+      "id": 170,
+      "role": "Farol abisal",
+      "passive": "abyssal-lure",
+      "kit": [
+        "volt-switch",
+        "charge",
+        "ion-deluge",
+        "zap-cannon"
+      ],
+      "evoLevels": [
+        38
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Electrocuta (Mojado + Eléctrico) a 1.500 Pokémon con Pokémon de Johto.",
+        "counter": "electro_j",
+        "goal": 1500
+      }
+    },
+    {
+      "id": 172,
+      "role": "Trastada",
+      "passive": "pichu-surge",
+      "kit": [
+        "nuzzle",
+        "thunder-shock",
+        "electric-terrain",
+        "volt-tackle"
+      ],
+      "rank": "uncommon",
+      "evoLevels": [
+        20,
+        38
+      ],
+      "challenge": {
+        "desc": "Paraliza a 5.000 Pokémon con Pokémon de Johto.",
+        "counter": "paralyzed_j",
+        "goal": 5000
+      }
+    },
+    {
+      "id": 173,
+      "role": "Estrellita",
+      "passive": "star-dust",
+      "kit": [
+        "disarming-voice",
+        "cosmic-power",
+        "moonlight",
+        "meteor-mash"
+      ],
+      "rank": "uncommon",
+      "evoLevels": [
+        20,
+        38
+      ],
+      "challenge": {
+        "desc": "Lanza 40 Ultimates con Pokémon de Johto.",
+        "counter": "ultimates_j",
+        "goal": 40
+      }
+    },
+    {
+      "id": 174,
+      "role": "Globito",
+      "passive": "balloon-bounce",
+      "kit": [
+        "baby-doll-eyes",
+        "sing",
+        "misty-terrain",
+        "relic-song"
+      ],
+      "rank": "uncommon",
+      "evoLevels": [
+        20,
+        38
+      ],
+      "challenge": {
+        "desc": "Duerme a 5.000 Pokémon con Pokémon de Johto.",
+        "counter": "slept_j",
+        "goal": 5000
+      }
+    },
+    {
+      "id": 175,
+      "role": "Azar",
+      "passive": "blessing",
+      "kit": [
+        "metronome",
+        "fairy-wind",
+        "charm",
+        "dazzling-gleam"
+      ],
+      "rank": "uncommon",
+      "evoLevels": [
+        36
+      ],
+      "challenge": {
+        "desc": "Lanza 30 Ultimates con Pokémon de Johto.",
+        "counter": "ultimates_j",
+        "goal": 30
+      }
+    },
+    {
+      "id": 177,
+      "role": "Vidente",
+      "passive": "time-eye",
+      "kit": [
+        "esper-wing",
+        "wish",
+        "miracle-eye",
+        "luster-purge"
+      ],
+      "rank": "uncommon",
+      "evoLevels": [
+        37
+      ],
+      "challenge": {
+        "desc": "Consigue 5.000 bajas en una sola partida con Pokémon de Johto.",
+        "counter": "best_kills_j",
+        "goal": 5000
+      }
+    },
+    {
+      "id": 179,
+      "role": "Faro",
+      "passive": "beacon",
+      "kit": [
+        "shock-wave",
+        "cotton-spore",
+        "eerie-impulse",
+        "charge-beam"
+      ],
+      "rank": "common",
+      "evoLevels": [
+        23,
+        40
+      ],
+      "challenge": {
+        "desc": "Paraliza a 3.000 Pokémon con Pokémon de Johto.",
+        "counter": "paralyzed_j",
+        "goal": 3000
+      }
+    },
+    {
+      "id": 183,
+      "role": "Burbuja",
+      "passive": "bubble-guard",
+      "kit": [
+        "bouncy-bubble",
+        "water-sport",
+        "alluring-voice",
+        "sparkling-aria"
+      ],
+      "rank": "common",
+      "evoLevels": [
+        36
+      ],
+      "challenge": {
+        "desc": "Moja a 3.000 Pokémon con Pokémon de Johto.",
+        "counter": "soaked_j",
+        "goal": 3000
+      }
+    },
+    {
+      "id": 185,
+      "role": "Impostor",
+      "passive": "mimic-tree",
+      "kit": [
+        "tearful-look",
+        "block",
+        "hammer-arm",
+        "mighty-cleave"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Rompe 30 rocas con Golpe Roca con Pokémon de Johto.",
+        "counter": "rocks_j",
+        "goal": 30
+      }
+    },
+    {
+      "id": 187,
+      "role": "Diente de león",
+      "passive": "cotton-drift",
+      "kit": [
+        "pollen-puff",
+        "worry-seed",
+        "rage-powder",
+        "leaf-tornado"
+      ],
+      "rank": "common",
+      "evoLevels": [
+        26,
+        38
+      ],
+      "challenge": {
+        "desc": "Duerme a 1.500 Pokémon con Pokémon de Johto.",
+        "counter": "slept_j",
+        "goal": 1500
+      }
+    },
+    {
+      "id": 190,
+      "role": "Travieso",
+      "passive": "tail-hand",
+      "kit": [
+        "double-slap",
+        "tickle",
+        "covet",
+        "fling"
+      ],
+      "rank": "common",
+      "challenge": {
+        "desc": "Consigue 5.000 ₽ con Pokémon de Johto.",
+        "counter": "gold_j",
+        "goal": 5000
+      }
+    },
+    {
+      "id": 191,
+      "role": "Semilla solar",
+      "passive": "solar-power",
+      "kit": [
+        "leafage",
+        "sunny-day",
+        "grass-whistle",
+        "chloroblast"
+      ],
+      "rank": "common",
+      "evoLevels": [
+        30
+      ],
+      "challenge": {
+        "desc": "Come 100 bayas con Pokémon de Johto.",
+        "counter": "berries_j",
+        "goal": 100
+      }
+    },
+    {
+      "id": 193,
+      "role": "Libélula",
+      "passive": "speed-boost",
+      "kit": [
+        "sonic-boom",
+        "screech",
+        "pounce",
+        "first-impression"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Esquiva 60 ataques con Pokémon de Johto.",
+        "counter": "dodges_j",
+        "goal": 60
+      }
+    },
+    {
+      "id": 194,
+      "role": "Despreocupado",
+      "passive": "slimy-skin",
+      "kit": [
+        "mud-sport",
+        "mud-bomb",
+        "rain-dance",
+        "earthquake"
+      ],
+      "rank": "common",
+      "evoLevels": [
+        36
+      ],
+      "challenge": {
+        "desc": "Derrota a 2.000 Pokémon con lluvia con Pokémon de Johto.",
+        "counter": "rainKills_j",
+        "goal": 2000
+      }
+    },
+    {
+      "id": 198,
+      "role": "Mal agüero",
+      "passive": "ill-omen",
+      "kit": [
+        "thief",
+        "lash-out",
+        "punishment",
+        "foul-play"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Asesta 15.000 golpes críticos con Pokémon de Johto.",
+        "counter": "crits_j",
+        "goal": 15000
+      }
+    },
+    {
+      "id": 200,
+      "role": "Plañidera",
+      "passive": "wail",
+      "kit": [
+        "bitter-malice",
+        "pain-split",
+        "poltergeist",
+        "infernal-parade"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Confunde a 800 Pokémon en una sola partida con Pokémon de Johto.",
+        "counter": "best_confused_j",
+        "goal": 800
+      }
+    },
+    {
+      "id": 201,
+      "role": "Alfabeto",
+      "passive": "alphabet",
+      "kit": [
+        "hidden-power",
+        "mystical-power",
+        "eerie-spell",
+        "hyperspace-hole"
+      ],
+      "rank": "rare",
+      "challenge": [
+        {
+          "desc": "Ten 10 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 10
+        },
+        {
+          "desc": "Lanza 100 Ultimates con Pokémon de Johto.",
+          "counter": "ultimates_j",
+          "goal": 100
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "role": "Contraataque",
+      "passive": "shadow-tag",
+      "kit": [
+        "counter",
+        "mirror-coat",
+        "encore",
+        "destiny-bond"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Recupera 8.000 PS con Pokémon de Johto.",
+        "counter": "healed_j",
+        "goal": 8000
+      }
+    },
+    {
+      "id": 203,
+      "role": "Dos cabezas",
+      "passive": "second-head",
+      "kit": [
+        "twin-beam",
+        "psychic-fangs",
+        "razor-wind",
+        "synchronoise"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Juega con 4 Pokémon de Johto distintos.",
+        "counter": "speciesPlayed_j",
+        "goal": 4
+      }
+    },
+    {
+      "id": 204,
+      "role": "Bomba de piñas",
+      "passive": "shell-bomb",
+      "kit": [
+        "bide",
+        "spikes",
+        "steamroller",
+        "steel-beam"
+      ],
+      "evoLevels": [
+        41
+      ],
+      "rank": "common",
+      "challenge": {
+        "desc": "Abre 40 Poké Balls de objetos con Pokémon de Johto.",
+        "counter": "chests_j",
+        "goal": 40
+      }
+    },
+    {
+      "id": 206,
+      "role": "Taladro",
+      "passive": "burrower",
+      "kit": [
+        "glare",
+        "terrain-pulse",
+        "dragon-rush",
+        "hyper-drill"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Completa 10 partidas (ganes o pierdas) con Pokémon de Johto.",
+        "counter": "runs_j",
+        "goal": 10
+      }
+    },
+    {
+      "id": 207,
+      "role": "Escorpión planeador",
+      "passive": "glide-sting",
+      "kit": [
+        "poison-tail",
+        "sky-drop",
+        "sky-uppercut",
+        "dig"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Derrota a 2 guardianes de Ciudad Iris con Pokémon de Johto.",
+        "counter": "boss_iris_j",
+        "goal": 2
+      }
+    },
+    {
+      "id": 209,
+      "role": "Bulldog",
+      "passive": "strong-jaw",
+      "kit": [
+        "smelling-salts",
+        "scary-face",
+        "spirit-break",
+        "close-combat"
+      ],
+      "evoLevels": [
+        36
+      ],
+      "rank": "common",
+      "challenge": {
+        "desc": "Derrota a 3 Pokémon Alfa con Pokémon de Johto.",
+        "counter": "alphas_j",
+        "goal": 3
+      }
+    },
+    {
+      "id": 211,
+      "role": "Pez globo",
+      "passive": "puff-spikes",
+      "kit": [
+        "barb-barrage",
+        "stockpile",
+        "mortal-spin",
+        "spit-up"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Envenena a 1.500 Pokémon en una sola partida con Pokémon de Johto.",
+        "counter": "best_poisoned_j",
+        "goal": 1500
+      }
+    },
+    {
+      "id": 213,
+      "role": "Fermentador",
+      "passive": "berry-juice",
+      "kit": [
+        "infestation",
+        "sticky-web",
+        "power-trick",
+        "shell-smash"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Come 300 bayas con Pokémon de Johto.",
+        "counter": "berries_j",
+        "goal": 300
+      }
+    },
+    {
+      "id": 214,
+      "role": "Forzudo",
+      "passive": "horn-toss",
+      "kit": [
+        "arm-thrust",
+        "pin-missile",
+        "brick-break",
+        "megahorn"
+      ],
+      "rank": "rare",
+      "challenge": [
+        {
+          "desc": "Ten 12 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 12
+        },
+        {
+          "desc": "Derrota a 5 guardianes con Pokémon de Johto.",
+          "counter": "bosses_j",
+          "goal": 5
+        }
+      ]
+    },
+    {
+      "id": 215,
+      "role": "Garra helada",
+      "passive": "pickpocket",
+      "kit": [
+        "throat-chop",
+        "beat-up",
+        "triple-axel",
+        "wicked-blow"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Asesta 15.000 críticos en una sola partida con Pokémon de Johto.",
+        "counter": "best_crits_j",
+        "goal": 15000
+      }
+    },
+    {
+      "id": 216,
+      "role": "Osezno",
+      "passive": "honey-paws",
+      "kit": [
+        "chip-away",
+        "play-nice",
+        "belly-drum",
+        "blood-moon"
+      ],
+      "evoLevels": [
+        40
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Recupera 3.000 PS en una sola partida con Pokémon de Johto.",
+        "counter": "best_healed_j",
+        "goal": 3000
+      }
+    },
+    {
+      "id": 218,
+      "role": "Magma",
+      "passive": "magma-armor",
+      "kit": [
+        "heat-crash",
+        "acid-armor",
+        "magma-storm",
+        "shell-trap"
+      ],
+      "evoLevels": [
+        45
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Quema a 4.000 Pokémon con Pokémon de Johto.",
+        "counter": "burned_j",
+        "goal": 4000
+      }
+    },
+    {
+      "id": 220,
+      "role": "Hocico",
+      "passive": "truffle-snout",
+      "kit": [
+        "powder-snow",
+        "odor-sleuth",
+        "ice-ball",
+        "mountain-gale"
+      ],
+      "evoLevels": [
+        42
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Congela a 2.000 Pokémon con Pokémon de Johto.",
+        "counter": "frozen_j",
+        "goal": 2000
+      }
+    },
+    {
+      "id": 222,
+      "role": "Coral",
+      "passive": "reef",
+      "kit": [
+        "power-gem",
+        "aqua-ring",
+        "life-dew",
+        "salt-cure"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Consigue 5.000 bajas en el Bosque Encina con Pokémon de Johto.",
+        "counter": "kills_encina_j",
+        "goal": 5000
+      }
+    },
+    {
+      "id": 223,
+      "role": "Artillero",
+      "passive": "suction-aim",
+      "kit": [
+        "hydro-steam",
+        "bullet-seed",
+        "jet-punch",
+        "muddy-water"
+      ],
+      "evoLevels": [
+        37
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Moja a 1.500 Pokémon en una sola partida con Pokémon de Johto.",
+        "counter": "best_soaked_j",
+        "goal": 1500
+      }
+    },
+    {
+      "id": 225,
+      "role": "Repartidor",
+      "passive": "delivery",
+      "kit": [
+        "present",
+        "bestow",
+        "aurora-veil",
+        "avalanche"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Abre 120 Poké Balls de objetos con Pokémon de Johto.",
+        "counter": "chests_j",
+        "goal": 120
+      }
+    },
+    {
+      "id": 226,
+      "role": "Planeador marino",
+      "passive": "wave-rider",
+      "kit": [
+        "triple-dive",
+        "wide-guard",
+        "aqua-step",
+        "wave-crash"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Gana en Ciudad Iris con Pokémon de Johto.",
+        "counter": "win_iris_j",
+        "goal": 1
+      }
+    },
+    {
+      "id": 227,
+      "role": "Ala de acero",
+      "passive": "steel-plumage",
+      "kit": [
+        "steel-wing",
+        "metal-sound",
+        "tachyon-cutter",
+        "behemoth-blade"
+      ],
+      "rank": "rare",
+      "challenge": [
+        {
+          "desc": "Ten 15 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 15
+        },
+        {
+          "desc": "Gana en Ciudad Iris con Pokémon de Johto.",
+          "counter": "win_iris_j",
+          "goal": 1
+        }
+      ]
+    },
+    {
+      "id": 228,
+      "role": "Sabueso infernal",
+      "passive": "hell-howl",
+      "kit": [
+        "snarl",
+        "fire-lash",
+        "fiery-wrath",
+        "dark-pulse"
+      ],
+      "evoLevels": [
+        36
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Quema a 2.000 Pokémon en una sola partida con Pokémon de Johto.",
+        "counter": "best_burned_j",
+        "goal": 2000
+      }
+    },
+    {
+      "id": 231,
+      "role": "Rueda",
+      "passive": "rolling-tusk",
+      "kit": [
+        "ice-shard",
+        "spin-out",
+        "sandsear-storm",
+        "thousand-waves"
+      ],
+      "evoLevels": [
+        37
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Consigue 8.000 bajas en Ciudad Iris con Pokémon de Johto.",
+        "counter": "kills_iris_j",
+        "goal": 8000
+      }
+    },
+    {
+      "id": 234,
+      "role": "Ilusionista",
+      "passive": "illusion-antlers",
+      "kit": [
+        "mist-ball",
+        "disable",
+        "psyshield-bash",
+        "head-charge"
+      ],
+      "rank": "uncommon",
+      "challenge": {
+        "desc": "Evoluciona 15 veces durante tus partidas con Pokémon de Johto.",
+        "counter": "evolutions_j",
+        "goal": 15
+      }
+    },
+    {
+      "id": 235,
+      "role": "Artista",
+      "passive": "canvas",
+      "kit": [
+        "multi-attack",
+        "revelation-dance",
+        "trump-card",
+        "judgment"
+      ],
+      "rank": "rare",
+      "challenge": [
+        {
+          "desc": "Ten 20 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 20
+        },
+        {
+          "desc": "Juega con 12 Pokémon de Johto distintos.",
+          "counter": "speciesPlayed_j",
+          "goal": 12
+        }
+      ]
+    },
+    {
+      "id": 236,
+      "role": "Aprendiz",
+      "passive": "apprentice",
+      "kit": [
+        "rock-smash",
+        "comet-punch",
+        "rolling-kick",
+        "flying-press"
+      ],
+      "rank": "uncommon",
+      "branch": [
+        106,
+        107,
+        237
+      ],
+      "evoLevel": 36,
+      "challenge": {
+        "desc": "Evoluciona 15 veces con Pokémon de Johto.",
+        "counter": "evolutions_j",
+        "goal": 15
+      }
+    },
+    {
+      "id": 237,
+      "role": "Peonza",
+      "passive": "spin-top",
+      "kit": [
+        "triple-kick",
+        "low-sweep",
+        "upper-hand",
+        "axe-kick"
+      ],
+      "rank": "rare",
+      "challenge": [
+        {
+          "desc": "Ten 12 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 12
+        },
+        {
+          "desc": "Derrota a 15 Pokémon Alfa con Pokémon de Johto.",
+          "counter": "alphas_j",
+          "goal": 15
+        }
+      ]
+    },
+    {
+      "id": 238,
+      "role": "Besucona",
+      "passive": "sweet-smooch",
+      "kit": [
+        "powder-snow",
+        "heart-stamp",
+        "freezy-frost",
+        "freezing-glare"
+      ],
+      "rank": "uncommon",
+      "evoLevels": [
+        36
+      ],
+      "challenge": {
+        "desc": "Congela a 5.000 Pokémon con Pokémon de Johto.",
+        "counter": "frozen_j",
+        "goal": 5000
+      }
+    },
+    {
+      "id": 239,
+      "role": "Dinamo",
+      "passive": "dynamo",
+      "kit": [
+        "buzzy-buzz",
+        "thunder-punch",
+        "double-shock",
+        "plasma-fists"
+      ],
+      "rank": "uncommon",
+      "evoLevels": [
+        36
+      ],
+      "challenge": {
+        "desc": "Paraliza a 1.500 Pokémon en una sola partida con Pokémon de Johto.",
+        "counter": "best_paralyzed_j",
+        "goal": 1500
+      }
+    },
+    {
+      "id": 240,
+      "role": "Rabieta",
+      "passive": "tantrum",
+      "kit": [
+        "fire-punch",
+        "pyro-ball",
+        "blazing-torque",
+        "mind-blown"
+      ],
+      "rank": "uncommon",
+      "evoLevels": [
+        36
+      ],
+      "challenge": {
+        "desc": "Quema a 1.500 Pokémon en una sola partida con Pokémon de Johto.",
+        "counter": "best_burned_j",
+        "goal": 1500
+      }
+    },
+    {
+      "id": 241,
+      "role": "Granjera",
+      "passive": "moomoo-milk",
+      "kit": [
+        "wake-up-slap",
+        "milk-drink",
+        "heal-bell",
+        "steel-roller"
+      ],
+      "rank": "rare",
+      "challenge": [
+        {
+          "desc": "Ten 15 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 15
+        },
+        {
+          "desc": "Recupera 30.000 PS con Pokémon de Johto.",
+          "counter": "healed_j",
+          "goal": 30000
+        }
+      ]
+    },
+    {
+      "id": 243,
+      "role": "Bestia del trueno",
+      "passive": "thunder-beast",
+      "kit": [
+        "supercell-slam",
+        "roar",
+        "overdrive",
+        "electro-drift"
+      ],
+      "rank": "legendary",
+      "challenge": [
+        {
+          "desc": "Ten 30 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 30
+        },
+        {
+          "desc": "Llena el rastreo de Raikou en Ciudad Iris con Pokémon de Johto.",
+          "counter": "beast_243_j",
+          "goal": 1
+        },
+        {
+          "desc": "Paraliza a 1.500 Pokémon en una sola partida con Pokémon de Johto.",
+          "counter": "best_paralyzed_j",
+          "goal": 1500
+        }
+      ]
+    },
+    {
+      "id": 244,
+      "role": "Bestia del volcán",
+      "passive": "volcano-beast",
+      "kit": [
+        "scorching-sands",
+        "sizzly-slide",
+        "fusion-flare",
+        "raging-fury"
+      ],
+      "rank": "legendary",
+      "challenge": [
+        {
+          "desc": "Ten 32 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 32
+        },
+        {
+          "desc": "Llena el rastreo de Entei en Ciudad Iris con Pokémon de Johto.",
+          "counter": "beast_244_j",
+          "goal": 1
+        },
+        {
+          "desc": "Quema a 3.000 Pokémon en una sola partida con Pokémon de Johto.",
+          "counter": "best_burned_j",
+          "goal": 3000
+        }
+      ]
+    },
+    {
+      "id": 245,
+      "role": "Bestia de la aurora",
+      "passive": "north-wind",
+      "kit": [
+        "chilling-water",
+        "purify",
+        "tailwind",
+        "origin-pulse"
+      ],
+      "rank": "legendary",
+      "challenge": [
+        {
+          "desc": "Ten 34 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 34
+        },
+        {
+          "desc": "Llena el rastreo de Suicune en Ciudad Iris con Pokémon de Johto.",
+          "counter": "beast_245_j",
+          "goal": 1
+        },
+        {
+          "desc": "Congela a 1.500 Pokémon en una sola partida con Pokémon de Johto.",
+          "counter": "best_frozen_j",
+          "goal": 1500
+        }
+      ]
+    },
+    {
+      "id": 246,
+      "role": "Coloso",
+      "passive": "sand-jet",
+      "kit": [
+        "brutal-swing",
+        "sandstorm",
+        "crunch",
+        "stone-edge"
+      ],
+      "evoLevels": [
+        30,
+        50
+      ],
+      "rank": "rare",
+      "challenge": [
+        {
+          "desc": "Ten 25 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 25
+        },
+        {
+          "desc": "Gana en Ciudad Iris en Difícil con Pokémon de Johto.",
+          "counter": "tier_iris_j",
+          "goal": 2
+        }
+      ]
+    },
+    {
+      "id": 249,
+      "role": "Guardián del mar",
+      "passive": "sea-guardian",
+      "kit": [
+        "weather-ball",
+        "rain-dance",
+        "whirlwind",
+        "aeroblast"
+      ],
+      "rank": "legendary",
+      "challenge": [
+        {
+          "desc": "Ten 40 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 40
+        },
+        {
+          "desc": "Captura a Raikou, Entei y Suicune.",
+          "counter": "beasts",
+          "goal": 3
+        },
+        {
+          "desc": "Gana en Ciudad Iris en Pesadilla con Pokémon de Johto.",
+          "counter": "tier_iris_j",
+          "goal": 3
+        }
+      ]
+    },
+    {
+      "id": 250,
+      "role": "Fénix",
+      "passive": "rainbow-phoenix",
+      "kit": [
+        "fiery-dance",
+        "safeguard",
+        "beak-blast",
+        "burn-up"
+      ],
+      "rank": "legendary",
+      "challenge": [
+        {
+          "desc": "Ten 40 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 40
+        },
+        {
+          "desc": "Captura a Raikou, Entei y Suicune.",
+          "counter": "beasts",
+          "goal": 3
+        },
+        {
+          "desc": "Vence a Ho-Oh en la Cima de la Torre Hojalata en Difícil con Pokémon de Johto.",
+          "counter": "tier_iris_j",
+          "goal": 2
+        }
+      ]
+    },
+    {
+      "id": 251,
+      "role": "Viajero del tiempo",
+      "passive": "time-travel",
+      "kit": [
+        "grassy-glide",
+        "magical-leaf",
+        "seed-flare",
+        "leaf-storm"
+      ],
+      "rank": "legendary",
+      "challenge": [
+        {
+          "desc": "Ten 45 miembros de Johto en tu Liga.",
+          "counter": "johtoLeague",
+          "goal": 45
+        },
+        {
+          "desc": "Vence a Celebi en el Santuario del Tiempo en Difícil con Pokémon de Johto.",
+          "counter": "tier_encina_j",
+          "goal": 2
+        }
+      ]
+    }
+  ],
+  "relicUI": "function Kb(e,t,n,r){let i=e.relicKeys.map(e=>qs.get(e)).filter(e=>!!e),a=i.length>=3,o=Math.max(...t.map(e=>e.rarity)),s=`pick`,c=null,l=!1,u=(e,t)=>{l||(l=!0,removeEventListener(`keydown`,v),r(e,t))},d=z(`div`,{class:`rl-cards`+(o>=4?` legend`:``)}),f=z(`h1`,{class:`rl-title`},U(`Reliquias de la grieta`)),p=z(`p`,{class:`rl-sub`},a?U(`Elige una. Tus {n} huecos están llenos: después decides cuál sustituye.`,{n:3}):U(`Elige una para el resto de la partida ({n}/{max} huecos).`,{n:i.length,max:3})),m=z(`button`,{class:`btn ghost small`,onclick:()=>u(null,null)},U(`No llevarme ninguna`)),h=e=>{s===`pick`&&(a?(s=`replace`,c=e,A(d).append(...i.map((t,n)=>{let r=Gb(t,n,()=>u(e.key,n),String(n+1));return r.classList.add(`rl-swap`),r.append(z(`div`,{class:`rl-swap-tag`},U(`Sustituir por {name}`,{name:e.name}))),r})),f.textContent=U(`¿Cuál sustituye a {name}?`,{name:e.name}),p.textContent=U(`La que quites se pierde para esta partida.`),A(m).append(U(`Quedarme con las mías`)),g?.remove(),d.classList.remove(`legend`)):u(e.key,null))};t.forEach((e,t)=>d.append(Gb(e,t,()=>h(e),String(t+1))));let g=i.length?z(`div`,{class:`rl-mine`},z(`small`,{},U(`Llevas`)),...i.map(e=>z(`span`,{class:`rl-chip r${e.rarity}`,style:{\"--rc\":la[e.rarity]},title:`${e.name} · ${e.passive}: ${e.desc}`},Ub(e.key),e.name))):null,_=n(z(`div`,{class:`rl-wrap`+(o>=4?` legend`:o>=3?` epic`:``)},z(`div`,{class:`rl-raybox`},z(`div`,{class:`rl-rays`})),f,p,d,g,z(`div`,{class:`actions`},m)));_.classList.add(`rl-modal`,`rl-entering`),setTimeout(()=>_.classList.remove(`rl-entering`),2e3),t.forEach((e,t)=>setTimeout(()=>{_.isConnected&&(e.rarity>=4?P.shiny(!0):e.rarity>=3?P.power():e.rarity>=2?P.ballOpen():P.ballClick())},250+t*180+(e.rarity>=4?350:e.rarity>=2?150:0)));let v=e=>{if(!_.isConnected){removeEventListener(`keydown`,v);return}let n=/^(?:Digit|Numpad)([1-9])$/.exec(e.code);if(!n||e.repeat)return;let r=Number(n[1])-1;s===`pick`&&t[r]?h(t[r]):s===`replace`&&i[r]&&c&&u(c.key,r)};setTimeout(()=>addEventListener(`keydown`,v),700)}"
+}

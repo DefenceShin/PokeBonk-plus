@@ -1,0 +1,579 @@
+[
+  {
+    "id": "damage",
+    "label": "总伤害",
+    "kind": "stat",
+    "description": "总伤害的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.damage"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "HD",
+        "start": 1392643,
+        "end": 1393775
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/67"
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/111"
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rageBonus",
+        "start": 822220,
+        "end": 822277
+      }
+    ]
+  },
+  {
+    "id": "attackSpeed",
+    "label": "攻击速度",
+    "kind": "stat",
+    "description": "攻击速度的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.attackSpeed"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      }
+    ]
+  },
+  {
+    "id": "maxHp",
+    "label": "最大生命",
+    "kind": "stat",
+    "description": "最大生命的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.maxHp"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/101"
+      }
+    ]
+  },
+  {
+    "id": "moveSpeed",
+    "label": "移动速度",
+    "kind": "stat",
+    "description": "移动速度的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.moveSpeed"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "HD",
+        "start": 1392643,
+        "end": 1393775
+      }
+    ]
+  },
+  {
+    "id": "critChance",
+    "label": "暴击率",
+    "kind": "stat",
+    "description": "暴击率的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.critChance"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      }
+    ]
+  },
+  {
+    "id": "area",
+    "label": "效果范围",
+    "kind": "stat",
+    "description": "效果范围的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.area"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      }
+    ]
+  },
+  {
+    "id": "xpGain",
+    "label": "经验获取",
+    "kind": "stat",
+    "description": "经验获取的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.xpGain"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "HD",
+        "start": 1392643,
+        "end": 1393775
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/56"
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/77"
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "vitamins",
+        "pointer": "/vitamins/20"
+      }
+    ]
+  },
+  {
+    "id": "regen",
+    "label": "生命再生",
+    "kind": "stat",
+    "description": "生命再生的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.regen"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      }
+    ]
+  },
+  {
+    "id": "armor",
+    "label": "护甲",
+    "kind": "stat",
+    "description": "护甲的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.armor"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/88"
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/101"
+      }
+    ]
+  },
+  {
+    "id": "duration",
+    "label": "效果持续时间",
+    "kind": "stat",
+    "description": "效果持续时间的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.duration"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      }
+    ]
+  },
+  {
+    "id": "statusChance",
+    "label": "异常状态几率",
+    "kind": "stat",
+    "description": "异常状态几率的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.statusChance"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      }
+    ]
+  },
+  {
+    "id": "luck",
+    "label": "幸运",
+    "kind": "stat",
+    "description": "幸运的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.luck"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "pb",
+        "start": 872958,
+        "end": 874753
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/56"
+      }
+    ]
+  },
+  {
+    "id": "critDamage",
+    "label": "暴击伤害",
+    "kind": "stat",
+    "description": "暴击伤害的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.critDamage"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      }
+    ]
+  },
+  {
+    "id": "extraJumps",
+    "label": "额外跳跃",
+    "kind": "stat",
+    "description": "额外跳跃的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.extraJumps"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      }
+    ]
+  },
+  {
+    "id": "gold",
+    "label": "金币获取倍率",
+    "kind": "stat",
+    "description": "金币获取倍率的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.gold"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      },
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "vitamins",
+        "pointer": "/vitamins/20"
+      }
+    ]
+  },
+  {
+    "id": "physical",
+    "label": "物理伤害",
+    "kind": "stat",
+    "description": "物理伤害的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.physical"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/68"
+      }
+    ]
+  },
+  {
+    "id": "special",
+    "label": "特殊伤害",
+    "kind": "stat",
+    "description": "特殊伤害的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.special"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/69"
+      }
+    ]
+  },
+  {
+    "id": "thorns",
+    "label": "尖刺伤害",
+    "kind": "stat",
+    "description": "尖刺伤害的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.thorns"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "items",
+        "pointer": "/items/101"
+      }
+    ]
+  },
+  {
+    "id": "eliteDamage",
+    "label": "对精英和首领伤害",
+    "kind": "stat",
+    "description": "对精英和首领伤害的原生正面提升；负向变化不能命中此优先项。",
+    "nativeFields": [
+      "player.stats.eliteDamage"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-runtime-definitions.json",
+        "symbol": "vitamins",
+        "pointer": "/vitamins/23"
+      }
+    ]
+  },
+  {
+    "id": "vitaminSlots",
+    "label": "维生素槽位",
+    "kind": "reward",
+    "description": "原生契约增加维生素可用槽位；不改变槽位上限或绕过资格。",
+    "nativeFields": [
+      "player.vitaminSlots"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      }
+    ]
+  },
+  {
+    "id": "levels",
+    "label": "立即提升等级",
+    "kind": "reward",
+    "description": "月亮契约立即提高3级并增加原生待选强化；不伪造等级。",
+    "nativeFields": [
+      "player.level",
+      "run.pendingLevels"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      }
+    ]
+  },
+  {
+    "id": "goldImmediate",
+    "label": "立即获得金币",
+    "kind": "reward",
+    "description": "原生立即给予的本局金币，不是账号邦币。",
+    "nativeFields": [
+      "run.addGold"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "HD",
+        "start": 1392643,
+        "end": 1393775
+      }
+    ]
+  },
+  {
+    "id": "itemReward",
+    "label": "获得道具奖励",
+    "kind": "reward",
+    "description": "原生明确承诺的道具/道具球奖励；随机结果只按已知最低品质，追加首领奖励仍须真实击败首领。",
+    "nativeFields": [
+      "run.rollChestItem",
+      "tower.arrivalBall",
+      "tower.afterClimb",
+      "run.roars"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "rD",
+        "start": 1377589,
+        "end": 1379750
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "HD",
+        "start": 1392643,
+        "end": 1393775
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "cb",
+        "start": 870870,
+        "end": 871765
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "fb",
+        "start": 871897,
+        "end": 872954
+      },
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "World.interact",
+        "start": 1279590,
+        "end": 1283461
+      }
+    ]
+  },
+  {
+    "id": "blessingReward",
+    "label": "获得祝福奖励",
+    "kind": "reward",
+    "description": "原生化石祭坛提供的祝福选择奖励；具体属性以随后可见的原生选项为准。",
+    "nativeFields": [
+      "run.offerBlessing"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "cb",
+        "start": 870870,
+        "end": 871765
+      }
+    ]
+  },
+  {
+    "id": "companionReward",
+    "label": "获得支援伙伴",
+    "kind": "reward",
+    "description": "原生化石复活化石翼龙支援；是否招募成功仍由原生伙伴选择确认。",
+    "nativeFields": [
+      "run.allies.recruit"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "cb",
+        "start": 870870,
+        "end": 871765
+      }
+    ]
+  },
+  {
+    "id": "landingShockwave",
+    "label": "获得落地冲击波",
+    "kind": "reward",
+    "description": "黑色铁球在符合原生落地条件时产生随护甲/等级增强的地面冲击波。",
+    "nativeFields": [
+      "Player.quake",
+      "player.items.iron-ball"
+    ],
+    "sources": [
+      {
+        "path": "research/update-1.5.1-055-main.min.js",
+        "symbol": "quake",
+        "start": 836255,
+        "end": 836707
+      }
+    ]
+  }
+]

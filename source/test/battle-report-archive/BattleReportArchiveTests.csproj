@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="../../data/encyclopedia.json" LogicalName="payload.encyclopedia.json" />
+    <Compile Include="../../client/PokeBonk.Client/PortableStorage.cs" Link="PortableStorage.cs" />
+    <Compile Include="../../client/PokeBonk.Client/BattleReportArchive.cs" Link="BattleReportArchive.cs" />
+    <Compile Include="../../client/PokeBonk.Client/BattleRecordWriter.cs" Link="BattleRecordWriter.cs" />
+  </ItemGroup>
+</Project>

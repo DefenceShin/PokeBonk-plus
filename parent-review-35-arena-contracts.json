@@ -1,0 +1,256 @@
+[
+  {
+    "owner": "xP",
+    "methods": [
+      {
+        "name": "constructor",
+        "code": "constructor(e,t){super(e,t),D(this,`float`,!0),D(this,`phaseNames`,[c(`Dragón de fuego`),c(`Vuelo de ceniza`),c(`Llamarada`)]),D(this,`phaseColor`,`#ff7a2a`),D(this,`band`,[11,17]),D(this,`speed`,5.4),D(this,`ultT`,9),D(this,`down`,0),D(this,`daze`,0),D(this,`dazeMul`,1.4),D(this,`stuck`,0),D(this,`power`,0),D(this,`sinceDive`,0),D(this,`tipShown`,!1),D(this,`flame`,null),D(this,`dive`,null),D(this,`pools`,[]),D(this,`poolHurtT`,0),D(this,`twisters`,[]),D(this,`ultBusy`,!1),this.E.alt[t]=2.4}"
+      },
+      {
+        "name": "S",
+        "code": "get S(){let e=this.run.sanctuary;return e&&`geysers`in e?e:null}"
+      },
+      {
+        "name": "target",
+        "code": "target(){return this.run.coop?.focus(this.bx,this.bz)??this.run.player.pos}"
+      },
+      {
+        "name": "bonus",
+        "code": "get bonus(){return+(this.power>0)}"
+      },
+      {
+        "name": "hitMul",
+        "code": "hitMul(){return this.down>0?2:this.daze>0?this.dazeMul:this.stuck>0?1.35:1}"
+      },
+      {
+        "name": "hurt",
+        "code": "hurt(e,t=0,n=this.type){super.hurt(e*(this.power>0?1.2:1),t,n)}"
+      },
+      {
+        "name": "steer",
+        "code": "steer(e){let t=super.steer(e);return this.power>0&&(t.speed*=1.35),t}"
+      },
+      {
+        "name": "fly",
+        "code": "fly(){!this.dead&&this.down<=0&&this.daze<=0&&this.stuck<=0&&!this.dive&&(this.E.alt[this.i]=2.4)}"
+      },
+      {
+        "name": "onTeam",
+        "code": "onTeam(e,t){if(e!==`cz-vent`)return;let n=this.S,r=n?.geysers[Number(t.g)];n&&r&&(r.charge>=1&&n.erupt(r),this.douse(r))}"
+      },
+      {
+        "name": "douse",
+        "code": "douse(e){if(this.dead||this.down>0)return;let t=this.run,n=this.E,r=this.i,i=bP[this.phase-1]??5.5;this.down=i,this.lock=Math.max(this.lock,i),this.barrierRate=2.5,this.cd=Math.max(this.cd,i+.6),this.flame=null,this.dive=null,this.twisters.length=0,this.power=0,this.daze=0,this.stuck=0,this.S&&(this.S.lure=!1),n.x[r]+=(e.x-n.x[r])*.4,n.z[r]+=(e.z-n.z[r])*.4,n.alt[r]=0,n.y[r]=this.groundY(n.x[r],n.z[r])+.4,t.cry(this.species),t.shake(.7),t.$qjipep(.18),t.meta.count(`charizardDown`,1),t.ui.banner(c(`¡Llama apagada!`),c(`El vapor apaga la cola de Charizard: ¡ahora recibe mucho más daño!`),`#9ad8ff`,{species:this.species}),t.vfx.burst(n.x[r],n.y[r]+1.2,n.z[r],15267071,40,11,A.Soft,1.4,.9),t.vfx.burst(n.x[r],n.y[r]+1,n.z[r],10148095,24,9,A.PixDrop,.7,.7,10),t.vfx.dust(n.x[r],n.y[r],n.z[r],9079434,18,7)}"
+      },
+      {
+        "name": "attack",
+        "code": "attack(){let e=this.phase,t=e===1?[`flame`,`claw`,`pulse`,`dive`,`dive`,`slash`,`spin`]:e===2?[`flame`,`claw`,`pulse`,`dive`,`dive`,`slash`,`spin`,`bombs`,`fissure`,`tornado`,...this.power>0?[]:[`dance`]]:[`flame`,`claw`,`pulse`,`dive`,`slash`,`spin`,`bombs`,`fissure`,`tornado`,`charge`,`charge`,...this.power>0?[]:[`dance`]],n=this.sinceDive>=3?`dive`:this.pick(t);this.last=n,this.sinceDive=n===`dive`?0:this.sinceDive+1;let r;switch(n){case`flame`:r=this.flamethrower();break;case`claw`:r=this.dragonClaw();break;case`pulse`:r=this.dragonPulse();break;case`dive`:r=this.skyDive();break;case`slash`:r=this.airSlash();break;case`spin`:r=this.fireSpin();break;case`bombs`:r=this.lavaBombs();break;case`fissure`:r=this.fissures();break;case`tornado`:r=this.fireTornado();break;case`charge`:r=this.flareBlitz();break;default:r=this.dragonDance()}return this.power>0&&n!==`dance`?r*.8:r}"
+      },
+      {
+        "name": "flamethrower",
+        "code": "flamethrower(){let e=this.run,t=this.target(),n=this.aimAt(t.x,t.z),r=Math.atan2(n.z,n.x),i=.5;this.lock=this.phase>=3?3.9:2.5;for(let t=3;t<19;t+=2)for(let n=-1;n<=1;n+=.34){let a=r+n*i,o=this.bx+Math.cos(a)*t,s=this.bz+Math.sin(a)*t;e.vfx.ground.spawn({x:o,y:this.groundY(o,s)+.12,z:s,life:.8,size:1.7,endSize:1.7,color:vP,shape:A.Soft,glow:0,rot:0})}return this.E.atkAnim[this.i]=1.2,e.ui.popup(this.bx,this.by+4.6,this.bz,c(`¡Lanzallamas!`),`#ff9a3a`,1),e.later(.8,()=>{!this.dead&&this.down<=0&&(this.flame={t:1.4,a0:r-i,a1:r+i,acc:0},e.audio.cone(`fire`,1.4))}),this.phase>=3&&e.later(2.5,()=>{!this.dead&&this.down<=0&&(this.flame={t:1.4,a0:r+i,a1:r-i,acc:0},e.audio.cone(`fire`,1.4))}),this.phase>=3?4.6:3.6}"
+      },
+      {
+        "name": "dragonClaw",
+        "code": "dragonClaw(){let e=[2,3,3][this.phase-1]+this.bonus;return this.lock=e*1.2+.4,this.run.ui.popup(this.bx,this.by+4.6,this.bz,c(`¡Garra Dragón!`),`#9aaaff`,1),this.queueDash(e),2.4}"
+      },
+      {
+        "name": "queueDash",
+        "code": "queueDash(e){if(e<=0||this.dead||this.down>0)return;let t=this.run,n=this.target(),r=this.aimAt(n.x,n.z),i=ad(r.d+7,11,24),a={x:this.bx+r.x*i,z:this.bz+r.z*i};t.sanctuary?.confine(a.x,a.z,2,a);let o=this.bx,s=this.bz;this.line(o,s,a.x,a.z,1.5,.62,1.6,yP,!1,A.PixClaw),this.E.atkAnim[this.i]=.6,t.later(.62,()=>{if(this.dead||this.down>0)return;t.audio.whoosh();let n=this.E,r=this.i;t.animate(.17,e=>{this.dead||this.down>0||(n.x[r]=o+(a.x-o)*e,n.z[r]=s+(a.z-s)*e,n.vx[r]=n.vz[r]=0,t.vfx.add.spawn({x:n.x[r],y:n.y[r]+1,z:n.z[r],life:.3,size:2.2,endSize:.3,color:yP,shape:A.PixClaw,glow:.8}),t.sanctuary?.blast(n.x[r],n.z[r],2.2,14))},()=>{t.vfx.burst(a.x,this.by+1,a.z,yP,14,8,A.PixClaw,.9,.4),t.shake(.2,a.x,a.z)}),t.later(.17+.4,()=>this.queueDash(e-1))})}"
+      },
+      {
+        "name": "dragonPulse",
+        "code": "dragonPulse(){let e=this.run,t=(this.phase===1?3:this.phase===2?4:5)+this.bonus;e.ui.popup(this.bx,this.by+4.6,this.bz,c(`¡Pulso Dragón!`),`#9aaaff`,1);for(let n=0;n<t;n++)e.later(n*.2,()=>{if(this.dead||this.down>0)return;let r=this.target(),i=this.aimAt(r.x,r.z),a=Math.atan2(i.z,i.x)+(n-(t-1)/2)*.3;this.shot(Math.cos(a),Math.sin(a),7.5,.75,{homing:!0,shape:A.PixDragonFire,color:16777215,type:`dragon`,life:5.5,size:1.5}),this.E.atkAnim[this.i]=.4,e.audio.shot(`dragon`,.7)});return 3}"
+      },
+      {
+        "name": "airSlash",
+        "code": "airSlash(){let e=this.target(),t=(this.phase>=3?3:2)+this.bonus,n=k.range(0,Math.PI);for(let r=0;r<t;r++){let i=n+r/t*Math.PI,a=Math.cos(i)*11,o=Math.sin(i)*11;this.line(e.x-a,e.z-o,e.x+a,e.z+o,1.4,.95+r*.1,1.4,16760944,!0,A.PixSlash)}return this.E.atkAnim[this.i]=.5,this.run.ui.popup(this.bx,this.by+4.6,this.bz,c(`¡Tajo Aéreo!`),`#ffc070`,1),2.5}"
+      },
+      {
+        "name": "fireSpin",
+        "code": "fireSpin(){let e=this.run,t=8+this.bonus*2,n=this.phase>=3?11:9;this.lock=t*.26+.5,e.ui.popup(this.bx,this.by+4.6,this.bz,c(`¡Giro Fuego!`),`#ff9a3a`,1);for(let r=0;r<t;r++)e.later(r*.26,()=>{this.dead||this.down>0||(this.E.atkAnim[this.i]=.4,this.ringShots(n,8,.45,r*.42,{shape:A.PixFlame,color:16777215,size:1.1,life:3.4}))});return t*.26+2.2}"
+      },
+      {
+        "name": "skyDive",
+        "code": "skyDive(){let e=this.run,t=this.target(),n=this.S;return this.dive={t:this.phase>=3?1.8:2.2,x:t.x+k.range(-5,5),z:t.z+k.range(-5,5),lock:.55},this.E.alt[this.i]=9,this.lock=3.8,n&&(n.lure=!0),e.ui.popup(this.bx,this.by+4.6,this.bz,c(`¡Picado!`),`#ffb03a`,1),e.audio.whoosh(),!this.tipShown&&n&&(this.tipShown=!0,e.ui.toast(c(`Quédate en el círculo dorado de un géiser cargado y esquiva el picado en el último momento: el vapor apagará su llama`),null)),4.8}"
+      },
+      {
+        "name": "land",
+        "code": "land(e,t){let n=this.run,r=this.E,i=this.i,a=this.S,o=this.groundY(e,t),s=3.3,l=n.player;this.dive=null,a&&(a.lure=!1),r.x[i]=e,r.z[i]=t,r.alt[i]=0,r.y[i]=o+.5,n.vfx.burst(e,o+.5,t,vP,30,11,A.PixFlame,1,.6),n.vfx.ring(e,o,t,s,vP,.4),n.vfx.dust(e,o,t,3813424,18,7),n.vfx.flash(e,o+1,t,16765066,6,.15),n.shake(.5,e,t),n.audio.boom(.9),n.sanctuary?.blast(e,t,s,40);let u=l.pos;(u.x-e)**2+(u.z-t)**2<s*s&&this.playerLow(o,1.6)&&(l.slideT>0?(l.iframes=Math.max(l.iframes,.4),n.ui.popup(u.x,u.y+2.4,u.z,c(`¡Esquiva perfecta!`),`#7aff8a`,1.1)):this.hurt(1.8,.12,`flying`));let d=a?.geyserNear(e,t,4.6)??null;d&&a?(this.run.coop?.world(`cz-vent`,{g:a.geysers.indexOf(d)}),a.erupt(d),this.douse(d)):(this.stuck=1.5,this.lock=1.5,n.ui.popup(e,o+4,t,c(`¡Clavado!`),`#ffb03a`,1),this.phase>=2&&this.ringShots(this.phase>=3?14:10,9,.5,k.range(0,1),{shape:A.PixFlame,color:16777215,size:1.1}),n.later(1.5,()=>this.fly()))}"
+      },
+      {
+        "name": "lavaBombs",
+        "code": "lavaBombs(){let e=this.run,t=e.player.pos,n=Math.min(12,5+this.phase*2+this.bonus*2);e.ui.popup(this.bx,this.by+4.6,this.bz,c(`¡Bombas de lava!`),`#ff7a2a`,1),this.E.atkAnim[this.i]=.9,e.audio.boom(.5);for(let r=0;r<n;r++){let n={x:t.x+(r?k.range(-11,11):e.player.vel.x*.9),z:t.z+(r?k.range(-11,11):e.player.vel.z*.9)};e.sanctuary?.confine(n.x,n.z,2,n);let i=n.x,a=n.z,o=this.groundY(i,a),s=1.3+r*.11,c=e.r.camera.position,l=Math.hypot(i-c.x,a-c.z)||1,u=(i-c.x)/l*5,d=(a-c.z)/l*5;e.animate(s,t=>{let n=1-t,r=i+u*n,s=a+d*n,c=o+24*n*n;e.vfx.norm.spawn({x:r,y:c,z:s,life:.12,size:1.9,endSize:1.9,color:16747066,shape:A.PixRock,spin:4}),e.vfx.add.spawn({x:r,y:c,z:s,life:.35,size:1.8,endSize:.3,color:16777215,shape:A.PixFlame,glow:.4})}),this.circle(i,a,2.8,s,1.3,vP,A.PixFlame,()=>{this.pools.push({x:i,y:o,z:a,r:2.4,t:4.5}),e.vfx.burst(i,o+.4,a,3811882,8,6,A.PixRock,.6,.7,14)})}return 3.4}"
+      },
+      {
+        "name": "fissures",
+        "code": "fissures(){let e=this.run,t=this.S,n=e.player.pos;if(!t)return this.lavaBombs();let r=(this.phase>=3?3:2)+this.bonus;for(let e=0;e<r;e++){let r=k.range(0,Math.PI*2),i=e?k.range(3,7):0,a=k.range(0,Math.PI*2);t.fissure(n.x+Math.cos(a)*i,n.z+Math.sin(a)*i,r,17,1.4+e*.3,8.5)}return this.E.atkAnim[this.i]=1,this.lock=1.4,e.ui.popup(this.bx,this.by+4.6,this.bz,c(`¡Grietas ígneas!`),`#ff7a2a`,1),e.audio.alarm(),3.6}"
+      },
+      {
+        "name": "dragonDance",
+        "code": "dragonDance(){let e=this.run;return this.power=9,this.lock=1.1,e.vfx.ring(this.bx,this.by,this.bz,8,yP,.6),e.vfx.ring(this.bx,this.by,this.bz,5,vP,.5),e.vfx.burst(this.bx,this.by+1.5,this.bz,yP,30,9,A.PixDragonFire,1,.8),e.ui.toast(c(`¡{name} usa Danza Dragón!`,{name:this.name}),null),this.E.atkAnim[this.i]=1.1,e.audio.power(),1.2}"
+      },
+      {
+        "name": "fireTornado",
+        "code": "fireTornado(){let e=this.run,t=this.phase>=3||this.bonus?2:1;for(let e=0;e<t;e++)this.twisters.push({x:this.bx+k.range(-3,3),z:this.bz+k.range(-3,3),t:7+e,hitT:0});return this.E.atkAnim[this.i]=1,this.lock=1.2,e.ui.popup(this.bx,this.by+4.6,this.bz,c(`¡Tornado de Fuego!`),`#ff9a3a`,1),e.audio.cone(`fire`,1.5),3.8}"
+      },
+      {
+        "name": "flareBlitz",
+        "code": "flareBlitz(){let e=this.run,t=this.S,n=this.target(),r=this.aimAt(n.x,n.z),i=this.E,a=this.i,o=this.bx+r.x*46,s=this.bz+r.z*46,l={x:o,z:s};t?.confine(o,s,1.5,l);let u=this.groundY(this.bx,this.bz)+1,d=this.groundY(l.x,l.z)+1,f=t?t.firstBlock(this.bx,u,this.bz,l.x,d,l.z):1,p=f<.999,m=this.bx+(l.x-this.bx)*f,h=this.bz+(l.z-this.bz)*f,g=Math.hypot(m-this.bx,h-this.bz),_=this.bx,v=this.bz,y=null,b=2;if(t)for(let e of t.geysers){if(e.charge<1)continue;let t=m-_,n=h-v,r=t*t+n*n||1,i=ad(((e.x-_)*t+(e.z-v)*n)/r,0,1);Math.hypot(_+t*i-e.x,v+n*i-e.z)<2.8&&i<b&&(b=i,y=e)}return this.lock=1.3+g/85+5,this.cd=6,i.atkAnim[a]=1.6,e.ui.banner(c(`¡Envite Ígneo!`),c(`Aparta de su línea: si choca contra una columna, se estrella`),`#ff6a2a`,{species:this.species}),e.audio.alarm(),this.line(_,v,m,h,2.3,1.3,2.2,16738858,!1,A.PixFlame),this.run.animate(1.3,()=>{if(!this.dead)for(let t=0;t<3;t++)e.vfx.norm.spawn({x:this.bx+k.range(-1.4,1.4),y:this.by+k.range(0,2.4),z:this.bz+k.range(-1.4,1.4),vy:k.range(1,4),life:.45,size:1.8,endSize:.5,color:16777215,shape:A.PixFlame})}),e.later(1.3,()=>{if(this.dead)return;i.alt[a]=.8,e.audio.boom(.8),e.shake(.4);let n=!1,r=Math.max(.2,g/85);e.animate(r,r=>{this.dead||(i.x[a]=_+(m-_)*r,i.z[a]=v+(h-v)*r,i.vx[a]=i.vz[a]=0,e.vfx.add.spawn({x:i.x[a],y:i.y[a]+1,z:i.z[a],life:.4,size:3,endSize:.5,color:16742954,shape:A.PixFlame,glow:.8}),e.vfx.groundN.spawn({x:i.x[a],y:this.groundY(i.x[a],i.z[a])+.1,z:i.z[a],life:.5,size:2.4,endSize:2.4,color:16777215,shape:A.PixCrack,rot:k.range(0,6.3)}),e.sanctuary?.blast(i.x[a],i.z[a],2.8,30),y&&t&&!n&&r>=b&&(n=!0,this.run.coop?.world(`cz-vent`,{g:t.geysers.indexOf(y)}),t.erupt(y),this.douse(y)))},()=>{if(this.dead||n)return;let r=this.groundY(m,h);e.$qjipep(p?.2:.1),e.shake(p?.9:.5,m,h),e.audio.boom(1),e.vfx.burst(m,r+1,h,vP,36,12,A.PixFlame,1.1,.7),e.vfx.dust(m,r,h,3813424,24,8),e.vfx.ring(m,r,h,p?8:5,vP,.5),i.alt[a]=0,i.y[a]=r+.5,p?(t?.blast(m,h,5,160),this.daze=4,this.dazeMul=1.7,e.ui.popup(m,r+4.4,h,c(`¡Se estrella!`),`#ffd23a`,1.1)):(this.daze=2.2,this.dazeMul=1.35,e.ui.popup(m,r+4.4,h,c(`¡Retroceso!`),`#ffb03a`,1)),this.lock=Math.max(this.lock-5+this.daze,this.daze)})}),6}"
+      },
+      {
+        "name": "starArms",
+        "code": "starArms(e){return[{a:e,len:17},{a:e+Math.PI/2,len:44},{a:e-Math.PI/2,len:44},{a:e+Math.PI-.62,len:44},{a:e+Math.PI+.62,len:44}]}"
+      },
+      {
+        "name": "ultimate",
+        "code": "ultimate(){let e=this.run,t=this.E,n=this.i;this.lock=9,this.cd=3,this.ultBusy=!0,this.flame=null,this.dive=null,t.x[n]=this.hx,t.z[n]=this.hz,t.alt[n]=9,t.vx[n]=t.vz[n]=0,e.vfx.ring(this.hx,this.groundY(this.hx,this.hz),this.hz,7,vP,.6),e.ui.banner(c(`¡Llamarada!`),c(`Sal de los brazos de la estrella de fuego o ponte a cubierto`),`#ff5a8a`,{species:this.species}),e.audio.alarm();let r=k.range(0,Math.PI*2),i=(k.chance(.5)?1:-1)*.63;this.starSlam(r,3.3,2.4,.42),e.later(4.2,()=>this.starSlam(r+i,1.9,1.5,.28)),e.later(8,()=>{this.ultBusy=!1,this.S&&(this.S.hold=!1),this.fly()})}"
+      },
+      {
+        "name": "starSlam",
+        "code": "starSlam(e,t,n,r){let i=this.run,a=this.S,o=this.hx,s=this.hz,l=this.groundY(o,s)+1,u=3.6,d=this.starArms(e).map(e=>{let t=Math.cos(e.a),n=Math.sin(e.a),r=o+t*u,i=s+n*u,c=a?a.firstBlock(r,l,i,o+t*e.len,l,s+n*e.len):1;return{c:t,s:n,sx:r,sz:i,reach:(e.len-u)*c}}),f=e=>{for(let t of d)for(let n=0;n<=t.reach;n+=2){let r=t.sx+t.c*n,a=t.sz+t.s*n;i.vfx.ground.spawn({x:r,y:this.groundY(r,a)+.12,z:a,life:.06,size:4.6,endSize:4.6,color:e>.8&&Math.sin(i.time*40)>0?16777215:e>.5?16734762:16747066,shape:A.Soft,glow:0,rot:0})}};i.animate(t,e=>{if(!this.dead&&(f(e),this.E.atkAnim[this.i]=.4,Math.random()<.5)){let e=k.range(0,Math.PI*2),t=k.range(4,9);i.vfx.add.spawn({x:o+Math.cos(e)*t,y:this.by+k.range(-1,3),z:s+Math.sin(e)*t,vx:-Math.cos(e)*t*1.6,vz:-Math.sin(e)*t*1.6,life:.6,size:.7,endSize:.1,color:16777215,shape:A.PixFlame,glow:.5})}},()=>{if(this.dead)return;i.vfx.flash(o,l+3,s,16777215,22,.3);for(let e=0;e<3;e++)i.later(e*.1,()=>i.vfx.ring(o,this.groundY(o,s),s,22+e*12,e===1?16777215:vP,.6));i.shake(.9),i.audio.boom(1),i.$qjipep(.12),i.audio.cone(`fire`,1),i.animate(.55,e=>{for(let t of d)for(let n=0;n<=Math.min(t.reach,e*46);n+=1.6){if(Math.random()>.55)continue;let e=t.sx+t.c*n,r=t.sz+t.s*n;i.vfx.norm.spawn({x:e+k.range(-1.2,1.2),y:this.groundY(e,r)+k.range(0,1),z:r+k.range(-1.2,1.2),vy:k.range(5,11),life:k.range(.35,.7),size:k.range(2,3.6),endSize:1,color:16777215,shape:A.PixFlame}),Math.random()<.25&&i.vfx.add.spawn({x:e,y:this.groundY(e,r)+1.5,z:r,life:.35,size:4.4,endSize:6,color:16738842,shape:A.Soft,glow:.3})}});for(let e of d)for(let t=0;t<=e.reach;t+=3)a?.blast(e.sx+e.c*t,e.sz+e.s*t,2.8,60);let e=i.player.pos,t=!1;for(let n of d){let r=ad((e.x-n.sx)*n.c+(e.z-n.sz)*n.s,0,n.reach);Math.hypot(n.sx+n.c*r-e.x,n.sz+n.s*r-e.z)<2.4+i.player.radius*.5&&(t=!0)}t&&this.playerLow(this.groundY(e.x,e.z),3.4)?this.hurt(n,r,`fire`):i.ui.popup(e.x,e.y+2.4,e.z,c(`¡A salvo!`),`#7aff8a`,.9)})}"
+      },
+      {
+        "name": "tick",
+        "code": "tick(e){let t=this.run,n=this.E,r=this.i,i=t.player,a=i.pos,o=this.S;if(this.power=Math.max(0,this.power-e),this.stuck>0&&(this.stuck-=e,this.stuck<=0&&this.fly()),this.daze>0){this.daze-=e,n.alt[r]=0,Math.random()<e*12&&t.vfx.norm.spawn({x:this.bx+k.range(-1.5,1.5),y:this.by+k.range(.5,2.5),z:this.bz+k.range(-1.5,1.5),vy:1.5,life:.8,size:.9,endSize:1.6,color:6972512,shape:A.PixPuff});for(let e=0;e<3;e++){let i=t.time*4+e/3*Math.PI*2;t.orbitals.push(this.bx+Math.cos(i)*1.8,this.by+n.hgt[r]+.5,this.bz+Math.sin(i)*1.8,.6,16765498,A.Star,i,.9)}this.daze<=0&&this.fly()}if(this.down>0){this.down-=e,n.alt[r]=0;let i=this.bx-n.fx[r]*1.5,a=this.bz-n.fz[r]*1.5;Math.random()<e*22&&t.vfx.norm.spawn({x:i+k.range(-.3,.3),y:this.by+.9,z:a+k.range(-.3,.3),vy:k.range(1.5,3),life:.9,size:.8,endSize:2,color:15266036,shape:A.Soft}),t.vfx.staticRing(this.bx,this.by+.1,this.bz,2.8,10148095,.7);let o=t.time*5;for(let e=0;e<4;e++){let i=o+e/4*Math.PI*2;t.orbitals.push(this.bx+Math.cos(i)*2,this.by+n.hgt[r]+.6,this.bz+Math.sin(i)*2,.6,10148095,A.Star,i,.9)}this.down<=0&&(this.barrierRate=1,this.cd=Math.max(this.cd,1.2),t.vfx.burst(i,this.by+1,a,vP,30,9,A.PixFlame,1.2,.7),t.ui.popup(this.bx,this.by+4,this.bz,c(`¡Reaviva su llama!`),`#ff9a3a`,1),this.fly())}else Math.random()<e*20&&t.vfx.norm.spawn({x:this.bx-n.fx[r]*1.5+k.range(-.2,.2),y:this.by+.8+k.range(0,.4),z:this.bz-n.fz[r]*1.5+k.range(-.2,.2),vy:k.range(1,2.4),life:.45,size:1.2,endSize:.3,color:16777215,shape:A.PixFlame});if(this.power>0){let n=t.time*5;for(let e=0;e<3;e++){let r=n+e/3*Math.PI*2;t.orbitals.push(this.bx+Math.cos(r)*2.3,this.by+1.2+Math.sin(r*2)*.5,this.bz+Math.sin(r)*2.3,1.1,16777215,A.PixDragonFire,r,.6)}Math.random()<e*18&&t.vfx.add.spawn({x:this.bx+k.range(-1.4,1.4),y:this.by+k.range(0,2.6),z:this.bz+k.range(-1.4,1.4),vy:2.5,life:.5,size:.6,endSize:.1,color:yP,shape:A.Twinkle,glow:1})}if(this.flame){let t=this.flame;t.t-=e,t.acc+=e*28;let i=1-t.t/1.4;for(;t.acc>=1;){t.acc--;let e=t.a0+(t.a1-t.a0)*(.5+.5*Math.sin(i*Math.PI*2-Math.PI/2))+k.range(-.06,.06);this.shot(Math.cos(e),Math.sin(e),15,.3,{shape:A.PixFlame,color:16777215,life:1.3})}n.atkAnim[r]=.3,t.t<=0&&(this.flame=null)}if(this.dive){let a=this.dive,o=this.target();if(a.t>0){a.t-=e;let t=o.x-a.x,s=o.z-a.z,c=Math.hypot(t,s)||1,l=Math.min(c,e*Math.min(9.5,Math.max(6,i.speedNow*.9)));a.x+=t/c*l,a.z+=s/c*l,n.x[r]+=(a.x-n.x[r])*Math.min(1,e*3),n.z[r]+=(a.z-n.z[r])*Math.min(1,e*3)}else a.lock-=e;let s=this.groundY(a.x,a.z),c=a.t>0?.6:1;t.vfx.ground.spawn({x:a.x,y:s+.1,z:a.z,life:.05,size:3.8*c+1,endSize:3.8*c+1,color:1052696,shape:A.Soft,glow:0,rot:0}),t.vfx.staticRing(a.x,s+.12,a.z,3.3,a.t>0?16756794:16726586,.9),a.t<=0&&a.lock<=0&&this.land(a.x,a.z)}this.poolHurtT-=e;for(let n=this.pools.length-1;n>=0;n--){let r=this.pools[n];r.t-=e,r.t<=0?this.pools.splice(n,1):(Math.random()<e*5&&t.vfx.groundN.spawn({x:r.x,y:r.y+.1,z:r.z,life:.5,size:r.r*2,endSize:r.r*2,color:6957588,shape:A.Soft,rot:0}),Math.random()<e*8&&t.vfx.norm.spawn({x:r.x+k.range(-r.r,r.r)*.7,y:r.y+.2,z:r.z+k.range(-r.r,r.r)*.7,vy:k.range(1,2.5),life:.5,size:.8,endSize:.2,color:16777215,shape:A.PixFlame}),this.poolHurtT<=0&&(a.x-r.x)**2+(a.z-r.z)**2<r.r*r.r&&a.y-r.y<1&&(this.poolHurtT=.5,this.dead||i.hurt(i.maxHp*.03,`fire`,-1,NaN,NaN,!0,0,this.i)))}for(let n=this.twisters.length-1;n>=0;n--){let r=this.twisters[n];if(r.t-=e,r.hitT-=e,r.t<=0||this.dead){this.twisters.splice(n,1),t.vfx.burst(r.x,this.groundY(r.x,r.z)+1,r.z,vP,20,8,A.PixFlame,1,.6);continue}let o=this.target(),s=o.x-r.x,c=o.z-r.z,l=Math.hypot(s,c)||1;r.x+=s/l*2.8*e,r.z+=c/l*2.8*e;let u=this.groundY(r.x,r.z);for(let e=0;e<4;e++){let n=k.range(.2,5.2),i=.8+n*.4,a=t.time*9+n*1.3+e*1.6;t.vfx.norm.spawn({x:r.x+Math.cos(a)*i,y:u+n,z:r.z+Math.sin(a)*i,vx:-Math.sin(a)*4,vz:Math.cos(a)*4,life:.35,size:1.2+n*.3,endSize:1.6+n*.3,color:16777215,shape:A.PixFlame})}for(let e=.6;e<5.4;e+=1.4)t.vfx.norm.spawn({x:r.x,y:u+e,z:r.z,life:.08,size:1.6+e*.9,endSize:1.6+e*.9,color:16742970,shape:A.PixTornado,rot:t.time*8+e});t.vfx.staticRing(r.x,u+.1,r.z,2.2,16738858,.8),t.vfx.staticRing(r.x,u+.1,r.z,14,16756794,.18);let d=Math.hypot(a.x-r.x,a.z-r.z);if(d<14&&d>.3&&!this.dead){let t=22*(1-d/14)+6;i.kx+=(r.x-a.x)/d*t*e,i.kz+=(r.z-a.z)/d*t*e}d<2.3&&r.hitT<=0&&this.playerLow(this.groundY(a.x,a.z),4.5)&&(r.hitT=1.1,this.hurt(1,.1,`fire`))}this.down<=0&&Math.random()<e*8&&t.vfx.add.spawn({x:this.bx+k.range(-1.8,1.8),y:this.by+k.range(.5,2.5),z:this.bz+k.range(-1.8,1.8),vy:-.6,life:.7,size:.35,endSize:0,color:vP,shape:A.Twinkle,glow:1}),this.phase>=3&&this.immune<=0&&this.down<=0&&!this.dive&&!this.ultBusy&&(!o||o.floodState===`rest`?(this.ultT-=e,o&&(o.hold=this.ultT<5),this.ultT<=0&&this.lock<=0&&(this.ultT=14,this.ultimate())):o&&(o.hold=!1))}"
+      },
+      {
+        "name": "$1h8f0oz",
+        "code": "$1h8f0oz(e){let t=this.run,n=this.E,r=this.i;this.flame=null,this.dive=null,this.pools.length=0,this.twisters.length=0,this.down=0,this.daze=0,this.stuck=0,this.power=0,this.ultBusy=!1,this.barrierRate=1,n.alt[r]=2.4,this.S&&(this.S.lure=!1,this.S.hold=!1);for(let n=0;n<3;n++)t.later(n*.2,()=>t.vfx.ring(this.bx,this.by-1,this.bz,6+n*7,e===2?16765034:vP,.7));for(let e=0;e<36;e++){let e=k.range(0,Math.PI*2),n=k.range(4,10);t.vfx.norm.spawn({x:this.bx,y:this.by+1,z:this.bz,vx:Math.cos(e)*n,vy:k.range(2,6),vz:Math.sin(e)*n,drag:2,life:.7,size:1.5,endSize:.4,color:16777215,shape:A.PixFlame})}e===2&&(this.speed=5.8),e===3&&(this.ultT=12,this.speed=6.2)}"
+      },
+      {
+        "name": "render",
+        "code": "render(){this.run.enemies.scale[this.i]=2.8}"
+      }
+    ]
+  },
+  {
+    "owner": "EP",
+    "methods": [
+      {
+        "name": "constructor",
+        "code": "constructor(e,t){super(e,t),D(this,`float`,!0),D(this,`phaseNames`,[c(`El Pokémon Genético`),c(`Clones`),c(`Psicoataque`)]),D(this,`phaseColor`,`#c08aff`),D(this,`band`,[9,15]),D(this,`speed`,6.2),D(this,`fade`,1),D(this,`down`,0),D(this,`stagger`,0),D(this,`conc`,0),D(this,`calm`,0),D(this,`ghosts`,[]),D(this,`blades`,[]),D(this,`ball`,null),D(this,`lift`,null),D(this,`clones`,[]),D(this,`ult`,null),D(this,`ultT`,12),D(this,`sinceBall`,1),D(this,`tipShown`,!1),D(this,`armorPop`,0),D(this,`cloneSpecies`,0),D(this,`cloneTypes`,[]),D(this,`next`,``),this.E.alt[t]=1.7}"
+      },
+      {
+        "name": "S",
+        "code": "get S(){let e=this.run.sanctuary;return e&&`shield`in e?e:null}"
+      },
+      {
+        "name": "hitMul",
+        "code": "hitMul(){return this.down>0?1.8:this.stagger>0?1.6:this.S?.shieldUp?(this.armorPop<=0&&(this.armorPop=1,this.run.ui.popup(this.bx,this.by+5,this.bz,c(`¡Escudo mental!`),`#ff9ae8`,.85)),.2):this.liveClones()>0?(this.armorPop<=0&&(this.armorPop=1,this.run.ui.popup(this.bx,this.by+5,this.bz,c(`¡Los clones lo protegen!`),`#c8a0ff`,.85)),.6):this.conc>0?1.4:1}"
+      },
+      {
+        "name": "hurt",
+        "code": "hurt(e,t=0,n=`psychic`){super.hurt(e*(this.calm>0?1.25:1),t,n)}"
+      },
+      {
+        "name": "knockDown",
+        "code": "knockDown(e,t,n){if(this.dead)return;let r=this.run,i=this.E,a=this.i,o=this.down>0;this.down=Math.max(this.down,e),this.lock=e,this.barrierRate=2.5,this.cd=e+.5,this.ball=null,this.lift=null,this.blades=[],this.ult=null,this.stagger=0,this.conc=0,i.alt[a]=0,i.y[a]=this.groundY(i.x[a],i.z[a])+.4,r.cry(this.species),r.shake(.7),r.$qjipep(.2),o||r.meta.count(`mewtwoDown`,1),r.ui.banner(t,n,`#ff9ae8`,{species:this.species}),r.vfx.burst(i.x[a],i.y[a]+1.5,i.z[a],CP,46,13,A.PixSparkle,.9,.8),r.vfx.flash(i.x[a],i.y[a]+1.5,i.z[a],16777215,8,.25),r.vfx.dust(i.x[a],i.y[a],i.z[a],9079466,20,8),r.vfx.ring(i.x[a],i.y[a],i.z[a],10,SP,.6)}"
+      },
+      {
+        "name": "onTeam",
+        "code": "onTeam(e,t){e===`mw-down`?this.down<=0&&this.knockDown(t.b?9:6.5,c(`¡Su propia Bola Sombra!`),c(`Mewtwo cae aturdido: ¡ahora recibe mucho más daño!`)):e===`mw-pylon`&&this.S?.teamPylon(Number(t.i))}"
+      },
+      {
+        "name": "overload",
+        "code": "overload(){this.knockDown(6,c(`¡Mewtwo se desploma!`),c(`Sin su escudo recibe mucho más daño`))}"
+      },
+      {
+        "name": "attack",
+        "code": "attack(){if(this.down>0||this.ball||this.lift||this.ult||this.stagger>0)return .4;let e=this.phase,t=this.calm>0?.78:1,n=this.next;if(this.next=``,!n){let t=[`cut`,`lift`,`orbs`,`shadow`,`blink`,`calm`];e>=2&&t.push(`cut`,`blink`,`clones`),e>=3&&t.push(`spikes`,`spikes`,`lift`),n=this.sinceBall>=3||this.sinceBall>=2&&k.chance(.4)?`ball`:this.pick(t),n===`clones`&&(this.liveClones()>0||this.S?.shieldUp)&&(n=`cut`),n===`calm`&&this.calm>0&&(n=`orbs`)}switch(this.sinceBall=n===`ball`?0:this.sinceBall+1,n){case`ball`:return this.bolaSombra(!1)*t;case`cut`:return this.psychoCut()*t;case`lift`:return this.telekinesis()*t;case`orbs`:return this.auraSphere()*t;case`shadow`:return this.shadowLob()*t;case`blink`:return this.blinkStrike()*t;case`clones`:return this.cloneYou()*t;case`spikes`:return this.psychoSpears()*t;default:return this.calmMind()}}"
+      },
+      {
+        "name": "bolaSombra",
+        "code": "bolaSombra(e){let t=this.run,n=e?3:this.phase===1?2:3;return this.lock=e?1.6:1.25,this.E.atkAnim[this.i]=this.lock,this.ball={st:`charge`,x:this.bx,y:this.by+2.2,z:this.bz,vx:0,vz:0,speed:e?10:this.phase>=3?12:9.5,returns:0,need:n,size:e?1.9:1,t:0,hint:!1,mul:e?3:2.2,turn:this.phase>=3?1.7:1.4,life:0},t.ui.popup(this.bx,this.by+5,this.bz,c(e?`¡Bola Sombra gigante!`:`¡Bola Sombra!`),`#b080ff`,1),t.audio.power(),this.tipShown||(this.tipShown=!0,t.ui.toast(c(`Desliza (la tecla de esquivar) justo cuando el aro se ponga dorado para devolverle la bola`),null)),3.2}"
+      },
+      {
+        "name": "deflect",
+        "code": "deflect(e){let t=this.run,n=t.player,r=n.pos;e.st=`toBoss`,e.returns++,e.speed*=1.22,e.hint=!1,e.t=0,n.iframes=Math.max(n.iframes,.35),t.$qjipep(.09),t.shake(.45,e.x,e.z),t.ui.popup(r.x,r.y+2.6,r.z,c(`¡Devuelta!`),`#ffe08a`,1.2,!0),t.vfx.flash(e.x,e.y,e.z,16777215,6,.2),t.vfx.burst(e.x,e.y,e.z,TP,24,11,A.PixSparkle,.8,.5),t.vfx.ring(e.x,e.y-1,e.z,5,TP,.35),t.audio.boom(.6),t.audio.shot(`psychic`,.9);let i=this.bx-e.x,a=this.bz-e.z,o=Math.hypot(i,a)||1;e.vx=i/o*e.speed,e.vz=a/o*e.speed}"
+      },
+      {
+        "name": "tickBall",
+        "code": "tickBall(e){let t=this.ball;if(!t)return;let n=this.run,r=n.player,i=r.pos,a=this.groundY(i.x,i.z);t.t+=e,t.life+=e;let o=.95*t.size;if(t.st===`charge`){t.x=this.bx,t.z=this.bz,t.y=this.by+2.3;let e=Math.min(1,t.t/this.lock);if(n.orbitals.push(t.x,t.y,t.z,(.6+1.7*e)*t.size,wP,A.Soft,0,1),n.orbitals.push(t.x,t.y,t.z,(.3+.9*e)*t.size,16777215,A.Soft,0,.6),Math.random()<.8){let e=k.range(0,Math.PI*2),r=3.5*t.size;n.vfx.add.spawn({x:t.x+Math.cos(e)*r,y:t.y+k.range(-1.5,1.5),z:t.z+Math.sin(e)*r,vx:-Math.cos(e)*r*2.2,vz:-Math.sin(e)*r*2.2,life:.45,size:.5,endSize:.1,color:SP,shape:A.PixSparkle,glow:1})}let r=i.x-t.x,o=i.z-t.z,s=Math.hypot(r,o)||1;n.vfx.staticRing(i.x,a+.1,i.z,1.6+3.2*(1-e),SP,.35+.4*e),t.t>=this.lock&&(this.lock=0,t.st=`toPlayer`,t.t=0,t.vx=r/s*t.speed,t.vz=o/s*t.speed,n.audio.shot(`psychic`,1),n.vfx.ring(t.x,this.by,t.z,6,SP,.4));return}let s=t.st===`toPlayer`?i.x:this.bx,l=t.st===`toPlayer`?i.z:this.bz,u=t.st===`toPlayer`?i.y+1.1:this.by+1.8,d=Math.atan2(l-t.z,s-t.x),f=Math.atan2(t.vz,t.vx),p=d-f;for(;p>Math.PI;)p-=Math.PI*2;for(;p<-Math.PI;)p+=Math.PI*2;let m=t.st===`toBoss`?4:t.turn;f+=ad(p,-m*e,m*e),t.vx=Math.cos(f)*t.speed,t.vz=Math.sin(f)*t.speed,t.x+=t.vx*e,t.z+=t.vz*e,t.y+=(u-t.y)*Math.min(1,e*4);let h=t.st===`toBoss`?TP:wP,g=Math.hypot(s-t.x,l-t.z);n.orbitals.push(t.x,t.y,t.z,2.5*t.size,h,A.Soft,0,1),n.orbitals.push(t.x,t.y,t.z,1.2*t.size,16777215,A.Soft,0,.7),n.orbitals.push(t.x,t.y,t.z,3*t.size,SP,A.Swirl,n.time*9,.7);for(let e=0;e<2;e++)n.vfx.add.spawn({x:t.x+k.range(-o,o),y:t.y+k.range(-o,o),z:t.z+k.range(-o,o),life:.35,size:.7*t.size,endSize:.1,color:t.st===`toBoss`?16773296:CP,shape:A.PixSparkle,glow:.8});if(t.st===`toPlayer`){let e=ad((g-3)/9,0,1),o=g<10;n.vfx.staticRing(i.x,a+.1,i.z,1.5+e*4.5,o?TP:SP,o?.95:.5);for(let e=2;e<g;e+=2.2){let r=e/g;n.orbitals.push(t.x+(i.x-t.x)*r,a+.3,t.z+(i.z-t.z)*r,.4,o?TP:SP,A.Soft,0,.9)}if(o&&!t.hint&&(t.hint=!0,n.ui.popup(i.x,i.y+3,i.z,c(`¡DESLIZA!`),`#ffe08a`,1.15,!0),n.audio.alarm(),n.shake(.12)),g<(r.slideT>0?3.4:0)&&Math.abs(i.y+1-t.y)<2.6){this.deflect(t);return}if(g<1.2+r.radius){n.vfx.flash(t.x,t.y,t.z,16777215,8,.25),n.vfx.burst(t.x,t.y,t.z,wP,40,12,A.Swirl,.9,.7),n.vfx.ring(t.x,a,t.z,6*t.size,wP,.5),n.audio.boom(.9),n.shake(.6),this.hurt(t.mul,.16,`psychic`),n.ui.popup(i.x,i.y+2.8,i.z,c(`¡Falló la devolución!`),`#c8a0ff`,.9),this.ball=null;return}t.life>9&&this.fizzle(t)}else if(g<2.6){if(t.returns<t.need){t.st=`toPlayer`,t.t=0,t.speed*=1.1,t.hint=!1;let e=i.x-t.x,r=i.z-t.z,a=Math.hypot(e,r)||1;t.vx=e/a*t.speed,t.vz=r/a*t.speed,this.E.atkAnim[this.i]=.4,this.E.flash[this.i]=.6,n.vfx.flash(t.x,t.y,t.z,16777215,5,.18),n.vfx.burst(t.x,t.y,t.z,CP,16,9,A.PixSparkle,.7,.4),n.vfx.ring(t.x,t.y-1,t.z,4,CP,.3),n.ui.popup(this.bx,this.by+5,this.bz,c(`¡Mewtwo la devuelve!`),`#ff9ae8`,.95),n.audio.shot(`psychic`,.9),n.$qjipep(.05)}else{let e=t.size>1.5,r=this.E,i=this.i;n.vfx.flash(t.x,t.y,t.z,16777215,10,.3),n.vfx.burst(t.x,t.y,t.z,TP,50,14,A.PixSparkle,1,.8),n.audio.boom(1),r.hp[i]-=r.maxHp[i]*(e?.05:.03),r.flash[i]=1,this.clampHp(),n.vfx.number(this.bx,this.by+4,this.bz,r.maxHp[i]*(e?.05:.03),TP,2),n.meta.count(`mewtwoBall`,1),this.ball=null,this.run.coop?.world(`mw-down`,{b:+!!e}),this.knockDown(e?9:6.5,c(`¡Su propia Bola Sombra!`),c(`Mewtwo cae aturdido: ¡ahora recibe mucho más daño!`))}}else t.life>12&&this.fizzle(t)}"
+      },
+      {
+        "name": "fizzle",
+        "code": "fizzle(e){this.run.vfx.burst(e.x,e.y,e.z,SP,14,6,A.PixSparkle,.6,.4),this.ball=null}"
+      },
+      {
+        "name": "psychoCut",
+        "code": "psychoCut(){let e=this.run,t=this.phase===1?3:this.phase===2?5:7,n=e.player.pos,r=this.aimAt(n.x,n.z),i=Math.atan2(r.z,r.x);this.E.atkAnim[this.i]=.6,this.lock=.5;for(let e=0;e<t;e++){let n=i+(e-(t-1)/2)*(.7/Math.max(1,t-1)*2);this.blades.push({x:this.bx,z:this.bz,dx:Math.cos(n),dz:Math.sin(n),st:`out`,t:0,dist:0,range:14+e%2*4,hit:!1,rot:k.range(0,6)})}return e.ui.popup(this.bx,this.by+5,this.bz,c(`¡Psicocorte!`),`#d08aff`,1),e.audio.slash(`psychic`),e.vfx.ring(this.bx,this.by,this.bz,5,SP,.35),2.8}"
+      },
+      {
+        "name": "tickBlades",
+        "code": "tickBlades(e){let t=this.run,n=t.player.pos,r=this.groundY(n.x,n.z);for(let i of this.blades){if(i.t+=e,i.rot+=e*(i.st===`hold`?26:15),i.st===`out`){let t=21*e;i.x+=i.dx*t,i.z+=i.dz*t,i.dist+=t,i.dist>=i.range&&(i.st=`hold`,i.t=0,i.hit=!1)}else if(i.st===`hold`)i.t>.28&&(i.st=`back`,i.t=0,i.hit=!1,t.audio.whoosh());else{let n=this.bx-i.x,r=this.bz-i.z,a=Math.hypot(n,r)||1,o=Math.min(a,(24+i.t*12)*e);i.x+=n/a*o,i.z+=r/a*o,a<1.8&&(i.st=`out`,i.dist=999,i.t=-1,t.vfx.burst(i.x,this.by+1.4,i.z,SP,6,4,A.PixSparkle,.4,.3))}if(i.t<0)continue;let a=this.groundY(i.x,i.z)+1.3;t.orbitals.push(i.x,a,i.z,2.6,i.st===`hold`?16777215:SP,A.Crescent,i.rot,1),t.orbitals.push(i.x,a,i.z,4,CP,A.Soft,0,.5),Math.random()<.7&&t.vfx.add.spawn({x:i.x,y:a,z:i.z,life:.3,size:.8,endSize:0,color:CP,shape:A.Crescent,rot:i.rot,glow:.9}),!i.hit&&!this.dead&&Math.hypot(n.x-i.x,n.z-i.z)<1.2+t.player.radius&&n.y-r<1.7&&(i.hit=!0,this.hurt(.8,.06,`psychic`),t.vfx.burst(i.x,a,i.z,SP,10,6,A.PixSparkle,.5,.4)),Math.hypot(i.x,i.z)>47&&(i.st=`back`,i.hit=!1)}this.blades=this.blades.filter(e=>!(e.dist===999&&e.t<0)&&!this.dead)}"
+      },
+      {
+        "name": "telekinesis",
+        "code": "telekinesis(){let e=this.run,t=e.player.pos,n=this.phase,r=2.1;this.lift={t:0,dur:r,ty:this.groundY(t.x,t.z)+3.4},this.lock=2.5,this.E.atkAnim[this.i]=1.4,e.ui.popup(this.bx,this.by+5,this.bz,c(`¡Telequinesis!`),`#d08aff`,1.05),e.audio.power();let i=k.range(0,Math.PI),a=n>=3?4:3,o=t.x+k.range(-1,1),s=t.z+k.range(-1,1);for(let e=0;e<a;e++){let t=i+e/a*Math.PI+k.range(-.1,.1),n=Math.cos(t)*30,r=Math.sin(t)*30;this.line(o-n,s-r,o+n,s+r,1.3,2.4+e*.28,1.35,SP,!1,A.Crescent)}return n>=2&&e.later(r*.6,()=>{!this.dead&&this.lift&&this.ringShots(10,9,.45,k.range(0,1),{shape:A.PixSparkle,color:CP,type:`psychic`})}),3.6}"
+      },
+      {
+        "name": "tickLift",
+        "code": "tickLift(e){let t=this.lift;if(!t)return;let n=this.run,r=n.player,i=r.pos;t.t+=e,r.vel.y=ad((t.ty-i.y)*7,-6,9),r.grounded=!1,r.arenaSlow=Math.min(r.arenaSlow,.6),n.vfx.beams.spawn(this.bx,this.by+1.8,this.bz,i.x,i.y+.8,i.z,.35,SP,.06,.8);for(let e=0;e<3;e++){let t=n.time*6+e/3*Math.PI*2;n.orbitals.push(i.x+Math.cos(t)*1.1,i.y+.6+Math.sin(n.time*3+e)*.5,i.z+Math.sin(t)*1.1,.7,CP,A.PixSparkle,t,.9)}n.vfx.staticRing(i.x,this.groundY(i.x,i.z)+.1,i.z,1.2,16777215,.5),t.t>=t.dur&&(this.lift=null,n.ui.popup(i.x,i.y+2.6,i.z,c(`¡Cae sobre un hueco!`),`#ffe08a`,.9))}"
+      },
+      {
+        "name": "auraSphere",
+        "code": "auraSphere(){let e=this.run,t=this.phase>=3?5:3;for(let n=0;n<4;n++)e.later(.2+n*.5,()=>{if(this.dead||this.down>0)return;let r=e.player.pos,i=this.aimAt(r.x,r.z),a=Math.atan2(i.z,i.x);for(let e=0;e<t;e++){let r=a+(e-(t-1)/2)*.32+n%2*.15;this.shot(Math.cos(r),Math.sin(r),8.5,.5,{homing:!0,color:9109503,shape:A.Soft,size:1.5,life:4.2,type:`psychic`})}this.E.atkAnim[this.i]=.4,e.audio.shot(`psychic`,.6)});return e.ui.popup(this.bx,this.by+5,this.bz,c(`¡Aura Esfera!`),`#8affff`,1),3.2}"
+      },
+      {
+        "name": "shadowLob",
+        "code": "shadowLob(){let e=this.run,t=e.player.pos,n=e.player.vel,r=2+this.phase;for(let i=0;i<r;i++){let r=t.x+(i===0?n.x*.9:k.range(-8,8)),a=t.z+(i===0?n.z*.9:k.range(-8,8)),o={x:r,z:a};e.sanctuary?.confine(r,a,2,o);let s=this.bx,c=this.bz,l=this.by+2,u=this.groundY(o.x,o.z),d=1.15+i*.14;e.later(i*.12,()=>{this.dead||(e.animate(d,t=>{let n=s+(o.x-s)*t,r=c+(o.z-c)*t,i=l+(u-l)*t+Math.sin(t*Math.PI)*6;e.orbitals.push(n,i,r,1.8,wP,A.Soft,0,1),e.orbitals.push(n,i,r,.8,16777215,A.Soft,0,.6),e.vfx.add.spawn({x:n,y:i,z:r,life:.3,size:.7,endSize:0,color:SP,shape:A.PixSparkle,glow:.8})}),this.circle(o.x,o.z,3.4,d,1.5,wP,A.Swirl))})}return this.E.atkAnim[this.i]=.6,e.audio.shot(`ghost`,.7),e.ui.popup(this.bx,this.by+5,this.bz,c(`¡Bola Sombra!`),`#b080ff`,1),3}"
+      },
+      {
+        "name": "blinkTo",
+        "code": "blinkTo(e,t,n){let r=this.run,i=this.E,a=this.i;this.lock=Math.max(this.lock,.5),this.ghosts.push({x:this.bx,y:this.by,z:this.bz,t:.55,dir:r.sprites.dirRow(r.player.pos.x-this.bx,r.player.pos.z-this.bz)}),r.vfx.burst(this.bx,this.by+1.2,this.bz,SP,18,8,A.PixSparkle,.6,.4),r.vfx.ring(this.bx,this.by-1,this.bz,3,SP,.3),r.audio.whoosh(),r.animate(.14,e=>{this.fade=1-e},()=>{if(this.dead)return;let o={x:e,z:t};r.sanctuary?.confine(e,t,2.5,o),i.x[a]=o.x,i.z[a]=o.z,i.y[a]=r.terrain.surface(o.x,o.z)+1.1,i.vx[a]=i.vz[a]=i.kx[a]=i.kz[a]=0,r.vfx.ring(o.x,i.y[a]-1,o.z,4,CP,.35),r.animate(.12,e=>{this.fade=e},()=>{this.fade=1,n?.()})})}"
+      },
+      {
+        "name": "blinkStrike",
+        "code": "blinkStrike(){let e=this.run,t=this.phase>=2?2:1,n=this.phase>=3?.45:.62,r=t=>{if(this.dead)return;let i=e.player.pos,a=e.player.vel,o=Math.hypot(a.x,a.z)>2?Math.atan2(a.z,a.x)+k.range(-.5,.5):k.range(0,Math.PI*2);this.blinkTo(i.x+Math.cos(o)*5,i.z+Math.sin(o)*5,()=>{this.E.atkAnim[this.i]=.6,this.circle(this.bx,this.bz,4.6,n,1.6,SP,A.Swirl,()=>{this.ringShots(this.phase>=3?14:10,11,.5,k.range(0,1),{shape:A.PixSparkle,color:16777215,type:`psychic`}),t>1&&e.later(.2,()=>r(t-1))})})};return this.lock=1.3,r(t),e.ui.popup(this.bx,this.by+5,this.bz,c(`¡Psicoimpacto!`),`#d08aff`,1),2.7+(t-1)*1.1}"
+      },
+      {
+        "name": "calmMind",
+        "code": "calmMind(){let e=this.run;this.lock=1.6,this.conc=1.6,this.calm=8.6,this.E.atkAnim[this.i]=1.6,e.ui.popup(this.bx,this.by+5,this.bz,c(`¡Paz Mental!`),`#8affff`,1.05),e.audio.power();for(let t=0;t<3;t++)e.later(t*.5,()=>e.vfx.ground.spawn({x:this.bx,y:this.groundY(this.bx,this.bz)+.15,z:this.bz,life:.7,size:16,endSize:2,color:9109503,shape:A.Ring,glow:.05,rot:0}));return 2.4}"
+      },
+      {
+        "name": "liveClones",
+        "code": "liveClones(){let e=this.E;return this.clones.reduce((t,n)=>t+(e.gen[n.j]===n.g&&e.alive[n.j]&&e.dying[n.j]<=0?1:0),0)}"
+      },
+      {
+        "name": "cloneYou",
+        "code": "cloneYou(){let e=this.run,t=this.E,n=e.player.pos,r=this.phase>=3?3:2;this.cloneSpecies=e.player.speciesId,this.cloneTypes=e.player.types.slice(),e.sprites.get(this.cloneSpecies),this.lock=1.5,t.atkAnim[this.i]=1.5,e.ui.banner(c(`¡Clonación!`),c(`Mewtwo copia a tu Pokémon: destruye a los clones`),`#c8a0ff`,{species:this.cloneSpecies}),e.audio.alarm();let i=k.range(0,Math.PI*2);for(let a=0;a<r;a++){let o=i+a/r*Math.PI*2,s={x:n.x+Math.cos(o)*11,z:n.z+Math.sin(o)*11};e.sanctuary?.confine(s.x,s.z,3,s),e.later(.5+a*.3,()=>{if(this.dead)return;let n=t.spawn(this.cloneSpecies,s.x,s.z,1,0,N.Object);n<0||(t.hp[n]=t.maxHp[n]=Math.max(1,t.maxHp[this.i]*.04),t.dmg[n]=0,t.speed[n]=0,t.xp[n]=0,t.radius[n]=1.1,t.hgt[n]=2.2,t.sized[n]=1,t.y[n]=this.groundY(s.x,s.z),this.clones.push({j:n,g:t.gen[n],x:s.x,z:s.z,shotT:k.range(1.2,2.2),spawn:0,orbit:k.chance(.5)?1:-1}),e.vfx.beams.spawn(this.bx,this.by+1.8,this.bz,s.x,t.y[n]+1,s.z,.5,SP,.5,.8),e.vfx.burst(s.x,t.y[n]+1,s.z,SP,30,9,A.PixSparkle,.7,.6),e.vfx.ring(s.x,t.y[n],s.z,5,CP,.5),e.vfx.flash(s.x,t.y[n]+1,s.z,16777215,5,.2),e.audio.shot(`psychic`,.8))})}return 4.5}"
+      },
+      {
+        "name": "tickClones",
+        "code": "tickClones(e){if(!this.clones.length)return;let t=this.run,n=this.E,r=t.player.pos,i=t.sanctuary,a=0;for(let o of this.clones){if(!(n.gen[o.j]===o.g&&n.alive[o.j]&&n.dying[o.j]<=0)){o.spawn>=0&&(o.spawn=-1,t.vfx.burst(o.x,n.y[o.j]+1,o.z,SP,28,10,A.PixSparkle,.8,.6),t.vfx.ring(o.x,n.y[o.j],o.z,4,CP,.4),t.audio.shot(`psychic`,.7),t.ui.popup(o.x,n.y[o.j]+3,o.z,c(`¡Clon destruido!`),`#c8a0ff`,.9));continue}a++,o.spawn=Math.min(1,o.spawn+e*1.2);let s=r.x-o.x,l=r.z-o.z,u=Math.hypot(s,l)||1,d=u>9?1:u<5.5?-.8:0,f=s/u*d+-l/u*o.orbit*.8,p=l/u*d+s/u*o.orbit*.8,m=Math.hypot(f,p)||1;f/=m,p/=m;let h=4.8*Math.min(1,o.spawn+.3);if(o.x+=f*h*e,o.z+=p*h*e,i){let e={x:o.x,z:o.z};i.confine(o.x,o.z,3,e),o.x=e.x,o.z=e.z}if(n.x[o.j]=o.x,n.z[o.j]=o.z,n.y[o.j]=this.groundY(o.x,o.z),o.shotT-=e,o.shotT<=0&&o.spawn>=1&&this.down<=0){o.shotT=k.range(1.5,2.3);let e=this.cloneTypes[0]??`psychic`,i=Math.atan2(l,s);t.projectiles.$6pcfex(this.i,s/u,l/u);for(let a of this.phase>=3?[-.18,.18]:[0])t.projectiles.fire({x:o.x,y:n.y[o.j]+1.1,z:o.z,dx:Math.cos(i+a),dy:(r.y+.8-n.y[o.j]-1.1)/u,dz:Math.sin(i+a),speed:12,life:3,radius:.5,dmg:n.dmg[this.i]*.42,type:e,cls:`special`,flags:1025,size:1.3,shape:Qg(e),color:12089599,from:this.i});t.vfx.flash(o.x,n.y[o.j]+1.1,o.z,12089599,2,.12),t.audio.shot(e,.5)}Math.random()<e*14&&t.vfx.add.spawn({x:o.x+k.range(-.7,.7),y:n.y[o.j]+k.range(.2,2.2),z:o.z+k.range(-.7,.7),vy:1.2,life:.6,size:.4,endSize:0,color:Math.random()<.5?SP:6961832,shape:A.Twinkle,glow:.9}),t.vfx.beams.spawn(this.bx,this.by+1.8,this.bz,o.x,n.y[o.j]+1.1,o.z,.12,SP,.05,.5)}a||(this.clones=[],!this.dead&&this.down<=0&&(this.stagger=3.5,this.lock=Math.max(this.lock,3.5),this.barrierRate=2,t.ui.banner(c(`¡Vínculo roto!`),c(`Sin sus clones, Mewtwo se tambalea: ¡golpéalo!`),`#c8a0ff`,{species:this.species}),t.$qjipep(.12),t.shake(.5),t.vfx.ring(this.bx,this.by,this.bz,9,SP,.5),t.vfx.burst(this.bx,this.by+1.5,this.bz,SP,30,10,A.PixSparkle,.8,.6),n.hp[this.i]-=n.maxHp[this.i]*.02,n.flash[this.i]=1,this.clampHp()))}"
+      },
+      {
+        "name": "killClones",
+        "code": "killClones(){let e=this.E;for(let t of this.clones)e.gen[t.j]===t.g&&e.alive[t.j]&&e.kill(t.j);this.clones=[]}"
+      },
+      {
+        "name": "psychoSpears",
+        "code": "psychoSpears(){let e=this.run,t=e.player.pos,n=this.aimAt(t.x,t.z),r=ad(n.d+14,18,36);this.E.atkAnim[this.i]=.8,this.lock=1.1;let i=k.range(-.5,.5);for(let t=0;t<9;t++){let a=3+t/8*(r-3),o=Math.sin(t*1.3+i)*2.2,s=this.bx+n.x*a-n.z*o,c=this.bz+n.z*a+n.x*o,l={x:s,z:c};e.sanctuary?.confine(s,c,2,l),this.circle(l.x,l.z,2.5,.9+t*.11,1.15,CP,A.Shard,()=>e.vfx.burst(l.x,this.groundY(l.x,l.z)+1,l.z,16765172,10,8,A.Shard,.6,.6,12))}return e.ui.popup(this.bx,this.by+5,this.bz,c(`¡Psicolanza!`),`#ff9ae8`,1),e.audio.power(),3}"
+      },
+      {
+        "name": "ultimate",
+        "code": "ultimate(){let e=this.run,t=this.E,n=this.i,r=this.S;this.lock=99,this.cd=3,this.lift=null,this.blades=[],this.ult={t:0,stage:`rise`,dir:k.chance(.5)?1:-1,hitCd:0,wave:0,waveHit:!1},t.alt[n]=7,this.blinkTo(0,-1),e.ui.banner(c(`¡Psicoataque!`),c(`Sigue los huecos entre los rayos y salta la onda final`),`#ff5a8a`,{species:this.species}),e.audio.alarm(),r&&(r.spireA=k.range(0,Math.PI),r.spireSet(!0))}"
+      },
+      {
+        "name": "tickUlt",
+        "code": "tickUlt(e){let t=this.ult;if(!t)return;let n=this.run,r=this.E,i=this.i,a=this.S,o=n.player.pos,s=n.player;t.t+=e,t.hitCd-=e;let l=this.groundY(0,0)+2.6;t.stage!==`ball`&&(r.x[i]+=(0-r.x[i])*Math.min(1,e*3),r.z[i]+=(-1-r.z[i])*Math.min(1,e*3),this.lock=99,r.atkAnim[i]=.3);let u=t.stage===`star`;if(t.stage===`rise`){a&&(a.spireA+=t.dir*e*.2);for(let e=0;e<6;e++){let t=a?.spirePos(e).a??e/6*Math.PI*2;for(let e=4;e<46;e+=2.6)Math.random()<.18&&n.vfx.ground.spawn({x:Math.cos(t)*e,y:this.groundY(Math.cos(t)*e,Math.sin(t)*e)+.13,z:Math.sin(t)*e,life:.12,size:1.4,endSize:1.4,color:CP,shape:A.Soft,glow:0,rot:0})}t.t>2.1&&(t.stage=`star`,t.t=0,n.audio.boom(.9),n.shake(.5))}else if(u){let r=.5*t.dir;a&&(a.spireA+=r*e);for(let e=0;e<6;e++){let r=a?a.spirePos(e).a:e/6*Math.PI*2,i=Math.cos(r)*46,c=Math.sin(r)*46,u=a?a.spirePos(e).x:Math.cos(r)*24,d=a?a.spirePos(e).z:Math.sin(r)*24,f=this.groundY(u,d)+8;n.vfx.beams.spawn(u,f,d,0,l,0,.7,SP,.06),n.vfx.beams.spawn(u,f,d,0,l,0,.25,16777215,.06);let p=this.groundY(i,c)+.9;if(n.vfx.beams.spawn(0,l,0,i,p,c,1.7,CP,.06),n.vfx.beams.spawn(0,l,0,i,p,c,.55,16777215,.06),Math.random()<.7){let e=k.range(3,45);n.vfx.add.spawn({x:Math.cos(r)*e,y:this.groundY(Math.cos(r)*e,Math.sin(r)*e)+.8,z:Math.sin(r)*e,vy:k.range(1,4),life:.4,size:.6,endSize:0,color:16765172,shape:A.PixSparkle,glow:.9})}let m=o.x*Math.cos(r)+o.z*Math.sin(r),h=Math.abs(-o.x*Math.sin(r)+o.z*Math.cos(r));t.hitCd<=0&&m>-.5&&h<1.3+s.radius&&o.y-this.groundY(o.x,o.z)<1.7&&(t.hitCd=.6,this.hurt(1.6,.2,`psychic`),n.vfx.burst(o.x,o.y+1,o.z,16765172,12,8,A.PixSparkle,.6,.4))}n.vfx.add.spawn({x:0,y:l,z:0,life:.1,size:5+Math.sin(n.time*20),endSize:5,color:CP,shape:A.Soft,glow:1}),t.t>5.2&&(t.stage=`wave`,t.t=0,t.wave=2,t.waveHit=!1,a?.spireSet(!1),n.vfx.flash(0,l,0,16777215,12,.3),n.shake(.9),n.audio.boom(1),n.$qjipep(.1),n.ui.popup(o.x,o.y+3,o.z,c(`¡Salta la onda!`),`#ffe08a`,1.1,!0))}else if(t.stage===`wave`){let a=t.wave;t.wave+=e*17;let s=this.groundY(0,0);if(n.vfx.staticRing(0,s+.15,0,t.wave,16765172,1),n.vfx.staticRing(0,s+.15,0,Math.max(.1,t.wave-1.4),SP,.6),Math.random()<.8){let e=k.range(0,Math.PI*2);n.vfx.add.spawn({x:Math.cos(e)*t.wave,y:s+.6,z:Math.sin(e)*t.wave,vy:2,life:.4,size:.9,endSize:0,color:CP,shape:A.PixSparkle,glow:1})}let l=Math.hypot(o.x-0,o.z-0);!t.waveHit&&l>=a-.8&&l<t.wave+.8&&(t.waveHit=!0,o.y-this.groundY(o.x,o.z)<1.2?this.hurt(1.8,.28,`psychic`):n.ui.popup(o.x,o.y+2.4,o.z,c(`¡Esquivado!`),`#7aff8a`,.9)),t.wave>48&&(t.stage=`ball`,t.t=0,r.alt[i]=1.7,this.lock=.3,n.later(.8,()=>{!this.dead&&this.ult&&this.bolaSombra(!0)}))}else t.stage===`ball`&&t.t>1.4&&!this.ball&&(this.ult=null,this.ultT=16,this.lock=.5,this.cd=2.5,r.alt[i]=this.down>0?0:1.7)}"
+      },
+      {
+        "name": "tick",
+        "code": "tick(e){let t=this.run,n=this.E,r=this.i;if(this.armorPop-=e,this.calm=Math.max(0,this.calm-e),this.conc=Math.max(0,this.conc-e),this.stagger=Math.max(0,this.stagger-e),this.down>0){this.down-=e,n.alt[r]=0,Math.random()<e*14&&t.vfx.lightning(this.bx+k.range(-1.5,1.5),this.by+k.range(.5,3),this.bz+k.range(-1.5,1.5),this.bx+k.range(-1.5,1.5),this.by,this.bz+k.range(-1.5,1.5),CP,.15,3,.1);for(let e=0;e<4;e++){let i=t.time*5+e/4*Math.PI*2;t.orbitals.push(this.bx+Math.cos(i)*2,this.by+n.hgt[r]+.6,this.bz+Math.sin(i)*2,.7,CP,A.Star,i,.9)}this.down<=0&&(this.barrierRate=1,n.alt[r]=1.7,t.ui.popup(this.bx,this.by+4,this.bz,c(`¡Se levanta!`),`#c8a0ff`,1))}this.stagger>0&&this.stagger-e<=0&&(this.barrierRate=1);for(let t of this.ghosts)t.t-=e;if(this.ghosts=this.ghosts.filter(e=>e.t>0),this.band=this.ball&&!this.ult?[17,23]:[9,15],this.tickBlades(e),this.tickBall(e),this.tickLift(e),this.tickClones(e),this.tickUlt(e),this.fade>.5&&this.down<=0){if(Math.random()<e*14){let e=k.range(0,Math.PI*2);t.vfx.add.spawn({x:this.bx+Math.cos(e)*1.8,y:this.by+k.range(.2,3.4),z:this.bz+Math.sin(e)*1.8,vy:1.1,life:.7,size:.4,endSize:0,color:this.calm>0?9109503:Math.random()<.5?SP:CP,shape:A.Twinkle,glow:1})}if(this.phase>=3)for(let e=0;e<5;e++){let n=t.time*1.8+e/5*Math.PI*2;t.orbitals.push(this.bx+Math.cos(n)*2.6,this.by+1.8+Math.sin(n*2)*.5,this.bz+Math.sin(n)*2.6,1,SP,A.Shard,n,.9)}this.calm>0&&t.vfx.staticRing(this.bx,this.by-.4,this.bz,2.8+Math.sin(t.time*6)*.2,9109503,.5)}this.phase>=3&&this.immune<=0&&this.down<=0&&!this.ult&&!this.ball&&(this.ultT-=e,this.ultT<=0&&this.lock<=0&&(this.ultT=16,this.ultimate()))}"
+      },
+      {
+        "name": "$1h8f0oz",
+        "code": "$1h8f0oz(e){let t=this.run,n=this.E,r=this.i;this.ball=null,this.lift=null,this.blades=[],this.ult=null,this.down=0,this.stagger=0,this.conc=0,this.calm=0,this.barrierRate=1,this.next=``,this.killClones(),this.S?.spireSet(!1),n.alt[r]=1.7,this.fade=1,n.x[r]=0,n.z[r]=-8,n.y[r]=t.terrain.surface(0,-8)+1.1;for(let e=0;e<3;e++)t.later(e*.2,()=>t.vfx.ring(0,n.y[r]-1,-8,6+e*7,e===1?CP:SP,.7));e===2&&(this.next=``,this.speed=6.6,this.cd=3.4),e===3&&(this.ultT=6,this.speed=7.2,this.cd=3)}"
+      },
+      {
+        "name": "render",
+        "code": "render(){let e=this.run,t=this.E,n=e.sprites.get(this.species),r=e.player.pos;t.scale[this.i]=2.5*Math.max(.05,this.fade);for(let t of this.ghosts)n.push(t.x,t.y,t.z,`idle`,e.time,t.dir,2.5,.25,.3+(.55-t.t)*.9,0,0,.8,.5,1.4,.7,!1);if(this.clones.length){let n=e.sprites.get(this.cloneSpecies);for(let i of this.clones){if(t.gen[i.j]!==i.g||!t.alive[i.j]||t.dying[i.j]>0||i.spawn<0)continue;let a=e.sprites.dirRow(r.x-i.x,r.z-i.z),o=this.groundY(i.x,i.z);n.push(i.x,o,i.z,`walk`,e.time,a,1.35*(.3+.7*i.spawn),Math.max(t.flash[i.j],.15+.1*Math.sin(e.time*8)),.08+(1-i.spawn)*.5,0,0,.42,.22,.85,.75,!1)}}}"
+      }
+    ]
+  }
+]

@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'" />
+    <title>PokéBonk · 旅伴</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="product-source.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div id="panel-hidden-bar" hidden aria-label="控制面板已隐藏">
+      <span id="panel-hidden-status" role="status">控制面板已隐藏，游戏与辅助照常运行</span>
+      <button class="icon-button" id="restore-panel" title="恢复控制面板" aria-label="恢复控制面板" aria-controls="dock"><span data-icon="expand"></span><span>恢复面板</span></button>
+    </div>
+    <div class="dock" id="dock">
+      <header class="topbar">
+        <nav class="tabs" aria-label="挂机控制页面" role="tablist">
+          <button class="tab active" id="tab-overview" role="tab" aria-selected="true" aria-controls="page-overview" data-tab="overview"><span class="nav-icon" data-icon="overview"></span><span class="tab-label">总览</span></button>
+          <button class="tab" id="tab-modes" role="tab" aria-selected="false" aria-controls="page-modes" data-tab="modes"><span class="nav-icon" data-icon="compass"></span><span class="tab-label">挂机模式</span></button>
+          <button class="tab" id="tab-characters" role="tab" aria-selected="false" aria-controls="page-characters" data-tab="characters"><span class="nav-icon" data-icon="character"></span><span class="tab-label">角色与配装</span></button>
+          <button class="tab" id="tab-plans" role="tab" aria-selected="false" aria-controls="page-plans" data-tab="plans"><span class="nav-icon" data-icon="sliders"></span><span class="tab-label">自定义方案</span></button>
+          <button class="tab" id="tab-logs" role="tab" aria-selected="false" aria-controls="page-logs" data-tab="logs"><span class="nav-icon" data-icon="log"></span><span class="tab-label">收获日志</span><span id="log-count" class="count-badge" hidden></span></button>
+          <button class="tab" id="tab-convenience" role="tab" aria-selected="false" aria-controls="page-convenience" data-tab="convenience"><span class="nav-icon" data-icon="wand"></span><span class="tab-label">便利功能</span></button>
+          <span class="tab-divider" aria-hidden="true"></span>
+          <button class="tab tab-compact" id="tab-settings" role="tab" aria-selected="false" aria-controls="page-settings" data-tab="settings" title="设置" aria-label="设置"><span class="nav-icon" data-icon="gear"></span><span class="tab-label">设置</span></button>
+          <button class="tab tab-compact" id="tab-encyclopedia" role="tab" aria-selected="false" aria-controls="page-encyclopedia" data-tab="encyclopedia" title="百科" aria-label="百科"><span class="nav-icon" data-icon="book"></span><span class="tab-label">百科</span></button>
+          <button class="tab tab-compact" id="tab-skins" role="tab" aria-selected="false" aria-controls="page-skins" data-tab="skins" title="皮肤" aria-label="皮肤"><span class="nav-icon" data-icon="skin"></span><span class="tab-label">皮肤</span></button>
+          <button class="tab tab-compact" id="tab-overlay" role="tab" aria-selected="false" aria-controls="page-overlay" data-tab="overlay" title="悬浮窗" aria-label="悬浮窗"><span class="nav-icon" data-icon="layers"></span><span class="tab-label">悬浮窗</span></button>
+          <button class="tab tab-compact" id="tab-account" role="tab" aria-selected="false" aria-controls="page-account" data-tab="account" title="账号" aria-label="账号"><span class="nav-icon" data-icon="user"></span><span class="tab-label">账号</span></button>
+          <button class="tab tab-compact" id="tab-maintenance" role="tab" aria-selected="false" aria-controls="page-maintenance" data-tab="maintenance" title="自助更新" aria-label="自助更新"><span class="nav-icon" data-icon="refresh"></span><span class="tab-label">自助更新</span></button>
+        </nav>
+        <div class="topbar-right">
+          <span class="client-stage" id="client-stage" role="status" title="正在初始化客户端"><i class="status-dot idle" id="client-stage-dot"></i><span id="client-stage-label">初载 · 初始化</span><small id="client-performance" hidden></small></span>
+          <span class="account" id="account" title="等待进入游戏"><i class="status-dot idle" id="account-dot"></i><span id="account-name">等待进入游戏</span></span>
+          <button class="icon-button expand-button" id="expand-button" title="展开控制面板" aria-label="展开控制面板" aria-expanded="false"><span data-icon="expand"></span></button>
+          <button class="icon-button" id="hide-panel" title="隐藏面板，仅保留底部恢复条" aria-label="隐藏面板，仅保留底部恢复条" aria-controls="dock"><span data-icon="collapse"></span></button>
+        </div>
+      </header>
+
+      <main class="pages" id="pages">
+        <section class="page active" id="page-overview" role="tabpanel" aria-labelledby="tab-overview">
+          <div class="overview-grid">
+            <article class="card mission-card run-card">
+              <header class="run-head">
+                <div class="run-heading"><h2 id="current-mode">自动推进</h2><span class="live-label" id="session-state"><i></i>尚未开始</span></div>
+                <h1 id="current-activity">游客或账号，都能开始冒险</h1>
+                <p class="subtle mission-detail" id="activity-detail"></p>
+              </header>
+              <div class="unlock-goal-notice" id="unlock-goal-notice" role="status" hidden><strong id="unlock-goal-title"></strong><dl class="unlock-goal-steps" id="unlock-goal-steps" hidden></dl><p id="unlock-goal-detail"></p></div>
+              <div class="priority-track" aria-label="自动推进优先级"><span class="priority-step current" data-priority="map"><i>1</i>开新图</span><span class="track-arrow">›</span><span class="priority-step" data-priority="quests"><i>2</i>做委托</span><span class="track-arrow">›</span><span class="priority-step" data-priority="dex"><i>3</i>开图鉴</span><span class="track-arrow">›</span><span class="priority-step" data-priority="resources"><i>4</i>刷资源</span></div>
+              <div class="metrics">
+                <div class="metric"><strong id="session-duration">00:00:00</strong><span>挂机时长</span></div>
+                <div class="metric"><strong id="session-runs">—</strong><span>已结算对局</span></div>
+                <div class="metric"><strong class="mint-text" id="session-stardust">—</strong><span>星尘收益</span></div>
+                <div class="metric"><strong id="session-discoveries">—</strong><span>新增图鉴</span></div>
+              </div>
+              <div class="run-strip"><span id="run-character">角色待选择</span><span class="run-strip-right"><span id="run-level">等级 —</span><span class="health-track"><i id="health-fill"></i></span><span id="run-hp">生命 —</span></span></div>
+              <div class="session-footnote" id="session-detail">收益在游戏正常结算后记录；未读取的数据以「—」显示。</div>
+            </article>
+
+            <article class="card feed-card">
+              <div class="eyebrow"><span>最近动态</span><button class="text-button" data-go-tab="logs">全部日志<span aria-hidden="true"> ↗</span></button></div>
+              <div class="recent-feed" id="recent-feed"><div class="empty-feed"><span class="empty-symbol" data-icon="leaf"></span><span>冒险尚未开始</span></div></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page" id="page-modes" role="tabpanel" aria-labelledby="tab-modes" hidden>
+          <div class="section-heading"><div><h2>模式</h2></div><span class="setting-notice" id="mode-apply-note">下一局使用新设置</span></div>
+          <div class="modes-grid" id="modes-grid"></div>
+          <section id="limited-events-region" class="limited-events-region" aria-label="限时活动列表" hidden>
+            <div class="modes-grid" id="limited-events-grid"></div>
+          </section>
+          <section class="mode-configuration" id="mode-configuration" aria-label="当前模式配置">
+          <div class="mode-configuration-heading"><strong id="mode-configuration-title">自动推进 · 配置</strong><span>各模式分别保存</span></div>
+          <section id="event-opening-history" class="event-opening-history" aria-label="活动时间" hidden>
+            <strong>活动时间（北京时间）</strong><ul id="event-opening-periods"></ul><p id="event-opening-history-note"></p>
+          </section>
+          <div class="mode-options"><label class="inline-field" id="collection-species-field" hidden>角色<select id="collection-species" aria-label="收藏模式角色"><option value="auto">自动选择</option></select></label><label class="inline-field" id="wardrobe-look-field" hidden>外观<select id="wardrobe-look" aria-label="更衣室外观"><option value="auto">自动选择</option></select></label><label class="inline-field">地图<select id="biome-select" aria-label="当前模式地图"><option value="auto">自动选择</option></select></label><label class="inline-field">难度<select id="tier-select" aria-label="当前模式难度"><option value="auto">自动选择</option><option value="0">普通</option><option value="1">困难</option><option value="2">噩梦</option></select></label><div class="inline-help" id="mode-help">自动推进按「开新图 → 做委托 → 开图鉴 → 刷资源」执行。</div></div>
+          <p class="mode-constraint-note" id="mode-constraint-note">地图与难度仅用于当前模式。自动选择会安排兼容的目标路线；指定配置不会被解锁条件覆盖，条件冲突会在下方与总览说明。</p>
+          <p class="mode-route-conflict" id="mode-route-conflict" role="status" hidden></p>
+          <section id="appearance-options" class="tower-options" aria-label="外观数量目标设置" hidden>
+            <div class="mode-options"><label class="inline-field">数量目标玩法<select id="appearance-count-mode" aria-label="外观数量目标玩法"><option value="auto">自动按实际条件选择</option><option value="standard">经典模式</option><option value="endless">无尽模式（条件兼容时）</option></select></label><label class="inline-field">无尽驻留区域<select id="appearance-count-camp-stage" aria-label="外观数量目标无尽驻留区域"><option value="auto">自动选择初始区域</option><option value="1">第1区（初始地图）</option><option value="2">第2区（迁移1次）</option><option value="3">第3区（迁移2次）</option></select></label><label class="tower-candle-setting"><input id="appearance-settle-on-goal" type="checkbox" />本局目标达成后提前结算</label></div>
+            <p id="appearance-options-help">自动为适合长局累计的数量挑战选择无尽；通关、进化、指定模式等按目标实际条件安排，设置不会覆盖原生限制。无尽未达标时持续刷取，直到达标或死亡。</p>
+            
+          </section>
+          <section id="leaderboard-camp-options" class="tower-options" aria-label="排行挂机区域设置" hidden>
+            <label class="inline-field">挂机区域<select id="leaderboard-camp-stage" aria-label="排行挂机区域"><option value="3">第3区</option></select></label>
+            <p id="leaderboard-camp-help">到达所选区域后驻留；按当前原生模式的实际区域数量选择。</p>
+          </section>
+          <section id="auto-manage-options" class="tower-options" aria-label="自动托管专属设置" hidden>
+            <label class="tower-candle-setting"><input id="auto-manage-build-priority" type="checkbox" />配装最高优先级</label>
+            
+            <p>请先手动开始原生对局，再开启托管；本局结束后停止。</p>
+            
+          </section>
+          <section id="mutation-options" class="tower-options" aria-label="每日变异专属设置" hidden>
+            <div class="mode-options"><label class="inline-field">挂机目标<select id="mutation-target" aria-label="每日变异挂机目标"><option value="daily-rewards">拿满当日奖励</option><option value="leaderboard">重复挑战，继续冲榜</option></select></label><label id="mutation-after-field" class="inline-field">当日奖励领完后<select id="mutation-after-daily-rewards" aria-label="每日变异完成后动作"><option value="wait-next-day">等待次日刷新</option><option value="stop">停止辅助</option></select></label></div>
+            
+            <p id="mutation-today-status" role="status">当日日程待读取，实际开局以游戏为准。</p>
+            
+          </section>
+          <section id="tower-options" class="tower-options" aria-label="紫苑塔专属设置" hidden>
+            <label class="inline-field">塔顶之后<select id="tower-exit-policy" aria-label="紫苑塔退出策略"><option value="clear">7层通关后离开</option><option value="continue">持续挑战，直到不能继续或死亡</option></select></label>
+            <label class="tower-candle-setting"><input id="tower-no-candles" type="checkbox" />全程不点燃蜡烛</label>
+            <label class="tower-candle-setting"><input id="tower-only-experience" type="checkbox" />全程只拿经验</label>
+            <label class="tower-candle-setting"><input id="tower-save-money-after-50" type="checkbox" />50层后攒钱</label>
+            <label class="tower-candle-setting"><input id="tower-aggressive-ultimate" type="checkbox" />进攻性释放大招</label>
+            <label class="tower-candle-setting" title="祝福优先选通用伤害，其次选经验；诅咒和道具仍优先经验。墓碑按所设起始层执行。"><input id="tower-experience-blessing-priority" type="checkbox" />提高经验优先级</label>
+            <label title="指定楼层前：幸运不足125选糖果，达到125选捣蛋；从指定层起只选糖果。仅作用于墓碑。">墓碑开始拿经验<select id="tower-tomb-experience-floor"><option value="0">沿用原设置</option></select></label>
+            <section id="tower-curse-priority" class="tower-curse-priority" aria-label="诅咒获取优先级">
+              <div class="tower-curse-heading"><strong>诅咒优先级</strong><button id="tower-curse-reset" type="button">恢复算法排序</button></div>
+              <ol id="tower-curse-list"></ol>
+              
+            </section>
+            <p id="tower-options-help">蜡烛靠近后会自动点燃。未开启全程禁点时，按目标和原生事件决定是否靠近；无光目标会在第4层避开蜡烛。</p>
+            <details class="tower-power-options"><summary>塔内战力与选择策略</summary>
+              
+              <div id="tower-power-controls" class="tower-power-grid"></div>
+              
+              
+              <details><summary>道具优先级（最多10项）</summary><div id="tower-item-priorities" class="tower-priority-grid"></div></details>
+              <details><summary>维生素优先级（最多5项）</summary><div id="tower-vitamin-priorities" class="tower-priority-grid"></div></details>
+              <details><summary>代价正面效果优先级（最多10项）</summary><div id="tower-pact-priorities" class="tower-priority-grid"></div></details>
+            </details>
+          </section>
+          <section class="unlock-target-options" id="unlock-target-options" aria-label="当前模式的解锁目标" hidden>
+            <div class="unlock-target-toolbar"><label class="search-field"><span data-icon="search"></span><input id="unlock-target-search" type="search" placeholder="搜索目标名称、条件或获取方式" aria-label="搜索解锁目标" autocomplete="off" /></label></div>
+            <div class="unlock-target-selects" id="unlock-target-selects"></div>
+            <p class="unlock-target-help" id="unlock-target-help">默认根据实际存档依次选择未解锁目标；指定目标尚缺前置时，先完成前置。</p>
+            <details class="unlock-acquisition" id="unlock-acquisition-details"><summary>查看获取方式与前置</summary><div id="unlock-acquisition-content"></div></details>
+          </section>
+          <section class="shiny-options" id="shiny-options" aria-label="异色搜寻设置" hidden>
+            <div class="shiny-layout" id="shiny-layout">
+              <div class="shiny-settings">
+                <div class="eyebrow"><span class="shiny-heading"><span data-icon="shiny"></span>异色搜寻</span><span class="small-pill" id="shiny-collection">等待读取收藏</span></div>
+                <div class="shiny-mode-switch" role="group" aria-label="刷异色方式"><button type="button" class="selected" data-shiny-mode="missing" aria-pressed="true"><strong>未拥有异色</strong><span>自动寻找收藏中缺少的异色</span></button><button type="button" data-shiny-mode="target" aria-pressed="false"><strong>指定异色</strong><span>围绕选定目标安排搜寻</span></button></div>
+                <fieldset class="shiny-type-settings"><legend>搜寻异色类型</legend><label><input type="checkbox" id="shiny-type-shiny" checked /> 异色</label><label><input type="checkbox" id="shiny-type-classic" checked /> 经典异色</label></fieldset>
+                <label class="shiny-complete-setting"><span><strong>指定目标完成后暂停</strong><small id="shiny-stop-help">自动选择会继续下一个未拥有目标；没有可刷目标时提示并继续挂机。</small></span><span class="switch"><input type="checkbox" id="shiny-stop-when-done" checked aria-label="异色目标完成后暂停" /><span class="switch-track"></span></span></label>
+                <label class="shiny-complete-setting"><span><strong>使用背包已有异色石</strong><small>消耗 1 枚，不会自动购买。</small></span><span class="switch"><input type="checkbox" id="shiny-use-stone" aria-label="使用背包已有异色石" /><span class="switch-track"></span></span></label>
+                <label class="shiny-complete-setting"><span><strong>每关挂机时间</strong></span><span><input type="checkbox" id="shiny-stage-wait" aria-label="开启每关挂机时间" /><input type="number" id="shiny-stage-wait-seconds" min="1" max="86400" step="1" value="600" aria-label="每关挂机秒数" /> 秒</span></label>
+                <label class="shiny-complete-setting"><span><strong>最后一关结束是否停留</strong><small>需开启每关挂机时间。</small></span><input type="checkbox" id="shiny-stay-after-final-clear" /></label>
+              </div>
+              <div class="shiny-target-picker" id="shiny-target-picker" hidden>
+                <div class="shiny-picker-heading"><h3>选择异色目标 <span id="shiny-target-total" class="inline-count">0</span></h3><label class="search-field"><span data-icon="search"></span><input id="shiny-search" type="search" placeholder="名称、编号或属性" autocomplete="off" aria-label="搜索异色目标" /></label></div>
+                <div class="shiny-target-list" id="shiny-target-list" role="list" aria-label="异色目标列表"></div>
+                <p class="shiny-target-note" id="shiny-target-note">灰色目标当前不可刷；「已拥有」以账号异色收藏为准。</p>
+              </div>
+              <aside class="shiny-status-card" aria-label="异色搜寻进度" aria-live="polite">
+                <div class="eyebrow"><span>当前搜寻</span><span class="small-pill" id="shiny-status-label">等待开始</span></div>
+                <h3 id="shiny-current-target">自动寻找未拥有异色</h3>
+                <p id="shiny-current-message">读取账号收藏后，优先探索当前可遇见的未拥有异色。</p>
+                <div class="shiny-metrics"><div><strong id="shiny-found">—</strong><span>本次遇见异色</span></div><div><strong id="shiny-captured">—</strong><span>本局捕获</span></div><div><strong id="shiny-settled">—</strong><span>已结算新异色</span></div></div>
+                <p class="shiny-session-note" id="shiny-session-note">可刷未拥有 <span id="shiny-remaining">—</span> 只；每局至多保存 6 只，达上限后正常结算再开。</p>
+              </aside>
+            </div>
+            
+          </section>
+          </section>
+        </section>
+
+        <section class="page character-page" id="page-characters" role="tabpanel" aria-labelledby="tab-characters" hidden>
+          <div class="character-layout">
+            <div class="character-picker">
+              <div class="picker-heading"><div><h2>角色 <span id="character-total" class="inline-count">0</span></h2><p id="character-availability">账号角色数据尚未读取</p></div><label class="search-field"><span data-icon="search"></span><input id="character-search" type="search" placeholder="搜索角色或属性" autocomplete="off" aria-label="搜索角色" /></label><label class="filter-check"><input type="checkbox" id="unlocked-only" />只看已解锁</label></div>
+              <div class="character-grid" id="character-grid" role="list" aria-label="所有可选角色"></div>
+            </div>
+            <aside class="build-panel">
+              <div class="eyebrow"><span>通关方案</span><span class="small-pill" id="build-kind">通用方案</span></div>
+              <h2 id="build-character">自动选择角色</h2>
+              <p class="build-description" id="build-description">优先选择适合当前目标的已解锁角色。选定角色后，可查看其专属或通用配装。</p>
+              <p class="build-unlock" id="build-unlock" hidden></p>
+              <label class="build-select-label">采用方案<select id="build-select" aria-label="通关方案"><option value="auto">智能选择 · 专属优先</option><option value="generic">通用通关思路</option></select></label>
+              <div id="final-replacements" class="final-replacements" hidden></div>
+              <div class="build-tags" id="build-tags"></div>
+              <details class="build-details" id="build-details"><summary>强化与通关思路</summary><div id="build-extra"></div></details>
+              <details class="build-source" id="build-source"></details>
+            </aside>
+          </div>
+        </section>
+
+        <section class="page custom-page" id="page-plans" role="tabpanel" aria-labelledby="tab-plans" hidden>
+          <div class="custom-layout">
+            <aside class="plan-library">
+              <div class="section-heading"><div><h2>我的通关方案 <span id="plan-count" class="inline-count">0</span></h2></div><button class="button secondary small" id="plan-new">新建</button></div>
+              <label class="search-field plan-search"><span data-icon="search"></span><input id="plan-search" type="search" placeholder="搜索名称、角色或地图" aria-label="搜索自定义方案" /></label>
+              <div id="plan-list" class="plan-list" role="list" aria-label="自定义方案列表"></div>
+              <div class="plan-library-actions"><button class="button secondary small" id="plans-import">导入方案</button><button class="button secondary small" id="plans-export">导出全部方案</button></div>
+            </aside>
+            <div class="plan-editor">
+              <div class="plan-editor-heading"><div><h2 id="plan-editor-title">新建方案</h2><p id="plan-editor-state">按需配置。未填写的部分沿用旅伴默认策略。</p></div><button class="text-button" id="expand-plans">展开编辑 ↗</button></div>
+              <div class="editor-tabs" role="tablist" aria-label="方案编辑分组"><button class="selected" data-plan-section="basics" role="tab" aria-selected="true">适用范围</button><button data-plan-section="moves" role="tab" aria-selected="false">招式</button><button data-plan-section="vitamins" role="tab" aria-selected="false">维生素</button><button data-plan-section="items" role="tab" aria-selected="false">道具</button><button data-plan-section="strategy" role="tab" aria-selected="false">行为策略</button><button data-plan-section="sharing" role="tab" aria-selected="false">导入与导出</button></div>
+              <div class="plan-editor-body">
+                <div class="plan-section" data-plan-panel="basics">
+                  <div class="plan-form-grid"><label class="plan-field wide"><span>方案名称</span><input id="plan-name" maxlength="80" placeholder="例如：妙蛙种子 · 森林稳健成长" autocomplete="off" /></label><label class="plan-field wide"><span>说明 / 使用思路</span><textarea id="plan-description" rows="2" maxlength="2000" placeholder="写下适用目标、成长思路或需要注意的地方。"></textarea></label><label class="plan-field"><span>适用角色</span><select id="plan-species" aria-label="方案适用角色"><option value="all">全部角色</option></select></label><label class="plan-field"><span>适用地图</span><select id="plan-biome" aria-label="方案适用地图"><option value="all">全部地图</option></select></label><label class="plan-field"><span>适用难度</span><select id="plan-tier" aria-label="方案适用难度"><option value="all">全部难度</option><option value="0">普通</option><option value="1">困难</option><option value="2">噩梦</option></select></label><label class="plan-field"><span>适用模式</span><select id="plan-mode" aria-label="方案适用模式"><option value="all">全部模式</option></select></label><label class="plan-field"><span>自动选用优先级</span><input id="plan-priority" type="number" min="0" max="1000" step="1" value="100" /></label><label class="plan-check"><input id="plan-enabled" type="checkbox" checked /><span>启用此方案</span></label></div>
+                  <label class="plan-check"><input id="plan-auto-select" type="checkbox" checked /><span>参与自动匹配</span></label>
+                  
+                </div>
+                <div class="plan-section" data-plan-panel="moves" hidden><div class="rule-section-heading"><div><h3>招式选择</h3></div><span class="small-pill" id="plan-moves-count">0 条</span></div><label class="search-field rule-search"><span data-icon="search"></span><input type="search" id="plan-moves-search" placeholder="搜索招式名称、属性或英文标识" aria-label="搜索方案招式" /></label><div id="plan-moves-results" class="rule-results"></div><div id="plan-moves-rules" class="rule-rows"></div></div>
+                <div class="plan-section" data-plan-panel="vitamins" hidden><div class="rule-section-heading"><div><h3>维生素与成长</h3></div><span class="small-pill" id="plan-vitamins-count">0 条</span></div><label class="search-field rule-search"><span data-icon="search"></span><input type="search" id="plan-vitamins-search" placeholder="搜索维生素名称或效果" aria-label="搜索方案维生素" /></label><div id="plan-vitamins-results" class="rule-results"></div><div id="plan-vitamins-rules" class="rule-rows"></div></div>
+                <div class="plan-section" data-plan-panel="items" hidden><div class="rule-section-heading"><div><h3>道具与商店</h3></div><span class="small-pill" id="plan-items-count">0 条</span></div><label class="search-field rule-search"><span data-icon="search"></span><input type="search" id="plan-items-search" placeholder="搜索道具名称、效果或英文标识" aria-label="搜索方案道具" /></label><div id="plan-items-results" class="rule-results"></div><div id="plan-items-rules" class="rule-rows"></div></div>
+                <div class="plan-section" data-plan-panel="strategy" hidden><div class="rule-section-heading"><div><h3>行为与选择策略</h3></div></div><div id="plan-strategy-fields" class="plan-form-grid"></div><p id="plan-schema-note" class="editor-note"></p></div>
+                <div class="plan-section" data-plan-panel="sharing" hidden><h3 class="editor-subheading">用方案文件分享</h3><div class="editor-inline-actions"><button class="button secondary small" id="plans-import-file">选择方案文件</button><button class="button secondary small" id="plans-export-file-all">导出全部方案</button></div><details class="plan-json-advanced"><summary>高级：直接粘贴或复制 JSON</summary><textarea id="plans-json" class="plan-json" rows="8" spellcheck="false" placeholder="高级用户可在这里编辑方案 JSON。" aria-label="方案导入导出JSON"></textarea><div class="editor-inline-actions"><button class="button secondary small" id="plans-import-json">导入这段内容</button><button class="button secondary small" id="plan-export-one">生成当前 JSON</button><button class="button secondary small" id="plans-copy-json">复制 JSON</button></div></details><p id="plans-sharing-status" class="editor-note" role="status"></p></div>
+              </div>
+              <div class="plan-editor-actions"><span id="plan-save-status" role="status">新方案尚未保存</span><button class="button secondary small" id="plan-export-current">导出当前方案</button><button class="button secondary small" id="plan-duplicate">复制方案</button><button class="button secondary small clear-logs-button" id="plan-delete">删除</button><button class="button primary small" id="plan-save">保存方案</button></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-logs" role="tabpanel" aria-labelledby="tab-logs" hidden>
+          <div class="section-heading log-heading"><div><h2>日志</h2><p id="log-summary">按实际时间记录行动、结算与收获。</p></div><div class="log-tools"><div class="segmented" role="group" aria-label="日志筛选"><button class="selected" data-log-filter="all">全部</button><button data-log-filter="reward">收获</button><button data-log-filter="run">对局</button><button data-log-filter="error">异常</button></div><label class="log-choice">收获分类<select id="log-category-filter" aria-label="收获分类"><option value="">选择分类</option><option value="shiny">异色</option><option value="dex">图鉴</option><option value="appearance">外观</option><option value="bonkoin">邦币</option><option value="stardust">星尘</option><option value="character">角色</option><option value="map">地图</option><option value="research">研究</option><option value="achievement">成就</option><option value="permanentItem">永久道具</option></select></label><label class="log-choice">日志范围<select id="log-retention-runs" aria-label="日志范围"><option value="1">最近1场</option><option value="5">最近5场</option><option value="10">最近10场</option><option value="20">最近20场</option><option value="50">最近50场</option><option value="100" selected>最近100场</option><option value="1000">最近1000场</option><option value="0">全部保存</option></select></label><button class="button secondary small" id="open-logs"><span data-icon="log"></span><span id="open-logs-label">打开日志</span></button><button class="button secondary small clear-logs-button" id="clear-logs" title="清空文字日志和界面记录，保留当前挂机与收益统计"><span data-icon="trash"></span><span id="clear-logs-label">清空日志</span></button></div></div>
+          <div class="log-table-wrap"><table class="log-table"><thead><tr><th>时间</th><th>类型</th><th>发生了什么</th><th>收获 / 详情</th></tr></thead><tbody id="log-rows"></tbody></table><div class="empty-state" id="logs-empty"><span data-icon="log"></span><strong>还没有日志</strong><p></p></div></div>
+        </section>
+
+        <section class="page" id="page-settings" role="tabpanel" aria-labelledby="tab-settings" hidden>
+          <div class="settings-layout">
+            <div class="settings-group"><div class="section-heading"><div><h2>全局设置</h2></div></div><div class="settings-grid" id="automation-settings"></div><div class="random-delay-settings" id="native-controls-note" role="note"><div class="random-delay-heading"><strong>游戏操作设置由你决定</strong></div></div></div>
+            <aside class="advanced-panel"><div class="eyebrow"><span>运行设置</span><span class="small-pill">进阶选项</span></div><label class="setting-select"><span><strong>游戏画面比例</strong></span><select id="display-mode" aria-label="游戏画面比例"><option value="fit16x9">保持 16:9 · 推荐</option><option value="adaptive">自适应 · 铺满区域</option><option value="fit16x10">保持 16:10</option><option value="fit4x3">保持 4:3</option></select></label><p class="advanced-note" id="display-help">调整真实游戏窗口大小，让游戏自行同步画布和镜头比例。面板展开、收起或拖动分隔条时自动适配；空间较小时画面会缩小，可隐藏面板获取更多空间。</p><label class="setting-select"><span><strong>决策帧率</strong></span><select id="fps-select" aria-label="决策帧率"><option value="30">30 帧</option><option value="60">60 帧 · 推荐</option><option value="90">90 帧</option><option value="120">120 帧</option><option value="144">144 帧</option></select></label><div class="settings-actions"><button class="button secondary small" id="open-data"><span data-icon="folder"></span>打开数据目录</button><button class="text-button" id="restore-defaults">恢复默认配置</button></div><div class="prerequisites-status" id="prerequisites-status" aria-live="polite"><strong id="prerequisites-title">正在检测运行前置</strong><p id="prerequisites-message">右下「下载前置」使用客户端内置离线安装包，不临时联网搜索下载。</p><progress id="prerequisites-progress" max="100" value="0" hidden aria-label="运行前置安装进度"></progress><p class="prerequisites-license">点击「下载前置」即同意微软许可条款。WebView2 含 SmartScreen，可能按微软隐私说明发送信息并自动更新。<button class="text-button" id="show-prerequisite-license">查看许可与隐私说明</button></p></div></aside>
+            <div class="settings-group hotkey-settings"><div class="section-heading"><div><h2>快捷键与鼠标</h2></div></div><div id="hotkey-list" class="hotkey-list"></div><p id="hotkey-help">这里列出脚本全部快捷键；游戏操作按键仍在上方游戏设置中管理。暂停/停止辅助只交还操作权，不强制暂停游戏，可以自行玩后再接管同一局；游戏自己的Esc或大地图仍按原生规则暂停。方案文件窗口会单独安全暂停。快捷键只在客户端窗口获得焦点时生效，文字输入时不触发。Esc 取消录制。请避开游戏移动、跳跃和交互用键。释放鼠标只退出游戏鼠标锁定，不暂停挂机；点击游戏可重新进入原生鼠标控制。</p><p id="hotkey-error" class="random-delay-error" role="alert"></p><div class="settings-actions"><button class="button secondary small" id="save-hotkeys" disabled>保存快捷键</button><button class="button secondary small" id="reset-hotkeys">恢复默认快捷键</button><button class="button secondary small" id="release-mouse">立即释放鼠标</button></div></div>
+          </div>
+        </section>
+
+        <section class="page encyclopedia-page" id="page-encyclopedia" role="tabpanel" aria-labelledby="tab-encyclopedia" hidden>
+          <div class="encyclopedia-heading"><div><h2>游戏百科</h2><p id="encyclopedia-meta">读取当前公开目录与机制说明。</p></div><button class="button secondary small" id="expand-encyclopedia"><span data-icon="expand"></span>展开百科</button></div>
+          <div class="encyclopedia-tools"><label class="encyclopedia-category">分类<select id="encyclopedia-category" aria-label="百科分类"><option value="all">全部分类</option></select></label><label class="search-field encyclopedia-search"><span data-icon="search"></span><input id="encyclopedia-search" type="search" autocomplete="off" placeholder="搜索名称、功能、效果、属性、机制或来源……" aria-label="全局搜索百科所有内容" /></label><span id="encyclopedia-count" class="encyclopedia-count">0 条</span></div>
+          <div class="encyclopedia-layout"><div class="encyclopedia-browser"><div id="encyclopedia-list" class="encyclopedia-list" role="list" aria-label="百科检索结果"></div><div class="encyclopedia-pagination"><button class="button secondary small" id="encyclopedia-prev">上一页</button><span id="encyclopedia-page" role="status">1 / 1</span><button class="button secondary small" id="encyclopedia-next">下一页</button></div></div><article id="encyclopedia-detail" class="encyclopedia-detail" aria-live="polite"><div class="encyclopedia-empty"><span data-icon="book"></span><strong>选择一个条目</strong></div></article></div>
+          <p id="encyclopedia-notes" class="encyclopedia-notes">基础数据库条目不代表已实装、已开放或玩家已解锁；请以条目的可用性说明和游戏实际内容为准。</p>
+        </section>
+
+        <section class="page maintenance-page" id="page-maintenance" role="tabpanel" aria-labelledby="tab-maintenance" hidden>
+          <div class="maintenance-layout">
+            <div class="maintenance-tools">
+              <div class="section-heading"><div><h2>AI 维护</h2></div><button class="button secondary small" id="check-updates"><span data-icon="refresh"></span>检查更新</button></div>
+              <div class="maintenance-notice"><strong>这是 AI 辅助自助维护</strong></div>
+              <div id="update-status" class="update-status" aria-live="polite"><strong>等待读取更新检测</strong></div>
+              <div class="update-status connection-diagnostics"><div class="section-heading"><strong>游戏接入检查</strong><button class="button secondary small" id="copy-connection-diagnostics">复制接入诊断</button></div><p id="connection-status" aria-live="polite">等待浏览器接入状态。</p></div>
+              <div id="maintenance-kinds" class="maintenance-kinds" role="group" aria-label="选择AI维护用途"></div>
+              <section class="source-notice" id="product-source-notice" aria-label="作者与来源说明"></section>
+            </div>
+            <aside class="prompt-panel"><div class="section-heading"><div><h2 id="maintenance-prompt-title">完整提示词预览</h2><p id="maintenance-prompt-purpose">先在左侧选择本次要完成的维护。</p></div><button class="button secondary small" id="copy-update-prompt" disabled><span data-icon="copy"></span>一键复制</button></div><textarea id="update-prompt" readonly spellcheck="false" aria-label="AI维护完整提示词" placeholder="生成后的完整提示词会显示在这里。"></textarea><p class="editor-note">提示词仅用于适配游戏更新与修复致命故障。应取得必要的维护授权和可核验开发材料，保留已有行为、单实例限制、免费事实及作者来源；不能仅凭提示词声称已完成修复。</p></aside>
+          </div>
+        </section>
+        <section class="page account-page" id="page-account" role="tabpanel" aria-labelledby="tab-account" hidden>
+          <div class="account-layout">
+            <div class="settings-group recovery-settings">
+              <div class="section-heading"><div><h2>账号与自动重连</h2></div><span class="small-pill" id="account-vault-badge">尚未填写</span></div>
+              <div class="recovery-login-grid"><label>游戏账号<input id="recovery-login-name" type="password" maxlength="100" autocomplete="off" spellcheck="false" aria-label="自动重登游戏账号" placeholder="输入游戏账号" /></label><label>游戏密码<input id="recovery-login-password" type="password" maxlength="1024" autocomplete="new-password" aria-label="自动重登游戏密码" placeholder="输入游戏密码" /></label></div>
+              <div class="settings-actions account-login-actions"><button class="button secondary small" id="toggle-recovery-login-visibility" aria-pressed="false">显示账号和密码</button><button class="button secondary small" id="save-recovery-login">立即保存</button><button class="text-button" id="clear-recovery-login" disabled>清除本机记录</button></div>
+              <p id="recovery-login-status" class="recovery-help" role="status">修改后自动保存。默认遮挡，点击显示可读取并编辑本机记录。</p>
+              <p id="recovery-login-draft-status" class="recovery-help" role="status"></p>
+              <div class="account-privacy"><strong>登录信息只在本机加密保存</strong><p>由本机Windows用户加密，放在客户端自己的data目录；不写入设置JSON、日志、诊断、方案分享、维护源码或公开包。登录时只通过游戏原生登录界面发送到PokéBonk官方服务器，客户端不上传给其他服务。</p><p>请勿把使用后的整个客户端文件夹发给别人，其中含游戏会话和加密登录记录。需要分享时请使用原始公开ZIP。换电脑或Windows用户可能需要重新填写。</p></div>
+            </div>
+            <aside class="account-overview">
+              <article class="card account-connection"><div class="eyebrow"><span>当前游戏账号</span><span class="small-pill" id="account-connection-type">未连接</span></div><h2 id="account-profile-name">等待读取账号</h2><p class="subtle" id="account-profile-detail">账号概况来自游戏实际存档，未读取时显示「—」。</p><div class="account-stat-grid"><div><strong id="account-league-count">—</strong><span>已解锁角色</span></div><div><strong id="account-dex-count">—</strong><span>已见图鉴</span></div><div><strong id="account-shiny-count">—</strong><span>异色收藏</span></div><div><strong id="account-stardust-count">—</strong><span>当前星尘</span></div></div></article>
+              <article class="card account-recovery"><div class="eyebrow"><span>恢复与续挂</span><span class="small-pill" id="account-recovery-state">待命</span></div><p id="recovery-runtime-status" class="recovery-help" aria-live="polite">意外断线或页面崩溃后自动恢复；主动停辅助会取消续挂。</p><p class="recovery-help">游客不是原账号；原账号未确认的收获仍需回到原账号核对。游戏中断局按原生规则补存，不能续回原战斗；确认后再开下一局。</p></article>
+            </aside>
+          </div>
+        </section>
+        <section class="page skins-page" id="page-skins" role="tabpanel" aria-labelledby="tab-skins" hidden>
+          <div class="section-heading skins-heading"><div><h2>皮肤</h2></div><span class="small-pill" id="skin-current">当前：游戏原形象</span></div>
+          <div class="skins-toolbar"><div><button type="button" class="button primary" id="skin-import"><span data-icon="folder"></span>导入皮肤</button><button type="button" class="button secondary" id="skin-native">恢复游戏原形象</button></div><div><button type="button" class="text-button" id="skin-restore-builtin" hidden>恢复内置皮肤</button><button type="button" class="button secondary small" id="skin-refresh"><span data-icon="refresh"></span>刷新列表</button></div></div>
+          <p class="editor-note" id="skin-management-note">建议在进入战斗前完成皮肤导入、导出和提示词保存，避免对局中切换文件窗口需要长时间等待。导入后请先检查四种动作，再点击使用。</p>
+          <p id="skin-status" class="skin-status" role="status" aria-live="polite">进入此页后读取本机皮肤。</p>
+          <div class="skins-layout">
+            <section class="skin-library" aria-label="本机皮肤列表"><div class="skin-library-heading"><h3>我的皮肤 <span id="skin-count" class="inline-count">0</span></h3><span>点击卡片预览，再选择使用</span></div><div class="skins-grid" id="skins-grid" role="list"></div><div class="skin-empty" id="skin-empty" hidden><span data-icon="skin"></span><strong>还没有皮肤</strong></div></section>
+            <aside class="skin-detail" aria-label="皮肤预览和管理"><div class="eyebrow"><span>所选皮肤</span><span id="skin-detail-badge" class="small-pill">尚未选择</span></div><section id="skin-warnings" class="mode-route-conflict" role="status" hidden><strong>文件不符合推荐标准，可能不达预期。仍可使用，请查看预览。</strong><ul id="skin-warning-details"></ul></section><div class="skin-preview checkerboard" id="skin-preview"><canvas id="skin-preview-canvas" width="64" height="64" aria-label="所选皮肤动作预览" hidden></canvas><span id="skin-preview-placeholder">选择一个皮肤查看</span></div><div class="skin-preview-controls"><label>动作<select id="skin-preview-action" aria-label="皮肤预览动作"><option value="0">待机</option><option value="1">移动</option><option value="2">起跳</option><option value="3">下落</option></select></label><button class="button secondary small" type="button" id="skin-preview-play" aria-pressed="false" disabled>播放预览</button><label class="skin-mirror"><input id="skin-preview-mirror" type="checkbox" />向左</label></div><p class="skin-preview-note" id="skin-preview-note" role="status">可检查各动作及左右翻转；默认静态预览。</p><label class="skin-name-label" for="skin-name">皮肤名称</label><div class="skin-name-row"><input id="skin-name" maxlength="40" autocomplete="off" placeholder="先选择皮肤" disabled /><button class="button secondary small" type="button" id="skin-rename" disabled>保存名称</button></div><p class="skin-field-error" id="skin-name-error" role="status" hidden></p><div class="skin-detail-actions"><button type="button" class="button primary" id="skin-use" disabled>使用此皮肤</button><div class="skin-export-row"><label class="skin-export-format">导出格式<select id="skin-export-format" aria-label="皮肤导出格式"><option value="package">皮肤文件 · 含名称</option><option value="png">PNG 动作图集</option></select></label><button type="button" class="button secondary" id="skin-export" disabled><span data-icon="download"></span>导出</button></div><button type="button" class="text-button skin-delete" id="skin-delete" disabled>删除此皮肤</button></div></aside>
+          </div>
+          <section class="skin-generation" aria-labelledby="skin-generation-title"><div class="skin-generation-heading"><div><h3 id="skin-generation-title">让 AI 生成你的皮肤</h3></div><div class="skin-prompt-actions"><button type="button" class="button primary" id="skin-copy-prompt"><span data-icon="copy"></span>一键获取皮肤生成提示词</button><button type="button" class="button secondary" id="skin-save-prompt">保存提示词文本</button></div></div><p class="editor-note" id="skin-ai-tool-note"><strong>不建议优先用豆包生成：</strong>根据本次样例，可能把棋盘格画成不透明背景或带水印。优先选择可导出真实透明 PNG 原图的工具，导入后检查预览。</p><p class="editor-note" id="skin-clarity-note"><strong>让皮肤更清楚：</strong>新版导入保留更高分辨率，游戏中仍按原角色大小显示。已被旧版压成低分辨率的皮肤不会自动恢复细节，请重新导入 AI 最初生成的 PNG 原图。小角色的五官、轮廓和大色块比密集细线更容易看清，完整提示词已加入相应要求。</p><ol class="skin-generation-steps"><li><span>1</span><div><strong>照片 + 提示词交给 AI</strong></div></li><li><span>2</span><div><strong>保存 AI 生成的 PNG 原图</strong></div></li><li><span>3</span><div><strong>点“导入皮肤”，预览后使用</strong></div></li></ol><details class="skin-prompt-details" id="skin-prompt-details"><summary>查看完整提示词与文件规格</summary><textarea id="skin-prompt" readonly spellcheck="false" aria-label="皮肤生成完整提示词" placeholder="获取后显示完整提示词，也可在这里选中复制。"></textarea></details></section>
+        </section>
+        <section class="page" id="page-overlay" role="tabpanel" aria-labelledby="tab-overlay" hidden>
+          <div class="section-heading"><div><h2>悬浮窗</h2></div><button class="button secondary small" id="overlay-reset" type="button">恢复悬浮窗默认设置</button></div>
+          <div class="overlay-settings-layout">
+            <article class="card overlay-settings-card"><h3>显示内容</h3><div id="overlay-main-options"></div><div class="overlay-field-grid" id="overlay-field-options"></div><details class="overlay-extra-options" id="overlay-extra-options" hidden><summary>更多战斗信息 · 默认关闭</summary><div class="overlay-field-grid" id="overlay-extra-fields"></div></details><details class="overlay-extra-options overlay-team-options" id="overlay-team-options"><summary>队友战斗信息 · 默认关闭</summary><div id="overlay-team-main-options"></div><div class="overlay-team-actions"><button class="button secondary small" id="overlay-team-common" type="button">选用常用输出项</button><button class="button ghost small" id="overlay-team-clear" type="button">关闭全部队友项</button></div><p class="editor-note" id="overlay-team-empty-help" hidden>请勾选需要显示的队友项目。仅开启共享时可只向队友提供本机统计，不显示空的队友窗口。</p><div class="overlay-field-grid" id="overlay-team-fields"></div><div class="overlay-value-grid" id="overlay-team-value-options"></div></details></article>
+            <article class="card overlay-settings-card"><h3>数字与外观</h3><div id="overlay-appearance-options"></div><div class="overlay-value-grid" id="overlay-appearance-values"></div><p class="editor-note" id="overlay-page-help" hidden>手动页码从 1 开始；超出实际页数会显示最后一页，实际页数可在悬浮窗底部查看。完整数字在小窗内会折行，也可调整宽高或字号。</p></article>
+<article class="card overlay-settings-card"><h3>位置与尺寸</h3><div class="overlay-value-grid" id="overlay-layout-values"></div></article>
+          </div>
+        </section>
+        <section class="page" id="page-convenience" role="tabpanel" aria-labelledby="tab-convenience" hidden>
+          <div class="section-heading"><div><h2>便利功能</h2></div></div>
+          <div class="convenience-layout"><nav class="convenience-nav" id="convenience-nav" aria-label="便利功能选项"></nav><article class="card convenience-detail" id="convenience-detail" aria-labelledby="convenience-title"><div class="convenience-detail-heading"><div><h3 id="convenience-title">一键收藏</h3><p id="convenience-description"></p></div><span class="small-pill" id="convenience-enabled-status">按需使用</span></div><p class="editor-note" id="convenience-detail-note"></p><div id="convenience-fields"></div><p id="convenience-action-status" role="status" class="editor-note"></p></article></div>
+        </section>
+      </main>
+
+      <aside class="control-bar console" aria-label="挂机控制">
+        <div class="brand" aria-label="PokéBonk 旅伴">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <div><strong>POKÉBONK</strong><span class="brand-sub">旅伴 · 免费提供</span></div>
+        </div>
+        <div class="control-status"><span class="control-indicator idle" id="control-indicator"></span><div><strong id="control-status">等待游戏就绪</strong><span id="control-detail">在上方登录账号或选择游客，并选好初始宝可梦</span></div></div>
+        <div class="control-actions">
+          <div class="control-primary"><button class="button primary" id="main-action"><span data-icon="play" id="main-action-icon"></span><span id="main-action-label">开始挂机</span></button><button class="button secondary" id="login-button" title="查看游戏"><span data-icon="login"></span><span class="tool-label">查看游戏</span></button></div>
+          <div class="control-tools" role="group" aria-label="客户端工具">
+            <button class="button secondary" id="manual-interfaces" title="手动修改接口：查看、获取和修改当前脚本使用的接口映射"><span data-icon="plug"></span><span class="tool-label">修改接口</span></button>
+            <button class="button secondary" id="manual-other-config" title="手动修改其他配置：接口正常时，核对其他受游戏更新影响的兼容配置"><span data-icon="sliders"></span><span class="tool-label">其他配置</span></button>
+            <button class="button secondary" id="get-client-updates" title="获取客户端更新"><span data-icon="download"></span><span class="tool-label">获取更新</span></button>
+            <button class="button secondary" id="show-changelog" title="更新日志"><span data-icon="log"></span><span class="tool-label">更新日志</span></button>
+            <button class="button secondary" id="optimize-browser" title="优化浏览器设置：查看本客户端浏览器优化项目，确认后应用"><span data-icon="gauge"></span><span class="tool-label">浏览器优化</span></button>
+            <button class="button secondary" id="download-prerequisites" title="下载前置：使用客户端内置离线包安装运行前置"><span data-icon="box"></span><span class="tool-label">下载前置</span></button>
+          </div>
+          <span class="saved-indicator" id="saved-indicator" role="status"></span>
+        </div>
+      </aside>
+    </div>
+    <template id="wecom-push-template">
+      <div class="wecom-push">
+        <details class="wecom-tutorial"><summary>使用教程 · 第一次使用请先看这里</summary><ol>
+          <li>在手机安装企业微信，创建或加入团队。电脑无需额外安装企业微信，也不需要服务器。<a href="https://work.weixin.qq.com/" data-wecom-official-link>企业微信官方下载</a>。</li>
+          <li>与同一组织通讯录的成员建立<strong>内部群</strong>。普通微信群、包含客户或普通微信联系人的外部群不适用。<a href="https://open.work.weixin.qq.com/help2/pc/14905?person_id=1" data-wecom-official-link>官方群类型说明</a>。</li>
+          <li>手机或电脑打开内部群右上角“…” → “消息推送” → “添加”；旧版可能叫“群机器人”。创建后复制专属 Webhook 地址。<a href="https://open.work.weixin.qq.com/help2/pc/14931?person_id=1" data-wecom-official-link>官方消息推送帮助</a>。</li>
+          <li>没有“添加”入口时，先检查群类型、管理员允许范围及是否仅群主可管理。个人有组建团队入口，但不保证每个个人团队都有消息推送权限；不要求凑人数或付费，更不要虚构企业资料。<a href="https://open.work.weixin.qq.com/help2/pc/15422?person_id=1" data-wecom-official-link>注册说明</a> · <a href="https://open.work.weixin.qq.com/help2/pc/21059?person_id=1" data-wecom-official-link>团队限制</a>。</li>
+          <li>在下方“收件目标”填一个自定义名称、粘贴完整地址，点击“保存目标”。密钥仅保存在本机加密区域，不进入普通配置或游戏页面，保存后输入框会清空；修改目标时需重新粘贴完整地址。</li>
+          <li>主动点击该目标旁的“发送测试通知”，到手机群确认收到。接口调用成功只代表企微接口接受，不代表手机响铃、弹窗或已读；请检查企业微信、群免打扰与手机系统的通知权限。</li>
+          <li>选择默认收件目标，逐项勾选项目。尚无字段配置时，首次开启采用当前版本的建议字段；已有配置保持不变，也可点“采用建议字段”。请核对字段，捕获通知保留公开物种与次数才更实用；未选字段时该项目不采集或发送。选择即时、间隔或固定北京时间，最后再开总开关。没有有效项目或目标不会启动采集；手动游玩通知另开对应选项。</li>
+        </ol><p>本次支持文字消息，不发送截图、不 @ 成员、不发送 Markdown。消息经过腾讯官方服务；未选择的内容不额外读取。即时项目不人为等待定时，但平台限频、排队和网络故障仍可能延迟。</p><p>停用或退出会取消未提交的待发内容，跨重启不重放；在途请求可能已被接口接受，不能撤回。停止挂机与关闭推送是两个独立操作。超时结果未知时不盲目重发。</p></details>
+        <div id="wecom-global-controls" class="wecom-global-controls"></div>
+        <p id="wecom-startup-status" class="wecom-notice" role="status"></p>
+        <details class="wecom-export-scope"><summary>查看已选外发项目与字段</summary><ul id="wecom-scope"></ul></details>
+        <div class="wecom-tabs" role="group" aria-label="企微推送设置页面"><button type="button" class="button secondary" data-wecom-tab="settings">通知设置</button><button type="button" class="button secondary" data-wecom-tab="history">本地历史</button><button type="button" class="button secondary" data-wecom-tab="diagnostics">诊断与清理</button></div>
+        <div id="wecom-settings-page"><section class="wecom-card"><h4>收件目标</h4><div id="wecom-targets"></div><form id="wecom-target-form" class="wecom-target-form" autocomplete="off"><input type="hidden" id="wecom-target-id" /><label>目标名称<input type="text" id="wecom-target-name" maxlength="48" placeholder="例如：我的通知群" autocomplete="off" /></label><label>Webhook 地址（保密）<input type="password" id="wecom-target-webhook" maxlength="512" autocomplete="new-password" spellcheck="false" placeholder="粘贴完整 Webhook 地址" /></label><div class="wecom-actions"><button type="submit" id="wecom-save-target" class="button secondary">保存目标</button><button type="button" id="wecom-cancel-target" class="button secondary">取消修改</button></div></form><p class="editor-note">不会读取或显示已存密钥。改目标或密钥后，旧待发不会自动改投新群。</p></section>
+          <section class="wecom-card"><h4>通知项目 · 按需开启并核对外发字段</h4><div class="wecom-filter-bar"><input type="search" id="wecom-item-search" placeholder="搜索项目、来源或字段" aria-label="搜索推送项目" /><select id="wecom-category" aria-label="通知分类"></select><label><input type="checkbox" id="wecom-only-enabled" />只看已开启</label><label><input type="checkbox" id="wecom-only-modified" />只看修改项</label></div><div class="wecom-actions"><button type="button" id="wecom-enable-visible" class="button secondary">启用筛选项目（首次采用建议字段）</button><button type="button" id="wecom-disable-all" class="button secondary">取消全部项目</button></div><p id="wecom-selection-scope" class="editor-note"></p><div class="wecom-item-layout"><div id="wecom-item-list" class="wecom-item-list"></div><div id="wecom-item-detail" class="wecom-item-detail"></div></div></section>
+          <details class="wecom-card"><summary>高级设置 · 历史保留与网络</summary><div id="wecom-advanced-controls" class="wecom-control-grid"></div></details>
+        </div>
+        <div id="wecom-history-page" hidden><div class="wecom-filter-bar"><select id="wecom-history-state" aria-label="历史状态"><option value="">全部状态</option><option value="success">接口成功</option><option value="failed">明确失败</option><option value="unknown">结果未知</option><option value="cancelled">已取消</option><option value="merged">已合并</option></select><button type="button" id="wecom-history-refresh" class="button secondary">刷新历史</button><button type="button" id="wecom-history-export" class="button secondary">导出当前筛选（最多最近10000条）</button></div><p>清理的是本机推送记录，不会撤回或删除企业微信群中已经发送的消息。</p><div id="wecom-history-list"></div><div class="wecom-actions"><button type="button" id="wecom-history-prev" class="button secondary">上一页</button><span id="wecom-history-page-label"></span><button type="button" id="wecom-history-next" class="button secondary">下一页</button></div></div>
+        <div id="wecom-diagnostics-page" hidden><p id="wecom-diagnostics" class="wecom-notice"></p><div class="wecom-actions"><button type="button" id="wecom-status-refresh" class="button secondary">刷新诊断</button><button type="button" id="wecom-clear-history" class="button secondary">清除已结束历史</button><button type="button" id="wecom-clear-queue" class="button secondary">取消未提交待发</button><button type="button" id="wecom-open-directory" class="button secondary">打开推送目录</button></div><p>清历史不清待发、不重置去重与收益；清待发不删除历史，也不能撤回在途或群内消息。队列在本次进程内保留，退出后不恢复；仅本模块目录会被处理。</p></div>
+        <p id="wecom-action-status" class="editor-note" role="status"></p>
+      </div>
+    </template>
+    <div class="toast" id="toast" role="status" hidden></div>
+    <dialog class="skin-delete-dialog" id="skin-delete-dialog" aria-labelledby="skin-delete-title"><h2 id="skin-delete-title">删除这个皮肤？</h2><p id="skin-delete-message"></p><p class="editor-note">需要备份时请先导出。删除正在使用的皮肤后会恢复游戏原形象。</p><div class="skin-dialog-actions"><button class="button secondary" id="skin-delete-cancel" type="button">取消</button><button class="button primary" id="skin-delete-confirm" type="button">确认删除</button></div></dialog>
+    <dialog class="compatibility-editor" id="compatibility-editor" aria-labelledby="compatibility-title" aria-describedby="compatibility-intro">
+      <div class="compatibility-heading"><h2 id="compatibility-title">手动修改接口</h2><button class="icon-button" id="compatibility-close" type="button" aria-label="关闭兼容配置窗口">×</button></div>
+      <p id="compatibility-intro">游戏更新后，可在这里查看脚本实际使用的接口和兼容配置、尝试重新获取，或粘贴核实后的内容。接口包括原生模块符号、方法或字段映射、公开资源地址，并不全是网址。输入内容不会作为代码执行。</p>
+      <div class="compatibility-tabs"><button class="button secondary" id="compatibility-switch-interfaces" type="button" data-compatibility-operation>手动修改接口</button><button class="button secondary" id="compatibility-switch-other" type="button" data-compatibility-operation>手动修改其他配置</button></div>
+      <details class="compatibility-tutorial" open><summary>使用教程 · 第一次使用按这几步操作</summary><ol>
+        <li>先查看每项名称前的状态和下面的原因。有效项通常无需修改；一个接口异常只影响需要它的功能，不能把“有输入值”当作“接口有效”。</li>
+        <li>点击异常项目右侧的<strong>自动获取</strong>，或下方的“自动获取本页全部”，让客户端按当前游戏公开资料与当前页面重新查找。成功的项目会恢复<strong>自动跟随</strong>，以后继续按新页面重新解析，不把这次获取值固定为旧版本地址；找不到的项目保留原配置与原因。等待完成后，核对配置方式、<strong>实际生效值</strong>和状态。</li>
+        <li>仍找不到时，点击<strong>一键获取提示词</strong>，复制给能够访问游戏官网的 AI。提示词包含游戏官网、当前公开模块线索和所需数据格式；无需发送本脚本、账号密码、Cookie、游客存档或个人配置。AI 不能联网或无法核实时，应明确说明，不能编造接口。</li>
+        <li>AI 返回的是字段名或映射时，按对应项目粘贴到输入框；返回批量 JSON 时，在下方“批量导入/导出”粘贴。只粘贴配置数据，不粘贴 JavaScript 或可执行代码。点击<strong>保存并应用</strong>或导入后，写入的项目采用<strong>手动固定</strong>，游戏更新时也保留你指定的内容；需要恢复自动解析时，再点击“自动获取”或“恢复本页自动配置”。未应用的文字不会代替当前有效配置。</li>
+        <li>若显示“等待生效”，表示已保存但当前页面尚未采用；以实际生效值为准，保持当前对局，等待安全采用或按界面说明操作。无效修改会显示原因，并保留原有效配置。</li>
+        <li>接口配置正确后功能仍异常，请点上方<strong>手动修改其他配置</strong>，核对选择器、状态标识和其他已支持的兼容项。只读项展示来源和限制；填写数值不能创造游戏未开放的能力。</li>
+        <li>改错时，可先导出全部兼容配置留作备份，再用“恢复本页自动配置”。这些修复配置只保存在当前客户端文件夹，不上传给作者或 AI；具体游戏功能仍受原生资格和当前可用能力约束。</li>
+      </ol><p>官方游戏：<a href="https://pokebonk.com/" id="compatibility-official-link">pokebonk.com</a></p></details>
+      <div class="compatibility-toolbar"><input type="search" id="compatibility-search" placeholder="搜索名称、作用、标识或异常原因" aria-label="搜索兼容配置" /><label><input type="checkbox" id="compatibility-only-issues" />只看待核验或异常</label><span id="compatibility-count"></span></div>
+      <p class="editor-note" id="compatibility-summary"></p><p class="compatibility-result" id="compatibility-result" role="status" aria-live="polite"></p>
+      <div class="compatibility-entries" id="compatibility-entries"></div>
+      <div class="compatibility-actions"><button class="button secondary" id="compatibility-refresh" type="button" data-compatibility-operation>重新读取状态</button><button class="button secondary" id="compatibility-probe-all" type="button" data-compatibility-operation>自动获取本页全部</button><button class="button primary" id="compatibility-apply-all" type="button" data-compatibility-operation>保存并应用本页修改</button><button class="button secondary" id="compatibility-reset" type="button" data-compatibility-operation>恢复本页自动配置</button><button class="button secondary" id="compatibility-copy-prompt" type="button" data-compatibility-operation>一键获取提示词</button></div>
+      <details class="compatibility-data"><summary>提示词与批量导入/导出</summary><label for="compatibility-prompt">已获取的提示词（可直接复制给其他 AI）</label><textarea id="compatibility-prompt" rows="7" readonly placeholder="点击“一键获取提示词”后显示。"></textarea><p class="editor-note">导出包含接口和其他配置。导入完整备份会同时更新这两部分；请先备份，并在导入后分别核对。恢复自动配置按钮只影响当前页。</p><label for="compatibility-json">兼容配置 JSON（只接受配置数据，不执行代码）</label><textarea id="compatibility-json" rows="6" maxlength="1048576" placeholder="先导出备份，或在此粘贴核实后的配置 JSON。"></textarea><div class="compatibility-actions"><button class="button secondary" id="compatibility-export" type="button" data-compatibility-operation>导出全部兼容配置</button><button class="button secondary" id="compatibility-import" type="button" data-compatibility-operation>导入并应用兼容配置</button></div></details>
+      <p class="editor-note">关闭窗口会丢弃尚未应用的输入；已保存的配置保留。关闭本窗口不会暂停或停止挂机。</p>
+    </dialog>
+    <dialog class="browser-optimization-dialog" id="browser-optimization-dialog" aria-labelledby="browser-optimization-title">
+      <div class="browser-optimization-heading"><h2 id="browser-optimization-title">优化浏览器设置</h2><button class="icon-button" id="browser-optimization-close" aria-label="关闭浏览器优化确认">×</button></div>
+      <p class="browser-optimization-intro">优化方向接近官方桌面端：正常内存、GPU缓存、后台持续运行。实际表现取决于设备与游戏负载，不代表相同帧率。</p>
+      <p id="browser-optimization-scope" class="editor-note">仅调整本客户端内置的 WebView2 浏览器，不修改电脑上 Edge 或 Chrome 的全局设置。</p>
+      <div id="browser-optimization-changes" class="browser-optimization-changes"></div>
+      <p id="browser-optimization-diagnostics" class="editor-note"></p>
+      <p id="browser-optimization-result" class="browser-optimization-result" role="status"></p>
+      <div class="browser-optimization-actions"><button class="button secondary" id="browser-optimization-decline">不同意</button><button class="button primary" id="browser-optimization-accept">同意并优化</button></div>
+    </dialog>
+  <div id="rhythm-delay-parking" hidden><div class="random-delay-settings" id="rhythm-delay-range"><div class="random-delay-heading"><strong>随机延迟范围</strong><span>合法修改后自动保存</span></div><div class="random-delay-range"><label for="random-delay-min">最短<input id="random-delay-min" type="number" min="0" max="30" step="0.1" inputmode="decimal" aria-describedby="random-delay-help random-delay-error" /><span>秒</span></label><span class="random-delay-separator">至</span><label for="random-delay-max">最长<input id="random-delay-max" type="number" min="0" max="30" step="0.1" inputmode="decimal" aria-describedby="random-delay-help random-delay-error" /><span>秒</span></label></div><p id="random-delay-help">只延迟安全选择、购买或复制、局外菜单。移动、躲避与招式即时响应。范围可设 0–30 秒，关闭开关后仍可编辑。</p><p id="random-delay-error" class="random-delay-error" role="alert" hidden></p><p id="random-delay-status" class="random-delay-status" aria-live="polite" hidden></p></div></div>
+</body>
+</html>

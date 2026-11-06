@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-11-06T00:45:01.955Z",
+  "records": [
+    {
+      "url": "https://pokebonk.com/data/pokemon.json",
+      "file": "pokemon.json",
+      "sha256": "cd148403e2e7e44a86ac982bfb71b73dde8bf3641816e2fa549a5c05a988b678",
+      "bytes": 528525
+    },
+    {
+      "url": "https://pokebonk.com/data/moves.json",
+      "file": "moves.json",
+      "sha256": "bd7a87d79d3a18a818eef5bcef375e068401105f50fda2c3a12d844426a82518",
+      "bytes": 356086
+    },
+    {
+      "url": "https://pokebonk.com/data/learnsets.json",
+      "file": "learnsets.json",
+      "sha256": "d3fe0e2f43e5cb58de8f7253bd730049b2c8a4fa0795b871c0a586dd1e4b9d48",
+      "bytes": 129302
+    },
+    {
+      "url": "https://pokebonk.com/data/abilities.json",
+      "file": "abilities.json",
+      "sha256": "3c36de6d1ffb1df148049b6c6ccdc072b4f9aa9ba39a1e4a93b5bfc3346ea200",
+      "bytes": 41947
+    },
+    {
+      "url": "https://pokebonk.com/data/types.json",
+      "file": "types.json",
+      "sha256": "265becfc6c17aaedc7854a4aefd16acec05b1a4763cec5d1bb414fbfea5cbbfc",
+      "bytes": 1302
+    },
+    {
+      "url": "https://pokebonk.com/data/items.json",
+      "file": "items.json",
+      "sha256": "d67b4677bfd9e5762de7b171ba061177fd23f5463013f4d9448772c5374995b1",
+      "bytes": 26854
+    },
+    {
+      "url": "https://pokebonk.com/data/sprites.json",
+      "file": "sprites.json",
+      "sha256": "b85bf1061400dedcb234329f5ceac7999433ec80b8f2c5795ea08fd39cc1dc9f",
+      "bytes": 439021
+    },
+    {
+      "url": "https://pokebonk.com/data/i18n/zh.json",
+      "file": "i18n-zh.json",
+      "sha256": "e4247a7fe3697390991b7841f888e77618aa5365af4d93ead94faba3285f645c",
+      "bytes": 116878
+    }
+  ]
+}

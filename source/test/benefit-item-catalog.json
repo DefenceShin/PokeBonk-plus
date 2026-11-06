@@ -1,0 +1,1565 @@
+{
+  "version": "0.8.55",
+  "sourceHash": "43e519cba77e5c2e3d2ee5f5db47d952f62eb741e0c8096dc468929ca4c7a149",
+  "items": [
+    {
+      "key": "charcoal",
+      "rarity": 0,
+      "desc": "火属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:fire"
+      ],
+      "name": "木炭"
+    },
+    {
+      "key": "mystic-water",
+      "rarity": 0,
+      "desc": "水属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:water"
+      ],
+      "name": "神秘水滴"
+    },
+    {
+      "key": "miracle-seed",
+      "rarity": 0,
+      "desc": "草属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:grass"
+      ],
+      "name": "奇迹种子"
+    },
+    {
+      "key": "magnet",
+      "rarity": 0,
+      "desc": "电属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:electric"
+      ],
+      "name": "磁铁"
+    },
+    {
+      "key": "never-melt-ice",
+      "rarity": 0,
+      "desc": "冰属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:ice"
+      ],
+      "name": "不融冰"
+    },
+    {
+      "key": "black-belt",
+      "rarity": 0,
+      "desc": "格斗属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:fighting"
+      ],
+      "name": "黑带"
+    },
+    {
+      "key": "poison-barb",
+      "rarity": 0,
+      "desc": "毒属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:poison"
+      ],
+      "name": "毒针"
+    },
+    {
+      "key": "soft-sand",
+      "rarity": 0,
+      "desc": "地面属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:ground"
+      ],
+      "name": "柔软沙子"
+    },
+    {
+      "key": "sharp-beak",
+      "rarity": 0,
+      "desc": "飞行属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:flying"
+      ],
+      "name": "锐利鸟嘴"
+    },
+    {
+      "key": "twisted-spoon",
+      "rarity": 0,
+      "desc": "精神强念属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:psychic"
+      ],
+      "name": "弯曲的汤匙"
+    },
+    {
+      "key": "silver-powder",
+      "rarity": 0,
+      "desc": "虫属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:bug"
+      ],
+      "name": "银粉"
+    },
+    {
+      "key": "hard-stone",
+      "rarity": 0,
+      "desc": "岩石属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:rock"
+      ],
+      "name": "硬石头"
+    },
+    {
+      "key": "spell-tag",
+      "rarity": 0,
+      "desc": "幽灵属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:ghost"
+      ],
+      "name": "诅咒之符"
+    },
+    {
+      "key": "dragon-fang",
+      "rarity": 0,
+      "desc": "龙属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:dragon"
+      ],
+      "name": "龙之牙"
+    },
+    {
+      "key": "black-glasses",
+      "rarity": 0,
+      "desc": "恶属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:dark"
+      ],
+      "name": "黑色眼镜"
+    },
+    {
+      "key": "metal-coat",
+      "rarity": 0,
+      "desc": "钢属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:steel"
+      ],
+      "name": "金属膜"
+    },
+    {
+      "key": "silk-scarf",
+      "rarity": 0,
+      "desc": "普通属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:normal"
+      ],
+      "name": "丝绸围巾"
+    },
+    {
+      "key": "fairy-feather",
+      "rarity": 0,
+      "desc": "妖精属性招式伤害 +30%，总伤害 +3%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.03
+        }
+      ],
+      "tags": [
+        "type:fairy"
+      ],
+      "name": "妖精之羽"
+    },
+    {
+      "key": "oran-berry",
+      "rarity": 0,
+      "desc": "最大 HP +15。",
+      "mods": [
+        {
+          "stat": "maxHp",
+          "add": 15
+        }
+      ],
+      "name": "橙橙果"
+    },
+    {
+      "key": "quick-powder",
+      "rarity": 0,
+      "desc": "移动速度 +7%。",
+      "mods": [
+        {
+          "stat": "moveSpeed",
+          "mul": 1.07
+        }
+      ],
+      "name": "速度粉"
+    },
+    {
+      "key": "bright-powder",
+      "rarity": 0,
+      "desc": "闪避 +4%。",
+      "mods": [
+        {
+          "stat": "evasion",
+          "add": 0.04
+        }
+      ],
+      "name": "光粉"
+    },
+    {
+      "key": "amulet-coin",
+      "rarity": 0,
+      "desc": "宝可币 +20%。",
+      "mods": [
+        {
+          "stat": "gold",
+          "mul": 1.2
+        }
+      ],
+      "name": "护符金币"
+    },
+    {
+      "key": "scope-lens",
+      "rarity": 0,
+      "desc": "暴击率 +6%。",
+      "mods": [
+        {
+          "stat": "critChance",
+          "add": 0.06
+        }
+      ],
+      "name": "焦点镜"
+    },
+    {
+      "key": "wide-lens",
+      "rarity": 0,
+      "desc": "招式范围 +10%。",
+      "mods": [
+        {
+          "stat": "area",
+          "mul": 1.1
+        }
+      ],
+      "name": "广角镜"
+    },
+    {
+      "key": "zoom-lens",
+      "rarity": 0,
+      "desc": "弹丸速度 +15%，暴击率 +3%。",
+      "mods": [
+        {
+          "stat": "projSpeed",
+          "mul": 1.15
+        },
+        {
+          "stat": "critChance",
+          "add": 0.03
+        }
+      ],
+      "name": "对焦镜"
+    },
+    {
+      "key": "soothe-bell",
+      "rarity": 0,
+      "desc": "受到的治疗 +15%，再生 +0.3。",
+      "mods": [
+        {
+          "stat": "healing",
+          "mul": 1.15
+        },
+        {
+          "stat": "regen",
+          "add": 0.3
+        }
+      ],
+      "name": "安抚之铃"
+    },
+    {
+      "key": "lax-incense",
+      "rarity": 0,
+      "desc": "护甲 +5。",
+      "mods": [
+        {
+          "stat": "armor",
+          "add": 5
+        }
+      ],
+      "name": "悠闲薰香"
+    },
+    {
+      "key": "honey",
+      "rarity": 0,
+      "desc": "拾取范围 +1.5。",
+      "mods": [
+        {
+          "stat": "pickupRange",
+          "add": 1.5
+        }
+      ],
+      "name": "甜甜蜜"
+    },
+    {
+      "key": "cleanse-tag",
+      "rarity": 0,
+      "desc": "对精英、头目和首领伤害 +15%。",
+      "mods": [
+        {
+          "stat": "eliteDamage",
+          "mul": 1.15
+        }
+      ],
+      "name": "洁净之符"
+    },
+    {
+      "key": "potion",
+      "rarity": 0,
+      "desc": "每秒 HP 再生 +0.6。",
+      "mods": [
+        {
+          "stat": "regen",
+          "add": 0.6
+        }
+      ],
+      "name": "伤药"
+    },
+    {
+      "key": "lucky-punch",
+      "rarity": 0,
+      "desc": "幸运 +10，暴击率 +3%。",
+      "mods": [
+        {
+          "stat": "luck",
+          "add": 10
+        },
+        {
+          "stat": "critChance",
+          "add": 0.03
+        }
+      ],
+      "name": "吉利拳"
+    },
+    {
+      "key": "big-nugget",
+      "rarity": 0,
+      "desc": "精灵球价格 -8%（最高 -40%），宝可币 +5%。",
+      "mods": [
+        {
+          "stat": "gold",
+          "mul": 1.05
+        }
+      ],
+      "max": 5,
+      "name": "巨大金珠"
+    },
+    {
+      "key": "grip-claw",
+      "rarity": 0,
+      "desc": "你的攻击有 4% 的几率使敌人缠根。",
+      "mods": [],
+      "max": 5,
+      "name": "紧缠钩爪"
+    },
+    {
+      "key": "berry-juice",
+      "rarity": 0,
+      "desc": "每次击败有 5% 的几率回复你 2% 的最大 HP。",
+      "mods": [],
+      "max": 8,
+      "name": "树果汁"
+    },
+    {
+      "key": "soda-pop",
+      "rarity": 0,
+      "desc": "滑行时周围会炸开一圈泡沫浪，造成伤害并使敌人湿透。",
+      "mods": [],
+      "max": 5,
+      "name": "劲爽汽水"
+    },
+    {
+      "key": "muscle-band",
+      "rarity": 1,
+      "desc": "物理伤害 +15%。",
+      "mods": [
+        {
+          "stat": "physical",
+          "mul": 1.15
+        }
+      ],
+      "name": "力量头带"
+    },
+    {
+      "key": "wise-glasses",
+      "rarity": 1,
+      "desc": "特殊伤害 +15%。",
+      "mods": [
+        {
+          "stat": "special",
+          "mul": 1.15
+        }
+      ],
+      "name": "博识眼镜"
+    },
+    {
+      "key": "quick-claw",
+      "rarity": 1,
+      "desc": "攻击速度 +10%。",
+      "mods": [
+        {
+          "stat": "attackSpeed",
+          "mul": 1.1
+        }
+      ],
+      "name": "先制之爪"
+    },
+    {
+      "key": "razor-claw",
+      "rarity": 1,
+      "desc": "暴击伤害 +30%。",
+      "mods": [
+        {
+          "stat": "critDamage",
+          "add": 0.3
+        }
+      ],
+      "name": "锐利之爪"
+    },
+    {
+      "key": "shell-bell",
+      "rarity": 1,
+      "desc": "回复你造成伤害的 0.8%。",
+      "mods": [],
+      "name": "贝壳之铃"
+    },
+    {
+      "key": "leftovers",
+      "rarity": 1,
+      "desc": "每秒 HP 再生 +1.2。",
+      "mods": [
+        {
+          "stat": "regen",
+          "add": 1.2
+        }
+      ],
+      "name": "吃剩的东西"
+    },
+    {
+      "key": "rocky-helmet",
+      "rarity": 1,
+      "desc": "碰到你的敌人会受到 25 点伤害（尖刺）。",
+      "mods": [
+        {
+          "stat": "thorns",
+          "add": 25
+        }
+      ],
+      "name": "凸凸头盔"
+    },
+    {
+      "key": "light-clay",
+      "rarity": 1,
+      "desc": "招式和异常状态的持续时间 +20%。",
+      "mods": [
+        {
+          "stat": "duration",
+          "mul": 1.2
+        }
+      ],
+      "name": "光之黏土"
+    },
+    {
+      "key": "air-balloon",
+      "rarity": 1,
+      "desc": "额外跳跃 +1，跳跃高度 +15%。",
+      "mods": [
+        {
+          "stat": "extraJumps",
+          "add": 1
+        },
+        {
+          "stat": "jumpHeight",
+          "mul": 1.15
+        }
+      ],
+      "name": "气球"
+    },
+    {
+      "key": "white-herb",
+      "rarity": 1,
+      "desc": "异常状态几率 +25%。",
+      "mods": [
+        {
+          "stat": "statusChance",
+          "mul": 1.25
+        }
+      ],
+      "name": "白色香草"
+    },
+    {
+      "key": "power-herb",
+      "rarity": 1,
+      "desc": "灼伤、中毒等伤害 +30%。",
+      "mods": [
+        {
+          "stat": "statusDamage",
+          "mul": 1.3
+        }
+      ],
+      "name": "强力香草"
+    },
+    {
+      "key": "sitrus-berry",
+      "rarity": 1,
+      "desc": "HP 低于 30% 时回复 35%（每 45 秒一次）。",
+      "mods": [
+        {
+          "stat": "maxHp",
+          "add": 10
+        }
+      ],
+      "name": "文柚果"
+    },
+    {
+      "key": "lucky-egg",
+      "rarity": 1,
+      "desc": "经验 +15%。",
+      "mods": [
+        {
+          "stat": "xpGain",
+          "mul": 1.15
+        }
+      ],
+      "name": "幸运蛋"
+    },
+    {
+      "key": "big-root",
+      "rarity": 1,
+      "desc": "生命偷取 +3%，治疗效果 +15%。",
+      "mods": [
+        {
+          "stat": "lifesteal",
+          "add": 0.03
+        },
+        {
+          "stat": "healing",
+          "mul": 1.15
+        }
+      ],
+      "name": "大根茎"
+    },
+    {
+      "key": "smoke-ball",
+      "rarity": 1,
+      "desc": "受到伤害时：25% 的几率隐身 1.5 秒。闪避 +3%。",
+      "mods": [
+        {
+          "stat": "evasion",
+          "add": 0.03
+        }
+      ],
+      "name": "烟雾球"
+    },
+    {
+      "key": "metronome",
+      "rarity": 1,
+      "desc": "未受到攻击期间，你的伤害会提高（最高 +40%）。",
+      "mods": [],
+      "name": "节拍器"
+    },
+    {
+      "key": "flame-orb",
+      "rarity": 1,
+      "desc": "你的攻击有 5% 的几率灼伤敌人，且异常状态伤害 +10%。",
+      "mods": [
+        {
+          "stat": "statusDamage",
+          "mul": 1.1
+        }
+      ],
+      "max": 5,
+      "name": "火焰宝珠"
+    },
+    {
+      "key": "toxic-orb",
+      "rarity": 1,
+      "desc": "你的攻击有 6% 的几率使敌人中毒，且异常状态几率 +10%。",
+      "mods": [
+        {
+          "stat": "statusChance",
+          "mul": 1.1
+        }
+      ],
+      "max": 5,
+      "name": "剧毒宝珠"
+    },
+    {
+      "key": "snowball",
+      "rarity": 1,
+      "desc": "你的攻击有 6% 的几率冻伤敌人（三次冻伤会冰冻），且护甲 +3。",
+      "mods": [
+        {
+          "stat": "armor",
+          "add": 3
+        }
+      ],
+      "max": 5,
+      "name": "雪球"
+    },
+    {
+      "key": "binding-band",
+      "rarity": 1,
+      "desc": "对被眩晕、缠根、麻痹、冰冻或睡眠的敌人伤害 +20%。",
+      "mods": [],
+      "max": 5,
+      "name": "紧绑束带"
+    },
+    {
+      "key": "smooth-rock",
+      "rarity": 1,
+      "desc": "单发弹丸（弹丸和连射）弹跳 +1，弹丸速度 +10%。",
+      "mods": [
+        {
+          "stat": "bounces",
+          "add": 1
+        },
+        {
+          "stat": "projSpeed",
+          "mul": 1.1
+        }
+      ],
+      "max": 3,
+      "name": "沙沙岩石"
+    },
+    {
+      "key": "white-flute",
+      "rarity": 1,
+      "desc": "敌人 +12%，但经验 +10%，幸运 +5。",
+      "mods": [
+        {
+          "stat": "enemyAmount",
+          "mul": 1.12
+        },
+        {
+          "stat": "xpGain",
+          "mul": 1.1
+        },
+        {
+          "stat": "luck",
+          "add": 5
+        }
+      ],
+      "max": 5,
+      "name": "白色玻璃哨"
+    },
+    {
+      "key": "adrenaline-orb",
+      "rarity": 1,
+      "desc": "受到攻击时：速度 +20%，攻击速度 +12%，持续 3 秒。",
+      "mods": [],
+      "max": 3,
+      "name": "胆怯球"
+    },
+    {
+      "key": "repel",
+      "rarity": 1,
+      "desc": "敌人 -8%，速度 +6%。适合宝可梦群逼近的时候。",
+      "mods": [
+        {
+          "stat": "enemyAmount",
+          "mul": 0.92
+        },
+        {
+          "stat": "moveSpeed",
+          "mul": 1.06
+        }
+      ],
+      "max": 3,
+      "name": "除虫喷雾"
+    },
+    {
+      "key": "metal-powder",
+      "rarity": 1,
+      "desc": "如果你稍微停下不动：护甲 +30%，攻击速度 +8%，直到你再次移动。",
+      "mods": [],
+      "max": 3,
+      "name": "金属粉"
+    },
+    {
+      "key": "burn-heal",
+      "rarity": 1,
+      "desc": "灼伤会传染给被灼伤敌人身边的宝可梦。",
+      "mods": [
+        {
+          "stat": "statusDamage",
+          "mul": 1.05
+        }
+      ],
+      "max": 3,
+      "name": "灼伤药"
+    },
+    {
+      "key": "ice-heal",
+      "rarity": 1,
+      "desc": "攻击冰冻的敌人会打碎冰块：伤害 +60%，并溅出冰片冻伤周围的敌人。",
+      "mods": [],
+      "max": 3,
+      "name": "解冻药"
+    },
+    {
+      "key": "awakening",
+      "rarity": 1,
+      "desc": "攻击有 2.5% 几率使敌人睡着，睡着的敌人受到攻击后还可能继续睡着。",
+      "mods": [],
+      "max": 3,
+      "name": "解眠药"
+    },
+    {
+      "key": "lemonade",
+      "rarity": 1,
+      "desc": "你的支援头目伤害增加 25%，攻击速度加快 15%。",
+      "mods": [],
+      "max": 3,
+      "name": "果汁牛奶"
+    },
+    {
+      "key": "secret-key",
+      "rarity": 1,
+      "desc": "未知图腾祭坛充能加快 30%，离开时消耗速度减半。",
+      "mods": [],
+      "max": 2,
+      "name": "秘密钥匙"
+    },
+    {
+      "key": "gold-teeth",
+      "rarity": 1,
+      "desc": "喵喵、它的刷新和老虎机向你收取的费用减少 8%（最多 -24%）。",
+      "mods": [],
+      "max": 3,
+      "name": "金假牙"
+    },
+    {
+      "key": "old-rod",
+      "rarity": 1,
+      "desc": "每 9 秒钓鱼一次：鲤鱼王会跳到敌人身上并使其湿透。偶尔会钓到暴鲤龙……",
+      "mods": [],
+      "max": 3,
+      "name": "破旧钓竿"
+    },
+    {
+      "key": "life-orb",
+      "rarity": 2,
+      "desc": "总伤害 +30%，但最大 HP -10%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.3
+        },
+        {
+          "stat": "maxHp",
+          "mul": 0.9
+        }
+      ],
+      "max": 5,
+      "name": "生命宝珠"
+    },
+    {
+      "key": "choice-band",
+      "rarity": 2,
+      "desc": "物理伤害 +35%，攻击速度 -8%。",
+      "mods": [
+        {
+          "stat": "physical",
+          "mul": 1.35
+        },
+        {
+          "stat": "attackSpeed",
+          "mul": 0.92
+        }
+      ],
+      "max": 5,
+      "name": "讲究头带"
+    },
+    {
+      "key": "choice-specs",
+      "rarity": 2,
+      "desc": "特殊伤害 +35%，攻击速度 -8%。",
+      "mods": [
+        {
+          "stat": "special",
+          "mul": 1.35
+        },
+        {
+          "stat": "attackSpeed",
+          "mul": 0.92
+        }
+      ],
+      "max": 5,
+      "name": "讲究眼镜"
+    },
+    {
+      "key": "choice-scarf",
+      "rarity": 2,
+      "desc": "速度 +20%，攻击速度 +10%。",
+      "mods": [
+        {
+          "stat": "moveSpeed",
+          "mul": 1.2
+        },
+        {
+          "stat": "attackSpeed",
+          "mul": 1.1
+        }
+      ],
+      "max": 5,
+      "name": "讲究围巾"
+    },
+    {
+      "key": "expert-belt",
+      "rarity": 2,
+      "desc": "效果绝佳的攻击伤害 +30%。",
+      "mods": [
+        {
+          "stat": "superEffective",
+          "mul": 1.3
+        }
+      ],
+      "name": "达人带"
+    },
+    {
+      "key": "focus-band",
+      "rarity": 2,
+      "desc": "有 15% 的几率以 1 HP 撑过致命一击（每 20 秒一次）。",
+      "mods": [],
+      "max": 4,
+      "name": "气势头带"
+    },
+    {
+      "key": "kings-rock",
+      "rarity": 2,
+      "desc": "使敌人畏缩（眩晕）的几率 +6%。",
+      "mods": [
+        {
+          "stat": "flinch",
+          "add": 0.06
+        }
+      ],
+      "name": "王者之证"
+    },
+    {
+      "key": "assault-vest",
+      "rarity": 2,
+      "desc": "护甲 +12，最大 HP +12%。",
+      "mods": [
+        {
+          "stat": "armor",
+          "add": 12
+        },
+        {
+          "stat": "maxHp",
+          "mul": 1.12
+        }
+      ],
+      "name": "突击背心"
+    },
+    {
+      "key": "eviolite",
+      "rarity": 2,
+      "desc": "如果还能进化：护甲 +50%，HP +25%。",
+      "mods": [],
+      "max": 1,
+      "name": "进化奇石"
+    },
+    {
+      "key": "exp-share",
+      "rarity": 2,
+      "desc": "经验 +25%，拾取范围 +2。",
+      "mods": [
+        {
+          "stat": "xpGain",
+          "mul": 1.25
+        },
+        {
+          "stat": "pickupRange",
+          "add": 2
+        }
+      ],
+      "name": "学习装置"
+    },
+    {
+      "key": "macho-brace",
+      "rarity": 2,
+      "desc": "经验 +50%，速度 -10%。",
+      "mods": [
+        {
+          "stat": "xpGain",
+          "mul": 1.5
+        },
+        {
+          "stat": "moveSpeed",
+          "mul": 0.9
+        }
+      ],
+      "max": 3,
+      "name": "强制锻炼器"
+    },
+    {
+      "key": "black-sludge",
+      "rarity": 2,
+      "desc": "再生 +2。你的毒持续时间延长 25%，伤害 +20%。",
+      "mods": [
+        {
+          "stat": "regen",
+          "add": 2
+        },
+        {
+          "stat": "statusDamage",
+          "mul": 1.2
+        }
+      ],
+      "name": "黑色污泥"
+    },
+    {
+      "key": "star-piece",
+      "rarity": 2,
+      "desc": "幸运 +20：更好的稀有度和更多战利品。",
+      "mods": [
+        {
+          "stat": "luck",
+          "add": 20
+        }
+      ],
+      "name": "星星碎片"
+    },
+    {
+      "key": "stick",
+      "rarity": 2,
+      "desc": "攻击有 3% 的几率造成 ×8 伤害：Bonk！",
+      "mods": [],
+      "max": 4,
+      "name": "大葱"
+    },
+    {
+      "key": "razor-fang",
+      "rarity": 2,
+      "desc": "对 HP 低于 8% 的敌人（首领除外）直接处决（每多一个单位 +4%）。",
+      "mods": [],
+      "max": 4,
+      "name": "锐利之牙"
+    },
+    {
+      "key": "shed-shell",
+      "rarity": 2,
+      "desc": "滑铲开始的一段时间内无敌，冷却加快10%。",
+      "mods": [],
+      "max": 1,
+      "name": "美丽空壳"
+    },
+    {
+      "key": "cell-battery",
+      "rarity": 2,
+      "desc": "每连续击败 10 个敌人，攻击速度 +1.5%（最高 +25%）。",
+      "mods": [],
+      "max": 2,
+      "name": "充电电池"
+    },
+    {
+      "key": "lum-berry",
+      "rarity": 2,
+      "desc": "每 30 秒，若你生命值不足，则回复 12% HP。受到的治疗 +10%。",
+      "mods": [
+        {
+          "stat": "healing",
+          "mul": 1.1
+        }
+      ],
+      "max": 3,
+      "name": "木子果"
+    },
+    {
+      "key": "poke-doll",
+      "rarity": 2,
+      "desc": "你的支援头目的被动效果增强 50%。",
+      "mods": [],
+      "max": 2,
+      "name": "皮皮玩偶"
+    },
+    {
+      "key": "dowsing-machine",
+      "rarity": 2,
+      "desc": "从下一区域起，每个区域多出 1 个未知图腾祭坛和 2 个精灵球。",
+      "mods": [],
+      "max": 2,
+      "name": "探宝器"
+    },
+    {
+      "key": "bicycle",
+      "rarity": 2,
+      "desc": "速度 +6%。每多 2% 速度，伤害 +1%（最多 +35%）。",
+      "mods": [
+        {
+          "stat": "moveSpeed",
+          "mul": 1.06
+        }
+      ],
+      "max": 2,
+      "name": "Bicycle"
+    },
+    {
+      "key": "iron-ball",
+      "rarity": 2,
+      "desc": "护甲 +8，速度 -7%。从跳跃落地时会产生冲击波，威力随护甲增长。",
+      "mods": [
+        {
+          "stat": "armor",
+          "add": 8
+        },
+        {
+          "stat": "moveSpeed",
+          "mul": 0.93
+        }
+      ],
+      "max": 3,
+      "name": "黑色铁球"
+    },
+    {
+      "key": "fresh-water",
+      "rarity": 2,
+      "desc": "HP 已满时多出的回复会被储存起来，并像水柱一样喷射而出。",
+      "mods": [
+        {
+          "stat": "healing",
+          "mul": 1.05
+        }
+      ],
+      "max": 3,
+      "name": "美味之水"
+    },
+    {
+      "key": "full-heal",
+      "rarity": 2,
+      "desc": "敌人每有一种不同的异常状态，伤害 +6%（最多 +30%）。",
+      "mods": [],
+      "max": 3,
+      "name": "万灵药"
+    },
+    {
+      "key": "guard-spec",
+      "rarity": 2,
+      "desc": "每 14 秒完全抵挡下一次攻击。",
+      "mods": [],
+      "max": 2,
+      "name": "能力防守"
+    },
+    {
+      "key": "coin-case",
+      "rarity": 2,
+      "desc": "宝可币 +10%。本局每花费 300 ₽，伤害 +1%（最多 +30%）。",
+      "mods": [
+        {
+          "stat": "gold",
+          "mul": 1.1
+        }
+      ],
+      "max": 1,
+      "name": "代币盒"
+    },
+    {
+      "key": "focus-sash",
+      "rarity": 3,
+      "desc": "每个阶段一次撑过致命一击。",
+      "mods": [],
+      "max": 1,
+      "name": "气势披带"
+    },
+    {
+      "key": "pp-max",
+      "rarity": 3,
+      "desc": "所有招式 +1 个弹丸。",
+      "mods": [
+        {
+          "stat": "projectiles",
+          "add": 1
+        }
+      ],
+      "name": "ＰＰ极限提升剂"
+    },
+    {
+      "key": "max-elixir",
+      "rarity": 3,
+      "desc": "攻击速度 +20%。",
+      "mods": [
+        {
+          "stat": "attackSpeed",
+          "mul": 1.2
+        }
+      ],
+      "name": "ＰＰ多项全补剂"
+    },
+    {
+      "key": "shiny-stone",
+      "rarity": 3,
+      "desc": "总伤害 +15%，范围 +15%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.15
+        },
+        {
+          "stat": "area",
+          "mul": 1.15
+        }
+      ],
+      "name": "光之石"
+    },
+    {
+      "key": "dusk-stone",
+      "rarity": 3,
+      "desc": "暴击伤害 +40%，暴击率 +8%。",
+      "mods": [
+        {
+          "stat": "critDamage",
+          "add": 0.4
+        },
+        {
+          "stat": "critChance",
+          "add": 0.08
+        }
+      ],
+      "name": "暗之石"
+    },
+    {
+      "key": "comet-shard",
+      "rarity": 3,
+      "desc": "宝可币 +40%，幸运 +30。",
+      "mods": [
+        {
+          "stat": "gold",
+          "mul": 1.4
+        },
+        {
+          "stat": "luck",
+          "add": 30
+        }
+      ],
+      "name": "彗星碎片"
+    },
+    {
+      "key": "thunder-stone",
+      "rarity": 3,
+      "desc": "你的暴击会向附近的敌人释放一道闪电。",
+      "mods": [
+        {
+          "stat": "critChance",
+          "add": 0.04
+        }
+      ],
+      "max": 5,
+      "name": "雷之石"
+    },
+    {
+      "key": "fire-stone",
+      "rarity": 3,
+      "desc": "被灼伤的敌人死亡时会爆炸。",
+      "mods": [],
+      "max": 3,
+      "name": "火之石"
+    },
+    {
+      "key": "protector",
+      "rarity": 3,
+      "desc": "护甲 +20，最大 HP +15%，尖刺 +40，但速度 -5%。",
+      "mods": [
+        {
+          "stat": "armor",
+          "add": 20
+        },
+        {
+          "stat": "maxHp",
+          "mul": 1.15
+        },
+        {
+          "stat": "thorns",
+          "add": 40
+        },
+        {
+          "stat": "moveSpeed",
+          "mul": 0.95
+        }
+      ],
+      "max": 3,
+      "name": "护具"
+    },
+    {
+      "key": "griseous-orb",
+      "rarity": 3,
+      "desc": "每击败一个敌人有 12% 的几率留下一个立刻爆炸的暗影，并诅咒周围的敌人。",
+      "mods": [],
+      "max": 2,
+      "name": "白金宝珠"
+    },
+    {
+      "key": "reaper-cloth",
+      "rarity": 3,
+      "desc": "本局每击败 100 个敌人：伤害 +1%（最高 +30%）。",
+      "mods": [],
+      "max": 2,
+      "name": "灵界之布"
+    },
+    {
+      "key": "electirizer",
+      "rarity": 3,
+      "desc": "每 2.5 秒有一道闪电落在 3 个附近的敌人身上，并可能使其麻痹（每个单位多 +1 道闪电）。",
+      "mods": [],
+      "max": 3,
+      "name": "电力增幅器"
+    },
+    {
+      "key": "ice-stone",
+      "rarity": 3,
+      "desc": "被冰冻或冻伤的敌人死亡时会迸出冰屑，并冻伤周围的敌人。",
+      "mods": [
+        {
+          "stat": "statusChance",
+          "mul": 1.1
+        }
+      ],
+      "max": 3,
+      "name": "冰之石"
+    },
+    {
+      "key": "leaf-stone",
+      "rarity": 3,
+      "desc": "每次击败有 10% 的几率放出一阵旋转树叶，切割附近的敌人并回复你 1% HP。",
+      "mods": [],
+      "max": 3,
+      "name": "叶之石"
+    },
+    {
+      "key": "revive",
+      "rarity": 3,
+      "desc": "你会以 35% HP 复活一次。",
+      "mods": [],
+      "max": 2,
+      "name": "活力碎片"
+    },
+    {
+      "key": "ss-ticket",
+      "rarity": 3,
+      "desc": "本局支援头目栏位 +1。",
+      "mods": [],
+      "max": 1,
+      "name": "船票"
+    },
+    {
+      "key": "max-ether",
+      "rarity": 3,
+      "desc": "你的维生素可再升 2 级（最高 12 级）。",
+      "mods": [],
+      "max": 1,
+      "name": "ＰＰ单项全补剂"
+    },
+    {
+      "key": "thick-club",
+      "rarity": 3,
+      "desc": "护甲每 2 点，物理伤害 +1%（最多 +50%）。",
+      "mods": [],
+      "max": 2,
+      "name": "粗骨头"
+    },
+    {
+      "key": "rage-candy-bar",
+      "rarity": 3,
+      "desc": "剩余 HP 越少，伤害越高：HP 在 25% 以下时最高 +60%。受到的回复 -25%。",
+      "mods": [
+        {
+          "stat": "healing",
+          "mul": 0.75
+        }
+      ],
+      "max": 1,
+      "name": "愤怒馒头"
+    },
+    {
+      "key": "silph-scope",
+      "rarity": 3,
+      "desc": "每 6 秒标记附近最强的敌人：它受到的所有伤害 +40%。它倒下后会立刻标记下一个。",
+      "mods": [],
+      "max": 2,
+      "name": "西尔佛检视镜"
+    },
+    {
+      "key": "max-revive",
+      "rarity": 4,
+      "desc": "你会以 60% HP 复活一次。",
+      "mods": [],
+      "max": 3,
+      "name": "活力块"
+    },
+    {
+      "key": "rare-candy",
+      "rarity": 4,
+      "desc": "立即升 2 级，伤害 +5%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.05
+        }
+      ],
+      "name": "神奇糖果"
+    },
+    {
+      "key": "master-ball",
+      "rarity": 4,
+      "desc": "所有伤害 +25%。保证在野生遭遇中捕获成功。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.25
+        }
+      ],
+      "max": 1,
+      "name": "大师球"
+    },
+    {
+      "key": "moon-stone",
+      "rarity": 4,
+      "desc": "弹丸 +2，范围 +25%。",
+      "mods": [
+        {
+          "stat": "projectiles",
+          "add": 2
+        },
+        {
+          "stat": "area",
+          "mul": 1.25
+        }
+      ],
+      "max": 2,
+      "name": "月之石"
+    },
+    {
+      "key": "lustrous-orb",
+      "rarity": 4,
+      "desc": "范围 +20%，弹丸 +1。每 8 秒裂开一道缝隙，吸引附近的敌人并爆炸。",
+      "mods": [
+        {
+          "stat": "area",
+          "mul": 1.2
+        },
+        {
+          "stat": "projectiles",
+          "add": 1
+        }
+      ],
+      "max": 1,
+      "name": "白玉宝珠"
+    },
+    {
+      "key": "adamant-orb",
+      "rarity": 4,
+      "desc": "伤害 +15%。受到攻击时你会让时间停止：附近的敌人会静止 3 秒（每 20 秒一次）。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.15
+        }
+      ],
+      "max": 1,
+      "name": "金刚宝珠"
+    },
+    {
+      "key": "dawn-stone",
+      "rarity": 4,
+      "desc": "所有伤害 +30%，攻击速度 +20%。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.3
+        },
+        {
+          "stat": "attackSpeed",
+          "mul": 1.2
+        }
+      ],
+      "max": 2,
+      "name": "觉醒之石"
+    },
+    {
+      "key": "sun-stone",
+      "rarity": 4,
+      "desc": "伤害 +10%。每 6 秒，一道太阳光线落在附近最强的敌人身上：引发灼烧的火属性大爆炸。",
+      "mods": [
+        {
+          "stat": "damage",
+          "mul": 1.1
+        }
+      ],
+      "max": 2,
+      "name": "日之石"
+    },
+    {
+      "key": "soul-dew",
+      "rarity": 4,
+      "desc": "特殊伤害 +20%，范围 +15%。你的终极技充能速度加快 40%。",
+      "mods": [
+        {
+          "stat": "special",
+          "mul": 1.2
+        },
+        {
+          "stat": "area",
+          "mul": 1.15
+        }
+      ],
+      "max": 1,
+      "name": "心之水滴"
+    },
+    {
+      "key": "silver-wing",
+      "rarity": 4,
+      "desc": "额外跳跃 +1，速度 +12%。每 5 秒一阵风袭来，击退并推开周围的敌人。",
+      "mods": [
+        {
+          "stat": "extraJumps",
+          "add": 1
+        },
+        {
+          "stat": "moveSpeed",
+          "mul": 1.12
+        }
+      ],
+      "max": 1,
+      "name": "银色之羽"
+    },
+    {
+      "key": "rainbow-wing",
+      "rarity": 4,
+      "desc": "每个区域一次，倒下时你会在烈焰中以 50% HP 重生，并灼烧你周围的一切。",
+      "mods": [
+        {
+          "stat": "healing",
+          "mul": 1.15
+        }
+      ],
+      "max": 1,
+      "name": "虹色之羽"
+    },
+    {
+      "key": "tm-case",
+      "rarity": 4,
+      "desc": "你的招式可再升2级（最高10级），融合可再升1星（最高★6）。",
+      "mods": [],
+      "max": 1,
+      "name": "招式学习器盒"
+    },
+    {
+      "key": "poke-flute",
+      "rarity": 4,
+      "desc": "终极技充能速度 +25%。发动时，所有招式立即冷却完毕，并获得攻击速度 +30%，持续 6 秒。",
+      "mods": [],
+      "max": 1,
+      "name": "宝可梦之笛"
+    }
+  ]
+}

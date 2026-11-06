@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-21T12:21:48.324Z",
+  "gameVersion": "0.8.2",
+  "sourceURL": "https://pokebonk.com/assets/main-DWcsq6uM-mvi2aphx.js",
+  "sourceHash": "fb3a8d5f9e99ad6a153c58d9d57b295a3ed927c1e9bf59f92a21f6d4c1af7d1d",
+  "newsURL": "https://pokebonk.com/assets/news-q7VUI8mb-mvi2aphx.js",
+  "newsHash": "5252af12f607c045297723417149ea2a1d78723098fa43ce25874a356002b82a",
+  "referenceSnapshot": {
+    "gameVersion": "0.8.1",
+    "sourceHash": "a74a744f9c5a3369aec073a08e7946142bceaecd79a172db62a99d0c06be35d9",
+    "runtimeDefinitions": "research/update-0.8.0-runtime-definitions.json"
+  },
+  "scope": "Complete pretty-printed main/news text diff plus static compatibility contract; six official JSON resources byte-compared to reviewed snapshot.",
+  "changes": [
+    "Clan trophy showcase adds native ladder label (Kills or Survival) and medal/ladder/season tooltip.",
+    "News adds the corresponding 0.8.2 patch note.",
+    "Import deployment suffixes, version and build identifiers change."
+  ],
+  "mainDiffLines": 69,
+  "newsDiffLines": 43,
+  "staticDefinitionOrCombatCodeChanged": false,
+  "coreContractReady": true,
+  "missing": [],
+  "optionalMissing": [],
+  "resources": [
+    {
+      "name": "pokemon",
+      "sha256": "cd148403e2e7e44a86ac982bfb71b73dde8bf3641816e2fa549a5c05a988b678",
+      "unchanged": true
+    },
+    {
+      "name": "moves",
+      "sha256": "bd7a87d79d3a18a818eef5bcef375e068401105f50fda2c3a12d844426a82518",
+      "unchanged": true
+    },
+    {
+      "name": "items",
+      "sha256": "d70c23fe21cb0aca6089f475a0cf87cae947d2ec303884113d6647235476cdd7",
+      "unchanged": true
+    },
+    {
+      "name": "abilities",
+      "sha256": "3c36de6d1ffb1df148049b6c6ccdc072b4f9aa9ba39a1e4a93b5bfc3346ea200",
+      "unchanged": true
+    },
+    {
+      "name": "learnsets",
+      "sha256": "d3fe0e2f43e5cb58de8f7253bd730049b2c8a4fa0795b871c0a586dd1e4b9d48",
+      "unchanged": true
+    },
+    {
+      "name": "i18n-zh",
+      "sha256": "2712697f6b149c8acc15ddd1d775e9aea91cecd4e6b43d2ed8891de3e337984c",
+      "unchanged": true
+    }
+  ],
+  "accountUsed": false,
+  "browserOpened": false,
+  "credentialsRead": false,
+  "gameplayValidated": false,
+  "conclusion": "Reviewed 0.8.1 public definitions remain semantically applicable to the examined 0.8.2 deployment. Preserve their original hash/version provenance; this review does not prove game outcomes."
+}

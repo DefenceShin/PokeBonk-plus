@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "name": "native-parser",
+      "scope": "shared",
+      "loadOrder": 0
+    },
+    {
+      "name": "native-semantic-profiles",
+      "scope": "shared",
+      "loadOrder": 1
+    },
+    {
+      "name": "native-selector-catalog",
+      "scope": "shared",
+      "loadOrder": 2
+    },
+    {
+      "name": "native-adaptation",
+      "scope": "shared",
+      "loadOrder": 3
+    },
+    {
+      "name": "game-library",
+      "scope": "shared",
+      "loadOrder": 4
+    },
+    {
+      "name": "policy",
+      "scope": "shared",
+      "loadOrder": 12
+    },
+    {
+      "name": "battle-recorder",
+      "scope": "shared",
+      "loadOrder": 22
+    },
+    {
+      "name": "pilot",
+      "scope": "shared",
+      "loadOrder": 23
+    },
+    {
+      "name": "objectives",
+      "scope": "shared",
+      "loadOrder": 10
+    },
+    {
+      "name": "shiny",
+      "scope": "shared",
+      "loadOrder": 11
+    },
+    {
+      "name": "compatibility",
+      "scope": "shared",
+      "loadOrder": 7
+    },
+    {
+      "name": "custom-plans",
+      "scope": "shared",
+      "loadOrder": 8
+    },
+    {
+      "name": "action-cadence",
+      "scope": "shared",
+      "loadOrder": 13
+    },
+    {
+      "name": "interaction-navigation",
+      "scope": "shared",
+      "loadOrder": 14
+    },
+    {
+      "name": "battle-tactics",
+      "scope": "shared",
+      "loadOrder": 15
+    },
+    {
+      "name": "choice-strategy",
+      "scope": "shared",
+      "loadOrder": 16
+    },
+    {
+      "name": "unlock-goals",
+      "scope": "shared",
+      "loadOrder": 17
+    },
+    {
+      "name": "team-overlay",
+      "scope": "shared",
+      "loadOrder": 19
+    },
+    {
+      "name": "player-overlay",
+      "scope": "isolated",
+      "loadOrder": 24
+    },
+    {
+      "name": "player-convenience",
+      "scope": "isolated",
+      "loadOrder": 25
+    },
+    {
+      "name": "wecom-push",
+      "scope": "shared",
+      "loadOrder": 20
+    },
+    {
+      "name": "tower-strategy",
+      "scope": "shared",
+      "loadOrder": 6
+    },
+    {
+      "name": "mutation-strategy",
+      "scope": "shared",
+      "loadOrder": 21
+    },
+    {
+      "name": "character-unlock-legacy160",
+      "scope": "shared",
+      "loadOrder": 18
+    },
+    {
+      "name": "product-source",
+      "scope": "shared",
+      "loadOrder": 5
+    },
+    {
+      "name": "build-import",
+      "scope": "shared",
+      "loadOrder": 9
+    }
+  ]
+}
