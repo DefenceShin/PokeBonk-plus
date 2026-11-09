@@ -6,6 +6,18 @@ using System.Text.Json.Nodes;
 var root=Path.GetFullPath(args[0]);
 AssemblyLoadContext.Default.Resolving += (_,n)=>n.Name!.StartsWith("Microsoft.Web.WebView2.")?AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.Combine(root,"source/client/lib",n.Name+".dll")):null;
 var asm=AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.Combine(root,"source/client/bin/Release/net8.0-windows/win-x64/PokeBonk Pilot.dll"));
+var project=System.Xml.Linq.XDocument.Load(Path.Combine(root,"source/client/PokeBonk Pilot.csproj"));
+var embedded=new JsonArray();
+foreach(var item in project.Descendants("EmbeddedResource")) {
+ var include=(string?)item.Attribute("Include");var logical=(string?)item.Attribute("LogicalName");if(include is null||logical is null)continue;
+ var path=Path.GetFullPath(Path.Combine(root,"source/client",include.Replace('\\',Path.DirectorySeparatorChar)));
+ using var resource=asm.GetManifestResourceStream(logical)??throw new Exception("Missing embedded resource: "+logical);
+ using var buffer=new MemoryStream();resource.CopyTo(buffer);var actual=System.Security.Cryptography.SHA256.HashData(buffer.ToArray());var expected=System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(path));
+ if(!actual.SequenceEqual(expected))throw new Exception("Stale embedded resource: "+logical);
+ embedded.Add(new JsonObject { ["resource"]=logical,["source"]=Path.GetRelativePath(root,path),["sha256"]=Convert.ToHexString(actual).ToLowerInvariant() });
+}
+File.WriteAllText(Path.Combine(root,"evidence/embedded-0922.json"),embedded.ToJsonString(new System.Text.Json.JsonSerializerOptions { WriteIndented=true }));
+Console.WriteLine($"PASS {embedded.Count} embedded resources byte-identical to current source files");
 var t=asm.GetType("PokeBonk.Client.MainWindow",true)!;
 var keys=new[]{"autoUpgrade","autoUnlockItems","autoClaim","reserveMoveSlot"};
 var f=t.GetField("config",BindingFlags.Instance|BindingFlags.NonPublic)!;

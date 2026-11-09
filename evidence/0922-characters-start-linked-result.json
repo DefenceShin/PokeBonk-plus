@@ -1,0 +1,29 @@
+[
+  {
+    "scenario": "saved",
+    "started": false,
+    "opens": 0,
+    "offered": 0,
+    "run": false,
+    "status": "游戏已有暂停保存的对局，请在原生页面选择继续或结束保存",
+    "savedStill": true
+  },
+  {
+    "scenario": "refused",
+    "started": true,
+    "opens": 1,
+    "offered": 0,
+    "run": false,
+    "status": "开局未成功，等待服务器",
+    "savedStill": false
+  },
+  {
+    "scenario": "accepted",
+    "started": true,
+    "opens": 1,
+    "offered": 0,
+    "run": true,
+    "status": "解锁目标 · 准备 forest",
+    "savedStill": false
+  }
+]

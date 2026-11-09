@@ -1,0 +1,24 @@
+{
+  "baselineHpBefore": 111,
+  "baselineHpAfter": 98.60910275578078,
+  "maxInput": 1.0000000000000002,
+  "passes": [
+    {
+      "t": 1.59,
+      "fired": false,
+      "x0": 6.997236458491528,
+      "z0": 112.8,
+      "x1": 76.99723645849153,
+      "z1": 112.8
+    }
+  ],
+  "warningCount": 17,
+  "genericWarnings": 0,
+  "fired": true,
+  "hpBefore": 111,
+  "hpAfter": 111,
+  "moved": 12.927896043427966,
+  "keys": [],
+  "enabled": true,
+  "status": "推进 · 广域移动 · 前往地图远端"
+}

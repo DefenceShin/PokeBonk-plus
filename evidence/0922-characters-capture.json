@@ -1,0 +1,53 @@
+{
+  "result": [
+    {
+      "species": 4,
+      "saved": false,
+      "action": "capture",
+      "throwing": true,
+      "ballActive": true,
+      "nativeOwned": true,
+      "beforeSaved": false,
+      "duringSaved": false,
+      "afterSaved": false,
+      "event": false
+    },
+    {
+      "species": 4,
+      "saved": true,
+      "action": "capture",
+      "throwing": true,
+      "ballActive": true,
+      "nativeOwned": true,
+      "beforeSaved": false,
+      "duringSaved": false,
+      "afterSaved": true,
+      "event": true
+    },
+    {
+      "species": 165,
+      "saved": false,
+      "action": "capture",
+      "throwing": true,
+      "ballActive": true,
+      "nativeOwned": true,
+      "beforeSaved": false,
+      "duringSaved": false,
+      "afterSaved": false,
+      "event": false
+    },
+    {
+      "species": 165,
+      "saved": true,
+      "action": "capture",
+      "throwing": true,
+      "ballActive": true,
+      "nativeOwned": true,
+      "beforeSaved": false,
+      "duringSaved": false,
+      "afterSaved": true,
+      "event": true
+    }
+  ],
+  "errors": []
+}

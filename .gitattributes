@@ -1,0 +1,4 @@
+# Frozen evidence manifests hash exact downloaded/copied bytes on every platform.
+evidence/public-0913/** -text -whitespace
+evidence/public-0922/** -text -whitespace
+evidence/personal-2000/** -text -whitespace

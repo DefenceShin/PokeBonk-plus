@@ -1,0 +1,35 @@
+{
+  "beforeEntry": "{\"moves\":[{\"key\":\"tackle\",\"level\":4,\"parents\":[],\"link\":{\"key\":\"vine-whip\",\"level\":3}},null,null,null],\"items\":[[\"muscle-band\",2]],\"vitamins\":[[\"protein\",2]],\"banished\":[\"m999\"],\"fusions\":[{\"key\":\"fixture-existing\",\"parents\":[33,22]}]}",
+  "afterEntry": "{\"moves\":[{\"key\":\"tackle\",\"level\":4,\"parents\":[],\"link\":{\"key\":\"vine-whip\",\"level\":3}},null,null,null],\"items\":[[\"muscle-band\",2]],\"vitamins\":[[\"protein\",2]],\"banished\":[\"m999\"],\"fusions\":[{\"key\":\"fixture-existing\",\"parents\":[33,22]}]}",
+  "beforeLeave": "{\"moves\":[{\"key\":\"tackle\",\"level\":4,\"parents\":[],\"link\":{\"key\":\"vine-whip\",\"level\":3}},null,null,null],\"items\":[[\"muscle-band\",2]],\"vitamins\":[[\"protein\",2]],\"banished\":[\"m999\"],\"fusions\":[{\"key\":\"fixture-existing\",\"parents\":[33,22]}]}",
+  "afterReturn": "{\"moves\":[{\"key\":\"tackle\",\"level\":4,\"parents\":[],\"link\":{\"key\":\"vine-whip\",\"level\":3}},null,null,null],\"items\":[[\"muscle-band\",2]],\"vitamins\":[[\"protein\",2]],\"banished\":[\"m999\"],\"fusions\":[{\"key\":\"fixture-existing\",\"parents\":[33,22]}]}",
+  "alphaPhase": "alpha",
+  "count": 109,
+  "restored": true,
+  "phases": [
+    "waves",
+    "alpha-in",
+    "alpha",
+    "failed"
+  ],
+  "waves": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "expectedWaves": 4,
+  "frames": 46,
+  "inside": false,
+  "terrainChanged": false,
+  "keys": [
+    "KeyC",
+    "KeyE"
+  ],
+  "incense": 0,
+  "entrance": false,
+  "state": "play",
+  "enabled": true,
+  "status": "推进 · 进入原生裂隙"
+}

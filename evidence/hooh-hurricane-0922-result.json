@@ -1,0 +1,34 @@
+[
+  {
+    "automatic": true,
+    "iframesAtCast": -0.20000000000000084,
+    "before": 111,
+    "after": 111,
+    "damageTaken": 0,
+    "maxInput": 1.0000000000000002,
+    "maxKick": 0,
+    "moved": 20.114747946004435,
+    "triggered": true,
+    "gustFinished": true,
+    "angle": 1.5707963267948966,
+    "state": "play",
+    "enabled": true,
+    "status": "推进 · 广域移动 · 前往地图远端"
+  },
+  {
+    "automatic": false,
+    "iframesAtCast": -0.20000000000000084,
+    "before": 111,
+    "after": 73.83428571428558,
+    "damageTaken": 37.74,
+    "maxInput": 0,
+    "maxKick": 4.056273324604154,
+    "moved": 4.608121940885788,
+    "triggered": true,
+    "gustFinished": true,
+    "angle": 1.5707963267948966,
+    "state": "play",
+    "enabled": true,
+    "status": "推进 · 广域移动 · 前往地图远端"
+  }
+]

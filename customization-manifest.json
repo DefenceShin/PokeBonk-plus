@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09",
+  "baselineCommit": "55127b6e31a891bd63ed9d3efccf88e450918afa",
+  "branch": "adapt/game-0922-20261109",
+  "gameVersion": "0.9.22",
+  "gameBuild": "mw88813m",
+  "nativeMainSha256": "adc878dea06ec3e1a5ae47bdf91a6ed27aca07fa8c9c3a0076f6250462c4db6b",
+  "status": "source-adaptation-offline-validated",
+  "installed": false,
+  "packaged": false,
+  "releaseBuildPurpose": "verification-only",
+  "patches": [
+    "native damage collector alias",
+    "reviewed maps and wave-count rifts",
+    "atomic Ho-Oh observations",
+    "cross-module world enumeration and legendary eligibility",
+    "gated biome-special and released Johto shiny sources"
+  ],
+  "preserved": [
+    "0.9.13 inputs and tests",
+    "four outside permissions default false and saved booleans",
+    "wardrobe/all-clear permission boundaries",
+    "XP move/fusion/banish/vitamin parity"
+  ],
+  "validationEntry": "node tools/validate-current.mjs",
+  "validationResults": "validation/0922/results.json",
+  "unitTests": {
+    "passed": 965,
+    "failed": 0,
+    "skipped": 0
+  },
+  "loadoutParityCases": 162,
+  "embeddedResourcesCompared": 52,
+  "currentSourceManifest": "docs/SOURCE-0922-MANIFEST.json",
+  "publicInputs": "evidence/public-0922/manifest.json",
+  "methodAudit": "docs/native-0922-method-audit.json",
+  "embeddedResourceHashes": "evidence/embedded-0922.json",
+  "limitations": [
+    "no real account or server receipts",
+    "no complete randomized live run",
+    "legendary beast special tracking remains manual",
+    "dojo/exp interfaces remain explicitly unreviewed",
+    "daily mutation optional definitions unresolved; mode remains closed"
+  ],
+  "rollback": "installed files unchanged; original source baseline is recorded in baselineCommit",
+  "sourceDistribution": {
+    "repository": "https://github.com/DefenceShin/PokeBonk-plus",
+    "branch": "main",
+    "content": "source-tests-public-evidence-docs",
+    "binaryRelease": false
+  },
+  "publishedValidationSummary": "docs/VALIDATION-0922-RESULTS.json"
+}

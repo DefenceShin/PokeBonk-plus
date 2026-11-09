@@ -1,0 +1,16 @@
+[
+  {
+    "target": 155,
+    "species": 155,
+    "regional": false,
+    "special": false,
+    "unchanged": true
+  },
+  {
+    "target": 206,
+    "species": 206,
+    "regional": false,
+    "special": true,
+    "unchanged": true
+  }
+]

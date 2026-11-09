@@ -1,0 +1,743 @@
+{
+  "adapterVersion": "2",
+  "strategy": "semantic-contract-v2",
+  "sourceHash": "adc878dea06ec3e1a5ae47bdf91a6ed27aca07fa8c9c3a0076f6250462c4db6b",
+  "publicModules": [
+    {
+      "url": "https://pokebonk.com/assets/defineProperty-Cvp-y8z_-mw88813m.js",
+      "sha256": "b1a6db2b8cae7a9c61f0bc47af78f9aeace607961f51a9ad3402770e05a792dd"
+    },
+    {
+      "url": "https://pokebonk.com/assets/i18n-BGHWfjZr-mw88813m.js",
+      "sha256": "b221485fc26812a411646526fbad34abac170171415f51ead4e482979d2f067d"
+    },
+    {
+      "url": "https://pokebonk.com/assets/main-B23CBACI-mw88813m.js",
+      "sha256": "2d384107ff6d31bc3baf815893cd9ba569dc3689d48aff7e2ee0b062040a4b65"
+    },
+    {
+      "url": "https://pokebonk.com/assets/main-BDr6DT_c-mw88813m.js",
+      "sha256": "adc878dea06ec3e1a5ae47bdf91a6ed27aca07fa8c9c3a0076f6250462c4db6b"
+    },
+    {
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "sha256": "fbe890e620157ed4e3683982c69ffb12928374aed9be9263714d48a89c2205aa"
+    },
+    {
+      "url": "https://pokebonk.com/assets/modulepreload-polyfill-P2Xu9kJm-mw88813m.js",
+      "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f"
+    },
+    {
+      "url": "https://pokebonk.com/assets/preload-helper-AjJCmoQh-mw88813m.js",
+      "sha256": "552740e280fd017b52e5d71bcf17a9f94b10b70d7467c73135da1e74de84ba79"
+    },
+    {
+      "url": "https://pokebonk.com/assets/three-DZ1BLVrH.js",
+      "sha256": "ba7203b142a1497d5a68c4005fad194d50c94222506f84d6e630e2c78234b1e9"
+    }
+  ],
+  "gameVersion": null,
+  "missing": [],
+  "optionalMissing": [
+    "mutationToday",
+    "mutationDefinition"
+  ],
+  "warnings": [],
+  "capabilities": {},
+  "nativeBossObservations": {
+    "hoOh": {
+      "ready": true,
+      "moduleURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "sourceHash": "fbe890e620157ed4e3683982c69ffb12928374aed9be9263714d48a89c2205aa",
+      "methods": [
+        {
+          "name": "tick",
+          "shape": "a5a8214f:c81f435b:4348"
+        },
+        {
+          "name": "ultimate",
+          "shape": "5d6ccef5:2821c8c7:1726"
+        },
+        {
+          "name": "rainbow",
+          "shape": "205e24df:c79e3031:1002"
+        },
+        {
+          "name": "hurricane",
+          "shape": "82f20464:488f511e:526"
+        }
+      ],
+      "missing": []
+    }
+  },
+  "nativeSeason3Mechanics": {
+    "ready": true,
+    "proofs": [
+      {
+        "biome": "canela",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/main-BDr6DT_c-mw88813m.js"
+      },
+      {
+        "biome": "canela",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js"
+      },
+      {
+        "biome": "canela",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/main-BDr6DT_c-mw88813m.js"
+      },
+      {
+        "biome": "cave",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/main-BDr6DT_c-mw88813m.js"
+      },
+      {
+        "biome": "cave",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js"
+      },
+      {
+        "biome": "cave",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/main-BDr6DT_c-mw88813m.js"
+      },
+      {
+        "biome": "encina",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js"
+      },
+      {
+        "biome": "iris",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/main-BDr6DT_c-mw88813m.js"
+      },
+      {
+        "biome": "iris",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js"
+      },
+      {
+        "biome": "rifts",
+        "ready": true,
+        "missing": [],
+        "moduleURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js"
+      }
+    ],
+    "biomes": {
+      "canela": true,
+      "cave": true,
+      "encina": true,
+      "iris": true,
+      "rifts": true
+    }
+  },
+  "captureFeatures": {
+    "ordinaryMissingBaseFallback": true,
+    "ordinaryMissingBaseFallbackMaxDex": 251,
+    "ordinaryBiomeSpecials": true
+  },
+  "unresolvedMembers": [],
+  "directNativeMembers": [],
+  "optionalUnavailable": [],
+  "overrideErrors": [],
+  "nativeMemberAliases": 130,
+  "nativeAliasOwners": 6,
+  "learningRules": {
+    "shinySwapSelection": "release"
+  },
+  "hasNativeMutation": true,
+  "hasNativeLegendaryHunt": true,
+  "nativeLegendaryHuntReadOnly": true,
+  "state": "prepared",
+  "level": "degraded",
+  "code": "source-prepared",
+  "reason": "核心启动接口已识别，部分可选目录待适配（mutationToday、mutationDefinition），等待运行时检查",
+  "sourceOptionalMissing": [
+    "mutationToday",
+    "mutationDefinition"
+  ],
+  "appSymbol": "RS",
+  "symbols": {
+    "data": "M",
+    "roster": "__pb_module_0",
+    "biomes": "ms",
+    "biomeLive": "__pb_module_1",
+    "quests": "__pb_module_2",
+    "lab": "__pb_module_3",
+    "items": "Us",
+    "vitamins": "ns",
+    "rarityMultipliers": "__pb_module_4",
+    "moveDef": "bn",
+    "moveGuide": "Or",
+    "fusionFor": "__pb_module_5",
+    "fusionRecipes": "__pb_module_6",
+    "mutationToday": null,
+    "mutationDefinition": null
+  },
+  "interactionCoverage": {
+    "schemaVersion": 1,
+    "state": "review-required",
+    "reviewRequired": true,
+    "worldTypes": [
+      "altar",
+      "berry",
+      "bill",
+      "bonk",
+      "boss",
+      "cage",
+      "challenge",
+      "chest",
+      "cursed",
+      "cursedchest",
+      "ditto",
+      "dojo",
+      "exp",
+      "fossil",
+      "freechest",
+      "greed",
+      "hypno",
+      "magnet",
+      "meowth",
+      "nest",
+      "portal",
+      "porygon",
+      "rhydon",
+      "rock",
+      "shrine",
+      "shroom",
+      "slots",
+      "snorlax",
+      "tower"
+    ],
+    "modalMethods": [
+      "showAltarLog",
+      "showBlessing",
+      "showBranch",
+      "showDitto",
+      "showDojo",
+      "showEvolution",
+      "showExpInventory",
+      "showForget",
+      "showFusion",
+      "showFusionGuide",
+      "showItem",
+      "showItemChoice",
+      "showLevelUp",
+      "showMap",
+      "showMapLegend",
+      "showMoveGuide",
+      "showPact",
+      "showParty",
+      "showPause",
+      "showPauseSettings",
+      "showShinySwap",
+      "showShop",
+      "showSlots",
+      "showSummary",
+      "showTrade"
+    ],
+    "passiveModalMethods": [
+      "showAltarLog",
+      "showEvolution",
+      "showSummary"
+    ],
+    "unknownWorldTypes": [
+      "dojo",
+      "exp"
+    ],
+    "unknownModalMethods": [
+      "showDojo",
+      "showExpInventory"
+    ],
+    "missing": [],
+    "blocksKnownFeatures": false,
+    "reason": "发现尚未适配的交互或页面：dojo、exp、showDojo、showExpInventory"
+  },
+  "moduleBindings": [
+    {
+      "role": "roster",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "se",
+      "binding": "__pb_module_0",
+      "targetURL": "https://pokebonk.com/assets/defineProperty-Cvp-y8z_-mw88813m.js",
+      "exported": "Dr"
+    },
+    {
+      "role": "biomes",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "Yn",
+      "binding": "ms",
+      "targetURL": "https://pokebonk.com/assets/defineProperty-Cvp-y8z_-mw88813m.js",
+      "exported": "go"
+    },
+    {
+      "role": "biomeLive",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "mi",
+      "binding": "__pb_module_1",
+      "targetURL": "https://pokebonk.com/assets/defineProperty-Cvp-y8z_-mw88813m.js",
+      "exported": "uo"
+    },
+    {
+      "role": "quests",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "zr",
+      "binding": "__pb_module_2",
+      "targetURL": "https://pokebonk.com/assets/defineProperty-Cvp-y8z_-mw88813m.js",
+      "exported": "pi"
+    },
+    {
+      "role": "lab",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "br",
+      "binding": "__pb_module_3",
+      "targetURL": "https://pokebonk.com/assets/defineProperty-Cvp-y8z_-mw88813m.js",
+      "exported": "li"
+    },
+    {
+      "role": "rarityMultipliers",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "p",
+      "binding": "__pb_module_4",
+      "targetURL": "https://pokebonk.com/assets/defineProperty-Cvp-y8z_-mw88813m.js",
+      "exported": "$a"
+    },
+    {
+      "role": "moveGuide",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "nB",
+      "binding": "Or",
+      "targetURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "exported": "gr"
+    },
+    {
+      "role": "fusionFor",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "Tz",
+      "binding": "__pb_module_5",
+      "targetURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "exported": "__pb_export_0"
+    },
+    {
+      "role": "fusionRecipes",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "iz",
+      "binding": "__pb_module_6",
+      "targetURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "exported": "__pb_export_1"
+    },
+    {
+      "role": "nativeLegendaryHuntGate",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "sI",
+      "binding": "Je",
+      "targetURL": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "exported": "Kr"
+    },
+    {
+      "owner": "damage",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "Ob",
+      "binding": "Hn"
+    },
+    {
+      "owner": "director",
+      "url": "https://pokebonk.com/assets/menus-DqU5mYee-mw88813m.js",
+      "local": "kN",
+      "binding": "Mr"
+    }
+  ],
+  "effectiveConfig": {
+    "symbols.data": "M",
+    "symbols.roster": "__pb_module_0",
+    "symbols.biomes": "ms",
+    "symbols.biomeLive": "__pb_module_1",
+    "symbols.quests": "__pb_module_2",
+    "symbols.lab": "__pb_module_3",
+    "symbols.items": "Us",
+    "symbols.vitamins": "ns",
+    "symbols.rarityMultipliers": "__pb_module_4",
+    "symbols.moveDef": "bn",
+    "symbols.moveGuide": "Or",
+    "symbols.fusionFor": "__pb_module_5",
+    "symbols.fusionRecipes": "__pb_module_6",
+    "members.damage.eliteBurst": "$h5ktmd",
+    "members.player.rescue": "$1hasb5c",
+    "members.player.forgetMove": "$jzp9pu",
+    "members.player.capOf": "$1kt3kly",
+    "members.player.vitCap": "$1pmdp3s",
+    "members.player.canHold": "$3ocuqp",
+    "members.player.rageBonus": "$1rjh3fk",
+    "members.player.rebirth": "$5yvwm3",
+    "members.director.buildPool": "$31w753",
+    "members.enemies.enterPortal": "$lknky4",
+    "members.run.addGold": "$1p9o3w4",
+    "members.run.aimTarget": "$ug3nhw",
+    "members.run.enterPortal": "$lknky4",
+    "members.run.openMap": "$1he928f",
+    "members.run.rollChestItem": "$1l2cvvl",
+    "members.run.rerollCost": "$1lj6g71",
+    "members.run.rerollShop": "$dn64h1",
+    "members.run.offerBlessing": "$hqe9yl",
+    "members.ui.reviveFlash": "$1ep9ayt",
+    "members.ui.hideModal": "$15a4upe",
+    "members.ui.showFusion": "$181xnio",
+    "members.ui.showPause": "$vr5r3n",
+    "appExport": "App",
+    "bootMethod": "boot",
+    "sourceMaxBytes": 12000000,
+    "probeIntervalMs": 3000,
+    "bootGraceSeconds": 120,
+    "sharedRandomMoveLimit": 0,
+    "shinySwapSelection": "auto",
+    "selector.00a27915": ".actions button.red",
+    "selector.02e39134": ".loading .panel button.btn.big.red",
+    "selector.11c2662d": "select",
+    "selector.12e6b646": ".mp-top > b",
+    "selector.18051ebf": ".bv-vit",
+    "selector.21f59360": ".cards",
+    "selector.25a9032f": "button.mm-item.play",
+    "selector.292ddfda": ".rg-regions",
+    "selector.2b555d6f": ".sl-cab.spinning",
+    "selector.2b9c75b6": ".ls-grid,.rg-regions",
+    "selector.2c0a9c9e": ".mp-body.bv-body",
+    "selector.34b2bfd8": ".auth-card",
+    "selector.3555ce80": "#game",
+    "selector.360626d2": "input[autocomplete=\"username\"]",
+    "selector.3741ef05": ".tour-skip",
+    "selector.3753cd8e": ".rar",
+    "selector.3d8a08de": ".mu-scr",
+    "selector.42025d2f": ".lab-wrap",
+    "selector.43681c4b": ".mp-panel.bv-panel[role=\"dialog\"]",
+    "selector.43b0b389": ".actions button.green",
+    "selector.43b27471": "button",
+    "selector.4b83fb5a": ".season-modal .cl-mbtns button",
+    "selector.4d6f224a": ".shop-reroll",
+    "selector.50061177": ".bd",
+    "selector.5632ad2b": "button.btn.big.blue",
+    "selector.56b5bae7": ".sec.lab",
+    "selector.574191b1": "button.lab-buy",
+    "selector.5b017dc5": ".actions button.ghost",
+    "selector.60888c71": ".ban-ribbon",
+    "selector.63faa635": ".item-row button",
+    "selector.69bab87d": ".back-btn, .close-btn, button[aria-label='Close']",
+    "selector.6fa715c3": ".back-btn",
+    "selector.7123ef22": "button.rg-item",
+    "selector.713075fb": ".item-row",
+    "selector.7212eb88": "img[src*=\"{icon}\"]",
+    "selector.72fe0c1b": ".gl-lost",
+    "selector.756dbe76": "button.mm-item.mutation",
+    "selector.76404fa3": "img[src*=\"rare-candy\"]",
+    "selector.7955bb53": ".card",
+    "selector.7b3e6ea0": "button.green.big",
+    "selector.7c8b615a": ".mp-move",
+    "selector.82f88ee0": ".shop-exit",
+    "selector.83b32b5e": ".cards > .card",
+    "selector.84e72504": "img",
+    "selector.85d3431c": ".rg-go > button.btn.big.red",
+    "selector.877e6170": ".sec.qs",
+    "selector.878b6231": ".mp-tag",
+    "selector.88be4585": ".loading .bar i",
+    "selector.8b48d2fd": ".mm-tiles button.mm-item.tile",
+    "selector.8c4d1674": ".season-modal",
+    "selector.8e3b326c": "h3",
+    "selector.8f3b33ff": "h2",
+    "selector.903b3592": "h1",
+    "selector.945e223c": ".sec.dx",
+    "selector.94c5f11f": ".mt-ribbon",
+    "selector.98fe0e4a": ".price, [data-cost]",
+    "selector.9905fc6b": "section.mp-sec",
+    "selector.a2c4f48c": "small",
+    "selector.a3f2912d": "button.ls-go",
+    "selector.abd5e796": "button.lab-mode[data-mode=\"lab\"]",
+    "selector.b20327ff": "input[autocomplete=\"current-password\"]",
+    "selector.b427f8b3": ".rg-tx b",
+    "selector.b51b4d5b": "[contenteditable=\"true\"], [data-hotkey-recording=\"true\"]",
+    "selector.b522263b": ".lab-card[data-u]",
+    "selector.b60a2777": ".ls-grid",
+    "selector.b6967667": "button.back-btn",
+    "selector.b7f2bda6": ".actions button.blue",
+    "selector.bba3ac57": ":scope > b",
+    "selector.bc8f4e11": ".sub",
+    "selector.c099b71d": "button.rg-tier",
+    "selector.c7fa91bb": ":scope > span",
+    "selector.ca061a0f": ".kind",
+    "selector.ce3e3c1c": "div > b",
+    "selector.d38efcaa": ".rg-modes button.rg-mode",
+    "selector.d632cc83": "button.ls-tile",
+    "selector.d6aab9fb": "textarea",
+    "selector.d7caa40f": ".bv-item",
+    "selector.d87864e8": ".scr-title span",
+    "selector.d90da9b0": ".scr-head button.back-btn",
+    "selector.e7563832": ".loading button.btn.big.red",
+    "selector.eb950226": "button.mm-item.endless:not(.coop)",
+    "selector.ed7d3945": ".bv-mon img",
+    "selector.f04d09bc": ".cards button.card",
+    "selector.f05a8aec": ".shop-sell",
+    "selector.f50c43ef": "p",
+    "selector.f520afa4": ".mp-slots",
+    "selector.f5cacbf8": ".key",
+    "selector.f69717fd": "label",
+    "selector.f88009c9": ".mp-head",
+    "selector.f9d86f7b": "input",
+    "selector.fb085d60": "button.rg-boost",
+    "selector.ff543b19": ".mu-go button.mu-play",
+    "resources.mainModule": "https://pokebonk.com/assets/main-BDr6DT_c-mw88813m.js"
+  },
+  "discoveredConfig": {
+    "symbols.data": "M",
+    "symbols.roster": "__pb_module_0",
+    "symbols.biomes": "ms",
+    "symbols.biomeLive": "__pb_module_1",
+    "symbols.quests": "__pb_module_2",
+    "symbols.lab": "__pb_module_3",
+    "symbols.items": "Us",
+    "symbols.vitamins": "ns",
+    "symbols.rarityMultipliers": "__pb_module_4",
+    "symbols.moveDef": "bn",
+    "symbols.moveGuide": "Or",
+    "symbols.fusionFor": "__pb_module_5",
+    "symbols.fusionRecipes": "__pb_module_6",
+    "members.damage.eliteBurst": "$h5ktmd",
+    "members.player.rescue": "$1hasb5c",
+    "members.player.forgetMove": "$jzp9pu",
+    "members.player.capOf": "$1kt3kly",
+    "members.player.vitCap": "$1pmdp3s",
+    "members.player.canHold": "$3ocuqp",
+    "members.player.rageBonus": "$1rjh3fk",
+    "members.player.rebirth": "$5yvwm3",
+    "members.director.buildPool": "$31w753",
+    "members.enemies.enterPortal": "$lknky4",
+    "members.run.addGold": "$1p9o3w4",
+    "members.run.aimTarget": "$ug3nhw",
+    "members.run.enterPortal": "$lknky4",
+    "members.run.openMap": "$1he928f",
+    "members.run.rollChestItem": "$1l2cvvl",
+    "members.run.rerollCost": "$1lj6g71",
+    "members.run.rerollShop": "$dn64h1",
+    "members.run.offerBlessing": "$hqe9yl",
+    "members.ui.reviveFlash": "$1ep9ayt",
+    "members.ui.hideModal": "$15a4upe",
+    "members.ui.showFusion": "$181xnio",
+    "members.ui.showPause": "$vr5r3n",
+    "appExport": "App",
+    "bootMethod": "boot",
+    "shinySwapSelection": "release",
+    "resources.mainModule": "https://pokebonk.com/assets/main-BDr6DT_c-mw88813m.js"
+  },
+  "entryStatus": {
+    "symbols.data": "discovered",
+    "symbols.roster": "discovered",
+    "symbols.biomes": "discovered",
+    "symbols.biomeLive": "discovered",
+    "symbols.quests": "discovered",
+    "symbols.lab": "discovered",
+    "symbols.items": "discovered",
+    "symbols.vitamins": "discovered",
+    "symbols.rarityMultipliers": "discovered",
+    "symbols.moveDef": "discovered",
+    "symbols.moveGuide": "discovered",
+    "symbols.fusionFor": "discovered",
+    "symbols.fusionRecipes": "discovered",
+    "members.damage.eliteBurst": "discovered",
+    "members.player.rescue": "discovered",
+    "members.player.forgetMove": "discovered",
+    "members.player.capOf": "discovered",
+    "members.player.vitCap": "discovered",
+    "members.player.canHold": "discovered",
+    "members.player.rageBonus": "discovered",
+    "members.player.rebirth": "discovered",
+    "members.director.buildPool": "discovered",
+    "members.enemies.enterPortal": "discovered",
+    "members.run.addGold": "discovered",
+    "members.run.aimTarget": "discovered",
+    "members.run.enterPortal": "discovered",
+    "members.run.openMap": "discovered",
+    "members.run.rollChestItem": "discovered",
+    "members.run.rerollCost": "discovered",
+    "members.run.rerollShop": "discovered",
+    "members.run.offerBlessing": "discovered",
+    "members.ui.reviveFlash": "discovered",
+    "members.ui.hideModal": "discovered",
+    "members.ui.showFusion": "discovered",
+    "members.ui.showPause": "discovered",
+    "resources.mainModule": "valid"
+  },
+  "entryReasons": {},
+  "candidateSources": {
+    "symbols.data": "current-public-source",
+    "symbols.roster": "current-public-source",
+    "symbols.biomes": "current-public-source",
+    "symbols.biomeLive": "current-public-source",
+    "symbols.quests": "current-public-source",
+    "symbols.lab": "current-public-source",
+    "symbols.items": "current-public-source",
+    "symbols.vitamins": "current-public-source",
+    "symbols.rarityMultipliers": "current-public-source",
+    "symbols.moveDef": "current-public-source",
+    "symbols.moveGuide": "current-public-source",
+    "symbols.fusionFor": "current-public-source",
+    "symbols.fusionRecipes": "current-public-source",
+    "members.damage.eliteBurst": "current-public-source",
+    "members.player.rescue": "current-public-source",
+    "members.player.forgetMove": "current-public-source",
+    "members.player.capOf": "current-public-source",
+    "members.player.vitCap": "current-public-source",
+    "members.player.canHold": "current-public-source",
+    "members.player.rageBonus": "current-public-source",
+    "members.player.rebirth": "current-public-source",
+    "members.director.buildPool": "current-public-source",
+    "members.enemies.enterPortal": "current-public-source",
+    "members.run.addGold": "current-public-source",
+    "members.run.aimTarget": "current-public-source",
+    "members.run.enterPortal": "current-public-source",
+    "members.run.openMap": "current-public-source",
+    "members.run.rollChestItem": "current-public-source",
+    "members.run.rerollCost": "current-public-source",
+    "members.run.rerollShop": "current-public-source",
+    "members.run.offerBlessing": "current-public-source",
+    "members.ui.reviveFlash": "current-public-source",
+    "members.ui.hideModal": "current-public-source",
+    "members.ui.showFusion": "current-public-source",
+    "members.ui.showPause": "current-public-source",
+    "appExport": "current-public-source",
+    "bootMethod": "current-public-source",
+    "shinySwapSelection": "current-public-source",
+    "resources.mainModule": "current-public-source"
+  },
+  "candidateVerified": {
+    "symbols.data": true,
+    "symbols.roster": true,
+    "symbols.biomes": true,
+    "symbols.biomeLive": true,
+    "symbols.quests": true,
+    "symbols.lab": true,
+    "symbols.items": true,
+    "symbols.vitamins": true,
+    "symbols.rarityMultipliers": true,
+    "symbols.moveDef": true,
+    "symbols.moveGuide": true,
+    "symbols.fusionFor": true,
+    "symbols.fusionRecipes": true,
+    "members.damage.eliteBurst": true,
+    "members.player.rescue": true,
+    "members.player.forgetMove": true,
+    "members.player.capOf": true,
+    "members.player.vitCap": true,
+    "members.player.canHold": true,
+    "members.player.rageBonus": true,
+    "members.player.rebirth": true,
+    "members.director.buildPool": true,
+    "members.enemies.enterPortal": true,
+    "members.run.addGold": true,
+    "members.run.aimTarget": true,
+    "members.run.enterPortal": true,
+    "members.run.openMap": true,
+    "members.run.rollChestItem": true,
+    "members.run.rerollCost": true,
+    "members.run.rerollShop": true,
+    "members.run.offerBlessing": true,
+    "members.ui.reviveFlash": true,
+    "members.ui.hideModal": true,
+    "members.ui.showFusion": true,
+    "members.ui.showPause": true,
+    "appExport": true,
+    "bootMethod": true,
+    "shinySwapSelection": true,
+    "resources.mainModule": true
+  },
+  "verifiedRoleBindings": {
+    "data": [
+      "M"
+    ],
+    "roster": [
+      "__pb_module_0"
+    ],
+    "biomes": [
+      "ms"
+    ],
+    "biomeLive": [
+      "__pb_module_1"
+    ],
+    "quests": [
+      "__pb_module_2"
+    ],
+    "lab": [
+      "__pb_module_3"
+    ],
+    "items": [
+      "Us"
+    ],
+    "vitamins": [
+      "ns"
+    ],
+    "rarityMultipliers": [
+      "__pb_module_4"
+    ],
+    "moveDef": [
+      "bn"
+    ],
+    "moveGuide": [
+      "Or"
+    ],
+    "fusionFor": [
+      "__pb_module_5"
+    ],
+    "fusionRecipes": [
+      "__pb_module_6"
+    ],
+    "mutationToday": [],
+    "mutationDefinition": []
+  },
+  "maintenanceScope": {
+    "stage": "M3",
+    "automaticPlay": true,
+    "validation": "offline-only",
+    "autoStart": false,
+    "reason": "第三阶段离线候选，实战待验",
+    "modeIds": [
+      "resources",
+      "map",
+      "autoManage",
+      "characters",
+      "shiny",
+      "appearance",
+      "wardrobe"
+    ],
+    "nativeModes": [
+      "standard",
+      "endless"
+    ],
+    "endlessModeIds": [
+      "appearance",
+      "wardrobe"
+    ],
+    "biomeIds": [
+      "forest",
+      "desert",
+      "coast",
+      "glacier",
+      "canela",
+      "cave",
+      "encina",
+      "iris"
+    ],
+    "tiers": [
+      0,
+      1,
+      2
+    ],
+    "allowRifts": true
+  }
+}

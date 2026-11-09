@@ -1,0 +1,27 @@
+{
+  "baseline": "personal 2.0.0+ migration source (2026-11-02)",
+  "origin": "development/migration-2.0.0-20261102/source/src",
+  "purpose": "Frozen minimal import closure for 162 four-way XP/loadout comparisons; contains source only, no account or runtime data",
+  "records": [
+    {
+      "file": "src/choice-strategy.mjs",
+      "sha256": "28326cc51d92c642a248de1a2c9dc2c82495d01abc018b947e540bfb4ff1cdf6"
+    },
+    {
+      "file": "src/policy.mjs",
+      "sha256": "6f9b5ab097576503fc1c18fcf706caa43fbd7aee556c175b83023db1ba24f003"
+    },
+    {
+      "file": "src/custom-plans.mjs",
+      "sha256": "4157376e940f4a4cea4acd6963888d76a6f83612becd270c2895acae33b7e03e"
+    },
+    {
+      "file": "src/game-library.mjs",
+      "sha256": "2b2927aa2294eaf275d7d0fc484f3d8e040b818c04b16aec060d849f42eee369"
+    },
+    {
+      "file": "src/tower-strategy.mjs",
+      "sha256": "a3e1ae66e26056a6e73bd42eed7cf89671049916c0ada4efc43e7edb10c7dbf5"
+    }
+  ]
+}

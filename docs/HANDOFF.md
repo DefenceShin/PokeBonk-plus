@@ -1,6 +1,21 @@
 # 换设备接手
 
-## 固定基线
+## 当前工作源码：0.9.22
+
+2026-11-09，0.9.22 适配由 `adapt/game-0922-20261109` 合入 main，源于 `55127b6e31a891bd63ed9d3efccf88e450918afa`。本次同步源码、文档与公开验证材料；未打包、安装或发布二进制 Release。编译仅验证，不启动安装版、个人浏览器或真实账号。
+
+- 公开输入：`evidence/public-0922/manifest.json`（10 文件）；当前八份数据 JSON：`evidence/public-0922/data/manifest.json`，逐文件哈希与旧数据相同。
+- 游戏 0.9.22 / `mw88813m`；原生主模块 `main-BDr6DT_c-mw88813m.js`，SHA-256 `adc878dea06ec3e1a5ae47bdf91a6ed27aca07fa8c9c3a0076f6250462c4db6b`。
+- 原文方法对照：`docs/native-0922-method-audit.json`。行为变化及边界：[LOCAL-CHANGES.md](../LOCAL-CHANGES.md)。旧 0.9.13 输入、测试及 SOURCE-MANIFEST 不覆盖。
+- 当前原生目录：`evidence/public-0922/native-catalogs.json`；完整挑战表达式阈值对照与说明变化：`challenge-table-proof.json`。
+- 一键复跑：在仓库根目录 `node tools/validate-current.mjs`。日志和逐命令退出码：`validation/0922/`。依赖仅本仓库、Node/npm、.NET 8 与标准位置 Edge；162 场景对照所需的最小 2.0.0+ 源码依赖已冻结于 `evidence/personal-2000/`，无需旧工作目录。
+- 重点证据：`evidence/rift-0922-success-{free,full}-result.json`、`rift-0922-timeout-result.json`；`source/test/season3-0922-hooh-observation.test.mjs`；`evidence/0922-skins-cycle.json`、`0922-skins-capture.json`、`shiny-sources-0922.json`；`ui-0922-skins-{1280,960}.png`；编译宿主逐资源指纹 `embedded-0922.json`。
+
+当前仍关闭每日变异两个缺失定义，其他灰色模式按原门禁；`dojo`/`exp` 的世界与 UI 入口在旧版已存在，继续显式待核对。三圣兽专属追踪、真实服务器保存、完整随机整局和人工设备体验不在本轮隔离验收结论内。
+
+下文保留旧基线及当时接手线索，仅作历史。
+
+## 历史固定基线
 
 - 游戏：0.9.13，build `mw41iu0i`。
 - 主游戏模块：`main-DvcmQ3kt-mw41iu0i.js`。
@@ -10,7 +25,7 @@
 
 本仓库取自开始 0.9.14 改动之前的源码快照。0.9.14 的接口补丁、素材和新增测试均未混入；下方仅保留接手线索。
 
-## 下一步：0.9.14
+## 历史下一步：0.9.14
 
 2026-11-06 线上公开版本切换为 0.9.14 / `mw4qh5au`。初检结果：
 

@@ -245,6 +245,8 @@ export function nativeMethodFeatures(node) {
 export function discoverNativeCaptureFeatures(source,index,shape) {
   const result={ordinaryMissingBaseFallback:false},pattern='!i.length&&n.length&&(i=j.pokemon.filter(e=>e.id<=151&&!e.legendary&&!e.mythical&&e.evoStage===0&&j.hasAnimated(e.id)&&!r.has(t.meta.family(e.id))))';
   if(!index||typeof shape!=='function')return result;
+  const reviewed=index.methods.filter(row=>row.name==='spawnShiny'&&shape(source.slice(row.start,row.end))==='e9c10179:baf1fff9:1297');
+  if(reviewed.length===1)return {ordinaryMissingBaseFallback:true,ordinaryMissingBaseFallbackMaxDex:251,ordinaryBiomeSpecials:true};
   const expected=shape(pattern);
   for(const method of index.methods.filter(row=>row.name==='spawnShiny')){
     const sets=new Set(),candidates=[];
@@ -488,10 +490,15 @@ export function prepareNativeHoOhObservations(source,shape) {
     ['let e=this.run,t=this.target(),n=this.aimAt(t.x,t.z),r=Math.atan2(n.z,n.x);',s=>s+'let __pbTriggered=false;'+scope('gust-windup','e.time+2.1')+'Object.assign(__pbAttack,{activation:e.time+.8,angle:r,isTriggered:()=>__pbTriggered});'],
     ['e.later(.8,()=>{!this.dead',s=>'e.later(.8,()=>{__pbTriggered=true;!this.dead']
   ]},{name:'tick',shape:'3fffb29b:f282dd8f:4348',steps:[]}];
+  // 0.9.22 changes the banner channel, RNG binding and rainbow palette only;
+  // closure scheduling/geometry are unchanged (see native-0922-method-audit).
+  const currentShapes={rainbow:'205e24df:c79e3031:1002',ultimate:'5d6ccef5:2821c8c7:1726',tick:'a5a8214f:c81f435b:4348'};
+  const current=methods.some(m=>m.name==='rainbow'&&shape(source.slice(m.start,m.end))===currentShapes.rainbow);
   for(const spec of specs){const matches=methods.filter(m=>m.name===spec.name),method=matches[0];
-    let code=method&&source.slice(method.start,method.end),ok=matches.length===1&&shape(code)===spec.shape;
-    if(ok)for(const [needle,replacement]of spec.steps){const at=code.indexOf(needle);if(at<0||at!==code.lastIndexOf(needle)){ok=false;break;}code=code.slice(0,at)+replacement(needle)+code.slice(at+needle.length);}
-    if(!ok)missing.push('ho-oh-'+spec.name+'-observation');else edits.push({start:method.start,end:method.end,code,name:spec.name,shape:spec.shape});
+    const expected=current?(currentShapes[spec.name]||spec.shape):spec.shape;
+    let code=method&&source.slice(method.start,method.end),ok=matches.length===1&&shape(code)===expected;
+    if(ok)for(const [original,replacement]of spec.steps){const needle=current?original.replaceAll('k.range','A.range').replaceAll('AP[t]','LP[t]'):original;const at=code.indexOf(needle);if(at<0||at!==code.lastIndexOf(needle)){ok=false;break;}code=code.slice(0,at)+replacement(needle)+code.slice(at+needle.length);}
+    if(!ok)missing.push('ho-oh-'+spec.name+'-observation');else edits.push({start:method.start,end:method.end,code,name:spec.name,shape:expected});
   }
   if(missing.length)return {...base,present:true,missing};
   let code=source;for(const edit of edits.sort((a,b)=>b.start-a.start))code=code.slice(0,edit.start)+edit.code+code.slice(edit.end);
@@ -499,14 +506,20 @@ export function prepareNativeHoOhObservations(source,shape) {
 }
 
 // Reviewed 0.9.13 method contracts for the added maps and native rift flow.
-const reviewedSeason3Mechanics=[{"biome":"canela","anchors":["tickLava","tickEruption"],"methods":{"tickLava":"7b603b24:e063110e:973","tickEruption":"d61a112b:44956c75:2193"}},{"biome":"canela","anchors":["skyDive","starArms"],"methods":{"tick":"d580e28c:ebd0a24a:4590","land":"ac66fd40:dcbc7e42:899","starSlam":"5b89b537:375f96e9:1831","starArms":"a8e1026c:513fa944:110"}},{"biome":"canela","anchors":["inLava","distToFissure"],"methods":{"inLava":"76be69be:d179cc6:127","tickArena":"eb4c20b1:5ddd9f0d:4498"}},{"biome":"cave","anchors":["tickCollapse","tickCrystals"],"methods":{"tickCollapse":"ad8570dd:721284df:1634"}},{"biome":"cave","anchors":["tickBall","tickBlades"],"methods":{"tickBall":"7af8a023:ee755e1f:3242","tickBlades":"5da238bc:40836758:1067","tickUlt":"cfdc988e:1e505fec:2575"}},{"biome":"cave","anchors":["raisePylons","dropOrb"],"methods":{"raisePylons":"68f1e09a:bad669ae:894","tickArena":"1d7b64a6:94ec29ba:3701"}},{"biome":"encina","anchors":["enterPast","spawnClock"],"methods":{"openRift":"9c514813:6ccd7481:571","tickRift":"49f5a07a:8d222f24:798","enterPast":"8812fa43:c5565195:567","spawnClock":"1aaf34db:d2dd9f75:613","clockAlive":"355f70d8:8962fee0:88","strand":"c181f11e:1eedd59e:743","tick":"c549841e:1b8f999c:2729","tickUlt":"1d620fff:1e2f10bb:896"}},{"biome":"iris","anchors":["tickFlight","tickWake"],"methods":{"tickFlight":"85b90c45:d6372117:1528","tickBeast":"736e5a9d:631534e7:1355"}},{"biome":"iris","anchors":["rainbow","sunnyDay"],"methods":{"tick":"3fffb29b:f282dd8f:4348"}},{"biome":"rifts","anchors":["nearEntrance","canCallAlpha"],"methods":{"enter":"65fe0680:2616d064:882","update":"5595d691:5a094f4b:1025","updatePulses":"d1706a0d:e3982555:693","onAlphaDown":"585e1d76:396b0570:1178","fail":"6689640f:6779d607:361"}}];
+const reviewedSeason3Mechanics=[{"biome":"canela","anchors":["tickLava","tickEruption"],"methods":{"tickLava":"7b603b24:e063110e:973","tickEruption":"d61a112b:44956c75:2193"}},{"biome":"canela","anchors":["skyDive","starArms"],"methods":{"tick":["d580e28c:ebd0a24a:4590","80462574:e8ee1bca:4590"],"land":["ac66fd40:dcbc7e42:899","9e123fc:301c6402:899"],"starSlam":"5b89b537:375f96e9:1831","starArms":"a8e1026c:513fa944:110"}},{"biome":"canela","anchors":["inLava","distToFissure"],"methods":{"inLava":"76be69be:d179cc6:127","tickArena":["eb4c20b1:5ddd9f0d:4498","622a70dc:ba692140:4502"]}},{"biome":"cave","anchors":["tickCollapse","tickCrystals"],"methods":{"tickCollapse":["ad8570dd:721284df:1634","32e2b2d7:3444d63f:1632"]}},{"biome":"cave","anchors":["tickBall","tickBlades"],"methods":{"tickBall":["7af8a023:ee755e1f:3242","dbbdde2e:d50b0dda:3242"],"tickBlades":["5da238bc:40836758:1067","b44e969a:2497a1a:1067"],"tickUlt":["cfdc988e:1e505fec:2575","871c073c:3a3204ae:2575"]}},{"biome":"cave","anchors":["raisePylons","dropOrb"],"methods":{"raisePylons":["68f1e09a:bad669ae:894","79118100:4dac961a:893"],"tickArena":["1d7b64a6:94ec29ba:3701","ba610f6d:ade74d59:3699"]}},{"biome":"encina","anchors":["enterPast","spawnClock"],"methods":{"openRift":["9c514813:6ccd7481:571","a91fbbb9:bb64b77:575"],"tickRift":["49f5a07a:8d222f24:798","5f488872:c3a563a4:798"],"enterPast":["8812fa43:c5565195:567","7f1fff51:8ab93ce3:571"],"spawnClock":["1aaf34db:d2dd9f75:613","bae7136a:717addee:613"],"clockAlive":"355f70d8:8962fee0:88","strand":["c181f11e:1eedd59e:743","c1f14995:d7e708dd:747"],"tick":["c549841e:1b8f999c:2729","358b2c04:730a6c92:2729"],"tickUlt":["1d620fff:1e2f10bb:896","3d73781a:c29002e0:896"]}},{"biome":"iris","anchors":["tickFlight","tickWake"],"methods":{"tickFlight":"85b90c45:d6372117:1528","tickBeast":["736e5a9d:631534e7:1355","d33a2de5:5c85fb85:1505"]}},{"biome":"iris","anchors":["rainbow","sunnyDay"],"methods":{"tick":["3fffb29b:f282dd8f:4348","a5a8214f:c81f435b:4348"]}},{"biome":"rifts","anchors":["nearEntrance","callAlpha","updatePulses"],"methods":{"enter":["65fe0680:2616d064:882","860921e4:e488a0a2:952"],"update":["5595d691:5a094f4b:1025","26e397e:1501026e:1170"],"updatePulses":"d1706a0d:e3982555:693","onAlphaDown":"585e1d76:396b0570:1178","fail":"6689640f:6779d607:361","enterBlock":["57f60586:5977611c:447","4e449536:f27e6f3c:520"],"spawnWave":["46cd8f46:b5306778:1216","ead8ec04:dfb1d0fe:1381"]}}];
 export function inspectSeason3Mechanics(moduleSources,shape){
  const rows=(moduleSources||[]).filter(r=>typeof r.source==='string').map(r=>({...r,index:nativeSyntaxIndex(r.source)})),proofs=[];
  for(const profile of reviewedSeason3Mechanics){
   const owners=rows.flatMap(row=>row.index.classes.filter(c=>profile.anchors.every(name=>row.index.methods.some(m=>m.owner===c.symbol&&m.name===name))).map(c=>({row,owner:c.symbol})));
   const missing=[];
   if(owners.length!==1)missing.push('native-owner');
-  else for(const [name,expected]of Object.entries(profile.methods)){const {row,owner}=owners[0],matches=row.index.methods.filter(m=>m.owner===owner&&m.name===name);if(matches.length!==1||shape(row.source.slice(matches[0].start,matches[0].end))!==expected)missing.push(name);}
+  else {
+   const {row,owner}=owners[0],required={...profile.methods};
+   // Wave-count rifts add a living-enemy scan and a different E dispatcher.
+   // These methods are part of the new flow, not optional old-alpha aliases.
+   if(profile.biome==='rifts'&&row.index.methods.some(m=>m.owner===owner&&m.name==='enter'&&shape(row.source.slice(m.start,m.end))==='860921e4:e488a0a2:952'))Object.assign(required,{scan:'66411303:22a29cb1:244',canCallWave:'da94b822:d80a0c56:110',callWaveNow:'266cbc98:8fac8970:87'});
+   for(const [name,expected]of Object.entries(required)){const matches=row.index.methods.filter(m=>m.owner===owner&&m.name===name);if(matches.length!==1||![].concat(expected).includes(shape(row.source.slice(matches[0].start,matches[0].end))))missing.push(name);}
+  }
   proofs.push({biome:profile.biome,ready:!missing.length,missing,moduleURL:owners.length===1?owners[0].row.url:null});
  }
  return {ready:proofs.every(p=>p.ready),proofs,biomes:Object.fromEntries(['canela','cave','encina','iris','rifts'].map(id=>[id,proofs.filter(p=>p.biome===id).every(p=>p.ready)]))};

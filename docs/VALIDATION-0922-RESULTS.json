@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-09",
+  "gameVersion": "0.9.22",
+  "build": "mw88813m",
+  "sourceManifest": "docs/SOURCE-0922-MANIFEST.json",
+  "entry": "node tools/validate-current.mjs",
+  "steps": [
+    {
+      "name": "npm",
+      "exit": 0
+    },
+    {
+      "name": "catalogs",
+      "exit": 0
+    },
+    {
+      "name": "parity-162",
+      "exit": 0
+    },
+    {
+      "name": "characters-runtime",
+      "exit": 0
+    },
+    {
+      "name": "characters-start-runtime",
+      "exit": 0
+    },
+    {
+      "name": "characters-capture-runtime",
+      "exit": 0
+    },
+    {
+      "name": "skins-runtime",
+      "exit": 0
+    },
+    {
+      "name": "skins-cycle-runtime",
+      "exit": 0
+    },
+    {
+      "name": "skins-capture-runtime",
+      "exit": 0
+    },
+    {
+      "name": "shiny-source-runtime",
+      "exit": 0
+    },
+    {
+      "name": "eligibility-runtime",
+      "exit": 0
+    },
+    {
+      "name": "map-events-runtime",
+      "exit": 0
+    },
+    {
+      "name": "canela-lava-runtime",
+      "exit": 0
+    },
+    {
+      "name": "arena-actions-runtime",
+      "exit": 0
+    },
+    {
+      "name": "ball-actions-runtime",
+      "exit": 0
+    },
+    {
+      "name": "celebi-actions-runtime",
+      "exit": 0
+    },
+    {
+      "name": "iris-events-runtime",
+      "exit": 0
+    },
+    {
+      "name": "hooh-actions-runtime",
+      "exit": 0
+    },
+    {
+      "name": "hooh-hurricane-runtime",
+      "exit": 0
+    },
+    {
+      "name": "rift-success-runtime",
+      "exit": 0
+    },
+    {
+      "name": "rift-timeout-runtime",
+      "exit": 0
+    },
+    {
+      "name": "skins-ui",
+      "exit": 0
+    },
+    {
+      "name": "rift-success-full",
+      "exit": 0
+    },
+    {
+      "name": "dotnet-release",
+      "exit": 0
+    },
+    {
+      "name": "host-checks",
+      "exit": 0
+    }
+  ],
+  "unitTests": {
+    "passed": 965,
+    "failed": 0,
+    "skipped": 0
+  },
+  "loadoutParityCases": 162,
+  "embeddedResourceMatches": 52,
+  "releaseBuild": {
+    "errors": 0,
+    "existingWarningsOnFullBuild": 717,
+    "purpose": "validation-only"
+  },
+  "scope": "offline automated and isolated native runtime; no real account or complete randomized live run",
+  "logs": "Generated locally under validation/0922/; excluded from Git. Public runtime evidence is under evidence/."
+}

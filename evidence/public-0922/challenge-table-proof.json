@@ -1,0 +1,41 @@
+{
+  "tableProof": [
+    {
+      "before": "Bi",
+      "after": "ra",
+      "rows": 79,
+      "verifiedColumns": [
+        0,
+        5,
+        10
+      ]
+    },
+    {
+      "before": "Vi",
+      "after": "ia",
+      "rows": 59,
+      "verifiedColumns": [
+        0,
+        5,
+        10
+      ]
+    }
+  ],
+  "descriptionOnlyChanges": [
+    {
+      "member": 4,
+      "n": 1,
+      "desc": "Gana una partida sin evolucionar más allá de Charmeleon. Llévate una Piedra Eterna en la Mochila: al ir a evolucionar podrás quedarte como estás."
+    },
+    {
+      "member": 129,
+      "n": 1,
+      "desc": "Sobrevive 10 minutos en Supervivencia sin evolucionar a Gyarados. Llévate una Piedra Eterna en la Mochila: al ir a evolucionar podrás quedarte como estás."
+    },
+    {
+      "member": 147,
+      "n": 1,
+      "desc": "Gana una partida sin evolucionar a Dragonite. Llévate una Piedra Eterna en la Mochila: al ir a evolucionar podrás quedarte como estás."
+    }
+  ]
+}

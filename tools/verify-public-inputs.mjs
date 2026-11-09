@@ -1,0 +1,4 @@
+import fs from'node:fs';import crypto from'node:crypto';import assert from'node:assert/strict';
+const root=new URL('../',import.meta.url),results=[];
+for(const path of ['evidence/public-0922/','evidence/public-0922/data/','evidence/public-0913/','evidence/public-0913/data/','evidence/personal-2000/']){const dir=new URL(path,root),manifest=JSON.parse(fs.readFileSync(new URL('manifest.json',dir))),records=manifest.records;for(const r of records){const name=r.name||r.file,bytes=fs.readFileSync(new URL(name,dir));assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),r.sha256,path+name);if(r.bytes!=null)assert.equal(bytes.length,r.bytes,path+name);}results.push({path,files:records.length,hashesVerified:true});}
+assert.equal(JSON.parse(fs.readFileSync(new URL('evidence/public-0922/version.json',root))).version,'0.9.22');console.log(JSON.stringify(results,null,2));

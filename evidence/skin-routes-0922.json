@@ -1,0 +1,265 @@
+{
+  "rows": [
+    {
+      "mode": "appearance",
+      "species": 7,
+      "status": "ready",
+      "metric": "soaked",
+      "route": "endless",
+      "actor": 7,
+      "automatable": true,
+      "menuAllowed": true,
+      "liveAllowed": true,
+      "preferred": {
+        "preferredMoves": [
+          "aqua-ring",
+          "jet-punch"
+        ],
+        "vitaminPriority": [
+          "statusChance",
+          "statusDamage",
+          "attackSpeed"
+        ],
+        "itemPriority": [],
+        "preferStatuses": [
+          "wet"
+        ],
+        "preferTypes": [
+          "water"
+        ]
+      },
+      "need": [
+        "使用指定联盟角色 #7，按原生要求积累：使用杰尼龟起始：累计使敌人浸湿 20000；仅以已保存的专属挑战计数 0/20000 确认进度，不用全局同类计数替代；此数量条件不要求胜利；使用普通无尽持续积累，达标后按设置正常结算，未达标继续至自然结束；已知本局数量目标达标后正常放弃结算，成功保存后再领取或切换目标"
+      ]
+    },
+    {
+      "mode": "appearance",
+      "species": 152,
+      "status": "ready",
+      "metric": "healed",
+      "route": "endless",
+      "actor": 152,
+      "automatable": true,
+      "menuAllowed": true,
+      "liveAllowed": true,
+      "preferred": {
+        "preferredMoves": [],
+        "vitaminPriority": [
+          "regen",
+          "healing",
+          "maxHp"
+        ],
+        "itemPriority": [],
+        "preferStatuses": [],
+        "preferTypes": []
+      },
+      "need": [
+        "回复只按实际损失生命后的治疗累计；保持安全，不主动承受攻击刷治疗",
+        "使用指定联盟角色 #152，按原生要求积累：使用菊草叶起始：累计恢复生命值 30000；仅以已保存的专属挑战计数 0/30000 确认进度，不用全局同类计数替代；此数量条件不要求胜利；使用普通无尽持续积累，达标后按设置正常结算，未达标继续至自然结束；已知本局数量目标达标后正常放弃结算，成功保存后再领取或切换目标"
+      ]
+    },
+    {
+      "mode": "appearance",
+      "species": 170,
+      "status": "ready",
+      "metric": "electro",
+      "route": "endless",
+      "actor": 170,
+      "automatable": true,
+      "menuAllowed": true,
+      "liveAllowed": true,
+      "preferred": {
+        "preferredMoves": [
+          "ion-deluge",
+          "ion-deluge"
+        ],
+        "vitaminPriority": [
+          "statusChance",
+          "attackSpeed",
+          "area"
+        ],
+        "itemPriority": [],
+        "preferStatuses": [],
+        "preferTypes": [
+          "electric",
+          "water"
+        ]
+      },
+      "need": [
+        "使用指定联盟角色 #170，按原生要求积累：使用灯笼鱼起始：累计触发感电 10000；仅以已保存的专属挑战计数 0/10000 确认进度，不用全局同类计数替代；此数量条件不要求胜利；使用普通无尽持续积累，达标后按设置正常结算，未达标继续至自然结束；已知本局数量目标达标后正常放弃结算，成功保存后再领取或切换目标"
+      ]
+    },
+    {
+      "mode": "appearance",
+      "species": 251,
+      "status": "ready",
+      "metric": "ultimates",
+      "route": "endless",
+      "actor": 251,
+      "automatable": true,
+      "menuAllowed": true,
+      "liveAllowed": true,
+      "preferred": {
+        "preferredMoves": [],
+        "vitaminPriority": [],
+        "itemPriority": [],
+        "preferStatuses": [],
+        "preferTypes": []
+      },
+      "need": [
+        "使用指定联盟角色 #251，按原生要求积累：使用时拉比起始：累计释放终极技能 100；仅以已保存的专属挑战计数 0/100 确认进度，不用全局同类计数替代；此数量条件不要求胜利；使用普通无尽持续积累，达标后按设置正常结算，未达标继续至自然结束；已知本局数量目标达标后正常放弃结算，成功保存后再领取或切换目标"
+      ]
+    },
+    {
+      "mode": "wardrobe",
+      "species": 7,
+      "status": "ready",
+      "metric": "soaked",
+      "route": "endless",
+      "actor": 7,
+      "automatable": true,
+      "menuAllowed": true,
+      "liveAllowed": true,
+      "preferred": {
+        "preferredMoves": [
+          "aqua-ring",
+          "jet-punch"
+        ],
+        "vitaminPriority": [
+          "statusChance",
+          "statusDamage",
+          "attackSpeed"
+        ],
+        "itemPriority": [],
+        "preferStatuses": [
+          "wet"
+        ],
+        "preferTypes": [
+          "water"
+        ]
+      },
+      "need": [
+        "为解锁“杰尼龟 · 专属外观一”，先完成“先完成“杰尼龟 · 专属外观一”的前置：使用杰尼龟起始：累计使敌人浸湿 20000”；使用指定联盟角色 #7，按原生要求积累：使用杰尼龟起始：累计使敌人浸湿 20000；仅以已保存的专属挑战计数 0/20000 确认进度，不用全局同类计数替代；此数量条件不要求胜利；使用普通无尽持续积累，达标后按设置正常结算，未达标继续至自然结束；已知本局数量目标达标后正常放弃结算，成功保存后再领取或切换目标"
+      ]
+    },
+    {
+      "mode": "wardrobe",
+      "species": 152,
+      "status": "ready",
+      "metric": "healed",
+      "route": "endless",
+      "actor": 152,
+      "automatable": true,
+      "menuAllowed": true,
+      "liveAllowed": true,
+      "preferred": {
+        "preferredMoves": [],
+        "vitaminPriority": [
+          "regen",
+          "healing",
+          "maxHp"
+        ],
+        "itemPriority": [],
+        "preferStatuses": [],
+        "preferTypes": []
+      },
+      "need": [
+        "回复只按实际损失生命后的治疗累计；保持安全，不主动承受攻击刷治疗",
+        "为解锁“菊草叶 · 专属外观一”，先完成“先完成“菊草叶 · 专属外观一”的前置：使用菊草叶起始：累计恢复生命值 30000”；使用指定联盟角色 #152，按原生要求积累：使用菊草叶起始：累计恢复生命值 30000；仅以已保存的专属挑战计数 0/30000 确认进度，不用全局同类计数替代；此数量条件不要求胜利；使用普通无尽持续积累，达标后按设置正常结算，未达标继续至自然结束；已知本局数量目标达标后正常放弃结算，成功保存后再领取或切换目标"
+      ]
+    },
+    {
+      "mode": "wardrobe",
+      "species": 170,
+      "status": "ready",
+      "metric": "electro",
+      "route": "endless",
+      "actor": 170,
+      "automatable": true,
+      "menuAllowed": true,
+      "liveAllowed": true,
+      "preferred": {
+        "preferredMoves": [
+          "ion-deluge",
+          "ion-deluge"
+        ],
+        "vitaminPriority": [
+          "statusChance",
+          "attackSpeed",
+          "area"
+        ],
+        "itemPriority": [],
+        "preferStatuses": [],
+        "preferTypes": [
+          "electric",
+          "water"
+        ]
+      },
+      "need": [
+        "为解锁“灯笼鱼 · 专属外观一”，先完成“先完成“灯笼鱼 · 专属外观一”的前置：使用灯笼鱼起始：累计触发感电 10000”；使用指定联盟角色 #170，按原生要求积累：使用灯笼鱼起始：累计触发感电 10000；仅以已保存的专属挑战计数 0/10000 确认进度，不用全局同类计数替代；此数量条件不要求胜利；使用普通无尽持续积累，达标后按设置正常结算，未达标继续至自然结束；已知本局数量目标达标后正常放弃结算，成功保存后再领取或切换目标"
+      ]
+    },
+    {
+      "mode": "wardrobe",
+      "species": 251,
+      "status": "ready",
+      "metric": "ultimates",
+      "route": "endless",
+      "actor": 251,
+      "automatable": true,
+      "menuAllowed": true,
+      "liveAllowed": true,
+      "preferred": {
+        "preferredMoves": [],
+        "vitaminPriority": [],
+        "itemPriority": [],
+        "preferStatuses": [],
+        "preferTypes": []
+      },
+      "need": [
+        "为解锁“时拉比 · 专属外观一”，先完成“先完成“时拉比 · 专属外观一”的前置：使用时拉比起始：累计释放终极技能 100”；使用指定联盟角色 #251，按原生要求积累：使用时拉比起始：累计释放终极技能 100；仅以已保存的专属挑战计数 0/100 确认进度，不用全局同类计数替代；此数量条件不要求胜利；使用普通无尽持续积累，达标后按设置正常结算，未达标继续至自然结束；已知本局数量目标达标后正常放弃结算，成功保存后再领取或切换目标"
+      ]
+    }
+  ],
+  "scope": {
+    "stage": "M3",
+    "automaticPlay": true,
+    "validation": "offline-only",
+    "autoStart": false,
+    "reason": "第三阶段离线候选，实战待验",
+    "modeIds": [
+      "resources",
+      "map",
+      "autoManage",
+      "characters",
+      "shiny",
+      "appearance",
+      "wardrobe"
+    ],
+    "nativeModes": [
+      "standard",
+      "endless"
+    ],
+    "endlessModeIds": [
+      "appearance",
+      "wardrobe"
+    ],
+    "biomeIds": [
+      "forest",
+      "desert",
+      "coast",
+      "glacier",
+      "canela",
+      "cave",
+      "encina",
+      "iris"
+    ],
+    "tiers": [
+      0,
+      1,
+      2
+    ],
+    "allowRifts": true
+  },
+  "unrelatedEndless": false
+}

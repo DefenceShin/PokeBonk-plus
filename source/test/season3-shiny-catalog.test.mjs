@@ -6,7 +6,7 @@ test('Johto shiny planning uses current native wild pools instead of the Kanto c
  const bridge={shinyCatalog:shiny,roster:[{id:1}],biomes:[{id:'forest',types:['grass']}],data:{get:()=>({})}};
  const plan=selectShinyPlan({league:[1],shinies:[],biomes:{forest:3}},{mode:'shiny',shinyTypes:['shiny'],unlockTargets:{shiny:'shiny:152'}},bridge);
  assert.equal(plan.shinyStatus,'ready');assert.equal(plan.biome,'forest');assert.equal(plan.shinyTargetId,152);
- assert.equal(shiny.species.find(s=>s.id===206).sources.some(s=>s.kind==='wild'||s.kind==='missing-base-family'),false,'do not invent a Johto base fallback');
+ assert.equal(shiny.species.find(s=>s.id===206).sources.some(s=>s.kind==='missing-base-family'&&s.reviewed0922),true,'0.9.22 native released Johto fallback is capability gated');
 });
 test('Johto wardrobe targets use the current exact-member family eligibility',()=>{
  for(const key of ['shiny','classic','spectral'])assert.ok(catalog.targets.find(t=>t.id===`appearance:skin-${key}:152`));

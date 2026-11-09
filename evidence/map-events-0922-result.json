@@ -1,0 +1,23 @@
+{
+  "baselineHpBefore": 111,
+  "baselineHpAfter": 101.79348140639847,
+  "maxInput": 1,
+  "hpBefore": 111,
+  "hpAfter": 111,
+  "firstImpactRan": true,
+  "moved": 8.823531358162288,
+  "keys": [],
+  "rocks": [
+    {
+      "x": 0,
+      "y": 4.599999904632568,
+      "z": 0,
+      "t": 1.39,
+      "r": 2.5692981112748385
+    }
+  ],
+  "genericWarnings": 0,
+  "motion": true,
+  "enabled": true,
+  "status": "推进 · 广域移动 · 前往地图远端"
+}

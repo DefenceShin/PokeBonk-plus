@@ -1,0 +1,82 @@
+[
+  {
+    "defeat": true,
+    "kit": "YP",
+    "epochs": [
+      "present",
+      "past",
+      "present"
+    ],
+    "phases": [
+      "ordinary",
+      "rift",
+      "clock",
+      "ordinary",
+      "clock"
+    ],
+    "maxInput": 1.0000000000000002,
+    "clockAim": 1,
+    "clockSnapshot": {
+      "j": 1,
+      "g": 1,
+      "flags": 33024,
+      "hp": 33515.015625
+    },
+    "killed": true,
+    "firstPast": 121.58400000000053,
+    "presentAt": 123.76000000000126,
+    "down": 6.5,
+    "clockGone": true,
+    "preserved": true,
+    "state": "play",
+    "enabled": true,
+    "status": "推进 · 击破花钟",
+    "position": {
+      "x": -3.498057581523093,
+      "y": 0.4913421111475562,
+      "z": 39.103389209693084
+    },
+    "rift": null,
+    "pastT": 0
+  },
+  {
+    "defeat": false,
+    "kit": "YP",
+    "epochs": [
+      "present",
+      "past",
+      "present"
+    ],
+    "phases": [
+      "ordinary",
+      "rift",
+      "clock",
+      "ordinary",
+      "clock"
+    ],
+    "maxInput": 1.0000000000000002,
+    "clockAim": 1,
+    "clockSnapshot": {
+      "j": 1,
+      "g": 1,
+      "flags": 33024,
+      "hp": 33515.015625
+    },
+    "killed": false,
+    "firstPast": 121.58400000000053,
+    "presentAt": 129.5680000000018,
+    "down": 0,
+    "clockGone": true,
+    "preserved": true,
+    "state": "play",
+    "enabled": true,
+    "status": "推进 · 击破花钟",
+    "position": {
+      "x": -6.047550553587789,
+      "y": 0,
+      "z": 40.02362403218917
+    },
+    "rift": null,
+    "pastT": 0
+  }
+]

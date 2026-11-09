@@ -1,0 +1,53 @@
+{
+  "result": [
+    {
+      "kind": "shiny",
+      "saved": false,
+      "planStatus": "ready",
+      "planMode": "standard",
+      "action": "capture",
+      "throwing": true,
+      "nativeOwned": true,
+      "beforeSaved": false,
+      "duringSaved": false,
+      "afterSaved": false
+    },
+    {
+      "kind": "shiny",
+      "saved": true,
+      "planStatus": "ready",
+      "planMode": "standard",
+      "action": "capture",
+      "throwing": true,
+      "nativeOwned": true,
+      "beforeSaved": false,
+      "duringSaved": false,
+      "afterSaved": true
+    },
+    {
+      "kind": "classic",
+      "saved": false,
+      "planStatus": "ready",
+      "planMode": "standard",
+      "action": "capture",
+      "throwing": true,
+      "nativeOwned": true,
+      "beforeSaved": false,
+      "duringSaved": false,
+      "afterSaved": false
+    },
+    {
+      "kind": "classic",
+      "saved": true,
+      "planStatus": "ready",
+      "planMode": "standard",
+      "action": "capture",
+      "throwing": true,
+      "nativeOwned": true,
+      "beforeSaved": false,
+      "duringSaved": false,
+      "afterSaved": true
+    }
+  ],
+  "errors": []
+}

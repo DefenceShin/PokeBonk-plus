@@ -1,0 +1,22 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import{chromium}from 'playwright';import{fileURLToPath,pathToFileURL}from 'node:url';
+const task=new URL('../../',import.meta.url),read=p=>JSON.parse(fs.readFileSync(new URL(p,task),'utf8'));
+const base=read('source/data/catalog.json'),actual=read('evidence/editor-catalog.json'),goals=read('source/data/unlock-catalog.json'),catalog={...base,...actual,unlockGoals:goals,shiny:read('source/data/shiny-catalog.json')};
+const scope=read('evidence/skin-routes-0922.json').scope;
+const state={running:false,paused:false,game:{},session:{},logs:[],profile:{league:[1,152],biomes:{forest:2}},compatibilityReport:{state:'ready',maintenanceScope:{...scope,modeIds:scope.modeIds.filter(x=>!['shiny','appearance','wardrobe'].includes(x))}},connection:{stage:'ready'},config:{mode:'resources',characterId:0,modeSettings:{appearance:{biome:'auto',tier:'auto'},wardrobe:{species:'auto',look:'auto'}}},customPlans:[]};
+const context=await chromium.launchPersistentContext(fileURLToPath(new URL('isolated-user-data/0922-skins-ui/',task)),{headless:true,executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',viewport:{width:1280,height:900}});
+try{const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await context.route('https://**/*',r=>r.abort());await page.addInitScript(({catalog,state})=>{window.__server=state;window.__calls=[];window.desktop={getState:async()=>structuredClone(__server),getCatalog:async()=>catalog,onState(f){window.__push=f;return()=>{}},onLog(){return()=>{}},command:async(action,payload={})=>{__calls.push({action,payload});if(action==='config')Object.assign(__server.config,payload);return{ok:true,state:structuredClone(__server)};}};},{catalog,state});await page.goto(pathToFileURL(fileURLToPath(new URL('source/client/ui/index.html',task))).href);await page.click('#tab-modes');
+for(const mode of ['shiny','appearance','wardrobe'])assert.equal(await page.locator(`[data-mode="${mode}"]`).isDisabled(),true);
+const before=new URL('evidence/ui-0922-skins-before.png',task);if(!fs.existsSync(before))await page.screenshot({path:fileURLToPath(before)});
+await page.evaluate(scope=>{__server.compatibilityReport.maintenanceScope=scope;__push(structuredClone(__server));},scope);
+for(const mode of ['shiny','appearance','wardrobe'])assert.equal(await page.locator(`[data-mode="${mode}"]`).isDisabled(),false);
+await page.click('[data-mode="wardrobe"]');await page.selectOption('#collection-species','144');
+assert.equal(await page.locator('#wardrobe-look option[value="l2"]').count(),1);await page.selectOption('#wardrobe-look','l2');await page.waitForFunction(()=>__server.config.modeSettings.wardrobe.look==='l2');
+await page.selectOption('#appearance-count-mode','endless');await page.waitForFunction(()=>__server.config.modeSettings.wardrobe.countMode==='endless');
+assert.equal(await page.locator('[data-mode="mutation"]').isDisabled(),true);assert.equal(await page.evaluate(()=>__calls.some(c=>c.action==='start')),false);
+await page.hover('[data-mode="wardrobe"]');
+if(!fs.existsSync(new URL('evidence/ui-0922-skins-hover-before.png',task)))await page.screenshot({path:fileURLToPath(new URL('evidence/ui-0922-skins-hover-before.png',task))});
+assert.equal(await page.locator('[data-mode="wardrobe"]').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(18, 34, 61)','selected mode must keep readable dark background while hovered');
+const sizes=[];for(const [width,height]of [[1280,900],[960,650]]){await page.setViewportSize({width,height});await page.screenshot({path:fileURLToPath(new URL(`evidence/ui-0922-skins-${width}.png`,task))});sizes.push({width,height,overflow:await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)});}
+await page.locator('#tab-convenience').evaluate(el=>el.click());await page.click('#convenience-feature-outside');for(const key of ['autoUpgrade','autoUnlockItems','autoClaim','reserveMoveSlot'])assert.equal(await page.locator('#setting-'+key).isChecked(),false);
+assert.deepEqual(errors,[]);assert.ok(sizes.every(s=>!s.overflow));fs.writeFileSync(new URL('evidence/ui-0922-skins.json',task),JSON.stringify({sizes,defaultsOff:true,noAutoStart:true,scope,errors},null,2));console.log('PASS skin mode controls, legendary selection/persistence, independent count setting, four defaults off and two viewports');
+}finally{await context.close();}

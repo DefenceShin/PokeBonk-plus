@@ -1,0 +1,262 @@
+[
+  {
+    "resource": "payload.battle-recorder.mjs",
+    "source": "source\\src\\battle-recorder.mjs",
+    "sha256": "ff36b309bffc46e2c12afa6abb0f0ebe7ef890e41d9d48ce77fe5356e052e995"
+  },
+  {
+    "resource": "PokeBonk Pilot.g.resources",
+    "source": "source\\client\\PokeBonk Pilot.g.resources",
+    "sha256": "5c78c247290f7506348e7f6c38d9cbb831183797d43783d5bfbed43c1d2d6324"
+  },
+  {
+    "resource": "PokeBonk.Client.ui.app.js",
+    "source": "source\\client\\ui\\app.js",
+    "sha256": "3ab0052407dbdc08e59c2524859378c9d84abf199146b9a26e169deb28032626"
+  },
+  {
+    "resource": "PokeBonk.Client.ui.product-source.js",
+    "source": "source\\client\\ui\\product-source.js",
+    "sha256": "5b78b370733796dacc852a525564459431cbc1c88fce6819fef519c8b6f88437"
+  },
+  {
+    "resource": "PokeBonk.Client.ui.index.html",
+    "source": "source\\client\\ui\\index.html",
+    "sha256": "201ad1bda63786cf81714a65e695a182d70304c702f3eb46b2fc576ae64bf7af"
+  },
+  {
+    "resource": "PokeBonk.Client.ui.styles.css",
+    "source": "source\\client\\ui\\styles.css",
+    "sha256": "bfebc791a2e358a5ffbd2d0ea30affa7c250b366bd40c9f6e204c403f3400767"
+  },
+  {
+    "resource": "payload.unlock-catalog.json",
+    "source": "source\\data\\unlock-catalog.json",
+    "sha256": "4958f505950c8c52fc86ce5037ee8208ff21737a2579cec3d2d1f2e898e4d4e2"
+  },
+  {
+    "resource": "payload.cost-effects.json",
+    "source": "source\\data\\cost-effects.json",
+    "sha256": "9a9b91264406cae0aa1adea5428af784f05983be884acda8d035a3337b2ad5be"
+  },
+  {
+    "resource": "payload.wecom-push-catalog.json",
+    "source": "source\\data\\wecom-push-catalog.json",
+    "sha256": "6e769c26edb0c0ee3435d3164f5e0d32ef7288ece7047715c0e5b8a26f246969"
+  },
+  {
+    "resource": "payload.encyclopedia.json",
+    "source": "source\\data\\encyclopedia.json",
+    "sha256": "39d204230a16913e8cbc68333ecb4db149edc6c09fc64dcabcd46c276df5385f"
+  },
+  {
+    "resource": "payload.localization.json",
+    "source": "source\\data\\localization.json",
+    "sha256": "2712697f6b149c8acc15ddd1d775e9aea91cecd4e6b43d2ed8891de3e337984c"
+  },
+  {
+    "resource": "payload.shiny-catalog.json",
+    "source": "source\\data\\shiny-catalog.json",
+    "sha256": "825be7c2316800c9cc9ce670fcdfa49e78d67b4f9f1283bfefaca35984edc182"
+  },
+  {
+    "resource": "payload.catalog.json",
+    "source": "source\\data\\catalog.json",
+    "sha256": "606b2e7add4d41e32504ced60b066ff866b8007906bd71149a586c2fa85ef35d"
+  },
+  {
+    "resource": "payload.controller-sources.json",
+    "source": "source\\data\\controller-sources.json",
+    "sha256": "c54ec37c6eca02b00d4126a57e5874ccf4e870e5bc21b9cc4587a17e2dae9e88"
+  },
+  {
+    "resource": "payload.maintenance-prompts.mjs",
+    "source": "source\\src\\maintenance-prompts.mjs",
+    "sha256": "179664c5df66f9867e87d2f63368c9f347857850744f1281692d13a09c755575"
+  },
+  {
+    "resource": "payload.encyclopedia.mjs",
+    "source": "source\\src\\encyclopedia.mjs",
+    "sha256": "b035cd9a8bad20a97f1cb716824649688fa8b7b3f41d1822158aacdf323e239e"
+  },
+  {
+    "resource": "payload.player-skins.mjs",
+    "source": "source\\src\\player-skins.mjs",
+    "sha256": "47d1d046e94ba70a1fdf83ba1d18d8bd655fd4e6b98f9b5b384488c6ea4a4d72"
+  },
+  {
+    "resource": "payload.native-parser.mjs",
+    "source": "source\\src\\native-parser.mjs",
+    "sha256": "91aaa57f4baffa9c8346ae17cdd4d2708967b7e9a03ad57ad0fe05cf0676cd66"
+  },
+  {
+    "resource": "payload.native-semantic-profiles.mjs",
+    "source": "source\\src\\native-semantic-profiles.mjs",
+    "sha256": "619fd875d15929c2500531a3b1e30cefe323dec135aeb95cd3e06f0fb9795eae"
+  },
+  {
+    "resource": "payload.native-selector-catalog.mjs",
+    "source": "source\\src\\native-selector-catalog.mjs",
+    "sha256": "c32c27e3ff1f14fc321b1038ade99342482f15d0d690a4b07d94f5a8af220338"
+  },
+  {
+    "resource": "payload.native-adaptation.mjs",
+    "source": "source\\src\\native-adaptation.mjs",
+    "sha256": "f6fa0b4896112ee1b62843dcc94365e2061f140ab810cf003c1382640c200229"
+  },
+  {
+    "resource": "payload.game-library.mjs",
+    "source": "source\\src\\game-library.mjs",
+    "sha256": "2b2927aa2294eaf275d7d0fc484f3d8e040b818c04b16aec060d849f42eee369"
+  },
+  {
+    "resource": "payload.policy.mjs",
+    "source": "source\\src\\policy.mjs",
+    "sha256": "eeec0c4ac5c7b0ecb74a70e4e6fec7346f67e06ade5061c45bbaa964a876b628"
+  },
+  {
+    "resource": "payload.pilot.mjs",
+    "source": "source\\src\\pilot.mjs",
+    "sha256": "83932461c4527e2915f479fbd12ee172ae7be378832924862e09015da11d3414"
+  },
+  {
+    "resource": "payload.objectives.mjs",
+    "source": "source\\src\\objectives.mjs",
+    "sha256": "c390a523b05d7837339f95ba11bf6756bb6974fd4c48791d67b4ae7ce3645e32"
+  },
+  {
+    "resource": "payload.shiny.mjs",
+    "source": "source\\src\\shiny.mjs",
+    "sha256": "2520bbd7c3fb2faaf49305371740d6922d4c35cba7b3b3bf146c48c650faadfc"
+  },
+  {
+    "resource": "payload.compatibility.mjs",
+    "source": "source\\src\\compatibility.mjs",
+    "sha256": "35d07584b5a10a9563dc6ff9c590b46da8afa0887aa472171915bef64f650c3a"
+  },
+  {
+    "resource": "payload.custom-plans.mjs",
+    "source": "source\\src\\custom-plans.mjs",
+    "sha256": "4157376e940f4a4cea4acd6963888d76a6f83612becd270c2895acae33b7e03e"
+  },
+  {
+    "resource": "payload.action-cadence.mjs",
+    "source": "source\\src\\action-cadence.mjs",
+    "sha256": "822034168ffa039193b34a95c3c8df896f7d9efef61e893ed35c44f0d5087510"
+  },
+  {
+    "resource": "payload.interaction-navigation.mjs",
+    "source": "source\\src\\interaction-navigation.mjs",
+    "sha256": "2dc93edb9ae850a51509ffa18a428580f1445e3080f4b55a7474bdef02f53de2"
+  },
+  {
+    "resource": "payload.battle-tactics.mjs",
+    "source": "source\\src\\battle-tactics.mjs",
+    "sha256": "49c76824d63c59692b439078d5d6ac4b97cd22af74a084f91df1e231b0278bf7"
+  },
+  {
+    "resource": "payload.choice-strategy.mjs",
+    "source": "source\\src\\choice-strategy.mjs",
+    "sha256": "2847449785366d2c1a5c6d0be0d2d0f3edd441dbdb7b81748c26a203f8b21e6a"
+  },
+  {
+    "resource": "payload.unlock-goals.mjs",
+    "source": "source\\src\\unlock-goals.mjs",
+    "sha256": "76e8911947519fef1264a121d21de17e86102f5a5a14546c9e98a1a919032449"
+  },
+  {
+    "resource": "payload.team-overlay.mjs",
+    "source": "source\\src\\team-overlay.mjs",
+    "sha256": "cebfcb549fb7f16aad76ebe996902de3c564685d6683e9e2b208931639c67a83"
+  },
+  {
+    "resource": "payload.player-overlay.mjs",
+    "source": "source\\src\\player-overlay.mjs",
+    "sha256": "81b7c5f358e1f12f6a1ae32ff605f7039aa430eed0183271b33b74dbc6fc0e69"
+  },
+  {
+    "resource": "payload.player-convenience.mjs",
+    "source": "source\\src\\player-convenience.mjs",
+    "sha256": "20cbca91cf4a5e0dd6f3973362493c158c7651be381cfc62b4460ff6500c7cbb"
+  },
+  {
+    "resource": "payload.wecom-push.mjs",
+    "source": "source\\src\\wecom-push.mjs",
+    "sha256": "d97b39e47788e287c78fe0eb8b018d82950499858dee413154cb41b849dcb531"
+  },
+  {
+    "resource": "payload.tower-strategy.mjs",
+    "source": "source\\src\\tower-strategy.mjs",
+    "sha256": "a3e1ae66e26056a6e73bd42eed7cf89671049916c0ada4efc43e7edb10c7dbf5"
+  },
+  {
+    "resource": "payload.mutation-strategy.mjs",
+    "source": "source\\src\\mutation-strategy.mjs",
+    "sha256": "1f72f58f0b5b2e6973e52776239c2f97f51e5cd61a3f74389955972bae224cbd"
+  },
+  {
+    "resource": "payload.character-unlock-legacy160.mjs",
+    "source": "source\\src\\character-unlock-legacy160.mjs",
+    "sha256": "c20d3e4160e84cf3587134a525075ad7368e838a67a18e4437ac0001e42c6fa4"
+  },
+  {
+    "resource": "payload.product-source.mjs",
+    "source": "source\\src\\product-source.mjs",
+    "sha256": "49d6b705f17fe6c87463f36711f91e134b52d0306154352bfe61771a561f4679"
+  },
+  {
+    "resource": "payload.build-import.mjs",
+    "source": "source\\src\\build-import.mjs",
+    "sha256": "445b1bc129d46b39ff60fc6c58072250f7fdd111cb9e40c59857044af73acf3f"
+  },
+  {
+    "resource": "payload.author-dog.png",
+    "source": "source\\client\\payload.author-dog.png",
+    "sha256": "5ffffcc2bbbb99acef66bd239d127c68127289813dd6b62da7ed7117ec2249e4"
+  },
+  {
+    "resource": "payload.author-other-dog.png",
+    "source": "source\\client\\payload.author-other-dog.png",
+    "sha256": "a3e9321d5a6b07377e5d3d70bb7e70c31bd204081e3737bcc4331d3e14fdfeed"
+  },
+  {
+    "resource": "payload.dog-poop.png",
+    "source": "source\\client\\payload.dog-poop.png",
+    "sha256": "f31a11d92ba91ec694c559c54bd2dd49a068351e25e1bba80f79bed54f60b268"
+  },
+  {
+    "resource": "payload.dog-fluff.png",
+    "source": "source\\client\\payload.dog-fluff.png",
+    "sha256": "7d3568df8b912b1b668e6da3a315cfa8eb6b483874f5db335e91c73769210010"
+  },
+  {
+    "resource": "payload.skin-001.png",
+    "source": "source\\client\\payload.skin-001.png",
+    "sha256": "a1dadc393d84f97bbc84ae980f8428e107000a8c1c843a3694942d7aedaac9b7"
+  },
+  {
+    "resource": "payload.skin-002.png",
+    "source": "source\\client\\payload.skin-002.png",
+    "sha256": "36361f4acfd9ece49d4284351897964fc0479627b59d7dda02bf771b3be4a4c0"
+  },
+  {
+    "resource": "payload.skin-003.png",
+    "source": "source\\client\\payload.skin-003.png",
+    "sha256": "02c0c894bc0397238944b7e4a3ddd90532689de659dd0fa999c98308fec685c9"
+  },
+  {
+    "resource": "payload.skin-004.png",
+    "source": "source\\client\\payload.skin-004.png",
+    "sha256": "cfceac3bb42b57fbb526f51b1002d1e4e19793de1838bd780cf35603d4663d5b"
+  },
+  {
+    "resource": "payload.skin-generation-prompt.txt",
+    "source": "source\\client\\payload.skin-generation-prompt.txt",
+    "sha256": "0611f2879b3f7972ca9f806de14d327dea02f945165328c0410eb0bbc5be91b6"
+  },
+  {
+    "resource": "payload.changelog.txt",
+    "source": "source\\client\\payload.changelog.txt",
+    "sha256": "0a5163997a6ae0887e7434c553fe00059f6f8eaba5be96d14a8a07c2dd6a1937"
+  }
+]

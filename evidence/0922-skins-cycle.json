@@ -1,0 +1,637 @@
+{
+  "result": [
+    {
+      "mode": "appearance",
+      "species": 7,
+      "accepted": false,
+      "opened": {
+        "species": 7,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:7:1\",20000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 0,
+      "nativeValue": 20000,
+      "reported": {
+        "soaked": 20000
+      },
+      "eventSaved": false,
+      "phase": "save-failed"
+    },
+    {
+      "mode": "appearance",
+      "species": 7,
+      "accepted": true,
+      "opened": {
+        "species": 7,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:7:1\",20000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 20000,
+      "nativeValue": 20000,
+      "reported": {
+        "soaked": 20000
+      },
+      "eventSaved": true,
+      "phase": "saved",
+      "claim": {
+        "key": "lk7_1",
+        "offCalls": 0,
+        "beforeClaim": false,
+        "duringClaims": 1,
+        "claims": 1,
+        "saved": true,
+        "nextTarget": "appearance:skin-m1:7",
+        "nextStatus": "complete",
+        "following": null
+      }
+    },
+    {
+      "mode": "appearance",
+      "species": 152,
+      "accepted": false,
+      "opened": {
+        "species": 152,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:152:1\",30000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 0,
+      "nativeValue": 30000,
+      "reported": {
+        "healed": 30000
+      },
+      "eventSaved": false,
+      "phase": "save-failed"
+    },
+    {
+      "mode": "appearance",
+      "species": 152,
+      "accepted": true,
+      "opened": {
+        "species": 152,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:152:1\",30000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 30000,
+      "nativeValue": 30000,
+      "reported": {
+        "healed": 30000
+      },
+      "eventSaved": true,
+      "phase": "saved",
+      "claim": {
+        "key": "lk152_1",
+        "offCalls": 0,
+        "beforeClaim": false,
+        "duringClaims": 1,
+        "claims": 1,
+        "saved": true,
+        "nextTarget": "appearance:skin-m1:152",
+        "nextStatus": "complete",
+        "following": null
+      }
+    },
+    {
+      "mode": "appearance",
+      "species": 170,
+      "accepted": false,
+      "opened": {
+        "species": 170,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:170:1\",10000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 0,
+      "nativeValue": 10000,
+      "reported": {
+        "electro": 10000
+      },
+      "eventSaved": false,
+      "phase": "save-failed"
+    },
+    {
+      "mode": "appearance",
+      "species": 170,
+      "accepted": true,
+      "opened": {
+        "species": 170,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:170:1\",10000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 10000,
+      "nativeValue": 10000,
+      "reported": {
+        "electro": 10000
+      },
+      "eventSaved": true,
+      "phase": "saved",
+      "claim": {
+        "key": "lk170_1",
+        "offCalls": 0,
+        "beforeClaim": false,
+        "duringClaims": 1,
+        "claims": 1,
+        "saved": true,
+        "nextTarget": "appearance:skin-m1:170",
+        "nextStatus": "complete",
+        "following": null
+      }
+    },
+    {
+      "mode": "appearance",
+      "species": 251,
+      "accepted": false,
+      "opened": {
+        "species": 251,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:251:1\",100]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 0,
+      "nativeValue": 100,
+      "reported": {
+        "ultimates": 100
+      },
+      "eventSaved": false,
+      "phase": "save-failed"
+    },
+    {
+      "mode": "appearance",
+      "species": 251,
+      "accepted": true,
+      "opened": {
+        "species": 251,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:251:1\",100]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 100,
+      "nativeValue": 100,
+      "reported": {
+        "ultimates": 100
+      },
+      "eventSaved": true,
+      "phase": "saved",
+      "claim": {
+        "key": "lk251_1",
+        "offCalls": 0,
+        "beforeClaim": false,
+        "duringClaims": 1,
+        "claims": 1,
+        "saved": true,
+        "nextTarget": "appearance:skin-m1:251",
+        "nextStatus": "complete",
+        "following": null
+      }
+    },
+    {
+      "mode": "wardrobe",
+      "species": 7,
+      "accepted": false,
+      "opened": {
+        "species": 7,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:7:1\",20000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 0,
+      "nativeValue": 20000,
+      "reported": {
+        "soaked": 20000
+      },
+      "eventSaved": false,
+      "phase": "save-failed"
+    },
+    {
+      "mode": "wardrobe",
+      "species": 7,
+      "accepted": true,
+      "opened": {
+        "species": 7,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:7:1\",20000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 20000,
+      "nativeValue": 20000,
+      "reported": {
+        "soaked": 20000
+      },
+      "eventSaved": true,
+      "phase": "saved",
+      "claim": {
+        "key": "lk7_1",
+        "offCalls": 0,
+        "beforeClaim": false,
+        "duringClaims": 1,
+        "claims": 1,
+        "saved": true,
+        "nextTarget": null,
+        "nextStatus": "complete",
+        "following": 10
+      }
+    },
+    {
+      "mode": "wardrobe",
+      "species": 152,
+      "accepted": false,
+      "opened": {
+        "species": 152,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:152:1\",30000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 0,
+      "nativeValue": 30000,
+      "reported": {
+        "healed": 30000
+      },
+      "eventSaved": false,
+      "phase": "save-failed"
+    },
+    {
+      "mode": "wardrobe",
+      "species": 152,
+      "accepted": true,
+      "opened": {
+        "species": 152,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:152:1\",30000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 30000,
+      "nativeValue": 30000,
+      "reported": {
+        "healed": 30000
+      },
+      "eventSaved": true,
+      "phase": "saved",
+      "claim": {
+        "key": "lk152_1",
+        "offCalls": 0,
+        "beforeClaim": false,
+        "duringClaims": 1,
+        "claims": 1,
+        "saved": true,
+        "nextTarget": null,
+        "nextStatus": "complete",
+        "following": null
+      }
+    },
+    {
+      "mode": "wardrobe",
+      "species": 170,
+      "accepted": false,
+      "opened": {
+        "species": 170,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:170:1\",10000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 0,
+      "nativeValue": 10000,
+      "reported": {
+        "electro": 10000
+      },
+      "eventSaved": false,
+      "phase": "save-failed"
+    },
+    {
+      "mode": "wardrobe",
+      "species": 170,
+      "accepted": true,
+      "opened": {
+        "species": 170,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:170:1\",10000]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 10000,
+      "nativeValue": 10000,
+      "reported": {
+        "electro": 10000
+      },
+      "eventSaved": true,
+      "phase": "saved",
+      "claim": {
+        "key": "lk170_1",
+        "offCalls": 0,
+        "beforeClaim": false,
+        "duringClaims": 1,
+        "claims": 1,
+        "saved": true,
+        "nextTarget": null,
+        "nextStatus": "complete",
+        "following": null
+      }
+    },
+    {
+      "mode": "wardrobe",
+      "species": 251,
+      "accepted": false,
+      "opened": {
+        "species": 251,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:251:1\",100]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 0,
+      "nativeValue": 100,
+      "reported": {
+        "ultimates": 100
+      },
+      "eventSaved": false,
+      "phase": "save-failed"
+    },
+    {
+      "mode": "wardrobe",
+      "species": 251,
+      "accepted": true,
+      "opened": {
+        "species": 251,
+        "biome": "forest",
+        "tier": 0,
+        "mode": "endless",
+        "boosts": []
+      },
+      "below": {
+        "ready": false,
+        "reason": "finite-goal-not-completely-proven"
+      },
+      "reached": {
+        "ready": true,
+        "kind": "reviewed-complete-non-victory-mastery",
+        "conditionKey": "[\"lk:251:1\",100]"
+      },
+      "submitted": true,
+      "during": {
+        "pending": true,
+        "menus": 0,
+        "target": 0
+      },
+      "saved": 100,
+      "nativeValue": 100,
+      "reported": {
+        "ultimates": 100
+      },
+      "eventSaved": true,
+      "phase": "saved",
+      "claim": {
+        "key": "lk251_1",
+        "offCalls": 0,
+        "beforeClaim": false,
+        "duringClaims": 1,
+        "claims": 1,
+        "saved": true,
+        "nextTarget": null,
+        "nextStatus": "complete",
+        "following": null
+      }
+    }
+  ],
+  "errors": []
+}

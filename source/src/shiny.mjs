@@ -117,7 +117,9 @@ function shinyAvailableSource(profile, settings, bridge, source, id) {
   if (source.live === false || !biome || biome.live === false || shinyNumber(profile.biomes?.[biome.id], -1) < 0) return false;
   try { if (bridge.biomeLive && !bridge.biomeLive(biome.id)) return false; } catch { return false; }
   if (settings.biome && settings.biome !== "auto" && settings.biome !== biome.id) return false;
+  if(source.requiresBiomeSpecials && bridge.captureFeatures?.ordinaryBiomeSpecials!==true)return false;
   if (source.kind === "missing-base-family" && (bridge.captureFeatures?.ordinaryMissingBaseFallback !== true ||
+      id>(bridge.captureFeatures?.ordinaryMissingBaseFallbackMaxDex??151) ||
       (profile.shinies || []).some(owned => shinyFamily(bridge, owned) === shinyFamily(bridge, id)))) return false;
   if (["league-legendary", "mewtwo-event"].includes(source.kind) && !shinyReady(profile, bridge, id)) return false;
   return true;
@@ -180,11 +182,11 @@ function selectNormalShinyPlan(profile, settings = {}, bridge = {}) {
   const missingFamily = (id) => !ownedFamilies.has(shinyFamily(bridge, id));
   const sourceBlockers = (source) => {
     if (source.kind === "missing-base-family") return [...new Set(records.filter(record => missingFamily(record.id) &&
-      (record.sources || []).some(other => other.kind === "wild" && other.biome === source.biome && other.stage === source.stage))
+      (record.sources || []).some(other => other.kind === "wild" && other.biome === source.biome && other.stage === source.stage&&shinyAvailableSource(profile,settings,bridge,other,record.id)))
       .map(record => shinyFamily(bridge, record.id)))];
     if (shinyMode !== "target" || missingFamily(requestedId) || !["wild", "eclipse"].includes(source.kind)) return [];
     return [...new Set(records.filter((record) => missingFamily(record.id) && (record.sources || []).some((other) =>
-      other.kind === source.kind && other.biome === source.biome && other.stage === source.stage))
+      other.kind === source.kind && other.biome === source.biome && other.stage === source.stage&&shinyAvailableSource(profile,settings,bridge,other,record.id)))
       .map((record) => shinyFamily(bridge, record.id)))];
   };
   const mapScores = new Map();
@@ -243,7 +245,7 @@ function classicShinyPlan(profile,settings,bridge,normal) {
   const owned=[...new Set((profile.classics||[]).filter(Number.isInteger))],covered=new Set(owned.flatMap(id=>eligibility.get(id)||[])),
     records=bridge.shinyCatalog?.species || nativeShinySources(bridge),target=settings.shinyMode==='target'?Number(settings.shinyTargetId):null,
     candidates=records.filter(row=>!target||row.id===target),exactOwned=target!=null&&owned.includes(target),
-    available=row=>(row.sources||[]).filter(source=>source.kind==='wild'&&shinyAvailableSource(profile,settings,bridge,source,row.id)),
+    available=row=>(row.sources||[]).filter(source=>source.kind==='wild'&&!source.ordinaryOnly&&shinyAvailableSource(profile,settings,bridge,source,row.id)),
     missing=candidates.filter(row=>!owned.includes(row.id)),
     eligible=missing.filter(row=>eligibility.get(row.id)?.some(id=>!covered.has(id))).flatMap(row=>available(row).map(source=>({...source,kind:'classic',id:row.id}))),
     maps=new Map();
@@ -345,7 +347,7 @@ export function describeShinyTargets(profile={},settings={},bridge={}) {
     records=new Map((bridge.shinyCatalog?.species||nativeShinySources(bridge)).map(row=>[row.id,row]));
   return rows.map(row=>{
     const raw=records.get(row.id),
-      sources=(raw?.sources||[]).filter(source=>source.kind==='wild'&&shinyAvailableSource(profile,settings,bridge,source,row.id)),
+      sources=(raw?.sources||[]).filter(source=>source.kind==='wild'&&!source.ordinaryOnly&&shinyAvailableSource(profile,settings,bridge,source,row.id)),
       uncovered=eligibility.get(row.id)?.some(id=>!covered.has(id)),classicAvailable=owned.has(row.id)||sources.length>0&&uncovered,
       normalSelected=types.includes('shiny'),available=normalSelected&&row.huntable||classicAvailable,
       reason=normalSelected?row.reason:owned.has(row.id)?'经典异色已在 classics 精确收藏中；原生经典池不保证提供重复捕捉':

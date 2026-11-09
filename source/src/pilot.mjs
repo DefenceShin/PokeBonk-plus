@@ -2866,6 +2866,7 @@ export function installPilot(options = {}) {
         this.status="当前裂隙接口未核验；离开入口范围后继续普通交互";return false;
       }
       if(action==='interact'&&run?.rifts?.canCallAlpha?.()&&this.nativeInteractionAction(run)==='rift-alpha')return false;
+      if(action==='interact'&&run?.rifts?.canCallWave?.()&&this.nativeInteractionAction(run)==='rift-wave')return false;
       if(run?.state==="play"&&this.flightState(run).noInteractions&&["interact","ult"].includes(action))return false;
       if(action==="interact"&&run?.state==="play"&&["cursed","cursedchest","greed","fossil","porygon","rhydon"].includes(run.interactables?.nearest?.kind)&&
           this.nativeInteractionAction(run)==="world"&&(!this.enabled||!this.worldInteractionAllowed(run,run.interactables.nearest)))return false;
@@ -5871,6 +5872,7 @@ export function installPilot(options = {}) {
         return this.preserveShinyOpportunity(r)||!this.shinyHuntCaptureAllowed(r,this.captureOpportunity(r,r.capture.index)||r.capture) ? null : "capture";
       if (!r.interactables?.nearest && r.allies?.canThrow?.()) return this.shinyHuntCaptureAllowed(r,this.captureOpportunity(r,r.allies.down))?'ally':null;
       if(r.rifts?.canCallAlpha?.())return 'rift-alpha';
+      if(r.rifts?.canCallWave?.())return 'rift-wave';
       if(this.leaderboardCampBlocks(r,r.interactables?.nearest))return null;
       if (r.coop?.portalReady && r.interactables?.nearest?.kind==="portal") return null;
       if(r.interactables?.nearest && !this.cooperativeInteractionPolicy(r,r.interactables.nearest).allowed)return null;

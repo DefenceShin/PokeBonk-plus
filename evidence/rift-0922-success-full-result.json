@@ -1,0 +1,50 @@
+{
+  "alphaBefore": {
+    "alive": 1,
+    "hp": 1106.6453999999999,
+    "dying": 0
+  },
+  "alphaAfter": {
+    "alive": 0,
+    "hp": 1106.6453999999999,
+    "dying": 0
+  },
+  "beforeEntry": "{\"moves\":[{\"key\":\"tackle\",\"level\":4,\"parents\":[],\"link\":{\"key\":\"vine-whip\",\"level\":3}},null,null,null],\"items\":[[\"muscle-band\",2]],\"vitamins\":[[\"protein\",2]],\"banished\":[\"m999\"],\"fusions\":[{\"key\":\"fixture-existing\",\"parents\":[33,22]}]}",
+  "afterEntry": "{\"moves\":[{\"key\":\"tackle\",\"level\":4,\"parents\":[],\"link\":{\"key\":\"vine-whip\",\"level\":3}},null,null,null],\"items\":[[\"muscle-band\",2]],\"vitamins\":[[\"protein\",2]],\"banished\":[\"m999\"],\"fusions\":[{\"key\":\"fixture-existing\",\"parents\":[33,22]}]}",
+  "beforeLeave": "{\"moves\":[{\"key\":\"tackle\",\"level\":4,\"parents\":[],\"link\":{\"key\":\"vine-whip\",\"level\":3}},null,null,null],\"items\":[[\"muscle-band\",2],[\"power-herb\",1]],\"vitamins\":[[\"protein\",2]],\"banished\":[\"m999\"],\"fusions\":[{\"key\":\"fixture-existing\",\"parents\":[33,22]}]}",
+  "afterReturn": "{\"moves\":[{\"key\":\"tackle\",\"level\":4,\"parents\":[],\"link\":{\"key\":\"vine-whip\",\"level\":3}},null,null,null],\"items\":[[\"muscle-band\",2],[\"power-herb\",1]],\"vitamins\":[[\"protein\",2]],\"banished\":[\"m999\"],\"fusions\":[{\"key\":\"fixture-existing\",\"parents\":[33,22]}]}",
+  "alphaPhase": "alpha",
+  "count": 117,
+  "restored": true,
+  "phases": [
+    "waves",
+    "alpha-in"
+  ],
+  "waves": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "relicKeys": [
+    "l-dragon",
+    "c-fang",
+    "c-amber"
+  ],
+  "frames": 46,
+  "inside": false,
+  "terrainChanged": false,
+  "keys": [
+    "KeyC",
+    "KeyE",
+    "KeyE",
+    "KeyE"
+  ],
+  "incense": 0,
+  "entrance": false,
+  "state": "play",
+  "enabled": true,
+  "status": "推进 · 返回原主地图"
+}

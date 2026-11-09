@@ -1,0 +1,136 @@
+{
+  "peakHeight": 1.7413302349050164,
+  "hpBefore": 111,
+  "hpAfter": 111,
+  "baseline": {
+    "computedAtGameTime": 223.45200000002154,
+    "computedPosition": {
+      "x": 0,
+      "y": 0.35511106252670294,
+      "z": 0
+    },
+    "computedHp": 111,
+    "observedBodyIndices": [
+      126
+    ],
+    "observedBodyCount": 1,
+    "observedBodiesTruncated": false,
+    "x": 0.1950903220161279,
+    "z": -0.9807852804032305,
+    "dash": false,
+    "risk": 0,
+    "waypoint": {
+      "x": 6.662002220938873,
+      "z": -24.862930768680624
+    },
+    "target": "flight:19",
+    "objectiveHeld": false,
+    "acceptedDamage": false,
+    "expectedDamage": 0,
+    "escapeRoutes": 8,
+    "action": "walk",
+    "jump": false,
+    "jumpMove": false,
+    "slideMove": false,
+    "safety": {
+      "knownDamage": 0,
+      "healthDamage": 0,
+      "unknownDamage": false,
+      "unknownHits": 0,
+      "hitCount": 0,
+      "bodyHits": 0,
+      "repeatContacts": 0,
+      "lethal": false,
+      "hardDanger": false
+    },
+    "ignoreEnemyThreats": false,
+    "flightMove": false,
+    "flightPhase": "yielding",
+    "flightItemCount": 0,
+    "flightThreshold": 5,
+    "flightNoInteractions": false,
+    "arenaLimitations": [],
+    "brakeCommitFor": null,
+    "bossRetreat": false,
+    "bossAvoidance": false,
+    "bossApproach": null,
+    "bossConstraintReturn": false,
+    "bossEscapeDetour": false,
+    "crowdEscape": null,
+    "traversal": null,
+    "ultimateCluster": null,
+    "charmCompensated": false
+  },
+  "motion": {
+    "computedAtGameTime": 223.65200000002153,
+    "computedPosition": {
+      "x": 0,
+      "y": 0.35511106252670294,
+      "z": 0
+    },
+    "computedHp": 111,
+    "observedBodyIndices": [
+      126
+    ],
+    "observedBodyCount": 1,
+    "observedBodiesTruncated": false,
+    "x": -0.2588190451025215,
+    "z": -0.9659258262890681,
+    "dash": false,
+    "risk": 0,
+    "waypoint": {
+      "x": 6.662002220938873,
+      "z": -24.862930768680624
+    },
+    "target": "flight:19",
+    "objectiveHeld": false,
+    "acceptedDamage": false,
+    "expectedDamage": 0,
+    "escapeRoutes": 8,
+    "action": "jump",
+    "jump": true,
+    "jumpMove": false,
+    "slideMove": false,
+    "safety": {
+      "knownDamage": 0,
+      "healthDamage": 0,
+      "unknownDamage": false,
+      "unknownHits": 0,
+      "hitCount": 0,
+      "bodyHits": 0,
+      "repeatContacts": 0,
+      "lethal": false,
+      "hardDanger": false
+    },
+    "ignoreEnemyThreats": false,
+    "flightMove": false,
+    "flightPhase": "yielding",
+    "flightItemCount": 0,
+    "flightThreshold": 5,
+    "flightNoInteractions": false,
+    "arenaLimitations": [],
+    "brakeCommitFor": null,
+    "bossRetreat": false,
+    "bossAvoidance": false,
+    "bossApproach": null,
+    "bossConstraintReturn": false,
+    "bossEscapeDetour": false,
+    "crowdEscape": null,
+    "traversal": null,
+    "ultimateCluster": null,
+    "charmCompensated": false
+  },
+  "keys": [
+    "KeyC",
+    "KeyE",
+    "Space"
+  ],
+  "pulses": [
+    {
+      "t": 0.65,
+      "R": 32
+    }
+  ],
+  "enabled": true,
+  "status": "推进 · 广域移动 · 前往地图远端"
+}

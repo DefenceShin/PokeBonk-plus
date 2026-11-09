@@ -142,6 +142,7 @@ function reviewedNativeLegendaryHuntGate(source) {
   const contracts=[{"gate": "bC", "fragments": ["mC=[144,145,146,150,151]", "hC=e=>mC.includes(e)", "gC=.025", "_C=(e,t)=>{let n=e.hunt?.[t];return{k:Number.isFinite(n?.k)?Math.max(0,Math.floor(n.k)):0,m:Number.isFinite(n?.m)?Math.max(0,Math.floor(n.m)):0}}", "vC=e=>e>=45?1:Math.min(1,fn+gC*Math.max(0,e-12))", "function yC(e,t,n){let r=2166136261,i=`hunt|${e}|${t}|${n}`;for(let e=0;e<i.length;e++)r^=i.charCodeAt(e),r=Math.imul(r,16777619);return r^=r>>>15,r=Math.imul(r,739982445),r^=r>>>12,r=Math.imul(r,695872825),r^=r>>>15,(r>>>0)/4294967296}", "function bC(e,t,n){if(!t||!hC(n))return!1;let r=_C(e,n);return yC(t,n,r.k)<vC(r.m)}"]}, {"gate": "xC", "fragments": ["hC=[144,145,146,150,151]", "gC=e=>hC.includes(e)", "_C=.025", "vC=(e,t)=>{let n=e.hunt?.[t];return{k:Number.isFinite(n?.k)?Math.max(0,Math.floor(n.k)):0,m:Number.isFinite(n?.m)?Math.max(0,Math.floor(n.m)):0}}", "yC=e=>e>=45?1:Math.min(1,pn+_C*Math.max(0,e-12))", "function bC(e,t,n){let r=2166136261,i=`hunt|${e}|${t}|${n}`;for(let e=0;e<i.length;e++)r^=i.charCodeAt(e),r=Math.imul(r,16777619);return r^=r>>>15,r=Math.imul(r,739982445),r^=r>>>12,r=Math.imul(r,695872825),r^=r>>>15,(r>>>0)/4294967296}", "function xC(e,t,n){if(!t||!gC(n))return!1;let r=vC(e,n);return bC(t,n,r.k)<yC(r.m)}"]}];
   contracts.push({"gate":"LC","fragments":["jC=[144,145,146,150,151]","MC=e=>jC.includes(e)","NC=.025","PC=(e,t)=>{let n=e.hunt?.[t];return{k:Number.isFinite(n?.k)?Math.max(0,Math.floor(n.k)):0,m:Number.isFinite(n?.m)?Math.max(0,Math.floor(n.m)):0}}","FC=e=>e>=45?1:Math.min(1,mn+NC*Math.max(0,e-12))","function IC(e,t,n){let r=2166136261,i=`hunt|${e}|${t}|${n}`;for(let e=0;e<i.length;e++)r^=i.charCodeAt(e),r=Math.imul(r,16777619);return r^=r>>>15,r=Math.imul(r,739982445),r^=r>>>12,r=Math.imul(r,695872825),r^=r>>>15,(r>>>0)/4294967296}","function LC(e,t,n){if(!t||!MC(n))return!1;let r=PC(e,n);return IC(t,n,r.k)<FC(r.m)}"]});
   contracts.push({"gate": "UC", "fragments": ["LC=[144,145,146,150,151]", "zC=.025", "function UC(e,t,n){if(!t||!RC(n))return!1;let r=BC(e,n);return HC(t,n,r.k)<VC(r.m)}", "RC=e=>LC.includes(e)", "BC=(e,t)=>{let n=e.hunt?.[t];return{k:Number.isFinite(n?.k)?Math.max(0,Math.floor(n.k)):0,m:Number.isFinite(n?.m)?Math.max(0,Math.floor(n.m)):0}}", "function HC(e,t,n){let r=2166136261,i=`hunt|${e}|${t}|${n}`;for(let e=0;e<i.length;e++)r^=i.charCodeAt(e),r=Math.imul(r,16777619);return r^=r>>>15,r=Math.imul(r,739982445),r^=r>>>12,r=Math.imul(r,695872825),r^=r>>>15,(r>>>0)/4294967296}", "VC=e=>e>=45?1:Math.min(1,mn+zC*Math.max(0,e-12))"]});
+  contracts.push({gate:'sI',fragments:['tI=[144,145,146,150,151]','nI=e=>tI.includes(e)','rI=.025','iI=(e,t)=>{let n=e.hunt?.[t];return{k:Number.isFinite(n?.k)?Math.max(0,Math.floor(n.k)):0,m:Number.isFinite(n?.m)?Math.max(0,Math.floor(n.m)):0}}','aI=(e,t=!1)=>t?Mi:e>=45?1:Math.min(1,Mi+rI*Math.max(0,e-12))','function oI(e,t,n){let r=2166136261,i=`hunt|${e}|${t}|${n}`;for(let e=0;e<i.length;e++)r^=i.charCodeAt(e),r=Math.imul(r,16777619);return r^=r>>>15,r=Math.imul(r,739982445),r^=r>>>12,r=Math.imul(r,695872825),r^=r>>>15,(r>>>0)/4294967296}','function sI(e,t,n){if(!t||!nI(n))return!1;let r=iI(e,n);return oI(t,n,r.k)<aI(r.m,!!e.shinies?.includes(n))}']});
   return contracts.find(contract=>contract.fragments.every(fragment=>source.includes(fragment)))?.gate??null;
 }
 
@@ -155,6 +156,7 @@ const reviewedNativeAliasOwners = [{"markers":["hit","groupHit","flushGroup","hi
 // Reviewed 0.9.8 damageParts collector and Bill modal delegate.
 // 0.9.13 preserves the native multiplier collector; accumulator spelling no longer equals keyword 'of'.
 reviewedNativeMemberProfiles.push({name:'rageBonus',kind:'method',shape:'385a68ba:8dda85c:27'},
+  {name:'rageBonus',kind:'method',shape:'c91dd8ac:8de8d2e:27'},
   {name:'rageBonus',kind:'method',shape:'fd137985:a29f61ad:28'},
   {name:'showFusion',kind:'method',shape:'19c7636a:a71a572c:212'},
   {name:'buildPool',kind:'method',shape:'49d727f1:4e8be2f7:893'});
@@ -425,6 +427,10 @@ function resolveModuleDefinitions(originalSource, options, nativeAliases, syntax
     for(const [role,local]of Object.entries(defs.symbols))if(!own.symbols[role]&&local){
       const binding=bind(local);if(binding){own.symbols[role]=binding;moduleBindings.push({role,url,local,binding,...boundReferences.get(binding)});}
     }
+    if(!own.nativeLegendaryHuntGate&&defs.nativeLegendaryHuntGate){
+      const binding=bind(defs.nativeLegendaryHuntGate);
+      if(binding){own.nativeLegendaryHuntGate=binding;moduleBindings.push({role:'nativeLegendaryHuntGate',url,local:defs.nativeLegendaryHuntGate,binding,...boundReferences.get(binding)});}
+    }
     for(const group of aliases.groups)if(!nativeAliases.groups.some(g=>g.ownerId===group.ownerId)){
       const binding=bind(group.symbol);if(binding){foreignGroups.push({...group,symbol:binding});moduleBindings.push({owner:group.ownerId,url,local:group.symbol,binding});
         nativeAliases.unresolved.push(...aliases.unresolved.filter(r=>r.id?.startsWith('members.'+group.ownerId+'.')));}
@@ -523,7 +529,7 @@ export function prepareGameSource(source, options = {}) {
   const sourceOptionalMissing = Object.keys(symbols).filter((key) => !symbols[key]);
   if(hasNativeLegendaryHunt&&!nativeLegendaryHuntGate)sourceOptionalMissing.push("nativeLegendaryShinyReady");
   const level = sourceOptionalMissing.length || nativeAliases.unresolved?.length || normalizedOverrides.errors.length ? "degraded" : "full";
-  const interactionCoverage = analyzeNativeInteractionCoverage(source);
+  const interactionCoverage = analyzeNativeInteractionCoverage(source,{moduleSources:options.moduleSources});
   const nativeSeason3Mechanics=inspectSeason3Mechanics(options.moduleSources||[],nativeMemberShape);
   const report = { ...base, nativeBossObservations,nativeSeason3Mechanics, captureFeatures, missing, unresolvedMembers:nativeAliases.unresolved||[], directNativeMembers:nativeAliases.directNativeMembers||[], optionalUnavailable:nativeAliases.optionalUnavailable||[], overrideErrors:normalizedOverrides.errors, nativeMemberAliases:Object.keys(nativeAliases.aliases).length, nativeAliasOwners:nativeAliases.groups.length, learningRules, hasNativeMutation, hasNativeLegendaryHunt, nativeLegendaryHuntReadOnly:!!nativeLegendaryHuntGate, state: "prepared", level, code: "source-prepared", reason: sourceOptionalMissing.length ? `核心启动接口已识别，部分可选目录待适配（${sourceOptionalMissing.join("、")}），等待运行时检查` : "游戏启动与目录接口已识别，等待运行时检查", optionalMissing: sourceOptionalMissing, sourceOptionalMissing, appSymbol: app, symbols, interactionCoverage };
   // Replace the bootstrap plus explicitly reviewed observation-only spans in
@@ -784,7 +790,10 @@ export function analyzeNativeInteractionCoverage(source, options = {}) {
   // Static public-source inspection only. An unknown type requests review; it
   // neither executes remote code nor authorizes clicking a new paid/risky UI.
   if (typeof source !== "string") source = "";
-  const world = coverageNativeClass(source, "label", ["cageCost", "spawnPortal", "altarUpdate", "interact"]);
+  const sources=[...new Set([source,...(options.moduleSources||[]).map(r=>r.source).filter(s=>typeof s==='string')])];
+  const worldOwners=sources.flatMap(text=>{const index=nativeSyntaxIndex(text);return index.classes.filter(c =>
+    ['label','cageCost','spawnPortal','altarUpdate','interact'].every(name => index.methods.some(m => m.owner === c.symbol && m.name === name))).map(c=>text.slice(c.node.start,c.node.end));});
+  const world = worldOwners.length === 1 ? worldOwners[0] : null;
   const ui = coverageNativeClass(source, "showLevelUp", ["showForget", "showMapLegend", "showPause"]);
   const worldTypes = world ? [...new Set([
     ...[...world.matchAll(/\bcase\s*(["'`])([a-z][a-z0-9-]*)\1\s*:/g)].map(m => m[2]),

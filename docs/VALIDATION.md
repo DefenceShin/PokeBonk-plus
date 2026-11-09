@@ -1,4 +1,39 @@
-# 0.9.13 源码快照验证
+# 源码验证
+
+## 0.9.22 — 2026-11-09
+
+新鲜旧基线 `npm test`：941 通过、0 失败；最终当前全套：**965 通过、0 失败、0 跳过**。162 场景四路对照通过。当前完整验证入口：
+
+```powershell
+node tools/validate-current.mjs
+```
+
+本次公开结果摘要见 [VALIDATION-0922-RESULTS.json](VALIDATION-0922-RESULTS.json)。完整本地命令结果为 `validation/0922/results.json`，每步输出为同目录同名 `.log`。入口遇失败立即停止，成功结束后最后一行为 `PASS current offline validation`。无需工作区外的旧开发目录；2.0.0+ 最小源码比较输入及原始哈希位于 `evidence/personal-2000/`。
+
+| 检查 | 覆盖 |
+|---|---|
+| `npm --prefix source test` | 保留旧基线，新增 0.9.22 合同、未知签名关闭、Ho-Oh 等价性及新旧异色能力差异 |
+| `catalogs` | 当前原生 276 常规/33 传说外观、完整表达式阈值、24 常规地图池、138 角色；说明文字变化单列 |
+| `parity-162` | 162 场景 × 2.0.0+ XP关/开、当前 XP关/开；12 个配装相关导出保持一致 |
+| `characters-*` | 当前关都/城都角色规划、原生启动及捕获，接受/拒绝保存 |
+| `skins-*` | 8 数量路线；16 组原生启动/结算/回滚；8 次原生领奖；关闭不领、等待不重复、下一目标 |
+| `shiny-source-runtime` | 原生森林特殊候选 206 与城都基础兜底 155，不显式指定生成目标 |
+| `eligibility-runtime` | 当前传说异色已拥有/未拥有资格；纯读取不改 profile/RNG；下一波输入优先级 |
+| `map-events` / `canela-lava` / `arena-actions` / `ball-actions` / `celebi-actions` / `iris-events` | 真实原生危险/伤害/回调，Pilot 移动与静止对照；时拉比跨时空/时钟路径 |
+| `hooh-actions` / `hooh-hurricane` | 当前 Ho-Oh 工厂、出场及原生攻击；16 项单元测试另比较 RNG、回调、伤害、60Hz 命中边界、未知签名拒绝 |
+| `rift-success` / `rift-success-full` / `rift-timeout` | 自然波次数 → Alpha；成功遗物领取/替换、失败超时、原地图返回；非空招式/融合材料/道具/维生素/放逐保留 |
+| `rift-pilot-pulse-runtime` | 当前原生裂隙脉冲、Pilot 跳跃输入、原生玩家实际起跳避伤 |
+| `skins-ui` | 1280×900 / 960×650；模式/外观/计数选项保存、四项默认关闭、无自动开始；截图已实际查看 |
+| `dotnet-release` | 最后一次源码修改后的 Release/win-x64 编译；仅供验证 |
+| `host-checks` | 四开关新装/缺失/异常关闭、显式值保留、42 动作门禁、冷启/重连无自动启动；逐一比较所有显式嵌入资源与工作文件 SHA-256 |
+
+公开快照含 10 个网页/脚本文件和八份 JSON 数据（与旧版数据哈希相同），均已按 manifest 重算 SHA-256；`.gitattributes` 对这些冻结输入禁用换行转换，保证跨设备字节一致；可另跑 `node tools/verify-public-inputs.mjs`。原生完整目录与挑战表证明在 `evidence/public-0922/`。UI 截图、运行 JSON 和 52 项嵌入资源记录在 `evidence/`，均为合成测试账号，不含真实账号数据。完整 Release 编译为 0 错误、717 项既有警告；后续无源码变化的增量编译不重复列出这些警告。
+
+`docs/SOURCE-0922-MANIFEST.json` 记录全部 144 个生产文件当前指纹及旧指纹：本轮仅 4 个源码模块和 2 个目录数据文件改变。原 `SOURCE-MANIFEST.json` 保持历史原样。
+
+本轮不包含真实服务器回执、随机完整整局、三圣兽专属追踪、道场/远征或其他原灰色模式验收。隔离夹具拦截全部外部请求，替代图形边界和后端回执；移动/伤害/投球/结算/领奖由当前原生方法执行。main 同步源码与验证材料；编译没有安装或发布为二进制 Release。
+
+## 历史：0.9.13 源码快照验证
 
 2026-11-06，在独立的公开仓库副本重新执行，未沿用原工作目录的通过结果。
 

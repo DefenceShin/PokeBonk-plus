@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "owned": false,
+      "actual": true,
+      "expected": true,
+      "chance": 1
+    },
+    {
+      "owned": true,
+      "actual": false,
+      "expected": false,
+      "chance": 0.03
+    }
+  ],
+  "action": "rift-wave",
+  "tapped": false,
+  "keys": [],
+  "optional": [
+    "mutationToday",
+    "mutationDefinition"
+  ]
+}
